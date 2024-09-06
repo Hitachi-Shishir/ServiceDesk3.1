@@ -5,52 +5,51 @@
 <html>
 <head runat="server">
 
-     <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Hitachi</title>
- <!--favicon-->
- <link rel="icon" href="assets/images/Hitachi/Hitachi_logo.png" type="image/png">
- <!-- loader-->
- <link href="assets/css/pace.min.css" rel="stylesheet">
- <link rel="stylesheet" href="../Scripts/chosen.css" />
- <script src="assets/js/pace.min.js"></script>
-  <script>
-      function pageLoad() {
-          jQuery(".chzn-select").data("placeholder", "Select Frameworks...").chosen();
-      }
-  </script>
- <!--plugins-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hitachi</title>
+    <!--favicon-->
+    <link rel="icon" href="assets/images/Hitachi/Hitachi_logo.png" type="image/png">
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Scripts/chosen.css" />
+    <script src="assets/js/pace.min.js"></script>
+    <script>
+        function pageLoad() {
+            jQuery(".chzn-select").data("placeholder", "Select Frameworks...").chosen();
+        }
+    </script>
+    <!--plugins-->
 
- <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
- <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
- <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
- <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
 
 
- <!--bootstrap css-->
- <link href="assets/css/bootstrap.min.css" rel="stylesheet">
- <link rel="stylesheet" href="assets/css/extra-icons.css">
- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    <!--bootstrap css-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/extra-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
 
- <!--main css-->
- <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
- <link href="sass/main.css" rel="stylesheet">
- <link href="sass/dark-theme.css" rel="stylesheet">
- <link href="sass/blue-theme.css" rel="stylesheet">
- <link href="sass/semi-dark.css" rel="stylesheet">
- <link href="sass/bordered-theme.css" rel="stylesheet">
- <link href="sass/responsive.css" rel="stylesheet">
+    <!--main css-->
+    <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="sass/main.css" rel="stylesheet">
+    <link href="sass/dark-theme.css" rel="stylesheet">
+    <link href="sass/blue-theme.css" rel="stylesheet">
+    <link href="sass/semi-dark.css" rel="stylesheet">
+    <link href="sass/bordered-theme.css" rel="stylesheet">
+    <link href="sass/responsive.css" rel="stylesheet">
 
- <%-- Plugins --%>
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <%-- Plugins --%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-     
         <!--start header-->
         <header class="top-header">
             <nav class="navbar navbar-expand align-items-center gap-4">
@@ -108,7 +107,6 @@
                                                 <h5 class="mb-0 search-list-title">eCommerce Website Tutorials</h5>
                                             </div>
                                         </div>
-
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="list-icon">
                                                 <i class="material-icons-outlined fs-5">laptop</i>
@@ -118,10 +116,8 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <hr>
                                     <p class="search-title">Members</p>
-
                                     <div class="search-list d-flex flex-column gap-2">
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="memmber-img">
@@ -131,7 +127,6 @@
                                                 <h5 class="mb-0 search-list-title ">Andrew Stark</h5>
                                             </div>
                                         </div>
-
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="memmber-img">
                                                 <img src="assets/images/avatars/02.png" width="32" height="32" class="rounded-circle" alt="">
@@ -140,7 +135,6 @@
                                                 <h5 class="mb-0 search-list-title ">Snetro Jhonia</h5>
                                             </div>
                                         </div>
-
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="memmber-img">
                                                 <img src="assets/images/avatars/03.png" width="32" height="32" class="rounded-circle" alt="">
@@ -149,7 +143,6 @@
                                                 <h5 class="mb-0 search-list-title">Michle Clark</h5>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="card-footer text-center bg-transparent">
@@ -194,7 +187,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item dropdown position-static  d-md-flex d-none">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-auto-close="outside"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">done_all</i></a>
@@ -655,8 +647,9 @@
                         <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
                             <a class="dropdown-item  gap-2 py-2" href="javascript:;">
                                 <div class="text-center">
-                                    <img src="assets/images/avatars/01.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
-                                        alt="">
+                                    <%--<img src="assets/images/avatars/01.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
+                                        alt="">--%>
+                                    <asp:Image ID="img" runat="server" class="rounded-circle p-1 shadow mb-3" Style="width: 150px;" />
                                     <h5 class="user-name mb-0 fw-bold">Hello, Jhon</h5>
                                 </div>
                             </a>
@@ -686,18 +679,40 @@
         <aside class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div class="logo-icon">
-                    <img src="assets/images/logo-icon.png" class="logo-img" alt="">
+                    <%--<img src="assets/images/logo-icon.png" class="logo-img" alt="">--%>
+                    <asp:Image ID="imgOrg" runat="server" CssClass="brand-image" Style="opacity: .8; width: 150px; margin-left: 33px;" />
                 </div>
-                <div class="logo-name flex-grow-1">
+                <%-- <div class="logo-name flex-grow-1">
                     <h5 class="mb-0">Logo</h5>
-                </div>
+                </div>--%>
                 <div class="sidebar-close">
                     <span class="material-icons-outlined">close</span>
                 </div>
             </div>
             <div class="sidebar-nav">
-                <!--navigation-->
                 <ul class="metismenu" id="sidenav">
+                    <asp:Repeater ID="rptCategories" runat="server" OnItemDataBound="rptCategories_ItemDataBound">
+                        <ItemTemplate>
+                            <li runat="server" id="parentLi">
+                                <a href='<%#Eval("MenuLocation") %>' class="has-arrow" id="parentmenu" runat="server">
+                                    <div class="parent-icon">
+                                       <i class='<%#Eval("MenuIcon") %>'>
+                                           <asp:Label runat="server" ID="lblName"></asp:Label>
+                                           </i>
+                                    </div>
+                                    <div class="menu-title">
+                                        <%#Eval("MenuName") %>
+                                    </div>
+                                </a>
+                                <asp:Literal ID="ltrlSubMenu" runat="server"></asp:Literal>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
+
+
+                <!--navigation-->
+                <%--<ul class="metismenu" id="sidenav1">
                     <li>
                         <a href="cards.html">
                             <div class="parent-icon">
@@ -900,7 +915,7 @@
                     </li>
 
 
-                </ul>
+                </ul>--%>
                 <!--end navigation-->
             </div>
         </aside>
@@ -968,8 +983,8 @@
         $(".data-attributes span").peity("donut")
     </script>
     <script src="assets/js/dashboard2.js"></script>
-   
-    
+
+
 </body>
 </html>
 

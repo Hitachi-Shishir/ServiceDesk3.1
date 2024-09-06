@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class frmAllTickets : System.Web.UI.Page
+public partial class frmAllArchiveTickets : System.Web.UI.Page
 {
     InsertErrorLogs inEr = new InsertErrorLogs();
     public enum MessageType { success, error, info, warning };
@@ -29,6 +29,8 @@ public partial class frmAllTickets : System.Web.UI.Page
                 if (Session["Popup"].ToString() == "Error")
                 {
                     ShowMessage(MessageType.error, "Choose Ticket First!!");
+
+
                 }
                 if (Session["Popup"].ToString() == "Pickup")
                 {
@@ -363,7 +365,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Ticketref", label.Text);
                         cmd.Parameters.AddWithValue("@AssigneName", Session["LoginName"].ToString());
-                        cmd.Parameters.AddWithValue("@organizationFK", Session["OrgID"].ToString());
                         cmd.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
                         cmd.Parameters.AddWithValue("@Option", "AssignTechnician");
                         con.Open();
@@ -529,27 +530,27 @@ public partial class frmAllTickets : System.Web.UI.Page
 
         if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
         {
-            FillTicketStatus("AllTicketStatus");
+            //	FillTicketStatus("AllTicketStatus");
             if (ddlGetticketFilter.SelectedValue == "0")
             {
-                FillMasterTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
+                FillMasterTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketMaster_Arch");
             }
             else
             {
-                FillMasterTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
+                FillMasterTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster_Arch");
 
             }
         }
         if (Session["UserScope"].ToString() == "Technician")
         {
-            FillTicketStatus("AllTicketStatusTech");
+            //FillTicketStatus("AllTicketStatusTech");
             if (ddlGetticketFilter.SelectedValue == "0")
             {
-                FillTechTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketTech");
+                FillTechTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketTech_Arch");
             }
             else
             {
-                FillTechTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
+                FillTechTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster_Arch");
 
             }
         }
@@ -593,7 +594,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                     using (DataTable dt = new DataTable())
                     {
                         sda.Fill(dt);
-                        mydt = dt;
+                        //mydt = dt;
                         DataView dv = dt.DefaultView;
                         if (ViewState["SortExpression"] != null && ViewState["SortDirection"] != null)
                         {
@@ -650,13 +651,13 @@ public partial class frmAllTickets : System.Web.UI.Page
         {
             using (SqlCommand cmd = new SqlCommand(storproc, con))
             {
-                cmd.CommandTimeout = 3600;
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 480;
                 cmd.Parameters.AddWithValue("@PageIndex", pageindex);
                 cmd.Parameters.AddWithValue("@PageSize", pagesize);
                 cmd.Parameters.AddWithValue("@TicketDayWise", ddlGetticketFilter.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Desk", Session["SDRef"].ToString());
-                cmd.Parameters.AddWithValue("@OrgId", ddlOrg.SelectedValue);
+                cmd.Parameters.AddWithValue("@OrgID", ddlOrg.SelectedValue);
                 cmd.Parameters.AddWithValue("@TechLoginName", Session["LoginName"].ToString());
                 cmd.Parameters.AddWithValue("@Option", Function);
                 cmd.Parameters.Add("@TotalRow", SqlDbType.Int, 4);
@@ -731,12 +732,13 @@ public partial class frmAllTickets : System.Web.UI.Page
             using (SqlCommand cmd = new SqlCommand(storproc, con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 480;
                 cmd.Parameters.AddWithValue("@PageIndex", pageindex);
                 cmd.Parameters.AddWithValue("@PageSize", pagesize);
                 cmd.Parameters.AddWithValue("@TicketDayWise", ddlGetticketFilter.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Desk", Session["SDRef"].ToString());
+                cmd.Parameters.AddWithValue("@OrgID", Session["OrgId"].ToString());
                 cmd.Parameters.AddWithValue("@EngLocation", Session["Location"].ToString());
-                cmd.Parameters.AddWithValue("@OrgId", ddlOrg.SelectedValue);
                 cmd.Parameters.AddWithValue("@TechLoginName", Session["LoginName"].ToString());
                 cmd.Parameters.AddWithValue("@Option", Function);
                 cmd.Parameters.Add("@TotalRow", SqlDbType.Int, 4);
@@ -1259,7 +1261,38 @@ public partial class frmAllTickets : System.Web.UI.Page
 
         // Apply the filters to the data
         //	DataTable dt = (DataTable)gvAllTickets.DataSource;
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+        {
+            using (SqlCommand cmd = new SqlCommand(@"Select * from (select ROW_NUMBER() OVER(order by TicketNumber desc) as RowNum,c.StatusColorCode,a.* ,case 
+  when DATEDIFF(HOUR,CreationDate,GETDATE())<=1
+ then 'Last1Hour1'
+ when DATEDIFF(HOUR,CreationDate,GETDATE())<=24
+ then 'Last24Hours'
+ when DATEDIFF(DAY,CreationDate,GETDATE())> 1 and DATEDIFF(DAY,CreationDate,GETDATE())<= 30
+ then 'Last30Days'
+  when DATEDIFF(DAY,CreationDate,GETDATE())> 1 and DATEDIFF(DAY,CreationDate,GETDATE())<= 90
+ then 'Last90Days'
+  when DATEDIFF(DAY,CreationDate,GETDATE())>90 
+  then 'Morethan90Days'
+  End as 'TicketDayWise'
+  from dbo.SD_vSDTicketDetails a 
+  left join SD_Status c
+  on a.sdStatusFK=c.ID  and a.OrgId=c.OrgDeskRef
+ 
+  where a.OrgId='523843837' AND (ClosedDate is not null and  DATEDIFF(day, ClosedDate, getdate()) >= 1 ) )tt ", con))
+            {
+                cmd.CommandType = CommandType.Text;
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
 
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(mydt);
+
+                    }
+                }
+            }
+        }
         // Create a DataView from the DataTable
         DataView filteredData = mydt.DefaultView;
 
@@ -1299,7 +1332,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@Desk", ddlRequestType.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@TechLoginName", Session["LoginName"].ToString());
                     cmd.Parameters.AddWithValue("@Location", Session["Location"].ToString());
-                    cmd.Parameters.AddWithValue("@OrgId", ddlOrg.SelectedValue);
                     cmd.Parameters.AddWithValue("@Option", Proc);
                     cmd.Connection = con;
                     con.Open();
@@ -1370,7 +1402,6 @@ public partial class frmAllTickets : System.Web.UI.Page
         duesoon = 0;
         FillOpenTicket(1);
     }
-
     protected void FillOpenTicket(int pageindex)
     {
         if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
@@ -1395,7 +1426,6 @@ public partial class frmAllTickets : System.Web.UI.Page
 
         }
     }
-
     protected void btnWipTicket_Click(object sender, EventArgs e)
     {
         wip = 1;
@@ -1433,7 +1463,6 @@ public partial class frmAllTickets : System.Web.UI.Page
 
 
     }
-
     protected void btnTicketAssigntoME_Click(object sender, EventArgs e)
     {
         assigned = 1;
@@ -1499,7 +1528,7 @@ public partial class frmAllTickets : System.Web.UI.Page
             if (ddlGetticketFilter.SelectedValue == "0")
             {
                 FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "OverDue", "creationDate", true, "SD_spGetTicketTechStatusWise");
+            (ddlPageSize.SelectedValue), "WithoutFilter", "creationDate", true, "SD_spGetTicketTechStatusWise");
             }
 
         }
@@ -1576,5 +1605,39 @@ public partial class frmAllTickets : System.Web.UI.Page
             }
 
         }
+    }
+    protected void btnMerge_Click(object sender, ImageClickEventArgs e)
+    {
+        string Tickets = null;
+        foreach (GridViewRow gvrow in gvAllTickets.Rows)
+        {
+            System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
+            if (chk != null & chk.Checked)
+            {
+
+                //string ProductCode = row.Cells[11].Text;
+
+                System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
+
+
+                //string strImageURL = "rptlabelgen.aspx?d=" + SysSerialNumber + "&h=75&w=150&bc=&fc=&t=Code 128&if=PNG";
+
+                Tickets += label.Text + ",";
+
+            }
+        }
+        Tickets = Tickets.TrimEnd(',');
+        string[] Ticketarr = Tickets.Split(',');
+        if (Ticketarr.Length > 2)
+        {
+            Response.Write("<script type='text/javascript'>");
+            Response.Write("window.open('/frmMergeNGroupUpdt.aspx?Tickets=" + Tickets + "&redirected=true&ActionType=Merge&Desk=" + ddlRequestType.SelectedItem.ToString() + "','_blank');");
+            Response.Write("</script>");
+        }
+        else
+        {
+            lblMsg.Text = "Please Select more than two tickets!!!!";
+        }
+
     }
 }
