@@ -18,62 +18,14 @@ public partial class frmAllTickets : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), System.Guid.NewGuid().ToString(), "Showalert('" + type + "','" + Message + "');", true);
     }
-    protected override void OnInit(EventArgs e)
-    {
-        try
-        {
-            //Change your condition here
-            if (Session["Popup"] != null)
-            {
-
-                if (Session["Popup"].ToString() == "Error")
-                {
-                    ShowMessage(MessageType.error, "Choose Ticket First!!");
-                }
-                if (Session["Popup"].ToString() == "Pickup")
-                {
-                    ShowMessage(MessageType.success, "Ticket has been Assigned");
-
-
-                }
-                if (Session["Popup"].ToString() == "Delete")
-                {
-                    ShowMessage(MessageType.success, "Ticket has been Deleted");
-
-
-                }
-
-                Session.Remove("Popup");
-
-            }
-
-
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            ExceptionLogging.SendErrorToText(ex);
-
-        }
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["UserID"] != null & Session["LoginName"] != null && Session["UserScope"] != null && Session["EmpID"] != null && Session["OrgID"] != null)
-
         {
-
             if (Session["UserScope"].ToString() == "SDUser")
             {
                 pnlgridrow.Visible = false;
                 pnltickcount.Visible = false;
-
-                //	this.GetTicket(1, int.Parse
-                //(ddlPageSize.SelectedValue), "creationDate", true);
-
             }
             else if (Session["UserScope"].ToString() == "Technician" || Session["UserScope"].ToString() == "Admin")
             {
@@ -86,11 +38,6 @@ public partial class frmAllTickets : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-
-                //if (querystring == "")
-                //{
-                //	FillAllRequests(querystring);
-                //}
                 open = 0;
                 wip = 0;
                 assigned = 0;
@@ -102,7 +49,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                 {
                     string ss = Session["UserType"].ToString();
                     FillOrganization();
-
                 }
                 else
                 {
@@ -111,30 +57,23 @@ public partial class frmAllTickets : System.Web.UI.Page
                     ddlOrg_SelectedIndexChanged(sender, e);
                     ddlOrg.Enabled = false;
                 }
-
             }
         }
         else
         {
             Response.Redirect("/Default.aspx");
         }
-
     }
     private void FillOrganization()
     {
-
         try
         {
-
-            DataTable SD_Org = new FillSDFields().FillOrganization(); ;
-
+            DataTable SD_Org = new FillSDFields().FillOrganization();
             ddlOrg.DataSource = SD_Org;
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- Organization ---", "0"));
-
-
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -166,14 +105,12 @@ public partial class frmAllTickets : System.Web.UI.Page
 
         try
         {
-
             DataTable RequestType = new SDTemplateFileds().FillRequestType(OrgId);
-
             ddlRequestType.DataSource = RequestType;
             ddlRequestType.DataTextField = "ReqTypeRef";
             ddlRequestType.DataValueField = "ReqTypeRef";
             ddlRequestType.DataBind();
-            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--- RequestType---", "0"));
+            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
 
 
         }
@@ -217,11 +154,8 @@ public partial class frmAllTickets : System.Web.UI.Page
 
     private void FillAllChecklist()
     {
-
         try
         {
-
-
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT distinct name FROM sys.columns WHERE object_id = OBJECT_ID('dbo.vSDTicket') and name not in('id','partitionid')  ", con))
@@ -295,17 +229,11 @@ public partial class frmAllTickets : System.Web.UI.Page
                 if (row.RowType == DataControlRowType.DataRow)
                 {
                     System.Web.UI.WebControls.CheckBox chkRow = (row.FindControl("chkRow") as System.Web.UI.WebControls.CheckBox);
-                    //	CheckBox chkRow = (row.Cells[0].FindControl("chkRow") as CheckBox);
                     if (chkRow.Checked)
                     {
-                        //string ProductCode = row.Cells[11].Text;
                         string TicketNumber = row.Cells[2].Text;
-
-                        //string strImageURL = "rptlabelgen.aspx?d=" + SysSerialNumber + "&h=75&w=150&bc=&fc=&t=Code 128&if=PNG";
-
                         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
                         {
-
                             using (SqlCommand cmd = new SqlCommand("SD_spSDIncident", con))
                             {
                                 cmd.CommandType = CommandType.StoredProcedure;
@@ -316,20 +244,19 @@ public partial class frmAllTickets : System.Web.UI.Page
                                 int res = cmd.ExecuteNonQuery();
                                 if (res > 0)
                                 {
-                                    Session["Popup"] = "Delete";
-                                    Response.Redirect(Request.Url.AbsoluteUri);
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
                                 }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ error_noti(); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
 
+                                }
                             }
                         }
-
                     }
-
-
-
                 }
-
-
             }
         }
         catch (ThreadAbortException e2)
@@ -340,65 +267,53 @@ public partial class frmAllTickets : System.Web.UI.Page
     }
     protected void btnPickupTicket_Click(object sender, EventArgs e)
     {
-        //try
-        //{
-        foreach (GridViewRow gvrow in gvAllTickets.Rows)
+        try
         {
-            System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
-            if (chk != null & chk.Checked)
+            foreach (GridViewRow gvrow in gvAllTickets.Rows)
             {
-
-                //string ProductCode = row.Cells[11].Text;
-
-                System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
-
-
-                //string strImageURL = "rptlabelgen.aspx?d=" + SysSerialNumber + "&h=75&w=150&bc=&fc=&t=Code 128&if=PNG";
-
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
+                if (chk != null & chk.Checked)
                 {
-
-                    using (SqlCommand cmd = new SqlCommand("SD_spSDIncident", con))
+                    System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Ticketref", label.Text);
-                        cmd.Parameters.AddWithValue("@AssigneName", Session["LoginName"].ToString());
-                        cmd.Parameters.AddWithValue("@organizationFK", Session["OrgID"].ToString());
-                        cmd.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
-                        cmd.Parameters.AddWithValue("@Option", "AssignTechnician");
-                        con.Open();
-                        int res = cmd.ExecuteNonQuery();
-                        if (res > 0)
+                        using (SqlCommand cmd = new SqlCommand("SD_spSDIncident", con))
                         {
-                            Session["Popup"] = "Pickup";
-                            Response.Redirect(Request.Url.AbsoluteUri);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@Ticketref", label.Text);
+                            cmd.Parameters.AddWithValue("@AssigneName", Session["LoginName"].ToString());
+                            cmd.Parameters.AddWithValue("@organizationFK", Session["OrgID"].ToString());
+                            cmd.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
+                            cmd.Parameters.AddWithValue("@Option", "AssignTechnician");
+                            con.Open();
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Ticket has been Assigned !")}'); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+           $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ error_noti(); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
+                            }
                         }
-
-
-
-
-
-
-
                     }
-                }
 
+                }
             }
         }
-
-        //}
-        //catch (ThreadAbortException e2)
-        //{
-        //	Console.WriteLine("Exception message: {0}", e2.Message);
-        //	Thread.ResetAbort();
-        //}
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
     }
     private void Modal()
     {
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
         sb.Append(@"<script type='text/javascript'>");
         sb.Append("$('#CategoryModal').modal('show');");
-        //  sb.Append("$('#basicModal').modal.appendTo('body').show('show')");
         sb.Append("$('body').removeClass('modal-open');");
         sb.Append("$('.modal-backdrop').remove();");
 
@@ -427,16 +342,10 @@ public partial class frmAllTickets : System.Web.UI.Page
 
         for (int j = 0; j < chkcolumn.Items.Count; j++)
         {
-            //	CheckBoxList chkColumns = (CheckBoxList)row.FindControl("chkcolumn");
-
             for (int i = 2; i < gvAllTickets.Columns.Count; i++)
             {
                 string columnName = gvAllTickets.Columns[i].HeaderText;
-
                 if (chkcolumn.Items[i].Selected == true)// getting selected value from CheckBox List  
-
-
-                //		if (chkColumns.Items.Cast<ListItem>().Any(item => item.Text == columnName && item.Selected))
                 {
                     if (gvAllTickets.Columns[i] is BoundField)
                     {
@@ -473,46 +382,6 @@ public partial class frmAllTickets : System.Web.UI.Page
             }
         }
 
-
-        //gvAllTickets.Columns[0].Visible = true;
-        //gvAllTickets.Columns[1].Visible = true;
-        //int total = chkcolumn.Items.Count + 2;
-        //for (int i = 2; i < total; i++)
-        //{
-        //	if (chkcolumn.Items[i - 2].Selected == true && gvAllTickets.Columns[i].HeaderText == (chkcolumn.Items[i - 2].Value))
-        //	{
-
-
-        //		gvAllTickets.Columns[i].Visible = true;
-        //		if (numbers.Contains(chkcolumn.Items[i - 2].Value))
-        //		{
-
-        //		}
-        //		else
-        //		{
-        //			numbers.Add(chkcolumn.Items[i - 2].Value);
-        //		}
-
-
-        //	}
-        //	else if (gvAllTickets.Columns[i].HeaderText == (chkcolumn.Items[i - 2].Value))
-        //	{
-        //		gvAllTickets.Columns[i].Visible = false;
-        //		if (numbers.Contains(chkcolumn.Items[i - 2].Value))
-        //		{
-        //			numbers.Remove(chkcolumn.Items[i - 2].Value);
-        //		}
-
-        //	}
-
-        //}
-
-        //querystring = string.Join(",", numbers);
-        //querystring = querystring.TrimEnd(',');
-        //lblmsg1.Text = querystring;
-
-
-        //	FillAllRequests(querystring);
     }
     protected void ddllFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -555,18 +424,8 @@ public partial class frmAllTickets : System.Web.UI.Page
         }
         if (Session["UserScope"].ToString() == "SDUser" && Session["EmpID"] != null)
         {
-            //if (ddlGetticketFilter.SelectedValue == "0")
-            //{
             FillUserWiseTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting);
-            //}
-            //else
-            //{
-            //	FillUserWiseTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting);
-
-            //}
         }
-
-
     }
     public static DataTable mydt;
     protected void FillUserWiseTickets(int pageindex, int pagesize, string Function, string SortExpression, bool IsSorting)
@@ -621,26 +480,19 @@ public partial class frmAllTickets : System.Web.UI.Page
                         dv.Sort = ViewState["SortExpression"] + " " + ViewState["SortDirection"];
                         if (dt.Rows.Count > 0)
                         {
-                            //	lblTotal.Text = dt.Rows.Count.ToString();
-
                             gvAllTickets.DataSource = dt;
                             gvAllTickets.DataBind();
                         }
                         else
                         {
-                            //	lblTotal.Text = "0";
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
                     }
                 }
-                //idr.Close();
                 con.Close();
                 int recordCount = Convert.ToInt32(cmd.Parameters["@TotalRow"].Value);
                 this.PopulatePager(recordCount, pageindex);
-
-
-
             }
         }
     }
@@ -698,23 +550,16 @@ public partial class frmAllTickets : System.Web.UI.Page
                         dv.Sort = ViewState["SortExpression"] + " " + ViewState["SortDirection"];
                         if (dt.Rows.Count > 0)
                         {
-                            //	lblTotal.Text = dt.Rows.Count.ToString();
-
                             gvAllTickets.DataSource = dt;
-                            //gvAllTickets.Columns[4].ItemStyle.Width = 10;
-                            //gvAllTickets.Columns[4].ItemStyle.Wrap = true;
-                            //gvAllTickets.Attributes.Add("style", "word-break:break-all; word-wrap:break-word");
                             gvAllTickets.DataBind();
                         }
                         else
                         {
-                            //	lblTotal.Text = "0";
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
                     }
                 }
-                //		idr.Close();
                 con.Close();
                 int recordCount = Convert.ToInt32(cmd.Parameters["@TotalRow"].Value);
                 this.PopulatePager(recordCount, pageindex);
@@ -777,21 +622,16 @@ public partial class frmAllTickets : System.Web.UI.Page
                         dv.Sort = ViewState["SortExpression"] + " " + ViewState["SortDirection"];
                         if (dt.Rows.Count > 0)
                         {
-                            //	lblTotal.Text = dt.Rows.Count.ToString();
-
                             gvAllTickets.DataSource = dt;
-
                             gvAllTickets.DataBind();
                         }
                         else
                         {
-                            //	lblTotal.Text = "0";
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
                     }
                 }
-                //		idr.Close();
                 con.Close();
                 int recordCount = Convert.ToInt32(cmd.Parameters["@TotalRow"].Value);
                 this.PopulatePager(recordCount, pageindex);
@@ -807,16 +647,6 @@ public partial class frmAllTickets : System.Web.UI.Page
 
         int pageCount = (int)Math.Ceiling(totalPageCount);
         List<ListItem> pages = new List<ListItem>();
-        //if(pagecount>0)
-        //{
-        //	pages.Add(new ListItem("First","1",currentPage>1));
-        //	for(int i=1;i<=pagecount;i++)
-        //	{
-        //		pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-
-        //	}
-        //	pages.Add(new ListItem("Last", pagecount.ToString(),  currentPage<pagecount));
-        //}
         if (pageCount > 0)
         {
             int showMax = 5;
@@ -847,25 +677,6 @@ public partial class frmAllTickets : System.Web.UI.Page
     }
     protected void PopulatePager(int totalRow, int currentPage)
     {
-
-
-        //if (pageCount > 0)
-        //{
-
-
-        //	pages.Add(new ListItem("First", "1", currentPage > 1));
-
-        //	for (int i = startPage; i <= endPage; i++)
-        //	{
-        //		pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-        //	}
-
-        //	pages.Add(new ListItem("Last", pageCount.ToString(), currentPage < pageCount));
-        //}
-
-
-
-
         double totalPageCount = (double)((decimal)totalRow / decimal.Parse(ddlPageSize.SelectedValue));
 
         int pageCount = (int)Math.Ceiling(totalPageCount);
@@ -1001,11 +812,7 @@ public partial class frmAllTickets : System.Web.UI.Page
         }
     }
 
-    /// <summary>
-    /// Gridview Functions list start
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+
     protected void gvAllTickets_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
     {
         try
@@ -1019,42 +826,24 @@ public partial class frmAllTickets : System.Web.UI.Page
                     if (row.RowType == DataControlRowType.DataRow)
                     {
                         System.Web.UI.WebControls.CheckBox chkRow = (row.FindControl("chkRow") as System.Web.UI.WebControls.CheckBox);
-                        //	CheckBox chkRow = (row.Cells[0].FindControl("chkRow") as CheckBox);
                         if (chkRow.Checked == true)
                         {
-                            //string ProductCode = row.Cells[11].Text;
                             System.Web.UI.WebControls.Label label = (row.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
 
                             string TicketNumber = label.Text;
                             Response.Write("<script type='text/javascript'>");
                             Response.Write("window.open('/frmEditTicketbyAssigne.aspx?TicketId=" + TicketNumber + "&redirected=true&Desk=" + ddlRequestType.SelectedValue + "&NamelyId=" + ddlOrg.SelectedValue + "','_blank');");
                             Response.Write("</script>");
-
-                            //string url = string.Format("/frmEditTicketbyAssigne.aspx?TicketId={0}", TicketNumber);
-
-                            //// Open the URL in a new tab
-                            //string script = string.Format("window.open('{0}','_blank');", url);
-                            //ClientScript.RegisterStartupScript(this.GetType(), "openWindow", script, true);
-                            //	Response.Redirect("/frmEditTicketbyAssigne.aspx?TicketId=" + TicketNumber);
-
-                            //string strImageURL = "rptlabelgen.aspx?d=" + SysSerialNumber + "&h=75&w=150&bc=&fc=&t=Code 128&if=PNG";
-
-
-
                         }
                         else if (chkRow.Checked == false)
                         {
-                            Session["Popup"] = "Error";
-                            //	Response.Redirect(Request.Url.AbsoluteUri);
+                            //Session["Popup"] = "Error";
+                            //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti();", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ error_noti(); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
                         }
-
-
-
                     }
-
-
                 }
-
             }
         }
         catch (ThreadAbortException e2)
@@ -1066,16 +855,23 @@ public partial class frmAllTickets : System.Web.UI.Page
     protected void gvAllTickets_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
     {
         try
-
         {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //	// Assuming you want to enable text wrapping for the first column
-            //	e.Row.Cells[4].Style["white-space"] = "normal";
-            //	// or "pre-wrap"
-            //	e.Row.Cells[4].Width=500;
-
-            //}
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                CheckBox chkRow = (CheckBox)e.Row.FindControl("chkRow");
+                if (chkRow != null)
+                {
+                    chkRow.InputAttributes["class"] = "form-check-input";
+                }
+            }
+            else if (e.Row.RowType == DataControlRowType.Header)
+            {
+                CheckBox chkAll = (CheckBox)e.Row.FindControl("chkAll");
+                if (chkAll != null)
+                {
+                    chkAll.InputAttributes["class"] = "form-check-input";
+                }
+            }
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
@@ -1105,23 +901,33 @@ public partial class frmAllTickets : System.Web.UI.Page
                     {
                         //e.Row.Cells[2].BackColor = Color.Green;
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
-                        e.Row.Cells[2].CssClass = "badge bg-success";
+                        e.Row.Cells[2].CssClass = "badge p-1 bg-success";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                     if (label.Text.ToLower() == "yellow")
                     {
-                        e.Row.Cells[2].CssClass = "badge bg-warning";
+                        e.Row.Cells[2].CssClass = "badge p-1  bg-warning";
                     }
                     if (label.Text.ToLower() == "red")
                     {
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
-
-                        e.Row.Cells[2].CssClass = "badge bg-danger";
+                        e.Row.Cells[2].CssClass = "badge p-1 bg-danger";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                     if (label.Text.ToLower() == "orange")
                     {
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
-
-                        e.Row.Cells[2].CssClass = "badge bg-info";
+                        e.Row.Cells[2].CssClass = "badge p-1  bg-info";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                 }
             }
@@ -1168,27 +974,13 @@ public partial class frmAllTickets : System.Web.UI.Page
                         {
                             sortLinkButton = (LinkButton)tableCell.Controls[0];
                         }
-
-
-
                         if (sortLinkButton != null && ViewState["SortExpression"].ToString() == sortLinkButton.CommandArgument)
                         {
                             System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
-
-
-
                             if (ViewState["SortDirection"].ToString() == "ASC")
-
-
-
                                 img.ImageUrl = "~/Images/arrow_up.png";
-
-
-
                             else if (ViewState["SortDirection"].ToString() == "DESC")
                                 img.ImageUrl = "~/Images/arrow_down.png";
-
-
                             tableCell.Controls.Add(new LiteralControl("&nbsp;"));
                             tableCell.Controls.Add(img);
                         }
@@ -1204,30 +996,17 @@ public partial class frmAllTickets : System.Web.UI.Page
 
 
     }
-
-    /// <summary>
-    /// Gridview Functions list end
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     protected void imgRowFilter_Click(object sender, ImageClickEventArgs e)
     {
         pnlRowFilter.Visible = true;
     }
     protected void btnGridFilter_Click(object sender, EventArgs e)
     {
-        // Get the filter values from the filter controls
         string TicketFilter = txtTicketNoFltr.Text.Trim();
         string TickSummaryFilter = txtTickSumFltr.Text;
         string TicketSeverity = txtSeverityFltr.Text;
         string ticketStatus = txtStatfltr.Text;
         string ticketPrioirty = txtPriorFltr.Text;
-        // Get other filter values for additional columns if present
-
-        // Get the original data source (e.g., from a database)
-
-
-        // Create a filter expression based on the filter values
         string filterExpression = "";
         if (!string.IsNullOrEmpty(TicketFilter))
         {
@@ -1249,47 +1028,30 @@ public partial class frmAllTickets : System.Web.UI.Page
         {
             filterExpression += @"Status LIKE '%" + ticketStatus + "%' AND ";
         }
-        // Add additional conditions for other columns if present
-
-        // Remove the trailing "AND" from the filter expression
         if (filterExpression.EndsWith(" AND "))
         {
             filterExpression = filterExpression.Substring(0, filterExpression.Length - 5);
         }
 
-        // Apply the filters to the data
-        //	DataTable dt = (DataTable)gvAllTickets.DataSource;
-
-        // Create a DataView from the DataTable
         DataView filteredData = mydt.DefaultView;
-
-        //		DataView filteredData = originalData.DefaultView;
         filteredData.RowFilter = filterExpression;
-
-        // Bind the filtered data to the GridView
         gvAllTickets.DataSource = filteredData;
         gvAllTickets.DataBind();
 
     }
-    protected void imgRemoveFilter_Click(object sender, ImageClickEventArgs e)
+    protected void imgRemoveFilter_Click(object sender, EventArgs e)
     {
-
         Response.Redirect(Request.Url.AbsoluteUri);
         txtTicketNoFltr.Text = string.Empty;
         txtPriorFltr.Text = string.Empty;
         txtSeverityFltr.Text = string.Empty;
         txtStatfltr.Text = string.Empty;
         txtTickSumFltr.Text = string.Empty;
-
     }
     private void FillTicketStatus(string Proc)
     {
         try
         {
-
-
-
-
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -1317,8 +1079,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                                 btnAssignToOther.Text = "UnAssigned ( " + dt.Rows[0]["AssignedOther"].ToString() + " )";
                                 btnDueSoonTickets.Text = "Due Soon  ( " + dt.Rows[0]["DueSoon"].ToString() + " )";
                                 btnTicketEsclated.Text = "OverDue  ( " + dt.Rows[0]["OverDue"].ToString() + " )";
-
-
                             }
                         }
                     }
@@ -1428,10 +1188,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                 FillTechTickets(pageindex, int.Parse
             (ddlPageSize.SelectedValue), "WIP", "creationDate", true, "SD_spGetTicketTechStatusWise");
             }
-
         }
-
-
     }
 
     protected void btnTicketAssigntoME_Click(object sender, EventArgs e)
@@ -1501,9 +1258,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                 FillTechTickets(pageindex, int.Parse
             (ddlPageSize.SelectedValue), "OverDue", "creationDate", true, "SD_spGetTicketTechStatusWise");
             }
-
         }
-
     }
     protected void btnDueSoonTickets_Click(object sender, EventArgs e)
     {
@@ -1526,8 +1281,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                 FillMasterTickets(pageindex, int.Parse
             (ddlPageSize.SelectedValue), "DueSoon", "creationDate", true, "SD_spGetTicketMasterstatusWise");
             }
-
-
         }
         if (Session["UserScope"].ToString() == "Technician")
         {
@@ -1537,9 +1290,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                 FillTechTickets(pageindex, int.Parse
             (ddlPageSize.SelectedValue), "DueSoon", "creationDate", true, "SD_spGetTicketTechStatusWise");
             }
-
         }
-
     }
     protected void btnAssignToOther_Click(object sender, EventArgs e)
     {
@@ -1563,8 +1314,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                 FillMasterTickets(pageindex, int.Parse
             (ddlPageSize.SelectedValue), "AssignedOther", "creationDate", true, "SD_spGetTicketMasterstatusWise");
             }
-
-
         }
         if (Session["UserScope"].ToString() == "Technician")
         {
@@ -1574,7 +1323,6 @@ public partial class frmAllTickets : System.Web.UI.Page
                 FillTechTickets(pageindex, int.Parse
             (ddlPageSize.SelectedValue), "AssignedOther", "creationDate", true, "SD_spGetTicketTechStatusWise");
             }
-
         }
     }
 }

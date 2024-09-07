@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-bs-theme="blue-theme">
 <head runat="server">
 
     <meta charset="utf-8">
@@ -12,13 +12,7 @@
     <link rel="icon" href="assets/images/Hitachi/Hitachi_logo.png" type="image/png">
     <!-- loader-->
     <link href="assets/css/pace.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../Scripts/chosen.css" />
     <script src="assets/js/pace.min.js"></script>
-    <script>
-        function pageLoad() {
-            jQuery(".chzn-select").data("placeholder", "Select Frameworks...").chosen();
-        }
-    </script>
     <!--plugins-->
 
     <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -26,12 +20,15 @@
     <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
 
+    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+
 
     <!--bootstrap css-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/extra-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="assets/plugins/notifications/css/lobibox.min.css">
 
     <!--main css-->
     <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
@@ -44,9 +41,18 @@
 
     <%-- Plugins --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
+    <link href="assets/plugins/select2/css/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+        .dataTables_filter {
+            margin-top: -31px !important;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -649,8 +655,8 @@
                                 <div class="text-center">
                                     <%--<img src="assets/images/avatars/01.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
                                         alt="">--%>
-                                    <asp:Image ID="img" runat="server" class="rounded-circle p-1 shadow mb-3" Style="width: 150px;" />
-                                    <h5 class="user-name mb-0 fw-bold">Hello, Jhon</h5>
+                                    <asp:Image ID="img" runat="server" class="rounded-circle p-1 shadow mb-3" Style="width: 90px; height: 90px" />
+                                    <asp:Label ID="lblUserID" runat="server" class="user-name mb-0 fw-bold"></asp:Label>
                                 </div>
                             </a>
                             <hr class="dropdown-divider">
@@ -665,7 +671,7 @@
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
                                 class="material-icons-outlined">cloud_download</i>Downloads</a>
                             <hr class="dropdown-divider">
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="Logout.aspx"><i
                                 class="material-icons-outlined">power_settings_new</i>Logout</a>
                         </div>
                     </li>
@@ -696,9 +702,9 @@
                             <li runat="server" id="parentLi">
                                 <a href='<%#Eval("MenuLocation") %>' class="has-arrow" id="parentmenu" runat="server">
                                     <div class="parent-icon">
-                                       <i class='<%#Eval("MenuIcon") %>'>
-                                           <asp:Label runat="server" ID="lblName"></asp:Label>
-                                           </i>
+                                        <i class='<%#Eval("MenuIcon") %>'>
+                                            <asp:Label runat="server" ID="lblName"></asp:Label>
+                                        </i>
                                     </div>
                                     <div class="menu-title">
                                         <%#Eval("MenuName") %>
@@ -924,7 +930,7 @@
 
         <main class="main-wrapper">
             <div class="main-content">
-                <div class="container body-content">
+                <div class=" body-content">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
 
@@ -948,10 +954,11 @@
 
 
     <!--bootstrap js-->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <%--<script src="assets/js/jquery.min.js"></script>--%>
+
 
     <!--plugins-->
-    <script src="assets/js/jquery.min.js"></script>
+
     <!--plugins-->
     <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
@@ -959,30 +966,87 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="assets/plugins/select2/js/select2-custom.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            var table = $('#example2').DataTable({
-                lengthChange: false,
-                buttons: ['copy', 'excel', 'pdf', 'print']
-            });
+    <%--DATATABLE START--%>
+    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 
-            table.buttons().container()
-                .appendTo('#example2_wrapper .col-md-6:eq(0)');
+
+    <script src="assets/plugins/notifications/js/lobibox.min.js"></script>
+    <script src="assets/plugins/notifications/js/notifications.min.js"></script>
+    <script src="assets/plugins/notifications/js/notification-custom-script.js"></script>
+    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.data-table1').DataTable();
         });
     </script>
+
+    <%--DATATABLE END--%>
+
+    <script>
+        $(document).ready(function () {
+            $('.data-table').each(function () {
+                if ($.fn.DataTable.isDataTable(this)) {
+                    $(this).DataTable().clear().destroy();
+                }
+                $(this).DataTable({
+                    lengthChange: false,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        });
+    </script>
+
+
     <script>
         $(".data-attributes span").peity("donut")
     </script>
     <script src="assets/js/dashboard2.js"></script>
+    <script>
+        $(".datepicker").flatpickr({
+            dateFormat: "d-m-Y"  
+        });
+
+        $(".time-picker").flatpickr({
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "d-m-Y H:i",  
+        });
+
+        $(".date-time").flatpickr({
+            enableTime: true,
+            dateFormat: "d-m-Y H:i",  
+        });
+
+        $(".date-format").flatpickr({
+            altInput: true,
+            altFormat: "j F, Y",
+            dateFormat: "d-m-Y" 
+        });
+
+        $(".date-range").flatpickr({
+            mode: "range",
+            altInput: true,
+            altFormat: "j F, Y", 
+            dateFormat: "d-m-Y"  
+        });
+
+        $(".date-inline").flatpickr({
+            inline: true,
+            altInput: true,
+            altFormat: "j F, Y", 
+            dateFormat: "d-m-Y"  
+        });
+    </script>
 
 
 </body>

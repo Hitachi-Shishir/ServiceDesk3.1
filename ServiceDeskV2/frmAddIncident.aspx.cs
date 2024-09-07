@@ -124,7 +124,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlLocation.DataTextField = "LocName";
             ddlLocation.DataValueField = "LocCode";
             ddlLocation.DataBind();
-            ddlLocation.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Location----------", "0"));
+            ddlLocation.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
 
 
         }
@@ -400,8 +400,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 //}
                 //if (ddlLocation.Items.FindByValue(dsresult.Properties["physicalDeliveryOfficeName"][0].ToString().Trim()) != null && sresult.Properties["physicalDeliveryOfficeName"].Count > 0)
                 //{
-                    // lblmsg.Text = dsresult.Properties["physicalDeliveryOfficeName"][0].ToString().Trim();
-               //}
+                // lblmsg.Text = dsresult.Properties["physicalDeliveryOfficeName"][0].ToString().Trim();
+                //}
                 //if (ddldepartment.Items.FindByValue(dsresult.Properties["department"][0].ToString().Trim()) != null && sresult.Properties["department"].Count > 0)
                 //{
 
@@ -453,7 +453,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlRequestType.DataTextField = "ReqTypeRef";
             ddlRequestType.DataValueField = "ReqTypeRef";
             ddlRequestType.DataBind();
-            ddlRequestType.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlRequestType.Items.Insert(0, new ListItem("--Select--", "0"));
 
 
         }
@@ -502,7 +502,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                                 ddlLocation.DataTextField = "listValue";
                                 ddlLocation.DataValueField = "listValue";
                                 ddlLocation.DataBind();
-                                ddlLocation.Items.Insert(0, new ListItem("----------Select Location----------", "0"));
+                                ddlLocation.Items.Insert(0, new ListItem("--Select--", "0"));
                             }
 
                         }
@@ -557,7 +557,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                                 ddlCategory1.DataTextField = "CategoryCodeRef";
                                 ddlCategory1.DataValueField = "Categoryref";
                                 ddlCategory1.DataBind();
-                                ddlCategory1.Items.Insert(0, new ListItem("----------Select Category----------", "0"));
+                                ddlCategory1.Items.Insert(0, new ListItem("--Select--", "0"));
                             }
 
                         }
@@ -653,7 +653,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory2.DataTextField = "CategoryCodeRef";
                 ddlCategory2.DataValueField = "Categoryref";
                 ddlCategory2.DataBind();
-                ddlCategory2.Items.Insert(0, new ListItem("----------Select Category Level 2----------", "0"));
+                ddlCategory2.Items.Insert(0, new ListItem("--Select--", "0"));
                 divCategory2.Attributes.Add("style", "display: flex;");
                 lblCategory2.Visible = true;
                 ddlCategory2.Visible = true;
@@ -728,7 +728,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory3.DataTextField = "CategoryCodeRef";
                 ddlCategory3.DataValueField = "Categoryref";
                 ddlCategory3.DataBind();
-                ddlCategory3.Items.Insert(0, new ListItem("----------Select Category Level 3----------", "0"));
+                ddlCategory3.Items.Insert(0, new ListItem("--Select--", "0"));
                 divCategory3.Attributes.Add("style", "display: flex;");
                 RfvddlCategory2.Enabled = true;
                 RfvddlCategory3.Enabled = true;
@@ -798,7 +798,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory4.DataTextField = "CategoryCodeRef";
                 ddlCategory4.DataValueField = "Categoryref";
                 ddlCategory4.DataBind();
-                ddlCategory4.Items.Insert(0, new ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory4.Items.Insert(0, new ListItem("--Select--", "0"));
                 ddlCategory4.Enabled = true;
                 ddlCategory4.Visible = true;
                 lblCategory4.Visible = true;
@@ -865,7 +865,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory5.DataTextField = "CategoryCodeRef";
                 ddlCategory5.DataValueField = "Categoryref";
                 ddlCategory5.DataBind();
-                ddlCategory5.Items.Insert(0, new ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory5.Items.Insert(0, new ListItem("--Select--", "0"));
                 ddlCategory5.Enabled = true;
                 divCategory5.Attributes.Add("style", "display: flex;");
             }
@@ -920,7 +920,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory6.DataTextField = "CategoryCodeRef";
                 ddlCategory6.DataValueField = "Categoryref";
                 ddlCategory6.DataBind();
-                ddlCategory6.Items.Insert(0, new ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory6.Items.Insert(0, new ListItem("--Select--", "0"));
             }
             else
             {
@@ -1051,7 +1051,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlSeverity.DataTextField = "Serveritycoderef";
             ddlSeverity.DataValueField = "id";
             ddlSeverity.DataBind();
-            ddlSeverity.Items.Insert(0, new ListItem("----------Select Severity----------", "0"));
+            ddlSeverity.Items.Insert(0, new ListItem("--Select--", "0"));
 
 
         }
@@ -1092,7 +1092,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlPriority.DataTextField = "PriorityCodeRef";
             ddlPriority.DataValueField = "id";
             ddlPriority.DataBind();
-            ddlPriority.Items.Insert(0, new ListItem("----------Select Priority----------", "0"));
+            ddlPriority.Items.Insert(0, new ListItem("--Select--", "0"));
 
 
         }
@@ -1131,7 +1131,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlDepartment.DataTextField = "DepartmentName";
             ddlDepartment.DataValueField = "DepartmentCode";
             ddlDepartment.DataBind();
-            ddlDepartment.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Department----------", "0"));
+            ddlDepartment.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
 
 
         }
@@ -1382,10 +1382,19 @@ public partial class frmAddIncident : System.Web.UI.Page
             AssignTech(TechID, ticketnumber, Convert.ToString(Session["OrgID"]));
         }
     }
+
+    public void ScriptCall()
+    {
+        string jqueryScript = "<script src='assets/js/jquery-3.6.0.min.js'></script>";
+        string dataTableScript = "<script src='assets/plugins/notifications/js/notification-custom-script.js'></script>";
+        ClientScript.RegisterStartupScript(this.GetType(), "jqueryScript", jqueryScript, false);
+        ClientScript.RegisterStartupScript(this.GetType(), "dataTableScript", dataTableScript, false);
+    }
     protected void MakeTicket()
     {
         try
         {
+            string msg = "";
             string Error = ErrorsCase.ShowErrorType(txtLoginName.Text.ToUpper(), hdnCategoryID.Value,
             ddlRequestType.SelectedValue, ddlPriority.SelectedValue,
             System.Web.HttpUtility.HtmlEncode(txtDescription.Text).ToString(), txtSummary.Text);
@@ -1462,7 +1471,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                         int res = cmd.ExecuteNonQuery();
                         string ticketnumber = cmd.Parameters["@Ticketref"].Value.ToString();
                         string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
-                        TicketRef = ticketnumber;
+                        TicketRef = ticketnumber; 
+                        ScriptCall();
                         if (res > 1 && string.IsNullOrEmpty(ErrorChk))
                         {
                             transaction.Commit();
@@ -1473,14 +1483,15 @@ public partial class frmAddIncident : System.Web.UI.Page
                             }
                             ADDMailinDB(ticketnumber);
                             AutoAssign(ticketnumber);
-                            Session["Popup"] = "Insert";
-                            //Response.Redirect(Request.Url.AbsoluteUri);
+                            msg = "Ticket has been Created, Your Ticket Number is '" + TicketRef + "'.";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + HttpUtility.JavaScriptStringEncode(msg) + "');window.location ='frmAddIncident.aspx';", true);
+
                         }
                         else
                         {
                             transaction.Rollback();
                             con.Close();
-                            string msg = "Something Went Wrong Please try Again !";
+                            msg = "Something Went Wrong Please try Again !";
                             if (ErrorChk == "Exists")
                             {
                                 msg = "Ticket With same Summary already Exists!";
@@ -1589,7 +1600,6 @@ public partial class frmAddIncident : System.Web.UI.Page
             //Sendmail(body);
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
-
                 using (SqlCommand cmd = new SqlCommand("SD_Sendmail", con))
                 {
                     cmd.Parameters.AddWithValue("@TicketNumber", ticketNumber);
@@ -1648,7 +1658,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                     selectList.DataTextField = lbl.Text;
                     selectList.DataValueField = lbl.Text;
                     selectList.DataBind();
-                    selectList.Items.Insert(0, new ListItem("----------Select Value----------", "0"));
+                    selectList.Items.Insert(0, new ListItem("--Select--", "0"));
                 }
             }
         }
@@ -1691,7 +1701,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                     selectList.DataTextField = lbl.Text;
                     selectList.DataValueField = lbl.Text;
                     selectList.DataBind();
-                    selectList.Items.Insert(0, new ListItem("----------Select Value----------", "0"));
+                    selectList.Items.Insert(0, new ListItem("--Select--", "0"));
                 }
             }
         }
@@ -1728,7 +1738,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             lstTechAssoc.DataTextField = "TechLoginName";
             lstTechAssoc.DataValueField = "TechID";
             lstTechAssoc.DataBind();
-            lstTechAssoc.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Assignee----------", "0"));
+            lstTechAssoc.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
 
         }
         catch (ThreadAbortException e2)
@@ -1766,7 +1776,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlChangeType.DataTextField = "ChangeTypeRef";
             ddlChangeType.DataValueField = "ChangeTypeRef";
             ddlChangeType.DataBind();
-            ddlChangeType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select ChangeType----------", "0"));
+            ddlChangeType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
 
 
         }
@@ -1805,7 +1815,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             ddlRFC.DataTextField = "ReasonTypeRef";
             ddlRFC.DataValueField = "ReasonTypeRef";
             ddlRFC.DataBind();
-            ddlRFC.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Reason----------", "0"));
+            ddlRFC.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -1850,7 +1860,7 @@ public partial class frmAddIncident : System.Web.UI.Page
     {
         // check view state is not null
         if (ViewState["Impact"] != null)
-        { 
+        {
             DataTable dtCurrentTable = (DataTable)ViewState["Impact"];
             DataRow drCurrentRow = null;
             if (dtCurrentTable.Rows.Count > 0)
@@ -1908,11 +1918,11 @@ public partial class frmAddIncident : System.Web.UI.Page
         pnlShowRollOutDetails.Visible = false;
         pnlTaksAssociation.Visible = false;
 
-        btnShowBasicDetails.CssClass = "btn btn-sm btnEnabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+        btnShowBasicDetails.CssClass = "btn btn-sm btn-outline-secondary btnEnabled";
+        btnImpactDetails.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnRolloutPlan.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnDowntime.CssClass = "btn btn-sm btn-outline-secondary btn Disabled";
+        btnTaskAssociation.CssClass = "btn btn-sm  btn-outline-secondary btnDisabled";
         next = 0;
         prev = 0;
         btnNext.Enabled = true;
@@ -1934,11 +1944,11 @@ public partial class frmAddIncident : System.Web.UI.Page
         pnlShowRollOutDetails.Visible = false;
         pnlTaksAssociation.Visible = false;
 
-        btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnEnabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+        btnShowBasicDetails.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnImpactDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+        btnRolloutPlan.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnDowntime.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnTaskAssociation.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
 
         btnSubmit.Visible = false; btnCancel.Visible = false;
     }
@@ -1956,11 +1966,11 @@ public partial class frmAddIncident : System.Web.UI.Page
         pnlDownTime.Visible = false;
         pnlTaksAssociation.Visible = false;
 
-        btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnEnabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+        btnShowBasicDetails.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnImpactDetails.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnRolloutPlan.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+        btnDowntime.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
+        btnTaskAssociation.CssClass = "btn btn-sm btn-outline-secondary btnDisabled";
         btnSubmit.Visible = false; btnCancel.Visible = false;
 
     }
@@ -2101,11 +2111,11 @@ public partial class frmAddIncident : System.Web.UI.Page
         pnlTaksAssociation.Visible = false;
         pnlDownTime.Visible = true;
 
-        btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnEnabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+        btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnDowntime.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
         btnSubmit.Visible = false; btnCancel.Visible = false;
 
 
@@ -2127,11 +2137,11 @@ public partial class frmAddIncident : System.Web.UI.Page
         pnlTaksAssociation.Visible = true;
 
 
-        btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnEnabled";
+        btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+        btnTaskAssociation.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
 
     }
     protected void btnAddTaskAssociationData_Click(object sender, EventArgs e)
@@ -2156,11 +2166,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlDownTime.Visible = false;
             pnlTaksAssociation.Visible = false;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnEnabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled  btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = false;
             btnSubmit.Visible = false;
@@ -2175,11 +2185,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlShowRollOutDetails.Visible = false;
             pnlTaksAssociation.Visible = false;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnEnabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
             btnSubmit.Visible = false;
@@ -2197,11 +2207,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlDownTime.Visible = false;
             pnlTaksAssociation.Visible = false;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnEnabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
             btnSubmit.Visible = false;
@@ -2219,11 +2229,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlTaksAssociation.Visible = false;
             pnlDownTime.Visible = true;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnEnabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
             btnSubmit.Visible = false;
@@ -2245,11 +2255,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlTaksAssociation.Visible = true;
 
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnEnabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
             btnNext.Enabled = false;
             btnPrev.Enabled = true;
 
@@ -2276,11 +2286,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlDownTime.Visible = false;
             pnlTaksAssociation.Visible = false;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnEnabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = false;
             btnSubmit.Visible = false;
@@ -2297,11 +2307,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlShowRollOutDetails.Visible = false;
             pnlTaksAssociation.Visible = false;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnEnabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
             btnSubmit.Visible = false;
@@ -2319,11 +2329,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlDownTime.Visible = false;
             pnlTaksAssociation.Visible = false;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnEnabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
             btnSubmit.Visible = false;
@@ -2341,11 +2351,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlTaksAssociation.Visible = false;
             pnlDownTime.Visible = true;
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnEnabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
             btnSubmit.Visible = false;
@@ -2367,11 +2377,11 @@ public partial class frmAddIncident : System.Web.UI.Page
             pnlTaksAssociation.Visible = true;
 
 
-            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnEnabled";
+            btnShowBasicDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary";
+            btnTaskAssociation.CssClass = "btn btn-sm btnEnabled btn-outline-secondary";
             btnNext.Enabled = false;
             btnPrev.Enabled = true;
 
@@ -2380,4 +2390,6 @@ public partial class frmAddIncident : System.Web.UI.Page
 
         }
     }
+
+    
 }

@@ -196,6 +196,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: transparent
 }
+
 hr {
 	margin: 1rem 0;
 	color: inherit;
@@ -307,8 +308,9 @@ sup {
 	top: -.5em
 }
 a {
-	color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-	text-decoration: underline
+/*	color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));*/
+	text-decoration: underline;
+		color:white;
 }
 a:hover {
 	--bs-link-color-rgb: var(--bs-link-hover-color-rgb)
@@ -368,9 +370,13 @@ caption {
 	color: var(--bs-secondary-color);
 	text-align: left
 }
+table td{
+	color:white !important;
+}
 th {
 	text-align: inherit;
-	text-align: -webkit-match-parent
+	text-align: -webkit-match-parent;
+	background: rgb(24 31 74) !important;
 }
 tbody, td, tfoot, th, thead, tr {
 	border-color: inherit;

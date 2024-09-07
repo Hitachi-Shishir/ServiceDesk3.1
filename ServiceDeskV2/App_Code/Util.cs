@@ -5,8 +5,39 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Drawing.Imaging;
+using Nest;
 public class Util
 {
+    InsertErrorLogs inEr = new InsertErrorLogs();
+    public string InsertInsertTechLeave(string TechId, string TechName, DateTime LeaveFromdate,
+        DateTime LeaveTodate, string AppliedbyUserid)
+    {
+        string msg = "";
+        try
+        {
+            using (SqlConnection cnn = new SqlConnection(database.GetConnectstring()))
+            {
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cnn;
+                cmd.CommandTimeout = 3600;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SP_InsertTechLeave";
+                cmd.Parameters.AddWithValue("@TechId", TechId);
+                cmd.Parameters.AddWithValue("@TechName", TechName);
+                cmd.Parameters.AddWithValue("@LeaveFromdate", LeaveFromdate);
+                cmd.Parameters.AddWithValue("@LeaveTodate", LeaveTodate);
+                cmd.Parameters.AddWithValue("@AppliedbyUserid", AppliedbyUserid);
+                cmd.ExecuteNonQuery();
+                msg = "Success!";
+            }
+        }
+        catch (Exception ex)
+        {
+            inEr.InsertErrorLogsF(AppliedbyUserid, ex.ToString());
+        }
+        return msg;
+    }
     public void InsertSlaLog(string TableId, string OrgId, string UserID, string SLAName, string SLADesc)
     {
         try

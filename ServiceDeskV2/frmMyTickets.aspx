@@ -11,8 +11,8 @@
             jQuery(".chzn-select").data("placeholder", "Select Frameworks...").chosen();
         }
     </script>
-  
-    <style>
+
+    <%-- <style>
         .c {
             color: white;
             /*  //background: #698DF2;*/
@@ -40,60 +40,56 @@
             font-weight: 200;
             border: #EEEEEE;
         }
-    </style>
+    </style>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-md-12 graphs">
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Tickets</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">My Ticket Details</li>
+                        </ol>
+                    </nav>
+                </div>
+         
+                <div class="ms-auto">
+               <div class="btn-group">
+                   	<button type="button" class="btn btn-outline-secondary btn-sm">Export</button>
+                    <asp:ImageButton ID="ImgBtnExport" runat="server" ImageUrl="Images/excelWH.png" class="btn btn-outline-secondary btn-sm" OnClick="ImgBtnExport_Click" />
+                   </div>
+                </div>
+            </div>
+            <div class="card ">
 
-                    <div class="card card-default">
+                <div class="card-body">
+                   
 
-                        <div class="card-body">
-                            <div class="row ">
-                                <div class="col-md-4">
+                    <div class="table-responsive table-container" style="height: 400px">
 
-                                    <asp:Label ID="lblsofname" runat="server" Text="My Ticket Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
+                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-hover" DataKeyNames="TicketNumber" AllowPaging="True" PageSize="10"
+                            AutoGenerateColumns="true" AllowSorting="True" OnPageIndexChanging="gvAllTickets_PageIndexChanging">
 
-                                </div>
-                                <div class="col-md-6">
-                                    <asp:Label ID="Label1" runat="server"></asp:Label>
-                                    <asp:Label ID="Label3" runat="server"></asp:Label>
-                                </div>
-                                <div class="col-md-2 ">
-                                    <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
-                                        <label class="mr-2 ml-1 mb-0">Export</label>
-                                        <asp:ImageButton ID="ImgBtnExport" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport_Click" />
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="table-responsive p-0" style="height: 400px">
-
-                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  " DataKeyNames="TicketNumber" AllowPaging="True" PageSize="10"
-                                    AutoGenerateColumns="true" AllowSorting="True" OnPageIndexChanging="gvAllTickets_PageIndexChanging">
-
-                                    <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />
+                            <%-- <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />
                                     <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />
                                     <PagerStyle BackColor="#EDEDED" ForeColor="#000000" HorizontalAlign="Left" Height="20px" VerticalAlign="NotSet" CssClass="header" />
                                     <SelectedRowStyle BackColor="#fff" Font-Bold="True" ForeColor="#000000" Height="5px" />
                                     <HeaderStyle BackColor="#EEEEEE" Font-Bold="True" ForeColor="#414141" Height="5px" BorderColor="WhiteSmoke" CssClass="header sorting_asc" Font-Size="Small" />
                                     <EditRowStyle BackColor="#e9edf2" BorderColor="#e3e4e6" BorderStyle="Solid" BorderWidth="1px" Height="5px" />
-                                    <EmptyDataRowStyle HorizontalAlign="Center" BorderStyle="None" Height="5px" BorderColor="#EDEDED" BackColor="#EDEDED" />
-                                    <EmptyDataTemplate>No Record Available</EmptyDataTemplate>
-                                    <AlternatingRowStyle BackColor="#EAEEFF" BorderColor="#e3e4e6" Height="5px" BorderStyle="Solid" BorderWidth="1px" />
-
-                                </asp:GridView>
-                            </div>
-                            <%--	</div>--%>
-                        </div>
+                                    <EmptyDataRowStyle HorizontalAlign="Center" BorderStyle="None" Height="5px" BorderColor="#EDEDED" BackColor="#EDEDED" />--%>
+                            <EmptyDataTemplate>No Record Available</EmptyDataTemplate>
+                            <%--<AlternatingRowStyle BackColor="#EAEEFF" BorderColor="#e3e4e6" Height="5px" BorderStyle="Solid" BorderWidth="1px" />--%>
+                        </asp:GridView>
                     </div>
-
+                    <%--	</div>--%>
                 </div>
             </div>
+
             <div class="modal" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -159,6 +155,6 @@
             console.log("fire1234567");
         }
     </script>
-   
+
 </asp:Content>
 

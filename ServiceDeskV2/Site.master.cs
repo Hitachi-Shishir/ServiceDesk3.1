@@ -38,7 +38,7 @@ public partial class Site : System.Web.UI.MasterPage
                 LoadCategories();
                 FillImage();
                 FillOrgImage();
-                //lblUserID.Text = Session["UserName"].ToString().ToUpper();
+                lblUserID.Text = Session["UserName"].ToString().ToUpper();
             }
             else
             {
@@ -364,12 +364,13 @@ public partial class Site : System.Web.UI.MasterPage
                 string ID = drv["MenuID"].ToString();
                 string parentMenuLocation = drv["MenuLocation"].ToString();
                 string menuIcon = drv["MenuIcon"].ToString(); // Get icon class from the database
-                //lbliconname.Text = drv["MenuIcon"].ToString(); // Get icon class from the database
+
                 Label lblName = e.Item.FindControl("lblName") as Label;
                 if (lblName != null)
                 {
                     lblName.Text = drv["IconName"].ToString();
                 }
+
                 bool isParentActive = IsCurrentPage(parentMenuLocation);
 
                 DataRow[] rows = allCategories.Select("ParentID=" + ID, "MenuName");
@@ -388,7 +389,8 @@ public partial class Site : System.Web.UI.MasterPage
                         string cssClass = isCurrentPage ? "active" : "";
                         if (isCurrentPage) hasActiveChild = true;
 
-                        sb.Append("<li><a href='" + menuLocation + "' class='" + cssClass + "'><i class='" + subMenuIcon + "'></i>" + menuName + "</a></li>");
+                        // Append submenu item with arrow_right icon
+                        sb.Append("<li><a href='" + menuLocation + "' class='" + cssClass + "'><i class='material-icons-outlined'>arrow_right</i><i class='" + subMenuIcon + "'></i>" + menuName + "</a></li>");
                     }
 
                     sb.Append("</ul>");
@@ -419,7 +421,8 @@ public partial class Site : System.Web.UI.MasterPage
         }
     }
 
-  
+
+
 
 
     private bool IsCurrentPage(string menuLocation)
