@@ -1,0 +1,224 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\helpdesk\\frmaddrequester.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\helpdesk\\frmaddrequester.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\app_code\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\app_code\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\helpdesk\\frmaddrequester.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\helpdesk\\frmaddrequester.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\frmtechleaveapply.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\frmtechleaveapply.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\helpdesk\\frmesclationmaster.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\helpdesk\\frmesclationmaster.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\frmaddincident.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\frmaddincident.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\frmtechleaveapply.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\frmtechleaveapply.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\helpdesk\\usercontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\helpdesk\\usercontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\helpdesk\\usercontrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\helpdesk\\usercontrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|d:\\hitachi proj\\servicedeskv2\\servicedeskv2\\servicedeskv2\\app_code\\util.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F03658-084E-4E41-AF40-612FB629D59F}|D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2|solutionrelative:servicedeskv2\\app_code\\util.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\Web.config",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\Web.config",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\Web.config",
+              "RelativeToolTip": "ServiceDeskV2\\Web.config",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-09-07T18:21:01.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "database.cs",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\App_Code\\database.cs",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\App_Code\\database.cs",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\App_Code\\database.cs",
+              "RelativeToolTip": "ServiceDeskV2\\App_Code\\database.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T18:12:52.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmAddRequester.aspx.cs",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx.cs",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx.cs",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx.cs",
+              "RelativeToolTip": "ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx.cs",
+              "ViewState": "AgIAAM8EAAAAAAAAAAAuwOIEAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T17:56:53.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmAddRequester.aspx",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx",
+              "RelativeToolTip": "ServiceDeskV2\\HelpDesk\\frmAddRequester.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-09-07T17:52:03.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmEsclationMaster.aspx",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\frmEsclationMaster.aspx",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\HelpDesk\\frmEsclationMaster.aspx",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\frmEsclationMaster.aspx",
+              "RelativeToolTip": "ServiceDeskV2\\HelpDesk\\frmEsclationMaster.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-09-07T16:45:11.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmAddIncident.aspx",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\frmAddIncident.aspx",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\frmAddIncident.aspx",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\frmAddIncident.aspx",
+              "RelativeToolTip": "ServiceDeskV2\\frmAddIncident.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-09-07T17:55:33.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmTechLeaveApply.aspx.cs",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\frmTechLeaveApply.aspx.cs",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\frmTechLeaveApply.aspx.cs",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\frmTechLeaveApply.aspx.cs",
+              "RelativeToolTip": "ServiceDeskV2\\frmTechLeaveApply.aspx.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAuwLUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T16:45:22.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Site.master",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\Site.master",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\Site.master",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\Site.master",
+              "RelativeToolTip": "ServiceDeskV2\\Site.master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-09-07T16:54:30.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmTechLeaveApply.aspx",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\frmTechLeaveApply.aspx",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\frmTechLeaveApply.aspx",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\frmTechLeaveApply.aspx",
+              "RelativeToolTip": "ServiceDeskV2\\frmTechLeaveApply.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-09-07T16:45:22.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserControl.ascx.cs",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\UserControl.ascx.cs",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\HelpDesk\\UserControl.ascx.cs",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\UserControl.ascx.cs",
+              "RelativeToolTip": "ServiceDeskV2\\HelpDesk\\UserControl.ascx.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAAAHcAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T16:36:07.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserControl.ascx",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\UserControl.ascx",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\HelpDesk\\UserControl.ascx",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\HelpDesk\\UserControl.ascx",
+              "RelativeToolTip": "ServiceDeskV2\\HelpDesk\\UserControl.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2024-09-07T16:35:36.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Util.cs",
+              "DocumentMoniker": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\App_Code\\Util.cs",
+              "RelativeDocumentMoniker": "ServiceDeskV2\\App_Code\\Util.cs",
+              "ToolTip": "D:\\Hitachi Proj\\ServiceDeskV2\\ServiceDeskV2\\ServiceDeskV2\\App_Code\\Util.cs",
+              "RelativeToolTip": "ServiceDeskV2\\App_Code\\Util.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T15:14:14.197Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
