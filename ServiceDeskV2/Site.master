@@ -9,29 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hitachi</title>
     <!--favicon-->
-    <link rel="icon" href="assets/images/Hitachi/Hitachi_logo.png" type="image/png">
+    <link rel="icon" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/Hitachi/Hitachi_logo.png" type="image/png">
     <!-- loader-->
-    <link href="assets/css/pace.min.css" rel="stylesheet">
-    <script src="assets/js/pace.min.js"></script>
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/pace.min.css" rel="stylesheet">
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/pace.min.js"></script>
     <!--plugins-->
 
-    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
-    <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/mm-vertical.css">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/css/simplebar.css">
 
-    <link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 
 
     <!--bootstrap css-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/extra-icons.css">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/extra-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="assets/plugins/notifications/css/lobibox.min.css">
+    <link rel="stylesheet" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/notifications/css/lobibox.min.css">
 
     <!--main css-->
-    <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/bootstrap-extended.css" rel="stylesheet">
     <link href="sass/main.css" rel="stylesheet">
     <link href="sass/dark-theme.css" rel="stylesheet">
     <link href="sass/blue-theme.css" rel="stylesheet">
@@ -41,11 +41,11 @@
 
     <%-- Plugins --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
-    <link href="assets/plugins/select2/css/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/select2/css/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/bootstrap.bundle.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
@@ -127,7 +127,7 @@
                                     <div class="search-list d-flex flex-column gap-2">
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="memmber-img">
-                                                <img src="assets/images/avatars/01.png" width="32" height="32" class="rounded-circle" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" width="32" height="32" class="rounded-circle" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="mb-0 search-list-title ">Andrew Stark</h5>
@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="memmber-img">
-                                                <img src="assets/images/avatars/02.png" width="32" height="32" class="rounded-circle" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/02.png" width="32" height="32" class="rounded-circle" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="mb-0 search-list-title ">Snetro Jhonia</h5>
@@ -143,7 +143,7 @@
                                         </div>
                                         <div class="search-list-item d-flex align-items-center gap-3">
                                             <div class="memmber-img">
-                                                <img src="assets/images/avatars/03.png" width="32" height="32" class="rounded-circle" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/03.png" width="32" height="32" class="rounded-circle" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="mb-0 search-list-title">Michle Clark</h5>
@@ -164,32 +164,32 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown">
-                            <img src="assets/images/county/02.png" width="22" alt="">
+                            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/02.png" width="22" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/01.png" width="20" alt=""><span class="ms-2">English</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/01.png" width="20" alt=""><span class="ms-2">English</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/02.png" width="20" alt=""><span class="ms-2">Catalan</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/02.png" width="20" alt=""><span class="ms-2">Catalan</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/03.png" width="20" alt=""><span class="ms-2">French</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/03.png" width="20" alt=""><span class="ms-2">French</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/04.png" width="20" alt=""><span class="ms-2">Belize</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/04.png" width="20" alt=""><span class="ms-2">Belize</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/05.png" width="20" alt=""><span class="ms-2">Colombia</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/05.png" width="20" alt=""><span class="ms-2">Colombia</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/06.png" width="20" alt=""><span class="ms-2">Spanish</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/06.png" width="20" alt=""><span class="ms-2">Spanish</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/07.png" width="20" alt=""><span class="ms-2">Georgian</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/07.png" width="20" alt=""><span class="ms-2">Georgian</span></a>
                             </li>
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="assets/images/county/08.png" width="20" alt=""><span class="ms-2">Hindi</span></a>
+                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/08.png" width="20" alt=""><span class="ms-2">Hindi</span></a>
                             </li>
                         </ul>
                     </li>
@@ -221,7 +221,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/02.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/02.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Website</h5>
                                                         <p class="mb-0 f-14">
@@ -237,7 +237,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/03.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/03.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Subscribers</h5>
                                                         <p class="mb-0 f-14">
@@ -253,7 +253,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/01.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/01.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Hubspot</h5>
                                                         <p class="mb-0 f-14">
@@ -269,7 +269,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/11.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/11.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Templates</h5>
                                                         <p class="mb-0 f-14">
@@ -285,7 +285,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/13.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/13.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Ebooks</h5>
                                                         <p class="mb-0 f-14">
@@ -301,7 +301,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/12.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/12.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Sales</h5>
                                                         <p class="mb-0 f-14">
@@ -317,7 +317,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/08.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/08.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Tools</h5>
                                                         <p class="mb-0 f-14">
@@ -333,7 +333,7 @@
                                         <div class="card rounded-4 shadow-none border mb-0">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-start gap-3">
-                                                    <img src="assets/images/megaIcons/09.png" width="40" alt="">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/megaIcons/09.png" width="40" alt="">
                                                     <div class="mega-menu-content">
                                                         <h5>Academy</h5>
                                                         <p class="mb-0 f-14">
@@ -359,7 +359,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/01.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/01.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Gmail</p>
@@ -369,7 +369,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/02.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/02.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Skype</p>
@@ -379,7 +379,7 @@
                                     <div class="col">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/03.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/03.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Slack</p>
@@ -393,7 +393,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/04.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/04.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">YouTube</p>
@@ -403,7 +403,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/05.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/05.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Google</p>
@@ -413,7 +413,7 @@
                                     <div class="col">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/06.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/06.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Instagram</p>
@@ -427,7 +427,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/07.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/07.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Spotify</p>
@@ -437,7 +437,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/08.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/08.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Yahoo</p>
@@ -447,7 +447,7 @@
                                     <div class="col">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/09.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/09.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Facebook</p>
@@ -461,7 +461,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/10.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/10.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Figma</p>
@@ -471,7 +471,7 @@
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/11.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/11.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Paypal</p>
@@ -481,7 +481,7 @@
                                     <div class="col">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
-                                                <img src="assets/images/apps/12.png" width="36" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/12.png" width="36" alt="">
                                             </div>
                                             <div class="app-name">
                                                 <p class="mb-0">Photo</p>
@@ -539,7 +539,7 @@
                                     <a class="dropdown-item border-bottom py-2" href="javascript:;">
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="">
-                                                <img src="assets/images/avatars/01.png" class="rounded-circle" width="45" height="45" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" class="rounded-circle" width="45" height="45" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="notify-title">Congratulations Jhon</h5>
@@ -573,7 +573,7 @@
                                     <a class="dropdown-item border-bottom py-2" href="javascript:;">
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="">
-                                                <img src="assets/images/apps/13.png" class="rounded-circle" width="45" height="45" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/13.png" class="rounded-circle" width="45" height="45" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="notify-title">Payment Recived</h5>
@@ -590,7 +590,7 @@
                                     <a class="dropdown-item border-bottom py-2" href="javascript:;">
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="">
-                                                <img src="assets/images/apps/14.png" class="rounded-circle" width="45" height="45" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/14.png" class="rounded-circle" width="45" height="45" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="notify-title">New Order Recived</h5>
@@ -607,7 +607,7 @@
                                     <a class="dropdown-item border-bottom py-2" href="javascript:;">
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="">
-                                                <img src="assets/images/avatars/06.png" class="rounded-circle" width="45" height="45" alt="">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/06.png" class="rounded-circle" width="45" height="45" alt="">
                                             </div>
                                             <div class="">
                                                 <h5 class="notify-title">Congratulations Jhon</h5>
@@ -648,12 +648,12 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a href="javascrpt:;" class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-                            <img src="assets/images/avatars/01.png" class="rounded-circle p-1 border" width="45" height="45" alt="">
+                            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" class="rounded-circle p-1 border" width="45" height="45" alt="">
                         </a>
                         <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
                             <a class="dropdown-item  gap-2 py-2" href="javascript:;">
                                 <div class="text-center">
-                                    <%--<img src="assets/images/avatars/01.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
+                                    <%--<img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
                                         alt="">--%>
                                     <asp:Image ID="img" runat="server" class="rounded-circle p-1 shadow mb-3" Style="width: 90px; height: 90px" />
                                     <asp:Label ID="lblUserID" runat="server" class="user-name mb-0 fw-bold"></asp:Label>
@@ -685,7 +685,7 @@
         <aside class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div class="logo-icon">
-                    <%--<img src="assets/images/logo-icon.png" class="logo-img" alt="">--%>
+                    <%--<img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/logo-icon.png" class="logo-img" alt="">--%>
                     <asp:Image ID="imgOrg" runat="server" CssClass="brand-image" Style="opacity: .8; width: 150px; margin-left: 33px;" />
                 </div>
                 <%-- <div class="logo-name flex-grow-1">
@@ -954,30 +954,30 @@
 
 
     <!--bootstrap js-->
-    <%--<script src="assets/js/jquery.min.js"></script>--%>
+    <%--<script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>--%>
 
 
     <!--plugins-->
 
     <!--plugins-->
-    <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/metisMenu.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="assets/plugins/select2/js/select2-custom.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/select2/js/select2-custom.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
 
     <%--DATATABLE START--%>
-    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 
 
-    <script src="assets/plugins/notifications/js/lobibox.min.js"></script>
-    <script src="assets/plugins/notifications/js/notifications.min.js"></script>
-    <script src="assets/plugins/notifications/js/notification-custom-script.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/notifications/js/lobibox.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/notifications/js/notifications.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/notifications/js/notification-custom-script.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
@@ -1010,7 +1010,7 @@
     <script>
         $(".data-attributes span").peity("donut")
     </script>
-    <script src="assets/js/dashboard2.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/dashboard2.js"></script>
     <script>
         $(".datepicker").flatpickr({
             dateFormat: "d-m-Y"  

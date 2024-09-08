@@ -207,7 +207,7 @@ on a.AppliedbyUserid=b.UserID";
             string sql = "delete from TechLeave where id = '" + id + "'";
             database.ExecuteNonQuery(sql);
             ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-$"if (window.location.pathname.endsWith('/frmTechLeaveApply.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+$"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
 
         }
         catch (Exception ex)
