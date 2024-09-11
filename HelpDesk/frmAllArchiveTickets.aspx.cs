@@ -292,6 +292,7 @@ public partial class frmAllArchiveTickets : System.Web.UI.Page
     {
         try
         {
+
             foreach (GridViewRow row in gvAllTickets.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
@@ -1014,6 +1015,8 @@ public partial class frmAllArchiveTickets : System.Web.UI.Page
         {
 
 
+
+
             if (e.CommandName == "EditTicket")
             {
                 foreach (GridViewRow row in gvAllTickets.Rows)
@@ -1070,6 +1073,22 @@ public partial class frmAllArchiveTickets : System.Web.UI.Page
         try
 
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                CheckBox chkRow = (CheckBox)e.Row.FindControl("chkRow");
+                if (chkRow != null)
+                {
+                    chkRow.InputAttributes["class"] = "form-check-input";
+                }
+            }
+            else if (e.Row.RowType == DataControlRowType.Header)
+            {
+                CheckBox chkAll = (CheckBox)e.Row.FindControl("chkAll");
+                if (chkAll != null)
+                {
+                    chkAll.InputAttributes["class"] = "form-check-input";
+                }
+            }
             //if (e.Row.RowType == DataControlRowType.DataRow)
             //{
             //	// Assuming you want to enable text wrapping for the first column
@@ -1212,7 +1231,7 @@ public partial class frmAllArchiveTickets : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void imgRowFilter_Click(object sender, ImageClickEventArgs e)
+    protected void imgRowFilter_Click(object sender, EventArgs e)
     {
         pnlRowFilter.Visible = true;
     }
@@ -1304,7 +1323,7 @@ public partial class frmAllArchiveTickets : System.Web.UI.Page
         gvAllTickets.DataBind();
 
     }
-    protected void imgRemoveFilter_Click(object sender, ImageClickEventArgs e)
+    protected void imgRemoveFilter_Click(object sender, EventArgs e)
     {
 
         Response.Redirect(Request.Url.AbsoluteUri);

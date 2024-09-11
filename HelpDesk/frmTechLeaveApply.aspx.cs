@@ -105,7 +105,8 @@ on a.AppliedbyUserid=b.UserID";
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -207,7 +208,7 @@ on a.AppliedbyUserid=b.UserID";
             string sql = "delete from TechLeave where id = '" + id + "'";
             database.ExecuteNonQuery(sql);
             ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-$"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+$"if (window.location.pathname.endsWith('/frmTechLeaveApply.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
 
         }
         catch (Exception ex)

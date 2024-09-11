@@ -95,7 +95,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
@@ -173,7 +173,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
                 ddlUserScope.DataTextField = "ScopeName";
                 ddlUserScope.DataValueField = "ScopeID";
                 ddlUserScope.DataBind();
-                ddlUserScope.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Scope----------", "0"));
+                ddlUserScope.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
             }
             else
@@ -225,7 +225,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
                 ddlUserRole.DataTextField = "RoleName";
                 ddlUserRole.DataValueField = "RoleName";
                 ddlUserRole.DataBind();
-                ddlUserRole.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Role----------", "0"));
+                ddlUserRole.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
             }
             else
@@ -354,7 +354,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             ddlRequestType.DataTextField = "ReqTypeRef";
             ddlRequestType.DataValueField = "ReqTypeRef";
             ddlRequestType.DataBind();
-            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
         }
         catch (ThreadAbortException e2)
@@ -408,7 +408,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
                                 ddlCategory1.DataTextField = "CategoryCodeRef";
                                 ddlCategory1.DataValueField = "Categoryref";
                                 ddlCategory1.DataBind();
-                                ddlCategory1.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category----------", "0"));
+                                ddlCategory1.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
                             }
 
                         }
@@ -451,7 +451,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             ddlDepartment.DataTextField = "DepartmentName";
             ddlDepartment.DataValueField = "DepartmentCode";
             ddlDepartment.DataBind();
-            ddlDepartment.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Department----------", "0"));
+            ddlDepartment.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
@@ -490,7 +490,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             ddlLocation.DataTextField = "LocName";
             ddlLocation.DataValueField = "LocCode";
             ddlLocation.DataBind();
-            ddlLocation.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Location----------", "0"));
+            ddlLocation.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
@@ -1074,6 +1074,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             btnimportUser.Enabled = false;
             btnAddRequester.Enabled = true;
             btnViewUsers.Enabled = true;
+
         }
         catch (Exception ex)
         {
@@ -1149,6 +1150,7 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             btnViewUsers.Enabled = false;
             btnAddRequester.Enabled = true;
             btnimportUser.Enabled = true;
+            FillTechnicianDetails();
         }
         catch (Exception ex)
         {

@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddIncident.aspx.cs" Inherits="frmAddIncident" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddIncident.aspx.cs" Inherits="frmAddIncident" ValidateRequest="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    
-
-    <%--<link href="assets/plugins/summernote/summernote-bs5.min.css" rel="stylesheet" />--%>
+    <script src="assets/plugins/summernote/jquery.js"></script>
+    <link href="assets/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -758,12 +759,12 @@
         });
 
     </script>
-    <%--<script src="assets/plugins/summernote/summernote-bs5.min.js"></script>--%>
+    <script src="assets/plugins/summernote/summernote-bs4.js"></script>
     <script>
         $(document).ready(function () {
-            $('#txtDescription').summernote();
-        });
-</script>
+            $('#<%= txtDescription.ClientID %>').summernote();
+    });
+    </script>
     <script type="text/javascript">
         function clearLabelAfter5Seconds() {
             setTimeout(function () {
@@ -771,7 +772,7 @@
                 if (label) {
                     label.innerHTML = '';
                 }
-            }, 5000); // 5000 milliseconds = 5 seconds
+            }, 5000); 
         }
         window.onload = clearLabelAfter5Seconds;
     </script>

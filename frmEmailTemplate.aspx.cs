@@ -178,7 +178,8 @@ public partial class frmEmailTemplate : System.Web.UI.Page
                     if (res > 0)
                     {
                         Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmEmailTemplate.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
                 }
             }

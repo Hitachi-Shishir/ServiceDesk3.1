@@ -72,8 +72,8 @@
 
                     <div class="table-responsive table-container" style="height: 400px">
 
-                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-hover" DataKeyNames="TicketNumber" AllowPaging="True" PageSize="10"
-                            AutoGenerateColumns="true" AllowSorting="True" OnPageIndexChanging="gvAllTickets_PageIndexChanging">
+                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped table-bordered table-sm text-nowrap" DataKeyNames="TicketNumber" 
+                            AutoGenerateColumns="true" OnPageIndexChanging="gvAllTickets_PageIndexChanging">
 
                             <%-- <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />
                                     <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />

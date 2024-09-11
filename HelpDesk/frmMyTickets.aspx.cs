@@ -182,6 +182,7 @@ public partial class frmMyTickets : System.Web.UI.Page
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
+                        GridFormat(dt);
                     }
                 }
                 //idr.Close();
@@ -253,5 +254,21 @@ public partial class frmMyTickets : System.Web.UI.Page
             }
 
         }
+    }
+    protected void GridFormat(DataTable dt)
+    {
+        gvAllTickets.UseAccessibleHeader = true;
+        gvAllTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+        if (gvAllTickets.TopPagerRow != null)
+        {
+            gvAllTickets.TopPagerRow.TableSection = TableRowSection.TableHeader;
+        }
+        if (gvAllTickets.BottomPagerRow != null)
+        {
+            gvAllTickets.BottomPagerRow.TableSection = TableRowSection.TableFooter;
+        }
+        if (dt.Rows.Count > 0)
+            gvAllTickets.FooterRow.TableSection = TableRowSection.TableFooter;
     }
 }

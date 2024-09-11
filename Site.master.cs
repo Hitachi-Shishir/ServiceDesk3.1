@@ -390,7 +390,7 @@ public partial class Site : System.Web.UI.MasterPage
                         if (isCurrentPage) hasActiveChild = true;
 
                         // Append submenu item with arrow_right icon
-                        sb.Append("<li><a href='" + menuLocation + "' class='" + cssClass + "'><i class='material-icons-outlined'>arrow_right</i><i class='" + subMenuIcon + "'></i>" + menuName + "</a></li>");
+                        sb.Append("<li><a href='" + menuLocation + "' class='" + cssClass + "'><i class='material-icons-outlined'>arrow_right</i>" + menuName + "</a></li>");
                     }
 
                     sb.Append("</ul>");

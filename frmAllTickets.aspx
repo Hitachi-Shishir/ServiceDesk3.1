@@ -3,7 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     
+
     <script>
         function getxtValue(that) {
             document.getElementById("lable").innerHTML = that.value;
@@ -20,12 +20,11 @@
             color: inherit; /* Inherit font color from parent */
         }
 
-        .truncate-text:hover {
-            white-space: normal; /* Allows text to wrap on hover */
-            overflow: visible; /* Shows the full content */
-            text-overflow: clip; /* Removes ellipsis on hover */
-        }
-    </style>
+            .truncate-text:hover {
+                white-space: normal; /* Allows text to wrap on hover */
+                overflow: visible; /* Shows the full content */
+                text-overflow: clip; /* Removes ellipsis on hover */
+            }
     </style>
 
 
@@ -67,13 +66,13 @@
                             <asp:Panel ID="pnlgridrow" runat="server">
 
                                 <div class="row gx-2">
-                                    <div class="col-md-1">
+                                    <%--<div class="col-md-1">
                                         <label class="form-label">Filter</label>
                                         <div class="btn-group">
                                             <asp:ImageButton ID="imgcolumnfilter" runat="server" AlternateText="Column Chooser" ToolTip="Select Column" ImageAlign="left" class="btn  btn-outline-secondary d-flex btn-sm" ImageUrl="~/Images/New folder/columnfilter.png" OnClick="imgcolumnfilter_Click" Style="cursor: not-allowed" Visible="false" />
                                             <asp:ImageButton ID="imgRowFilter" runat="server" AlternateText="Column Chooser" ToolTip="Select Column" ImageAlign="left" class="btn  btn-outline-secondary d-flex btn-sm" ImageUrl="~/Images/New folder/funnelfilter.png" OnClick="imgRowFilter_Click" OnClientClick="togglePanel(); return false;" />
                                         </div>
-                                    </div>
+                                    </div>--%>
                                     <div class="col-md-2">
                                         <label class="form-label">Organization</label>
                                         <asp:DropDownList ID="ddlOrg" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrg_SelectedIndexChanged">
@@ -85,14 +84,28 @@
                                         </asp:DropDownList>
                                     </div>
                                     <div class="col-md-2">
+                                        <label class="form-label">Status</label>
+                                        <asp:DropDownList ID="ddlStatus" runat="server" ToolTip="Status" CssClass="form-select form-select-sm single-select-optgroup-field" >
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Created From</label>
+                                        <asp:TextBox ID="txtFrmdate" class="form-control form-control-sm datepicker" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Created To</label>
+                                        <asp:TextBox ID="txtTodate" class="form-control form-control-sm datepicker" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-2">
                                         <label class="form-label">Action</label>
                                         <div class="btn-group">
+                                            <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnGridFilter_Click" />
                                             <asp:Button ID="btnDelteBulkTicket" runat="server" Text="Delete" ToolTip="Delete Ticket" class="btn btn-sm btn-inverse-danger" OnClick="btnDelteBulkTicket_Click" />
                                             <asp:Button ID="btnPickupTicket" runat="server" Text="PickUp" ToolTip="Assign Ticket To Self" class="btn btn-sm btn-inverse-primary" OnClick="btnPickupTicket_Click" />
                                         </div>
 
                                     </div>
-                                    <div class="col-md-2">
+                                    <%--<div class="col-md-2">
                                         <label class="form-label">Paging</label>
                                         <br />
                                         <asp:Repeater ID="rptpageindexing" runat="server">
@@ -100,8 +113,8 @@
                                                 <asp:LinkButton ID="lnkPage" Font-Size="Small" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' Enabled='<%#Eval("Enabled") %>' OnClick="Page_Changed"></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:Repeater>
-                                    </div>
-                                    <div class="col-md-1">
+                                    </div>--%>
+                                    <%--<div class="col-md-1">
                                         <label class="form-label">Size</label>
                                         <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" CssClass-="form-control form-control-sm chzn-select" OnSelectedIndexChanged="PageSize_Changed">
 
@@ -122,10 +135,9 @@
                                         </asp:DropDownList>
 
                                     </div>
-                                </div>
-
+                                </div> --%>
                             </asp:Panel>
-                            <asp:Panel ID="pnlRowFilter" runat="server" Visible="false">
+                            <%--<asp:Panel ID="pnlRowFilter" runat="server" Visible="false">
                                 <div class="row mt-3 gx-2">
                                     <div class="col-md-2">
                                         <asp:TextBox ID="txtTicketNoFltr" runat="server" CssClass="form-control form-control-sm " placeholder="Enter Ticket No"></asp:TextBox>
@@ -145,13 +157,12 @@
                                     <div class="col-md-1">
                                         <div class="btn-group">
                                             <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnGridFilter_Click" />
-                                            <%--<asp:ImageButton ID="imgRemoveFilter" runat="server" ImageUrl="~/Images/reset1.png" ToolTip="Removes Filter" OnClick="imgRemoveFilter_Click" class="btn  btn-outline-secondary d-flex btn-sm" />--%>
                                             <asp:LinkButton ID="imgRemoveFilter" runat="server" ToolTip="Removes Filter" OnClick="imgRemoveFilter_Click">TEST</asp:LinkButton>
                                         </div>
                                     </div>
                                 </div>
-                            </asp:Panel>
-                            <asp:Panel ID="pnltickcount" runat="server">
+                            </asp:Panel>--%>
+                            <%--<asp:Panel ID="pnltickcount" runat="server">
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
@@ -170,14 +181,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            </asp:Panel>
+                            </asp:Panel>--%>
 
                             <div class="row mt-3">
                                 <div class="col-md-12">
-                                    <div class="table-responsive table-container" style="height: 400px;">
-
-                                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap table-hover " DataKeyNames="ID" AllowCustomPaging="True"
-                                            AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
+                                    <div class="table-responsive">
+                                        <!-- Removed the div with table classes -->
+                                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table1 table-striped table-bordered table-head-fixed text-nowrap table-hover" DataKeyNames="ID"
+                                            AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" HeaderStyle-Height="25px"
+                                            OnRowDataBound="gvAllTickets_RowDataBound" OnRowEditing="gvAllTickets_RowEditing">
+                                            <%--AllowCustomPaging="True"  OnSorting="gvAllTickets_Sorting"   AllowSorting="True"--%>
                                             <Columns>
                                                 <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30" ItemStyle-Height="5px">
                                                     <HeaderTemplate>
@@ -202,10 +215,6 @@
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="ServiceDesk" HeaderText="ServiceDesk" SortExpression="ServiceDesk" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" Visible="true" />
 
-                                                <%--	<asp:BoundField DataField="TicketNumber" HeaderText="TicketNumber" SortExpression="TicketNumber" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" Visible="true" />--%>
-                                                <%--<asp:BoundField DataField="Summary" HeaderText="Summary" SortExpression="Summary" ItemStyle-Width="300px" HeaderStyle-Width="400px" HeaderStyle-Wrap="false" ItemStyle-Height="5px" ItemStyle-Wrap="true" ItemStyle-Font-Size="Smaller" Visible="true">
-                                                    <ItemStyle Wrap="True" />
-                                                    </asp:BoundField>--%>
                                                 <asp:TemplateField HeaderText="Summary" ControlStyle-CssClass="truncate-text">
                                                     <ItemTemplate>
                                                         <asp:Label ID="Label1" runat="server" Font-Size="Smaller" Text='<%# Bind("Summary") %>'
@@ -213,11 +222,10 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <asp:TemplateField HeaderText="Category" ControlStyle-CssClass="truncate-text"><%--ItemStyle-Height="20px" SortExpression="Category" Visible="true"--%>
+                                                <asp:TemplateField HeaderText="Category" ControlStyle-CssClass="truncate-text">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblCategoryFK" runat="server" Text='<%# Eval("Category") %>' Font-Size="Smaller" Visible="false"></asp:Label>
                                                         <asp:Label ID="lblCategoryName" runat="server" Text='<%# Eval("Category") %>' Font-Size="Smaller" Visible="true"></asp:Label>
-
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
@@ -226,48 +234,32 @@
                                                 <asp:BoundField DataField="Priority" HeaderText="Priority" SortExpression="Priority" ItemStyle-Font-Size="Smaller" />
                                                 <asp:TemplateField HeaderText="stage " ItemStyle-Width="150" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="lblstagecode" runat="server" Font-Size="X-Small" CssClass=" badge badge-notifications" Text='<%# Eval("Stage") %>'></asp:Label>
+                                                        <asp:Label ID="lblstagecode" runat="server" Font-Size="X-Small" CssClass="badge badge-notifications" Text='<%# Eval("Stage") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Status " ItemStyle-Width="150" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="lblStatusCode" runat="server" Font-Size="X-Small" CssClass=" badge badge-notifications" ForeColor="White" BackColor='<%# System.Drawing.ColorTranslator.FromHtml(Eval("StatusColorCode").ToString())%>' Text='<%# Eval("Status") %>'></asp:Label>
+                                                        <asp:Label ID="lblStatusCode" runat="server" Font-Size="X-Small" CssClass="badge badge-notifications" ForeColor="White" BackColor='<%# System.Drawing.ColorTranslator.FromHtml(Eval("StatusColorCode").ToString())%>' Text='<%# Eval("Status") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-                                                <%--	<asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" ItemStyle-Font-Size="Smaller" />--%>
                                                 <asp:BoundField DataField="Severity" HeaderText="Severity" SortExpression="Severity" ItemStyle-Font-Size="Smaller" ItemStyle-Height="5px" />
-                                                <%--	<asp:TemplateField HeaderText="Description" SortExpression="Description" ItemStyle-Font-Size="Smaller" >
-								
-								<ItemTemplate>
-									<asp:Label ID="lblDescription" runat="server" Font-Size="Smaller" Text='<%# Server.HtmlDecode(Eval("Description").ToString()) %>'> </asp:Label>
-								</ItemTemplate>
-							</asp:TemplateField>--%>
                                                 <asp:BoundField DataField="TechLoginName" HeaderText="Assigne" SortExpression="TechLoginName" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                                 <asp:BoundField DataField="SubmitterType" HeaderText="SubmitterType" SortExpression="SubmitterType" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                                 <asp:BoundField DataField="SubmitterName" HeaderText="SubmitterName" SortExpression="SubmitterName" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                                 <asp:BoundField DataField="SubmitterEmail" HeaderText="SubmitterEmail" SortExpression="SubmitterEmail" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                                 <asp:BoundField DataField="SubmitterPhone" HeaderText="SubmitterPhone" SortExpression="SubmitterPhone" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                                 <asp:BoundField DataField="DueDate" HeaderText="Expect. Response Dt" SortExpression="SubmitterPhone" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
-                                                <asp:BoundField DataField="ExpectedResolutionDt" HeaderText="Expect Resoution Dt " SortExpression="SubmitterPhone" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
-                                                <asp:BoundField DataField="location" HeaderText="Location " SortExpression="Location" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
-
+                                                <asp:BoundField DataField="ExpectedResolutionDt" HeaderText="Expect Resoution Dt" SortExpression="SubmitterPhone" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
+                                                <asp:BoundField DataField="location" HeaderText="Location" SortExpression="Location" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                                 <asp:BoundField DataField="SourceType" HeaderText="SourceType" SortExpression="SourceType" ItemStyle-Height="5px" ItemStyle-Font-Size="Smaller" />
                                             </Columns>
-                                            <%--<RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />
-                                    <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#EDEDED" ForeColor="#000000" HorizontalAlign="Left" Height="5px" VerticalAlign="NotSet" CssClass="header" />
-                                    <SelectedRowStyle BackColor="#fff" Font-Bold="True" ForeColor="#000000" Height="5px" />
-                                    <HeaderStyle BackColor="#EEEEEE" Font-Bold="True" ForeColor="#414141" Height="5px" BorderColor="WhiteSmoke" CssClass="header sorting_asc" Font-Size="Small" />
-                                    <EditRowStyle BackColor="#e9edf2" BorderColor="#e3e4e6" BorderStyle="Solid" BorderWidth="1px" Height="5px" />
-                                    <EmptyDataRowStyle HorizontalAlign="Center" BackColor="#EDEDED" />--%>
                                             <EmptyDataTemplate>No Record Available</EmptyDataTemplate>
-                                            <%--<AlternatingRowStyle BackColor="#EAEEFF" BorderColor="#e3e4e6" Height="5px" BorderStyle="Solid" BorderWidth="1px" />--%>
                                         </asp:GridView>
                                     </div>
-                                    <%--	</div>--%>
                                 </div>
                             </div>
+
 
                         </div>
                     </div>
@@ -309,27 +301,26 @@
         </ContentTemplate>
         <Triggers>
 
-            <asp:PostBackTrigger ControlID="rptpageindexing" />
-            <asp:AsyncPostBackTrigger ControlID="imgcolumnfilter" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="rptpageindexing" />--%>
+            <%--<asp:AsyncPostBackTrigger ControlID="imgcolumnfilter" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="btngetCheckcolumn" />
-            <asp:PostBackTrigger ControlID="ddlGetticketFilter" />
-            <asp:PostBackTrigger ControlID="ddlPageSize" />
+            <%-- <asp:PostBackTrigger ControlID="ddlGetticketFilter" />--%>
+            <%--<asp:PostBackTrigger ControlID="ddlPageSize" />--%>
             <%--<asp:PostBackTrigger ControlID="btnDelteBulkTicket" />--%>
             <asp:PostBackTrigger ControlID="gvAllTickets" />
-            <asp:PostBackTrigger ControlID="imgRowFilter" />
+            <%--<asp:PostBackTrigger ControlID="imgRowFilter" />--%>
             <asp:PostBackTrigger ControlID="ddlOrg" />
             <asp:PostBackTrigger ControlID="ddlRequestType" />
             <%--<asp:PostBackTrigger ControlID="btnPickupTicket" />--%>
             <asp:PostBackTrigger ControlID="btnGridFilter" />
 
 
-            <asp:PostBackTrigger ControlID="btnOpenTicket" />
-            <asp:PostBackTrigger ControlID="btnWipTicket" />
-            <asp:PostBackTrigger ControlID="btnTicketAssigntoME" />
-            <asp:PostBackTrigger ControlID="btnAssignToOther" />
+            <%--<asp:PostBackTrigger ControlID="btnOpenTicket" />--%>
+            <%--<asp:PostBackTrigger ControlID="btnWipTicket" />--%>
+            <%--<asp:PostBackTrigger ControlID="btnTicketAssigntoME" />--%>
+            <%-- <asp:PostBackTrigger ControlID="btnAssignToOther" />
             <asp:PostBackTrigger ControlID="btnDueSoonTickets" />
-            <asp:PostBackTrigger ControlID="btnTicketEsclated" />
-
+            <asp:PostBackTrigger ControlID="btnTicketEsclated" />--%>
         </Triggers>
     </asp:UpdatePanel>
 
@@ -377,7 +368,7 @@
             console.log("fire1234567");
         }
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function togglePanel() {
             var panel = document.getElementById('<%= pnlRowFilter.ClientID %>');
             if (panel.style.display === 'none') {
@@ -387,7 +378,7 @@
                 panel.style.display = 'none';
             }
         }
-    </script>
+    </script>--%>
     <script>
         $(document).ready(function () {
             $('.truncate-text').hover(function () {

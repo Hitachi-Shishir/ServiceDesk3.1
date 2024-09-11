@@ -737,7 +737,7 @@ public class FillSDFields
 
 
     }
-    public DataTable FillStatus()
+    public DataTable FillStatus(Int64 Orgid=0, string reqtype="0")
     {
 
         try
@@ -750,6 +750,8 @@ public class FillSDFields
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Option", "see");
+                    cmd.Parameters.AddWithValue("@OrgDeskRef", Orgid);
+                    cmd.Parameters.AddWithValue("@DeskRef", reqtype);
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
                         using (DataSet ds = new DataSet())
@@ -757,7 +759,6 @@ public class FillSDFields
                             sda.Fill(ds);
                             DataTable dt = new DataTable();
                             dt = ds.Tables[0];
-
                             return dt;
                         }
                     }

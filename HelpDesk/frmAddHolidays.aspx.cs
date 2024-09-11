@@ -21,53 +21,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), System.Guid.NewGuid().ToString(), "Showalert('" + type + "','" + Message + "');", true);
     }
-    protected override void OnInit(EventArgs e)
-    {
-        try
-        {
-            //Change your condition here
-            if (Session["Popup"] != null)
-            {
-                if (Session["Popup"].ToString() == "Insert")
-                {
-                    ShowMessage(MessageType.success, "Record Inserted Successfully!!");
 
-
-                }
-                if (Session["Popup"].ToString() == "Update")
-                {
-                    ShowMessage(MessageType.success, "Record Updated Successfully!!");
-
-
-                }
-                if (Session["Popup"].ToString() == "Delete")
-                {
-                    ShowMessage(MessageType.error, "Record Deleted Successfully!!");
-
-
-                }
-                if (Session["Popup"].ToString() == "Warning")
-                {
-                    ShowMessage(MessageType.warning, "Record Deleted Successfully!!");
-
-
-                }
-                Session.Remove("Popup");
-            }
-
-
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            ExceptionLogging.SendErrorToText(ex);
-
-        }
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -111,7 +65,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
 
@@ -128,7 +82,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
@@ -152,7 +106,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -192,7 +146,10 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 this.gvHoliday.DataSource = (object)null;
                 this.gvHoliday.DataBind();
             }
-
+            if (SD_Holiday.Rows.Count > 0)
+            {
+                GridFormat(SD_Holiday);
+            }
 
         }
         catch (ThreadAbortException e2)
@@ -211,7 +168,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             {
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , "Add Holiday: Error While Populating Hoilday in table " + Request.Url.ToString() + "Got Exception" + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -237,7 +194,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
                     if (res > 0)
                     {
                         Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddHolidays.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
 
                 }
@@ -271,7 +229,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             //    // lblsuccess.Text = msg.ms; ;
         }
     }
-    protected void ImgBtnExport_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport_Click(object sender, EventArgs e)
     {
         try
         {
@@ -329,7 +287,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
 
         }
@@ -338,6 +296,22 @@ public partial class frmAddHolidays : System.Web.UI.Page
     {
         UpdateUserDetails();
 
+    }
+    protected void GridFormat(DataTable dt)
+    {
+        gvHoliday.UseAccessibleHeader = true;
+        gvHoliday.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+        if (gvHoliday.TopPagerRow != null)
+        {
+            gvHoliday.TopPagerRow.TableSection = TableRowSection.TableHeader;
+        }
+        if (gvHoliday.BottomPagerRow != null)
+        {
+            gvHoliday.BottomPagerRow.TableSection = TableRowSection.TableFooter;
+        }
+        if (dt.Rows.Count > 0)
+            gvHoliday.FooterRow.TableSection = TableRowSection.TableFooter;
     }
     protected void UpdateUserDetails()
     {
@@ -359,7 +333,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
                     if (res > 0)
                     {
                         Session["Popup"] = "Update";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddHolidays.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
 
                 }
@@ -385,7 +360,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -404,9 +379,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
         {
             try
             {
-                //Determine the RowIndex of the Row whose Button was clicked.
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
-                //Get the value of column from the DataKeys using the RowIndex.
                 UserID = Convert.ToInt32(gvHoliday.DataKeys[rowIndex].Values["ID"]);
 
 
@@ -417,30 +390,26 @@ public partial class frmAddHolidays : System.Web.UI.Page
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", UserID);
-                        cmd.Parameters.AddWithValue("@OrgID", ddlOrg.SelectedValue.ToString());
+                        cmd.Parameters.AddWithValue("@OrgID", Convert.ToString(Session["OrgID"]));
                         cmd.Parameters.AddWithValue("@Option", "DeleteHoliday");
                         cmd.CommandTimeout = 180;
                         int res = cmd.ExecuteNonQuery();
                         if (res > 0)
                         {
-
                             Session["Popup"] = "Delete";
-                            Response.Redirect(Request.Url.AbsoluteUri);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddHolidays.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         }
-
-
-                        //	ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('error','" + PriorityName + " Deleted successfully" + "');", true);
-
-                        //Response.Redirect(Request.Url.AbsoluteUri);
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        }
                         con.Close();
                         pnlShowUsers.Visible = true;
                         ShowUserDetaiControl();
-
-
                     }
                 }
-                //
-
             }
             catch (ThreadAbortException e2)
             {
@@ -462,14 +431,12 @@ public partial class frmAddHolidays : System.Web.UI.Page
                     var line = frame.GetFileLineNumber();
                     inEr.InsertErrorLogsF(Session["UserName"].ToString()
         , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                    Response.Redirect("~/Error/Error.html");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
                 }
             }
         }
         if (e.CommandName == "SelectTech")
         {
-
-
             try
             {
                 //Determine the RowIndex of the Row whose Button was clicked.
@@ -509,7 +476,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
                     var line = frame.GetFileLineNumber();
                     inEr.InsertErrorLogsF(Session["UserName"].ToString()
         , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                    Response.Redirect("~/Error/Error.html");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
                 }
             }
         }
@@ -553,7 +520,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -592,7 +560,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void btnAddHoliday_Click(object sender, EventArgs e)
@@ -615,7 +584,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void btnViewUsers_Click(object sender, EventArgs e)
@@ -639,7 +609,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
         }
     }
@@ -656,6 +627,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             btnViewUsers.Enabled = false;
             btnAddHoliday.Enabled = true;
             btnimportUser.Enabled = true;
+            FillHoliday();
         }
         catch (ThreadAbortException e2)
         {
@@ -671,7 +643,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void AddHolidayControl()
@@ -703,7 +676,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void btnn_Click(object sender, EventArgs e)
@@ -734,7 +708,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
                         if (res > 0)
                         {
                             Session["Popup"] = "Insert";
-                            Response.Redirect(Request.Url.AbsoluteUri);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddHolidays.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         }
 
                     }
@@ -761,7 +736,8 @@ public partial class frmAddHolidays : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
                 , "Add Holiday: Error While Store Data In DB " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
 
         }
@@ -795,7 +771,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
             , "Add Holiday: Error While Fetch the Data From file to Datatable " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
         }
 
@@ -860,7 +836,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
             , "Add Holiday: Error While Fetch the Data From file to Datatable " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
 
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
 
     }
@@ -901,7 +877,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
 }

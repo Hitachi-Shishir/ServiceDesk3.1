@@ -7,37 +7,37 @@
  </asp:ScriptManager>
  <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
      <ContentTemplate>
-    <div class="container-fluid">
-        <div class="card p-3">
-            <div class="row">
-                <div class="col-md-3">
-                    <label>Organization</label>
+    
+        <div class="card">
+            <div class="card-body">
+            <div class="row gy-3 gx-2">
+                <div class="col-md-3 col-6">
+                    <label class="form-label">Organization</label>
                     <asp:DropDownList ID="ddlOrg" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrg_SelectedIndexChanged"></asp:DropDownList>
                 </div>
-                <div class="col-md-3">
-                    <label>Technician</label>
+                <div class="col-md-3 col-6">
+                    <label class="form-label">Technician</label>
                     <asp:DropDownList ID="ddltech" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                 </div>
-                <div class="col-md-2">
-                    <label>Leave From Date</label>
+                <div class="col-md-3 col-6">
+                    <label class="form-label">Leave From Date</label>
                     <asp:TextBox runat="server" ID="txtfrmDate" class="form-control form-control-sm datepicker"></asp:TextBox>
                 </div>
-                <div class="col-md-2">
-                    <label>Leave To Date</label>
+                <div class="col-md-3 col-6">
+                    <label class="form-label">Leave To Date</label>
                     <asp:TextBox runat="server" ID="txttoDate" class="form-control form-control-sm datepicker"></asp:TextBox>
                 </div>
-                <div class="col-md-2 p-4">
-                    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-success btn-sm" OnClick="btnSave_Click" />
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-danger btn-sm" OnClick="btnReset_Click" />
+                <div class="col-md-12 text-end">
+                  
+                    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-sm  btn-grd btn-grd-info " OnClick="btnSave_Click" />
+                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-sm  btn-grd btn-grd-danger" OnClick="btnReset_Click" />
                 </div>
             </div>
-           
-
-            <div class="row py-2">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="table-responsive">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="table-responsive table-container">
                         <asp:GridView ID="grv" HeaderStyle-Height="25px" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                            runat="server" Width="100%" Class="data-table table table-striped table-bordered">
+                            runat="server" Width="100%" Class="data-table table table-striped table-bordered table-sm">
                             <Columns>
                                 <asp:TemplateField HeaderStyle-Width="10%" HeaderText="Sr No">
                                     <ItemTemplate>
@@ -84,7 +84,8 @@
             </div>
 
         </div>
-    </div>
+        </div>
+   
          </ContentTemplate>
      <Triggers>
          <asp:PostBackTrigger ControlID="ddlOrg" />

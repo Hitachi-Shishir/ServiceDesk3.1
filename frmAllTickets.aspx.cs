@@ -9,6 +9,7 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Activities.Statements;
 
 public partial class frmAllTickets : System.Web.UI.Page
 {
@@ -25,7 +26,7 @@ public partial class frmAllTickets : System.Web.UI.Page
             if (Session["UserScope"].ToString() == "SDUser")
             {
                 pnlgridrow.Visible = false;
-                pnltickcount.Visible = false;
+                //pnltickcount.Visible = false;
             }
             else if (Session["UserScope"].ToString() == "Technician" || Session["UserScope"].ToString() == "Admin")
             {
@@ -100,6 +101,42 @@ public partial class frmAllTickets : System.Web.UI.Page
             }
         }
     }
+    private void FillStatus()
+    {
+        try
+        {
+            DataTable SD_Org = new FillSDFields().FillStatus(Convert.ToInt64(ddlOrg.SelectedValue), ddlRequestType.SelectedValue);
+            ddlStatus.DataSource = SD_Org;
+            ddlStatus.DataTextField = "StatusCodeRef";
+            ddlStatus.DataValueField = "StatusCodeRef";
+            ddlStatus.DataBind();
+            ddlStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Select--", "0"));
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
     private void FillRequestType(long OrgId)
     {
 
@@ -146,9 +183,8 @@ public partial class frmAllTickets : System.Web.UI.Page
         duesoon = 0;
         Session["SDRef"] = ddlRequestType.SelectedValue.ToString();
         //	FillAllAssets();
-
-        this.GetTicket(1, int.Parse
-            (ddlPageSize.SelectedValue), "creationDate", true);
+        FillStatus();
+        this.GetTicket(1, 500, "creationDate", true);
 
     }
 
@@ -316,7 +352,6 @@ public partial class frmAllTickets : System.Web.UI.Page
         sb.Append("$('#CategoryModal').modal('show');");
         sb.Append("$('body').removeClass('modal-open');");
         sb.Append("$('.modal-backdrop').remove();");
-
         sb.Append(@"</script>");
         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ModalScript", sb.ToString(), false);
 
@@ -391,7 +426,7 @@ public partial class frmAllTickets : System.Web.UI.Page
         unassigned = 0;
         due = 0;
         duesoon = 0;
-        this.GetTicket(1, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
+        //this.GetTicket(1, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
     }
     private void GetTicket(int pageindex, int pagesize, string SortExpression, bool IsSorting)
     {
@@ -399,32 +434,32 @@ public partial class frmAllTickets : System.Web.UI.Page
         if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
         {
             FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
-            }
-            else
-            {
-                FillMasterTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
+            //if (ddlGetticketFilter.SelectedValue == "0")
+            //{
+            FillMasterTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
+            //}
+            //else
+            //{
+            //    FillMasterTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
 
-            }
+            //}
         }
         if (Session["UserScope"].ToString() == "Technician")
         {
             FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketTech");
-            }
-            else
-            {
-                FillTechTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
+            //if (ddlGetticketFilter.SelectedValue == "0")
+            //{
+            FillTechTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting, "SD_spGetTicketTech");
+            //}
+            //else
+            //{
+            //    FillTechTickets(pageindex, pagesize, "WithFilter", SortExpression, IsSorting, "SD_spGetTicketMaster");
 
-            }
+            //}
         }
         if (Session["UserScope"].ToString() == "SDUser" && Session["EmpID"] != null)
         {
-            FillUserWiseTickets(pageindex, pagesize, "WithoutFilter", SortExpression, IsSorting);
+            FillUserWiseTickets(1, pagesize, "WithoutFilter", SortExpression, IsSorting);
         }
     }
     public static DataTable mydt;
@@ -438,7 +473,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@PageIndex", pageindex);
                 cmd.Parameters.AddWithValue("@PageSize", pagesize);
-                cmd.Parameters.AddWithValue("@TicketDayWise", ddlGetticketFilter.SelectedValue);
+                cmd.Parameters.AddWithValue("@TicketDayWise", "0");
                 cmd.Parameters.AddWithValue("@SubmitterID", Session["EmpID"].ToString());
                 cmd.Parameters.AddWithValue("@Option", Function);
                 cmd.Parameters.Add("@TotalRow", SqlDbType.Int, 4);
@@ -488,11 +523,12 @@ public partial class frmAllTickets : System.Web.UI.Page
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
+                        GridFormat(dt);
                     }
                 }
                 con.Close();
                 int recordCount = Convert.ToInt32(cmd.Parameters["@TotalRow"].Value);
-                this.PopulatePager(recordCount, pageindex);
+                //this.PopulatePager(recordCount, pageindex);
             }
         }
     }
@@ -506,7 +542,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@PageIndex", pageindex);
                 cmd.Parameters.AddWithValue("@PageSize", pagesize);
-                cmd.Parameters.AddWithValue("@TicketDayWise", ddlGetticketFilter.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@TicketDayWise", "0");
                 cmd.Parameters.AddWithValue("@Desk", Session["SDRef"].ToString());
                 cmd.Parameters.AddWithValue("@OrgId", ddlOrg.SelectedValue);
                 cmd.Parameters.AddWithValue("@TechLoginName", Session["LoginName"].ToString());
@@ -558,11 +594,12 @@ public partial class frmAllTickets : System.Web.UI.Page
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
+                        GridFormat(dt);
                     }
                 }
                 con.Close();
                 int recordCount = Convert.ToInt32(cmd.Parameters["@TotalRow"].Value);
-                this.PopulatePager(recordCount, pageindex);
+                // this.PopulatePager(recordCount, pageindex);
 
 
 
@@ -578,7 +615,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@PageIndex", pageindex);
                 cmd.Parameters.AddWithValue("@PageSize", pagesize);
-                cmd.Parameters.AddWithValue("@TicketDayWise", ddlGetticketFilter.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@TicketDayWise", "0");
                 cmd.Parameters.AddWithValue("@Desk", Session["SDRef"].ToString());
                 cmd.Parameters.AddWithValue("@EngLocation", Session["Location"].ToString());
                 cmd.Parameters.AddWithValue("@OrgId", ddlOrg.SelectedValue);
@@ -630,187 +667,188 @@ public partial class frmAllTickets : System.Web.UI.Page
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
+                        GridFormat(dt);
                     }
                 }
                 con.Close();
                 int recordCount = Convert.ToInt32(cmd.Parameters["@TotalRow"].Value);
-                this.PopulatePager(recordCount, pageindex);
+                //this.PopulatePager(recordCount, pageindex);
 
 
 
             }
         }
     }
-    protected void PopulatePagerold(int totalRow, int currentPage)
-    {
-        double totalPageCount = (double)((decimal)totalRow / decimal.Parse(ddlPageSize.SelectedValue));
+    //protected void PopulatePagerold(int totalRow, int currentPage)
+    //{
+    //    double totalPageCount = (double)((decimal)totalRow / decimal.Parse(ddlPageSize.SelectedValue));
 
-        int pageCount = (int)Math.Ceiling(totalPageCount);
-        List<ListItem> pages = new List<ListItem>();
-        if (pageCount > 0)
-        {
-            int showMax = 5;
-            int startPage;
-            int endPage;
-            if (pageCount <= showMax)
-            {
-                startPage = 1;
-                endPage = pageCount;
-            }
-            else
-            {
-                startPage = currentPage;
-                endPage = currentPage + showMax - 1;
-            }
+    //    int pageCount = (int)Math.Ceiling(totalPageCount);
+    //    List<ListItem> pages = new List<ListItem>();
+    //    if (pageCount > 0)
+    //    {
+    //        int showMax = 5;
+    //        int startPage;
+    //        int endPage;
+    //        if (pageCount <= showMax)
+    //        {
+    //            startPage = 1;
+    //            endPage = pageCount;
+    //        }
+    //        else
+    //        {
+    //            startPage = currentPage;
+    //            endPage = currentPage + showMax - 1;
+    //        }
 
-            pages.Add(new ListItem("First", "1", currentPage > 1));
+    //        pages.Add(new ListItem("First", "1", currentPage > 1));
 
-            for (int i = startPage; i <= endPage; i++)
-            {
-                pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-            }
+    //        for (int i = startPage; i <= endPage; i++)
+    //        {
+    //            pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
+    //        }
 
-            pages.Add(new ListItem("Last", pageCount.ToString(), currentPage < pageCount));
-        }
-        rptpageindexing.DataSource = pages;
-        rptpageindexing.DataBind();
-    }
-    protected void PopulatePager(int totalRow, int currentPage)
-    {
-        double totalPageCount = (double)((decimal)totalRow / decimal.Parse(ddlPageSize.SelectedValue));
+    //        pages.Add(new ListItem("Last", pageCount.ToString(), currentPage < pageCount));
+    //    }
+    //    rptpageindexing.DataSource = pages;
+    //    rptpageindexing.DataBind();
+    //}
+    //protected void PopulatePager(int totalRow, int currentPage)
+    //{
+    //    double totalPageCount = (double)((decimal)totalRow / decimal.Parse(ddlPageSize.SelectedValue));
 
-        int pageCount = (int)Math.Ceiling(totalPageCount);
-        List<ListItem> pages = new List<ListItem>();
-        if (pageCount > 0)
-        {
-            int showMax = pageCount;
-            int startPage;
-            int endPage;
-            if (pageCount <= showMax)
-            {
-                startPage = 1;
-                endPage = pageCount;
-            }
-            else
-            {
-                startPage = currentPage;
-                endPage = currentPage + showMax - 1;
-            }
-            pages.Add(new ListItem("First", "1", currentPage > 1));
-            if (currentPage != 1)
-            {
-                pages.Add(new ListItem("<", (currentPage - 1).ToString()));
-            }
-            if (pageCount < 4)
-            {
-                for (int i = 1; i <= pageCount; i++)
-                {
-                    pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-                }
-            }
-            else if (currentPage < 4)
-            {
-                for (int i = 1; i <= 4; i++)
-                {
-                    pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-                }
-                pages.Add(new ListItem("...", (currentPage).ToString(), false));
-            }
-            else if (currentPage > pageCount - 4)
-            {
-                pages.Add(new ListItem("...", (currentPage).ToString(), false));
-                for (int i = currentPage - 1; i <= pageCount; i++)
-                {
-                    pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-                }
-            }
-            else
-            {
-                pages.Add(new ListItem("...", (currentPage).ToString(), false));
-                for (int i = currentPage - 2; i <= currentPage + 2; i++)
-                {
-                    pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
-                }
-                pages.Add(new ListItem("...", (currentPage).ToString(), false));
-            }
-            if (currentPage != pageCount)
-            {
-                pages.Add(new ListItem(">", (currentPage + 1).ToString()));
-            }
-            pages.Add(new ListItem("Last", pageCount.ToString(), currentPage < pageCount));
-        }
-        rptpageindexing.DataSource = pages;
-        rptpageindexing.DataBind();
-    }
-    protected void PageSize_Changed(object sender, EventArgs e)
-    {
-        if (open == 1 || wip == 1 || due == 1 || duesoon == 1 || assigned == 1 || unassigned == 1)
-        {
-            if (open == 1)
-            {
-                FillOpenTicket(1);
-            }
-            if (wip == 1)
-            {
-                FillWIPTicket(1);
-            }
-            if (due == 1)
-            {
-                FillDueTicket(1);
-            }
-            if (duesoon == 1)
-            {
-                FillDueSoonTicket(1);
-            }
-            if (assigned == 1)
-            {
-                FillAssignedTicket(1);
-            }
-            if (unassigned == 1)
-            {
-                FillUnAssignedTicket(1);
-            }
-        }
-        else
-        {
-            this.GetTicket(1, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
-        }
-    }
-    protected void Page_Changed(object sender, EventArgs e)
-    {
-        int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
-        if (open == 1 || wip == 1 || due == 1 || duesoon == 1 || assigned == 1 || unassigned == 1)
-        {
-            if (open == 1)
-            {
-                FillOpenTicket(pageIndex);
-            }
-            if (wip == 1)
-            {
-                FillWIPTicket(pageIndex);
-            }
-            if (due == 1)
-            {
-                FillDueTicket(pageIndex);
-            }
-            if (duesoon == 1)
-            {
-                FillDueSoonTicket(pageIndex);
-            }
-            if (assigned == 1)
-            {
-                FillAssignedTicket(pageIndex);
-            }
-            if (unassigned == 1)
-            {
-                FillUnAssignedTicket(pageIndex);
-            }
-        }
-        else
-        {
-            this.GetTicket(pageIndex, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
-        }
-    }
+    //    int pageCount = (int)Math.Ceiling(totalPageCount);
+    //    List<ListItem> pages = new List<ListItem>();
+    //    if (pageCount > 0)
+    //    {
+    //        int showMax = pageCount;
+    //        int startPage;
+    //        int endPage;
+    //        if (pageCount <= showMax)
+    //        {
+    //            startPage = 1;
+    //            endPage = pageCount;
+    //        }
+    //        else
+    //        {
+    //            startPage = currentPage;
+    //            endPage = currentPage + showMax - 1;
+    //        }
+    //        pages.Add(new ListItem("First", "1", currentPage > 1));
+    //        if (currentPage != 1)
+    //        {
+    //            pages.Add(new ListItem("<", (currentPage - 1).ToString()));
+    //        }
+    //        if (pageCount < 4)
+    //        {
+    //            for (int i = 1; i <= pageCount; i++)
+    //            {
+    //                pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
+    //            }
+    //        }
+    //        else if (currentPage < 4)
+    //        {
+    //            for (int i = 1; i <= 4; i++)
+    //            {
+    //                pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
+    //            }
+    //            pages.Add(new ListItem("...", (currentPage).ToString(), false));
+    //        }
+    //        else if (currentPage > pageCount - 4)
+    //        {
+    //            pages.Add(new ListItem("...", (currentPage).ToString(), false));
+    //            for (int i = currentPage - 1; i <= pageCount; i++)
+    //            {
+    //                pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
+    //            }
+    //        }
+    //        else
+    //        {
+    //            pages.Add(new ListItem("...", (currentPage).ToString(), false));
+    //            for (int i = currentPage - 2; i <= currentPage + 2; i++)
+    //            {
+    //                pages.Add(new ListItem(i.ToString(), i.ToString(), i != currentPage));
+    //            }
+    //            pages.Add(new ListItem("...", (currentPage).ToString(), false));
+    //        }
+    //        if (currentPage != pageCount)
+    //        {
+    //            pages.Add(new ListItem(">", (currentPage + 1).ToString()));
+    //        }
+    //        pages.Add(new ListItem("Last", pageCount.ToString(), currentPage < pageCount));
+    //    }
+    //    rptpageindexing.DataSource = pages;
+    //    rptpageindexing.DataBind();
+    //}
+    //protected void PageSize_Changed(object sender, EventArgs e)
+    //{
+    //    if (open == 1 || wip == 1 || due == 1 || duesoon == 1 || assigned == 1 || unassigned == 1)
+    //    {
+    //        if (open == 1)
+    //        {
+    //            FillOpenTicket(1);
+    //        }
+    //        if (wip == 1)
+    //        {
+    //            FillWIPTicket(1);
+    //        }
+    //        if (due == 1)
+    //        {
+    //            FillDueTicket(1);
+    //        }
+    //        if (duesoon == 1)
+    //        {
+    //            FillDueSoonTicket(1);
+    //        }
+    //        if (assigned == 1)
+    //        {
+    //            FillAssignedTicket(1);
+    //        }
+    //        if (unassigned == 1)
+    //        {
+    //            FillUnAssignedTicket(1);
+    //        }
+    //    }
+    //    //else
+    //    //{
+    //    //    this.GetTicket(1, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
+    //    //}
+    //}
+    //protected void Page_Changed(object sender, EventArgs e)
+    //{
+    //    int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
+    //    if (open == 1 || wip == 1 || due == 1 || duesoon == 1 || assigned == 1 || unassigned == 1)
+    //    {
+    //        if (open == 1)
+    //        {
+    //            FillOpenTicket(pageIndex);
+    //        }
+    //        if (wip == 1)
+    //        {
+    //            FillWIPTicket(pageIndex);
+    //        }
+    //        if (due == 1)
+    //        {
+    //            FillDueTicket(pageIndex);
+    //        }
+    //        if (duesoon == 1)
+    //        {
+    //            FillDueSoonTicket(pageIndex);
+    //        }
+    //        if (assigned == 1)
+    //        {
+    //            FillAssignedTicket(pageIndex);
+    //        }
+    //        if (unassigned == 1)
+    //        {
+    //            FillUnAssignedTicket(pageIndex);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //this.GetTicket(pageIndex, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
+    //    }
+    //}
 
 
     protected void gvAllTickets_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
@@ -951,13 +989,13 @@ public partial class frmAllTickets : System.Web.UI.Page
         unassigned = 0;
         due = 0;
         duesoon = 0;
-        this.GetTicket(1, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
+        //this.GetTicket(1, int.Parse(ddlPageSize.SelectedValue), "creationDate", true);
     }
     protected void gvAllTickets_Sorting(object sender, GridViewSortEventArgs e)
     {
 
-        this.GetTicket(1, int.Parse
-                (ddlPageSize.SelectedValue), e.SortExpression, true);
+        //this.GetTicket(1, int.Parse
+        //        (ddlPageSize.SelectedValue), e.SortExpression, true);
     }
     protected void gvAllTickets_RowCreated(object sender, GridViewRowEventArgs e)
     {
@@ -996,57 +1034,88 @@ public partial class frmAllTickets : System.Web.UI.Page
 
 
     }
+    protected void GridFormat(DataTable dt)
+    {
+        try
+        {
+            gvAllTickets.UseAccessibleHeader = true;
+            gvAllTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+            if (gvAllTickets.TopPagerRow != null)
+            {
+                gvAllTickets.TopPagerRow.TableSection = TableRowSection.TableHeader;
+            }
+            if (gvAllTickets.BottomPagerRow != null)
+            {
+                gvAllTickets.BottomPagerRow.TableSection = TableRowSection.TableFooter;
+            }
+            if (dt.Rows.Count > 0)
+                gvAllTickets.FooterRow.TableSection = TableRowSection.TableFooter;
+        }
+        catch
+        {
+
+        }
+    }
     protected void imgRowFilter_Click(object sender, ImageClickEventArgs e)
     {
-        pnlRowFilter.Visible = true;
+        //pnlRowFilter.Visible = true;
     }
     protected void btnGridFilter_Click(object sender, EventArgs e)
     {
-        string TicketFilter = txtTicketNoFltr.Text.Trim();
-        string TickSummaryFilter = txtTickSumFltr.Text;
-        string TicketSeverity = txtSeverityFltr.Text;
-        string ticketStatus = txtStatfltr.Text;
-        string ticketPrioirty = txtPriorFltr.Text;
-        string filterExpression = "";
-        if (!string.IsNullOrEmpty(TicketFilter))
+        try
         {
-            filterExpression += @"TicketNumber = '" + TicketFilter + "' AND ";
-        }
-        if (!string.IsNullOrEmpty(TickSummaryFilter))
-        {
-            filterExpression += @"Summary LIKE '%" + TickSummaryFilter + "%' AND ";
-        }
-        if (!string.IsNullOrEmpty(ticketPrioirty))
-        {
-            filterExpression += @"Priority LIKE '%" + ticketPrioirty + "%' AND ";
-        }
-        if (!string.IsNullOrEmpty(TicketSeverity))
-        {
-            filterExpression += @"Severity LIKE '%" + TicketSeverity + "%' AND ";
-        }
-        if (!string.IsNullOrEmpty(ticketStatus))
-        {
-            filterExpression += @"Status LIKE '%" + ticketStatus + "%' AND ";
-        }
-        if (filterExpression.EndsWith(" AND "))
-        {
-            filterExpression = filterExpression.Substring(0, filterExpression.Length - 5);
-        }
+            string filterExpression = "";
+            string FromDate = "";
+            string ToDate = "";
+            bool isFromDateValid = false;
+            bool isToDateValid = false;
+            string todate = "";
+            string dateFormat = "dd-MM-yyyy";
+            if (txtFrmdate.Text != "")
+            {
+                DateTime frmdate;
+                isFromDateValid = DateTime.TryParseExact(txtFrmdate.Text, dateFormat, null, System.Globalization.DateTimeStyles.None, out frmdate);
+                FromDate = frmdate.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            if (txtTodate.Text != "")
+            {
+                DateTime tdate;
+                isToDateValid = DateTime.TryParseExact(txtTodate.Text, dateFormat, null, System.Globalization.DateTimeStyles.None, out tdate);
+                ToDate = tdate.ToString("yyyy-MM-dd HH:mm:ss");
+                DateTime Todat = tdate.AddHours(24);
+                todate = Todat.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            if (isFromDateValid && isToDateValid)
+            {
+                filterExpression += @"CreationDate >= '" + FromDate + "' AND CreationDate <= '" + todate + "' AND ";
+            }
+            if (ddlStatus.SelectedValue!="0")
+            {
+                filterExpression += @"Status LIKE '%" + ddlStatus.SelectedValue + "%' AND ";
+            }
+            if (filterExpression.EndsWith(" AND "))
+            {
+                filterExpression = filterExpression.Substring(0, filterExpression.Length - 5);
+            }
 
-        DataView filteredData = mydt.DefaultView;
-        filteredData.RowFilter = filterExpression;
-        gvAllTickets.DataSource = filteredData;
-        gvAllTickets.DataBind();
-
+            DataView filteredData = mydt.DefaultView;
+            filteredData.RowFilter = filterExpression;
+            gvAllTickets.DataSource = filteredData;
+            gvAllTickets.DataBind();
+            DataTable filteredDataTable = filteredData.ToTable();
+            if (filteredDataTable.Rows.Count > 0)
+            {
+                GridFormat(filteredDataTable);
+            }
+        }
+        catch (Exception ex)
+        {
+        }
     }
     protected void imgRemoveFilter_Click(object sender, EventArgs e)
     {
         Response.Redirect(Request.Url.AbsoluteUri);
-        txtTicketNoFltr.Text = string.Empty;
-        txtPriorFltr.Text = string.Empty;
-        txtSeverityFltr.Text = string.Empty;
-        txtStatfltr.Text = string.Empty;
-        txtTickSumFltr.Text = string.Empty;
     }
     private void FillTicketStatus(string Proc)
     {
@@ -1072,13 +1141,12 @@ public partial class frmAllTickets : System.Web.UI.Page
                             sda.Fill(dt);
                             if (dt.Rows.Count > 0)
                             {
-                                btnOpenTicket.Text = "Open  ( " + dt.Rows[0]["Open"].ToString() + " )";
-
-                                btnWipTicket.Text = "WIP  ( " + dt.Rows[0]["WIP"].ToString() + " )";
-                                btnTicketAssigntoME.Text = "Assigned ( " + dt.Rows[0]["Assigned"].ToString() + " )";
-                                btnAssignToOther.Text = "UnAssigned ( " + dt.Rows[0]["AssignedOther"].ToString() + " )";
-                                btnDueSoonTickets.Text = "Due Soon  ( " + dt.Rows[0]["DueSoon"].ToString() + " )";
-                                btnTicketEsclated.Text = "OverDue  ( " + dt.Rows[0]["OverDue"].ToString() + " )";
+                                //btnOpenTicket.Text = "Open  ( " + dt.Rows[0]["Open"].ToString() + " )";
+                                //btnWipTicket.Text = "WIP  ( " + dt.Rows[0]["WIP"].ToString() + " )";
+                                //btnTicketAssigntoME.Text = "Assigned ( " + dt.Rows[0]["Assigned"].ToString() + " )";
+                                //btnAssignToOther.Text = "UnAssigned ( " + dt.Rows[0]["AssignedOther"].ToString() + " )";
+                                //btnDueSoonTickets.Text = "Due Soon  ( " + dt.Rows[0]["DueSoon"].ToString() + " )";
+                                //btnTicketEsclated.Text = "OverDue  ( " + dt.Rows[0]["OverDue"].ToString() + " )";
                             }
                         }
                     }
@@ -1119,77 +1187,77 @@ public partial class frmAllTickets : System.Web.UI.Page
     public static int duesoon;
 
     public static int due;
-    protected void btnOpenTicket_Click(object sender, EventArgs e)
-    {
-        open = 1;
+    //protected void btnOpenTicket_Click(object sender, EventArgs e)
+    //{
+    //    open = 1;
 
-        wip = 0;
-        assigned = 0;
-        unassigned = 0;
-        due = 0;
-        duesoon = 0;
-        FillOpenTicket(1);
-    }
+    //    wip = 0;
+    //    assigned = 0;
+    //    unassigned = 0;
+    //    due = 0;
+    //    duesoon = 0;
+    //    //FillOpenTicket(1);
+    //}
 
-    protected void FillOpenTicket(int pageindex)
-    {
-        if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
-        {
-            FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "Open", "creationDate", true, "SD_spGetTicketMasterstatusWise");
-            }
-
-
-        }
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "Open", "creationDate", true, "SD_spGetTicketTechStatusWise");
-            }
-
-        }
-    }
-
-    protected void btnWipTicket_Click(object sender, EventArgs e)
-    {
-        wip = 1;
-        open = 0;
-
-        assigned = 0;
-        unassigned = 0;
-        due = 0;
-        duesoon = 0;
-        FillWIPTicket(1);
-    }
-    protected void FillWIPTicket(int pageindex)
-    {
-        if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
-        {
-            FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "WIP", "creationDate", true, "SD_spGetTicketMasterstatusWise");
-            }
+    //protected void FillOpenTicket(int pageindex)
+    //{
+    //    if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        FillTicketStatus("AllTicketStatus");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillMasterTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "Open", "creationDate", true, "SD_spGetTicketMasterstatusWise");
+    //        }
 
 
-        }
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "WIP", "creationDate", true, "SD_spGetTicketTechStatusWise");
-            }
-        }
-    }
+    //    }
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        FillTicketStatus("AllTicketStatusTech");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillTechTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "Open", "creationDate", true, "SD_spGetTicketTechStatusWise");
+    //        }
+
+    //    }
+    //}
+
+    //protected void btnWipTicket_Click(object sender, EventArgs e)
+    //{
+    //    wip = 1;
+    //    open = 0;
+
+    //    assigned = 0;
+    //    unassigned = 0;
+    //    due = 0;
+    //    duesoon = 0;
+    //    FillWIPTicket(1);
+    //}
+    //protected void FillWIPTicket(int pageindex)
+    //{
+    //    if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        FillTicketStatus("AllTicketStatus");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillMasterTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "WIP", "creationDate", true, "SD_spGetTicketMasterstatusWise");
+    //        }
+
+
+    //    }
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        FillTicketStatus("AllTicketStatusTech");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillTechTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "WIP", "creationDate", true, "SD_spGetTicketTechStatusWise");
+    //        }
+    //    }
+    //}
 
     protected void btnTicketAssigntoME_Click(object sender, EventArgs e)
     {
@@ -1200,129 +1268,129 @@ public partial class frmAllTickets : System.Web.UI.Page
         unassigned = 0;
         due = 0;
         duesoon = 0;
-        FillAssignedTicket(1);
+        //FillAssignedTicket(1);
     }
-    protected void FillAssignedTicket(int pageindex)
-    {
-        if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
-        {
-            FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "Assigned", "creationDate", true, "SD_spGetTicketMasterstatusWise");
-            }
+    //protected void FillAssignedTicket(int pageindex)
+    //{
+    //    if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        FillTicketStatus("AllTicketStatus");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillMasterTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "Assigned", "creationDate", true, "SD_spGetTicketMasterstatusWise");
+    //        }
 
 
-        }
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "Assigned", "creationDate", true, "SD_spGetTicketTechStatusWise");
-            }
+    //    }
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        FillTicketStatus("AllTicketStatusTech");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillTechTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "Assigned", "creationDate", true, "SD_spGetTicketTechStatusWise");
+    //        }
 
-        }
-    }
-    protected void btnTicketEsclated_Click(object sender, EventArgs e)
-    {
-        due = 1;
-        open = 0;
-        wip = 0;
-        assigned = 0;
-        unassigned = 0;
+    //    }
+    //}
+    //protected void btnTicketEsclated_Click(object sender, EventArgs e)
+    //{
+    //    due = 1;
+    //    open = 0;
+    //    wip = 0;
+    //    assigned = 0;
+    //    unassigned = 0;
 
-        duesoon = 0;
-        FillDueTicket(1);
-    }
-    protected void FillDueTicket(int pageindex)
-    {
-        if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
-        {
-            FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "OverDue", "creationDate", true, "SD_spGetTicketMasterstatusWise");
-            }
+    //    duesoon = 0;
+    //    FillDueTicket(1);
+    //}
+    //protected void FillDueTicket(int pageindex)
+    //{
+    //    if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        FillTicketStatus("AllTicketStatus");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillMasterTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "OverDue", "creationDate", true, "SD_spGetTicketMasterstatusWise");
+    //        }
 
 
-        }
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "OverDue", "creationDate", true, "SD_spGetTicketTechStatusWise");
-            }
-        }
-    }
-    protected void btnDueSoonTickets_Click(object sender, EventArgs e)
-    {
-        duesoon = 1;
-        open = 0;
-        wip = 0;
-        assigned = 0;
-        unassigned = 0;
-        due = 0;
+    //    }
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        FillTicketStatus("AllTicketStatusTech");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillTechTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "OverDue", "creationDate", true, "SD_spGetTicketTechStatusWise");
+    //        }
+    //    }
+    //}
+    //protected void btnDueSoonTickets_Click(object sender, EventArgs e)
+    //{
+    //    duesoon = 1;
+    //    open = 0;
+    //    wip = 0;
+    //    assigned = 0;
+    //    unassigned = 0;
+    //    due = 0;
 
-        FillDueSoonTicket(1);
-    }
-    protected void FillDueSoonTicket(int pageindex)
-    {
-        if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
-        {
-            FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "DueSoon", "creationDate", true, "SD_spGetTicketMasterstatusWise");
-            }
-        }
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "DueSoon", "creationDate", true, "SD_spGetTicketTechStatusWise");
-            }
-        }
-    }
-    protected void btnAssignToOther_Click(object sender, EventArgs e)
-    {
-        unassigned = 1;
-        open = 0;
-        wip = 0;
-        assigned = 0;
+    //    FillDueSoonTicket(1);
+    //}
+    //protected void FillDueSoonTicket(int pageindex)
+    //{
+    //    if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        FillTicketStatus("AllTicketStatus");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillMasterTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "DueSoon", "creationDate", true, "SD_spGetTicketMasterstatusWise");
+    //        }
+    //    }
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        FillTicketStatus("AllTicketStatusTech");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillTechTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "DueSoon", "creationDate", true, "SD_spGetTicketTechStatusWise");
+    //        }
+    //    }
+    //}
+    //protected void btnAssignToOther_Click(object sender, EventArgs e)
+    //{
+    //    unassigned = 1;
+    //    open = 0;
+    //    wip = 0;
+    //    assigned = 0;
 
-        due = 0;
-        duesoon = 0;
-        FillUnAssignedTicket(1);
-    }
-    protected void FillUnAssignedTicket(int pageindex)
-    {
+    //    due = 0;
+    //    duesoon = 0;
+    //    FillUnAssignedTicket(1);
+    //}
+    //protected void FillUnAssignedTicket(int pageindex)
+    //{
 
-        if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
-        {
-            FillTicketStatus("AllTicketStatus");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillMasterTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "AssignedOther", "creationDate", true, "SD_spGetTicketMasterstatusWise");
-            }
-        }
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            FillTicketStatus("AllTicketStatusTech");
-            if (ddlGetticketFilter.SelectedValue == "0")
-            {
-                FillTechTickets(pageindex, int.Parse
-            (ddlPageSize.SelectedValue), "AssignedOther", "creationDate", true, "SD_spGetTicketTechStatusWise");
-            }
-        }
-    }
+    //    if (Session["UserScope"].ToString() == "Master" || Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        FillTicketStatus("AllTicketStatus");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillMasterTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "AssignedOther", "creationDate", true, "SD_spGetTicketMasterstatusWise");
+    //        }
+    //    }
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        FillTicketStatus("AllTicketStatusTech");
+    //        if (ddlGetticketFilter.SelectedValue == "0")
+    //        {
+    //            FillTechTickets(pageindex, int.Parse
+    //        (ddlPageSize.SelectedValue), "AssignedOther", "creationDate", true, "SD_spGetTicketTechStatusWise");
+    //        }
+    //    }
+    //}
 }

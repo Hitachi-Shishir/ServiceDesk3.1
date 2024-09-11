@@ -409,7 +409,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                                         hdnCategoryID.Value = ddlCategory2.SelectedValue;
                                     }
 
-                                    divCategory2.Attributes.Add("style", "display: flex;");
+                                    divCategory2.Attributes.Add("style", "display: block;");
                                     divCategory3.Attributes.Add("style", "display: none;");
                                     divCategory4.Attributes.Add("style", "display: none;");
                                     divCategory5.Attributes.Add("style", "display: none;");
@@ -440,8 +440,8 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                                         ddlCategory3.Items.FindByValue(s3).Selected = true;
                                         hdnCategoryID.Value = ddlCategory3.SelectedValue;
                                     }
-                                    divCategory2.Attributes.Add("style", "display: flex;");
-                                    divCategory3.Attributes.Add("style", "display: flex;");
+                                    divCategory2.Attributes.Add("style", "display: block;");
+                                    divCategory3.Attributes.Add("style", "display: block;");
                                     divCategory4.Attributes.Add("style", "display: none;");
                                     divCategory5.Attributes.Add("style", "display: none;");
                                 }
@@ -467,9 +467,9 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                                         hdnCategoryID.Value = ddlCategory4.SelectedValue;
                                     }
 
-                                    divCategory2.Attributes.Add("style", "display: flex;");
-                                    divCategory3.Attributes.Add("style", "display: flex;");
-                                    divCategory4.Attributes.Add("style", "display: flex;");
+                                    divCategory2.Attributes.Add("style", "display: block;");
+                                    divCategory3.Attributes.Add("style", "display: block;");
+                                    divCategory4.Attributes.Add("style", "display: block;");
                                     divCategory5.Attributes.Add("style", "display: none;");
 
                                 }
@@ -492,10 +492,10 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                                         ddlCategory5.Items.FindByValue(s5).Selected = true;
                                         hdnCategoryID.Value = ddlCategory5.SelectedValue;
                                     }
-                                    divCategory2.Attributes.Add("style", "display: flex;");
-                                    divCategory3.Attributes.Add("style", "display: flex;");
-                                    divCategory4.Attributes.Add("style", "display: flex;");
-                                    divCategory5.Attributes.Add("style", "display: flex;");
+                                    divCategory2.Attributes.Add("style", "display: block;");
+                                    divCategory3.Attributes.Add("style", "display: block;");
+                                    divCategory4.Attributes.Add("style", "display: block;");
+                                    divCategory5.Attributes.Add("style", "display: block;");
                                 }
 
 
@@ -889,7 +889,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory2.DataBind();
                 ddlCategory2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 2----------", "0"));
 
-                divCategory2.Attributes.Add("style", "display: flex;");
+                divCategory2.Attributes.Add("style", "display: block;");
                 divCategory3.Attributes.Add("style", "display: none;");
                 divCategory4.Attributes.Add("style", "display: none;");
                 divCategory5.Attributes.Add("style", "display: none;");
@@ -956,7 +956,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory3.DataBind();
                 ddlCategory3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 3----------", "0"));
 
-                divCategory3.Attributes.Add("style", "display: flex;");
+                divCategory3.Attributes.Add("style", "display: block;");
                 divCategory4.Attributes.Add("style", "display: none;");
                 divCategory5.Attributes.Add("style", "display: none;");
 
@@ -1020,9 +1020,9 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 4----------", "0"));
 
 
-                divCategory2.Attributes.Add("style", "display: flex;");
-                divCategory3.Attributes.Add("style", "display: flex;");
-                divCategory4.Attributes.Add("style", "display: flex;");
+                divCategory2.Attributes.Add("style", "display: block;");
+                divCategory3.Attributes.Add("style", "display: block;");
+                divCategory4.Attributes.Add("style", "display: block;");
                 divCategory5.Attributes.Add("style", "display: none;");
 
 
@@ -1085,10 +1085,10 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory5.DataBind();
                 ddlCategory5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 5----------", "0"));
 
-                divCategory2.Attributes.Add("style", "display: flex;");
-                divCategory3.Attributes.Add("style", "display: flex;");
-                divCategory4.Attributes.Add("style", "display: flex;");
-                divCategory5.Attributes.Add("style", "display: flex;");
+                divCategory2.Attributes.Add("style", "display: block;");
+                divCategory3.Attributes.Add("style", "display: block;");
+                divCategory4.Attributes.Add("style", "display: block;");
+                divCategory5.Attributes.Add("style", "display: block;");
 
 
 
@@ -2878,9 +2878,9 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             pnlTicket.Visible = true;
 
             pnlUpdateTicket.Visible = true;
-            btnUpdateTickView.CssClass = "btn btn-sm btnEnabled";
+            btnUpdateTickView.CssClass = "btn btn-sm btnEnabled  btn-outline-secondary ";
             pnlViewNotes.Visible = false;
-            btnViewNotes.CssClass = "btn btn-sm btnDisabled";
+            btnViewNotes.CssClass = "btn btn-sm btnDisabled  btn-outline-secondary ";
 
 
         }
@@ -2922,7 +2922,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             pnlUpdateTicket.Visible = false;
 
             pnlViewNotes.Visible = true;
-            btnViewNotes.CssClass = "btn btn-sm btnEnabled";
+            btnViewNotes.CssClass = "btn btn-sm btnEnabled  btn-outline-secondary ";
             btnUpdateTickView.Enabled = true;
 
             pnlTicket.Visible = false;
@@ -2937,11 +2937,11 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             pnlTaksAssociation.Visible = false;
             AddTicketNotes();
 
-            btnUpdateTickView.CssClass = "btn btn-sm btnDisabled";
-            btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-            btnDowntime.CssClass = "btn btn-sm btnDisabled";
-            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+            btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+            btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+            btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+            btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+            btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
 
         }
         catch (ThreadAbortException e2)
@@ -2970,7 +2970,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
 
         }
     }
-    protected void ImgBtnExport_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport_Click(object sender, EventArgs e)
     {
 
     }
@@ -3156,11 +3156,11 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
         pnlShowRollOutDetails.Visible = false;
         pnlTaksAssociation.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnEnabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
+        btnUpdateTickView.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
     }
 
     protected void btnImpactDetails_Click(object sender, EventArgs e)
@@ -3177,12 +3177,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
         pnlTaksAssociation.Visible = false;
         pnlViewNotes.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnEnabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled";
+        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
     }
 
     protected void btnRolloutPlan_Click(object sender, EventArgs e)
@@ -3198,12 +3198,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
         pnlTaksAssociation.Visible = false;
         pnlViewNotes.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnEnabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled";
+        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
 
     }
 
@@ -3345,12 +3345,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
 
         pnlTicket.Visible = true;
         pnlUpdateTicket.Visible = false;
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnEnabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled";
+        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
 
 
     }
@@ -3370,16 +3370,77 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
 
         pnlViewNotes.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled";
-        btnTaskAssociation.CssClass = "btn btn-sm btnEnabled";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled";
+        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
 
     }
     protected void btnAddTaskAssociationData_Click(object sender, EventArgs e)
     {
         AddNewRecordRowToGridForTask();
+    }
+
+    protected void btnViwpYres_Click(object sender, EventArgs e)
+    {
+        string output = RunPython();
+        txtPyoutput.Text = output;
+
+    }
+    protected string RunPython()
+    {
+        string output = "";
+        try
+        {
+            Process cmdProcess = new Process();
+            ProcessStartInfo cmdStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            cmdProcess.StartInfo = cmdStartInfo;
+            cmdProcess.Start();
+
+            using (StreamWriter sw = cmdProcess.StandardInput)
+            {
+                if (sw.BaseStream.CanWrite)
+                {
+                    // Execute your specific CMD commands here
+                    sw.WriteLine("cd /d C:\\YourScriptDirectory");
+                    sw.WriteLine("echo Running CMD commands");
+
+                    // Activate virtual environment
+                    sw.WriteLine("C:\\Users\\M6734\\Documents\\Abhishek_GenAI\\venv");
+
+                    // Run Python script with ticket number
+                    sw.WriteLine("python Summarization_GENAI.py '" + Convert.ToString(Request.QueryString["TicketId"]) + "'");
+
+                    sw.WriteLine("exit");
+                }
+            }
+            output = cmdProcess.StandardOutput.ReadToEnd();
+            string error = cmdProcess.StandardError.ReadToEnd();
+            cmdProcess.WaitForExit();
+            if (!string.IsNullOrEmpty(error))
+            {
+                //	MessageBox.Show("Error occurred:\n\n{error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //	MessageBox.Show("Commands and script executed successfully. Output:\n\n{output}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        catch (Exception ex)
+        {
+            //MessageBox.Show("An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        return output;
     }
 }

@@ -435,6 +435,25 @@ input::placeholder {
 .sidebar-wrapper .sidebar-nav .metismenu a .parent-icon {
   line-height: 1;
 }
+/* Custom scrollbar for the container */
+.table-container::-webkit-scrollbar {
+    width: 2px !important; /* Width of the scrollbar */
+    height: 2px !important; /* Height of the horizontal scrollbar */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #fff !important; /* Color of the scrollbar thumb */
+    border-radius: 0px !important; /* Roundness of the scrollbar thumb */
+}
+
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background-color: #fff !important; /* Color on hover */
+    }
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #181f4a !important; /* Background color of the scrollbar track */
+}
+
 .sidebar-wrapper .sidebar-nav .metismenu a .menu-title {
   margin-left: 10px;
 }

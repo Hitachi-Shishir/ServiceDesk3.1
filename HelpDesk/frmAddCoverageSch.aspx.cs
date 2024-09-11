@@ -16,70 +16,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
 {
     InsertErrorLogs inEr = new InsertErrorLogs();
     public enum MessageType { success, error, info, warning };
-    protected void ShowMessage(MessageType type, string Message)
-    {
-        ScriptManager.RegisterStartupScript(this, this.GetType(), System.Guid.NewGuid().ToString(), "Showalert('" + type + "','" + Message + "');", true);
-    }
-    protected override void OnInit(EventArgs e)
-    {
-        try
-        {
-            //Change your condition here
-            if (Session["Popup"] != null)
-            {
-                if (Session["Popup"].ToString() == "Insert")
-                {
-                    ShowMessage(MessageType.success, "Record Inserted Successfully!!");
-
-
-                }
-                if (Session["Popup"].ToString() == "Update")
-                {
-                    ShowMessage(MessageType.success, "Record Updated Successfully!!");
-
-
-                }
-                if (Session["Popup"].ToString() == "Delete")
-                {
-                    ShowMessage(MessageType.error, "Record Deleted Successfully!!");
-
-
-                }
-                if (Session["Popup"].ToString() == "Warning")
-                {
-                    ShowMessage(MessageType.warning, "Record Deleted Successfully!!");
-
-
-                }
-                Session.Remove("Popup");
-            }
-
-
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
-            }
-        }
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -88,7 +24,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
             {
                 if (!IsPostBack)
                 {
-
                     FillSLADetails();
                     pnlViewSLA.Visible = true;
                     btnViewSLA.CssClass = "btn btn-sm btnEnabled";
@@ -120,11 +55,13 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
 
     }
+
     private void FillSLADetails()
     {
         try
@@ -140,8 +77,10 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 this.gvSLA.DataSource = (object)null;
                 this.gvSLA.DataBind();
             }
-
-            GridFormat(SD_SLA);
+            if (SD_SLA.Rows.Count > 0)
+            {
+                GridFormat(SD_SLA);
+            }
         }
         catch (ThreadAbortException e2)
         {
@@ -163,7 +102,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -183,19 +123,7 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
         if (dt.Rows.Count > 0)
             gvSLA.FooterRow.TableSection = TableRowSection.TableFooter;
     }
-    private void Modal()
-    {
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        sb.Append(@"<script type='text/javascript'>");
-        sb.Append("$('#basicModal').modal('show');");
-        //  sb.Append("$('#basicModal').modal.appendTo('body').show('show')");
-        sb.Append("$('body').removeClass('modal-open');");
-        sb.Append("$('.modal-backdrop').remove();");
-        sb.Append(@"</script>");
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ModalScript", sb.ToString(), false);
 
-
-    }
     protected void ImgBtnExport_Click(object sender, ImageClickEventArgs e)
     {
         try
@@ -231,8 +159,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                     Response.End();
                 }
             }
-
-
         }
         catch (ThreadAbortException e2)
         {
@@ -248,7 +174,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     static long SLAID;
@@ -258,67 +185,55 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
         {
             if (e.CommandName == "DeleteSLA")
             {
-                //Determine the RowIndex of the Row whose Button was clicked.
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
-                //Get the value of column from the DataKeys using the RowIndex.
                 SLAID = Convert.ToInt64(gvSLA.DataKeys[rowIndex].Values["ID"]);
-
-                //try
-                //{
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                try
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("SD_spAddCoverageSch", con))
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", SLAID);
-
-                        cmd.Parameters.AddWithValue("@Option", "DeleteDeskCvrgSch");
-                        cmd.CommandTimeout = 180;
-                        int res = cmd.ExecuteNonQuery();
-                        if (res > 0)
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SD_spAddCoverageSch", con))
                         {
-                            pnlShowRqstType.Visible = false;
-                            //	lblsuccess.ForeColor = System.Drawing.Color.Green;
-                            //	lblsuccess.Text = PriorityName + " Deleted successfully";
-                            Session["Popup"] = "Delete";
-                            Response.Redirect(Request.Url.AbsoluteUri);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ID", SLAID);
+
+                            cmd.Parameters.AddWithValue("@Option", "DeleteDeskCvrgSch");
+                            cmd.CommandTimeout = 180;
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddCoverageSch.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                            }
+                            con.Close();
+                            FillSLADetails();
                         }
-
-
-                        //	ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('error','" + PriorityName + " Deleted successfully" + "');", true);
-
-                        //Response.Redirect(Request.Url.AbsoluteUri);
-                        con.Close();
-                        FillSLADetails();
-
                     }
                 }
-                //
-                //	}
-                //	catch (ThreadAbortException e2)
-                //	{
-                //		Console.WriteLine("Exception message: {0}", e2.Message);
-                //		Thread.ResetAbort();
-                //	}
-                //	catch (Exception ex)
-                //	{
-                //		if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-                //		{
+                catch (ThreadAbortException e2)
+                {
+                    Console.WriteLine("Exception message: {0}", e2.Message);
+                    Thread.ResetAbort();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+                    {
 
-                //		}
-                //		else
-                //		{
-                //			var st = new StackTrace(ex, true);
-                //			// Get the top stack frame
-                //			var frame = st.GetFrame(0);
-                //			// Get the line number from the stack frame
-                //			var line = frame.GetFileLineNumber();
-                //			inEr.InsertErrorLogsF(Session["UserName"].ToString()
-                //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                //			Response.Redirect("~/Error/Error.html");
-                //		}
-                //	}
+                    }
+                    else
+                    {
+                        var st = new StackTrace(ex, true);
+                        // Get the top stack frame
+                        var frame = st.GetFrame(0);
+                        // Get the line number from the stack frame
+                        var line = frame.GetFileLineNumber();
+                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    }
+                }
             }
 
 
@@ -375,14 +290,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                     txtBeginHour.Enabled = false;
                     txtEndHour.Enabled = false;
                 }
-
-
-
-
-
-
-
-
             }
         }
         catch (ThreadAbortException e2)
@@ -399,7 +306,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     Random r = new Random();
@@ -419,7 +327,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
-
                 using (SqlCommand cmd = new SqlCommand("SD_spAddCoverageSch", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -434,19 +341,11 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddCoverageSch.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
-
                 }
             }
-
-            //  Task ignoredAwaitableResult = this.Redirect();
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('info',' Inserted successfully');window.location.href='" + Request.RawUrl +"';", true);
-
-
-
-
         }
         catch (ThreadAbortException e2)
         {
@@ -468,7 +367,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -486,7 +386,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
             {
                 e.Row.Cells[6].Visible = true;
                 e.Row.Cells[7].Visible = false;
-
             }
         }
         catch (ThreadAbortException e2)
@@ -509,7 +408,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -537,7 +437,6 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
-
                 using (SqlCommand cmd = new SqlCommand("SD_spAddCoverageSch", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -554,10 +453,9 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                     if (res > 0)
                     {
                         Session["Popup"] = "Update";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddCoverageSch.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
-                    //  ErrorMessage(this, "Welcome", "Greeting");
-                    // ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('success','Data has been updated');", true);
                 }
             }
         }
@@ -581,7 +479,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -616,7 +515,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -630,6 +530,7 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
             btnViewSLA.CssClass = "btn btn-sm btnEnabled";
             btnViewSLA.Enabled = false;
             btnAddSLA.Enabled = true;
+            FillSLADetails();
         }
         catch (ThreadAbortException e2)
         {
@@ -645,7 +546,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void btnAddSLA_Click(object sender, EventArgs e)
@@ -696,7 +598,8 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }

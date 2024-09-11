@@ -14,14 +14,16 @@
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/pace.min.css" rel="stylesheet">
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/pace.min.js"></script>
     <!--plugins-->
-
-    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/metisMenu.min.css">
     <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/mm-vertical.css">
     <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/css/simplebar.css">
 
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-
+    
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet" />
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
 
     <!--bootstrap css-->
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -32,12 +34,12 @@
 
     <!--main css-->
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/bootstrap-extended.css" rel="stylesheet">
-    <link href="sass/main.css" rel="stylesheet">
-    <link href="sass/dark-theme.css" rel="stylesheet">
-    <link href="sass/blue-theme.css" rel="stylesheet">
-    <link href="sass/semi-dark.css" rel="stylesheet">
-    <link href="sass/bordered-theme.css" rel="stylesheet">
-    <link href="sass/responsive.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/main.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/dark-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/blue-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/semi-dark.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/bordered-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/responsive.css" rel="stylesheet">
 
     <%-- Plugins --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
@@ -49,9 +51,9 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-        .dataTables_filter {
+        /*.dataTables_filter {
             margin-top: -31px !important;
-        }
+        }*/
     </style>
 </head>
 <body>
@@ -967,7 +969,8 @@
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/select2/js/select2-custom.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
-
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/main.js"></script>
     <%--DATATABLE START--%>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
@@ -1013,38 +1016,38 @@
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/dashboard2.js"></script>
     <script>
         $(".datepicker").flatpickr({
-            dateFormat: "d-m-Y"  
+            dateFormat: "d-m-Y"
         });
 
         $(".time-picker").flatpickr({
             enableTime: true,
             noCalendar: true,
-            dateFormat: "d-m-Y H:i",  
+            dateFormat: "d-m-Y H:i",
         });
 
         $(".date-time").flatpickr({
             enableTime: true,
-            dateFormat: "d-m-Y H:i",  
+            dateFormat: "d-m-Y H:i",
         });
 
         $(".date-format").flatpickr({
             altInput: true,
             altFormat: "j F, Y",
-            dateFormat: "d-m-Y" 
+            dateFormat: "d-m-Y"
         });
 
         $(".date-range").flatpickr({
             mode: "range",
             altInput: true,
-            altFormat: "j F, Y", 
-            dateFormat: "d-m-Y"  
+            altFormat: "j F, Y",
+            dateFormat: "d-m-Y"
         });
 
         $(".date-inline").flatpickr({
             inline: true,
             altInput: true,
-            altFormat: "j F, Y", 
-            dateFormat: "d-m-Y"  
+            altFormat: "j F, Y",
+            dateFormat: "d-m-Y"
         });
     </script>
 

@@ -169,7 +169,7 @@ public partial class _Default : System.Web.UI.Page
                                 Session["OrgID"] = dt.Rows[0]["Org_ID"].ToString();
                                 Session["ISMfa"] = dt.Rows[0]["ISMfa"].ToString();
                                 Session["MFAStatus"] = dt.Rows[0]["MFAStatus"].ToString();
-                                if (Session["MFAStatus"].ToString() == "False" || Session["MFAStatus"].ToString() == "0" || Session["MFAStatus"].ToString() == "")
+                                if (Session["MFAStatus"].ToString().ToLower() == "false" || Session["MFAStatus"].ToString() == "0" || Session["MFAStatus"].ToString() == "")
                                 {
                                     Response.Redirect("/frmAllTickets.aspx");
 
@@ -244,11 +244,7 @@ public partial class _Default : System.Web.UI.Page
                 imgQrCode.Visible = false;
                 secretKey = GoogleAuthenticator.GetKeyAgainstUser(Session["UserID"].ToString());
             }
-            // Store the secret key in the user's account record in the database
-            // ... (code to save the secretKey to the user's account record)
-
             string otpAuthUrl = GoogleAuthenticator.GetOTPAuthUrl("Hitachi.SD", Session["LoginName"].ToString(), secretKey);
-
             imgQrCode.ImageUrl = "data:image/png;base64," + GoogleAuthenticator.GenerateQRCode(otpAuthUrl);
         }
         catch (ThreadAbortException e2)
@@ -320,13 +316,10 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             string userEmail = Session["EmailID"].ToString();
-
-            // Generate a random OTP (You can use a more secure random number generator)
             Random random = new Random();
             otp = random.Next(100000, 999999);
 
             string body = this.PopulateBody(Convert.ToString(otp), Session["User"].ToString());
-            //Send the OTP to the user's email
             emailSent = SendOTPEmail(userEmail, otp, body);
 
         }
