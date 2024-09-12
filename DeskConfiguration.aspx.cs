@@ -53,7 +53,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
 
     }
-
     #region Start Add Orgainsation
     private void FillOrgDetails()
     {
@@ -95,95 +94,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void LoadControl()
-    {
-        try
-        {
-            // pnlShowRqstType.Controls.Clear();
-            Control featuredProduct = Page.LoadControl("/HelpDesk/UserControl.ascx");
-            featuredProduct.ID = "1234";
-            pnlShowRqstType.Controls.Add(featuredProduct);
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            var st = new StackTrace(ex, true);
-            // Get the top stack frame
-            var frame = st.GetFrame(0);
-            // Get the line number from the stack frame
-            var line = frame.GetFileLineNumber();
-            inEr.InsertErrorLogsF(Session["UserName"].ToString()
-, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
-        }
-
-
-    }
-    private bool IsUserControl
-    {
-        get
-        {
-            if (ViewState["IsUserControl"] != null)
-            {
-                return (bool)ViewState["IsUserControl"];
-            }
-            else
-            {
-                return false;
-            }
-        }
-        set
-        {
-            ViewState["IsUserControl"] = value;
-        }
-    }
-    private void Modal()
-    {
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        sb.Append(@"<script type='text/javascript'>");
-        sb.Append("$('#basicModal').modal('show');");
-        //  sb.Append("$('#basicModal').modal.appendTo('body').show('show')");
-        sb.Append("$('body').removeClass('modal-open');");
-        sb.Append("$('.modal-backdrop').remove();");
-        sb.Append(@"</script>");
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ModalScript", sb.ToString(), false);
-
-
-    }
-    protected void ImgAddRequestType_Click(object sender, ImageClickEventArgs e)
-    {
-        try
-        {
-            //  pnlShowRqstType.Controls.Clear();
-            this.IsUserControl = true;
-
-            //  this.IsCategoryControl = false;
-
-            if (IsUserControl)
-                LoadControl();
-            this.Modal();
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            var st = new StackTrace(ex, true);
-            // Get the top stack frame
-            var frame = st.GetFrame(0);
-            // Get the line number from the stack frame
-            var line = frame.GetFileLineNumber();
-            inEr.InsertErrorLogsF(Session["UserName"].ToString()
-, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            Response.Redirect("~/Error/Error.html");
-        }
-    }
+    
     protected void ImgBtnExport_Click(object sender, ImageClickEventArgs e)
     {
         try
@@ -517,17 +428,14 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlReqType.Visible = true;
         pnlShowOrg.Visible = false;
         FillRequestTypeDetails();
-        FillOrganization();
-        if (Request.QueryString.ToString().Contains("ShowPanelAdd"))
-        {
-            
-        }
+        FillOrganization1();
+        ScriptManager.RegisterStartupScript(this, GetType(), "stepNext", "stepper1.next();", true);
     }
     #endregion End Add Orgainsation
 
     #region Add Request Type Start
 
-    private void FillOrganization()
+    private void FillOrganization1()
     {
         try
         {
@@ -700,7 +608,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    public static int ID;
+    public static Int64 ID;
     protected void gvReqType_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
@@ -732,8 +640,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         if (res > 0)
                         {
 
-                            //	lblsuccess.ForeColor = System.Drawing.Color.Green;
-                            //lblsuccess.Text = PriorityName + " Deleted successfully";
                             Session["Popup"] = "Delete";
                             Response.Redirect(Request.Url.AbsoluteUri);
                         }
@@ -781,7 +687,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
             Response.Redirect("~/Error/Error.html");
         }
     }
-
     protected void btnUpdateReqType_Click(object sender, EventArgs e)
     {
         try
@@ -804,8 +709,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         Session["Popup"] = "Update";
                         Response.Redirect(Request.Url.AbsoluteUri);
                     }
-                    //  ErrorMessage(this, "Welcome", "Greeting");
-                    // ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('success','Data has been updated');", true);
                 }
             }
         }
@@ -917,17 +820,659 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ViewState["IsUserOrgControl"] = value;
         }
     }
-
-    #endregion Add Request Type End
-
     protected void lnkPrev_Click(object sender, EventArgs e)
     {
         pnlReqType.Visible = false;
         pnlShowOrg.Visible = true;
+        ScriptManager.RegisterStartupScript(this, GetType(), "stepPrev", "stepper1.previous();", true);
     }
-
     protected void lnkNext2_Click(object sender, EventArgs e)
     {
         pnlReqType.Visible = false;
+        pnlAddStage.Visible = true;
+        FillOrganization();
+        FillStageDetails();
+        ScriptManager.RegisterStartupScript(this, GetType(), "stepNext", "stepper1.next();", true);
+    }
+    #endregion Add Request Type End
+
+    #region Stage Start
+    
+    private void FillStageDetailsCustomer(string OrgId)
+    {
+
+        try
+        {
+
+            DataTable SD_Stage = new FillSDFields().FillStageCustomer(OrgId); ;
+
+            if (SD_Stage.Rows.Count > 0)
+            {
+                //  this.lb.Text = dataTable.Rows.Count.ToString();
+                this.gvStage.DataSource = (object)SD_Stage;
+                this.gvStage.DataBind();
+            }
+            else
+            {
+                this.gvStage.DataSource = (object)null;
+                this.gvStage.DataBind();
+            }
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    private void FillOrganization()
+    {
+
+        try
+        {
+
+            DataTable SD_Org = new FillSDFields().FillOrganization(); ;
+
+            ddlOrg2.DataSource = SD_Org;
+            ddlOrg2.DataTextField = "OrgName";
+            ddlOrg2.DataValueField = "Org_ID";
+            ddlOrg2.DataBind();
+            ddlOrg2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    private void FillStageDetails()
+    {
+
+        //try
+        //{
+
+        DataTable SD_Stage = new FillSDFields().FillStage(); ;
+
+        if (SD_Stage.Rows.Count > 0)
+        {
+            //  this.lb.Text = dataTable.Rows.Count.ToString();
+            this.gvStage.DataSource = (object)SD_Stage;
+            this.gvStage.DataBind();
+        }
+        else
+        {
+            this.gvStage.DataSource = (object)null;
+            this.gvStage.DataBind();
+        }
+
+
+        //	}
+        //	catch (ThreadAbortException e2)
+        //	{
+        //		Console.WriteLine("Exception message: {0}", e2.Message);
+        //		Thread.ResetAbort();
+        //	}
+        //	catch (Exception ex)
+        //	{
+        //		if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+        //		{
+
+        //		}
+        //		else
+        //		{
+        //			var st = new StackTrace(ex, true);
+        //			// Get the top stack frame
+        //			var frame = st.GetFrame(0);
+        //			// Get the line number from the stack frame
+        //			var line = frame.GetFileLineNumber();
+        //			inEr.InsertErrorLogsF(Session["UserName"].ToString()
+        //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+        //			Response.Redirect("~/Error/Error.html");
+
+        //		}
+        //	}
+    }
+    protected void ddlRequestType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["SDRef"] = ddlRequestType.SelectedValue.ToString();
+
+
+    }
+    private void FillRequestType(long OrgId)
+    {
+
+        try
+        {
+
+            DataTable RequestType = new SDTemplateFileds().FillRequestType(OrgId);
+
+            ddlRequestType.DataSource = RequestType;
+            ddlRequestType.DataTextField = "ReqTypeRef";
+            ddlRequestType.DataValueField = "ReqTypeRef";
+            ddlRequestType.DataBind();
+            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void SaveDataSatge()
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SD_spAddStage", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", r.Next());
+                    cmd.Parameters.AddWithValue("@DeskRef", ddlRequestType.SelectedValue);
+                    cmd.Parameters.AddWithValue("@StageRef", ddlRequestType.SelectedValue + "||" + txtStageName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@StageCodeRef", txtStageName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@StageDesc", txtStageDesc.Text);
+                    cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg2.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "AddStage");
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            Response.Redirect(Request.Url.AbsoluteUri);
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                var frame = st.GetFrame(0);
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnInsertStage_Click(object sender, EventArgs e)
+    {
+        SaveDataSatge();
+    }
+    protected void gvStage_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "DeleteEx")
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                //Get the value of column from the DataKeys using the RowIndex.
+                ID = Convert.ToInt64(gvStage.DataKeys[rowIndex].Values["ID"]);
+                string Deskref = gvStage.Rows[rowIndex].Cells[1].Text;
+                string SeverityName = gvStage.Rows[rowIndex].Cells[2].Text;
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                    {
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SD_spAddStage", con))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ID", ID);
+                            cmd.Parameters.AddWithValue("@DeskRef", Deskref);
+                            cmd.Parameters.AddWithValue("@Option", "DeleteStage");
+                            cmd.CommandTimeout = 180;
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                pnlShowRqstType.Visible = false;
+                                lblsuccess.ForeColor = System.Drawing.Color.Green;
+                                lblsuccess.Text = SeverityName + " Deleted successfully";
+                                Session["Popup"] = "Delete";
+                                Response.Redirect(Request.Url.AbsoluteUri);
+                            }
+
+
+                            con.Close();
+                            FillStageDetails();
+
+                        }
+                    }
+                }
+                catch (ThreadAbortException e2)
+                {
+                    Console.WriteLine("Exception message: {0}", e2.Message);
+                    Thread.ResetAbort();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+                    {
+
+                    }
+                    else
+                    {
+                        var st = new StackTrace(ex, true);
+                        // Get the top stack frame
+                        var frame = st.GetFrame(0);
+                        // Get the line number from the stack frame
+                        var line = frame.GetFileLineNumber();
+                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                        Response.Redirect("~/Error/Error.html");
+
+                    }
+                }
+
+            }
+            if (e.CommandName == "SelectStage")
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                ID = Convert.ToInt64(gvStage.DataKeys[rowIndex].Values["ID"]);
+                GridViewRow row = gvStage.Rows[rowIndex];
+                Label OrgID = (row.FindControl("lblOrgFk") as Label);
+                if (ddlOrg.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
+                {
+                    ddlOrg.SelectedValue = OrgID.Text;
+                    FillRequestType(Convert.ToInt64(OrgID.Text));
+                }
+                ddlRequestType.SelectedValue = gvStage.Rows[rowIndex].Cells[1].Text;
+                txtStageName.Text = gvStage.Rows[rowIndex].Cells[2].Text;
+                txtStageDesc.Text = gvStage.Rows[rowIndex].Cells[3].Text;
+
+
+                btnInsertStage.Visible = false;
+                btnUpdateStage.Visible = true;
+                ShowAddStagePanel();
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void ImgBtnExport2_Click(object sender, ImageClickEventArgs e)
+    {
+        try
+        {
+
+            DataTable dt = new DataTable("GridView_Data");
+            foreach (System.Web.UI.WebControls.TableCell cell in gvStage.HeaderRow.Cells)
+            {
+                dt.Columns.Add(cell.Text);
+            }
+            foreach (GridViewRow row in gvStage.Rows)
+            {
+                dt.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
+                }
+            }
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename=SD_Stage.xlsx");
+                using (MemoryStream MyMemoryStream = new MemoryStream())
+                {
+                    wb.SaveAs(MyMemoryStream);
+                    MyMemoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void gvStage_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        //e.Row.Cells[4].BackColor = clr;
+
+        try
+        {
+
+            if (e.Row.RowIndex >= 0)
+            {
+                //	System.Drawing.Color clr = ColorTranslator.FromHtml(e.Row.Cells[4].ToString());
+                //System.Drawing.Color color = System.Drawing.ColorTranslator.FromHtml(e.Row.Cells[4].ToString());
+                //e.Row.Cells[4].BackColor = System.Drawing.Color.FromArgb(int.Parse(e.Row.Cells[4].ToString().Replace("#","").Trim()));
+                //e.Row.Cells[3].Attributes["style"] = "background-color:"+ color;
+            }
+
+
+            if (Session["UserScope"].ToString() == "Master")
+            {
+                e.Row.Cells[5].Visible = true;
+                e.Row.Cells[6].Visible = true;
+            }
+
+            if (Session["UserScope"].ToString() == "Technician" || Session["UserScope"].ToString() == "Admin")
+            {
+                e.Row.Cells[5].Visible = true;
+                e.Row.Cells[6].Visible = false;
+
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            var st = new StackTrace(ex, true);
+            // Get the top stack frame
+            var frame = st.GetFrame(0);
+            // Get the line number from the stack frame
+            var line = frame.GetFileLineNumber();
+            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+            Response.Redirect("~/Error/Error.html");
+        }
+    }
+    protected void btnUpdateStage_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand("SD_spAddStage", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    cmd.Parameters.AddWithValue("@DeskRef", ddlRequestType.SelectedValue);
+                    cmd.Parameters.AddWithValue("@StageRef", ddlRequestType.SelectedValue + "||" + txtStageName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@StageCodeRef", txtStageName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@StageDesc", txtStageDesc.Text);
+                    cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg.SelectedValue.ToString());
+                    //cmd.Parameters.AddWithValue("@InsertBy", Session["UserName"]);
+                    //cmd.Parameters.AddWithValue("@IsActive", '1');
+                    cmd.Parameters.AddWithValue("@Option", "UpdateStage");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Update";
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                    //  ErrorMessage(this, "Welcome", "Greeting");
+                    // ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('success','Data has been updated');", true);
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnCancel2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.Url.AbsoluteUri);
+    }
+    protected void ShowAddStagePanel()
+    {
+        try
+        {
+            pnlAddStage.Visible = true;
+            btnAddStage.CssClass = "btn btn-sm btnEnabled";
+            btnViewStage.CssClass = "btn btn-sm btnDisabled";
+            btnViewStage.Enabled = true;
+            btnAddStage.Enabled = false;
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnViewStage_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            pnlAddStage.Visible = false;
+            btnAddStage.CssClass = "btn btn-sm btnEnabled";
+            btnViewStage.CssClass = "btn btn-sm btnDisabled";
+            btnViewStage.Enabled = false;
+            btnAddStage.Enabled = true;
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnAddStage_Click(object sender, EventArgs e)
+    {
+        ShowAddStagePanel();
+    }
+    protected void imgbtnAddOrg_Click(object sender, ImageClickEventArgs e)
+    {
+
+    }
+    protected void ddlOrg_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+
+            FillRequestType(Convert.ToInt64(ddlOrg2.SelectedValue));
+        }
+
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    #endregion Stage End
+
+
+    protected void lnkbtnPrev1_Click(object sender, EventArgs e)
+    {
+        pnlReqType.Visible = true;
+        pnlAddStage.Visible = false;
+    }
+
+    protected void lnkbtnNext1_Click(object sender, EventArgs e)
+    {
+
     }
 }
