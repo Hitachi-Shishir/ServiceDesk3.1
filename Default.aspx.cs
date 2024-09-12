@@ -77,29 +77,11 @@ public partial class _Default : System.Web.UI.Page
 
                                 DateTime s = Convert.ToDateTime(values[2]);
                                 DateTime now = DateTime.Now;
-
-                                //if (Convert.ToDateTime(values[2]) > DateTime.Now && values[4].ToString() == MachineSerialNo)
-                                //{
-
-                                //}
-
-                                //else
-                                //{
-                                //    btnLogin.Visible = false;
-                                //    Response.Redirect("frmAMSLicence.aspx", false);
-
-                                //}
                             }
                             else
                             {
-                                //btnLogin.Visible = false;
-                                //Response.Redirect("frmAMSLicence.aspx", false);
-
                             }
-
                         }
-
-
                     }
                 }
             }
@@ -147,11 +129,12 @@ public partial class _Default : System.Web.UI.Page
                                             Session["Login_Session_Id"] = Guid.NewGuid().ToString();
                                             database.ExecuteNonQuery("UPDATE SD_User_Master SET LoginStatus='1' ,LoginSessionID='" + Session["Login_Session_Id"].ToString().Trim() + "' WHERE LoginName='" + txtUserName.Text.Trim() + "'");
                                         }
-                                        //else
-                                        //{
-                                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "CallMyFunction", "Confirm()", true);
-                                        //    return;
-                                        //}
+                                        else
+                                        {
+                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "CallMyFunction", "Confirm()", true);
+                                            btnLogout_Click(null, null);
+                                            return;
+                                        }
                                     }
                                     else
                                     {
@@ -163,7 +146,7 @@ public partial class _Default : System.Web.UI.Page
                                 Session["LoginName"] = dt.Rows[0]["LoginName"].ToString();
                                 Session["SDRole"] = dt.Rows[0]["SDRole"].ToString();
                                 Session["Location"] = dt.Rows[0]["LocCode"].ToString();
-                                Session["UserID"] = dt.Rows[0]["UserID"].ToString();
+                                Session["UserID"] = dt.Rows[0]["UserID"].ToString(); ;
                                 Session["UserScope"] = dt.Rows[0]["UserScope"].ToString();
                                 Session["UserType"] = dt.Rows[0]["UserType"].ToString();
                                 Session["UserRole"] = dt.Rows[0]["UserRole"].ToString();
@@ -171,14 +154,12 @@ public partial class _Default : System.Web.UI.Page
                                 Session["OrgID"] = dt.Rows[0]["Org_ID"].ToString();
                                 Session["ISMfa"] = dt.Rows[0]["ISMfa"].ToString();
                                 Session["MFAStatus"] = dt.Rows[0]["MFAStatus"].ToString();
-                                if (Session["MFAStatus"].ToString().ToLower() == "false" || Session["MFAStatus"].ToString() == "0" || Session["MFAStatus"].ToString() == "")
+                                if (Session["MFAStatus"].ToString() == "False" || Session["MFAStatus"].ToString() == "0")
                                 {
                                     Response.Redirect("/frmAllTickets.aspx");
-
                                 }
                                 else
                                 {
-                                    chkRemb2FA.InputAttributes["class"] = "form-check-input";
                                     string chkremb2fa = Convert.ToString(dt.Rows[0]["RememberISMfa"]);
                                     string Serialno = Convert.ToString(dt.Rows[0]["Serialno"]);
                                     string Currentsystemserialno = GetBIOSserNo();
@@ -205,15 +186,14 @@ public partial class _Default : System.Web.UI.Page
                             }
                             else
                             {
-                                //  Response.Write("data ni ara");
                                 ClientScript.RegisterStartupScript(Page.GetType(), "validation", "<script language='javascript'>alert('Invalid Username or Password')</script>");
                             }
-
                         }
                     }
                 }
             }
         }
+
         catch (ThreadAbortException e2)
         {
             Console.WriteLine("Exception message: {0}", e2.Message);
@@ -224,9 +204,10 @@ public partial class _Default : System.Web.UI.Page
         {
             Response.Write(ex.Message.ToString());
         }
+        string username = System.Environment.UserName;
     }
     private static readonly string Issuer = "TicketVantage";
-    private static string secretKey = "";
+    //private static string secretKey="";
     InsertSecretKey InsKey = new InsertSecretKey();
     private void Call2FAParameters()
     {
@@ -239,15 +220,19 @@ public partial class _Default : System.Web.UI.Page
             {
                 // Generate and display the QR code for MFA setup
                 imgQrCode.Visible = true;
-                secretKey = GoogleAuthenticator.GenerateSecretKey();
+                ViewState["secretKey"] = GoogleAuthenticator.GenerateSecretKey();
 
             }
             else
             {
                 imgQrCode.Visible = false;
-                secretKey = GoogleAuthenticator.GetKeyAgainstUser(Session["UserID"].ToString());
+                ViewState["secretKey"] = GoogleAuthenticator.GetKeyAgainstUser(Session["UserID"].ToString());
             }
-            string otpAuthUrl = GoogleAuthenticator.GetOTPAuthUrl("Hitachi.SD", Session["LoginName"].ToString(), secretKey);
+            // Store the secret key in the user's account record in the database
+            // ... (code to save the secretKey to the user's account record)
+
+            string otpAuthUrl = GoogleAuthenticator.GetOTPAuthUrl("Hitachi.SD", Session["LoginName"].ToString(), Convert.ToString(ViewState["secretKey"]));
+
             imgQrCode.ImageUrl = "data:image/png;base64," + GoogleAuthenticator.GenerateQRCode(otpAuthUrl);
         }
         catch (ThreadAbortException e2)
@@ -257,22 +242,27 @@ public partial class _Default : System.Web.UI.Page
         }
 
     }
-
-
-
-
-
-
     protected void btn2FA_Click(object sender, EventArgs e)
     {
-        var totp = new Totp(Base32Encoding.ToBytes(secretKey));
+        if (string.IsNullOrEmpty(Convert.ToString(ViewState["secretKey"])))
+        {
+            Response.Redirect("/default.aspx");
+        }
+        var totp = new Totp(Base32Encoding.ToBytes(Convert.ToString(ViewState["secretKey"])));
         long timeStepMatched;
         // Validate the OTP
         bool isValid = totp.VerifyTotp(txt2fa.Text, out timeStepMatched);
 
         if (isValid)
         {
-            InsKey.InsertKeyForUser(Session["UserID"].ToString(), secretKey);
+            InsKey.InsertKeyForUser(Session["UserID"].ToString(), Convert.ToString(ViewState["secretKey"]));
+            if (chkRemb2FA.Checked)
+            {
+                //string username = System.Environment.UserName;
+                string systemserialno = GetBIOSserNo();
+                string sql1 = "UPDATE SD_User_Master set RememberISMfa=1, RememberISMfaTime=GETDATE(), Serialno='" + systemserialno + "' where LoginName='" + txtUserName.Text.Trim() + "'";
+                database.ExecuteNonQuery(sql1);
+            }
             Response.Redirect("/frmAllTickets.aspx");
         }
         else
@@ -319,10 +309,13 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             string userEmail = Session["EmailID"].ToString();
+
+            // Generate a random OTP (You can use a more secure random number generator)
             Random random = new Random();
             otp = random.Next(100000, 999999);
 
             string body = this.PopulateBody(Convert.ToString(otp), Session["User"].ToString());
+            //Send the OTP to the user's email
             emailSent = SendOTPEmail(userEmail, otp, body);
 
         }
@@ -333,7 +326,6 @@ public partial class _Default : System.Web.UI.Page
         try
         {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
-            //Fetching Settings from WEB.CONFIG file.  
             string emailSender = ConfigurationManager.AppSettings["UserName"].ToString();
             string emailSenderPassword = ConfigurationManager.AppSettings["Password"].ToString();
             string emailSenderHost = ConfigurationManager.AppSettings["Host"].ToString();
@@ -342,8 +334,6 @@ public partial class _Default : System.Web.UI.Page
             var server = new SmtpClient("localhost");
 
             server.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
-
-            //Fetching Email Body Text from EmailTemplate File.  
             string FilePath = Server.MapPath(@"/SDTemplates/PasswordResetOTP.htm");
             StreamReader str = new StreamReader(FilePath);
             string MailText = str.ReadToEnd();
@@ -454,10 +444,7 @@ public partial class _Default : System.Web.UI.Page
 
                     cmd.Parameters.AddWithValue("@Pass", txtConfResetPass.Text);
                     cmd.Parameters.AddWithValue("@LoginName", Session["UserLogin"].ToString());
-
-
                     cmd.Parameters.AddWithValue("@EmailID", Session["EmailID"].ToString());
-
                     cmd.Parameters.AddWithValue("@Option", "UpdatePassword");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
@@ -466,7 +453,6 @@ public partial class _Default : System.Web.UI.Page
                         Session["Popup"] = "Update";
                         Response.Redirect(Request.Url.AbsoluteUri);
                     }
-
                 }
             }
         }
@@ -502,18 +488,14 @@ public partial class _Default : System.Web.UI.Page
             Console.WriteLine("An OTP has been sent to your email. Please check and enter the OTP.");
             Console.Write("Enter OTP: ");
             int userEnteredOTP = Convert.ToInt32(txtOTP.Text);
-
-            // Verify the OTP entered by the user
             if (userEnteredOTP == otp)
             {
                 lblotpmsg.Text = "OTP is verified successfully";
-                // OTP is verified, redirect the user to the password reset page
                 ResetPassword();
                 Console.WriteLine("Password reset successful.");
             }
             else
             {
-
                 Response.Write("OTP verification failed. Please try again.");
             }
         }
@@ -542,7 +524,6 @@ public partial class _Default : System.Web.UI.Page
                             sda.Fill(dt);
                             if (dt.Rows.Count > 0)
                             {
-
                                 Session["User"] = dt.Rows[0]["UserName"].ToString();
                                 Session["UserLogin"] = dt.Rows[0]["LoginName"].ToString();
                                 Session["EmailID"] = dt.Rows[0]["EmailID"].ToString();
@@ -555,9 +536,6 @@ public partial class _Default : System.Web.UI.Page
                                 txtOTP.Text = "";
                                 txtResetPass.Text = "";
                                 txtConfResetPass.Text = "";
-
-                                //Response.Redirect("/frmAllTickets.aspx");
-
                             }
                             else
                             {
@@ -581,7 +559,6 @@ public partial class _Default : System.Web.UI.Page
             Response.Write(ex.Message.ToString());
         }
     }
-
     protected void resendButton_Click(object sender, EventArgs e)
     {
         ForgotPassword();
