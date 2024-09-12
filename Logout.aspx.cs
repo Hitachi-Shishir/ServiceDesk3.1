@@ -19,6 +19,6 @@ public partial class Logout : System.Web.UI.Page
         this.Session.Remove("UserScope");
         this.Session.Remove("UserName");
         this.Session.Clear();
-        this.Response.Redirect("Default.aspx");
+        this.Response.Redirect("~/Default.aspx");
     }
 }

@@ -22,7 +22,9 @@ public partial class _Default : System.Web.UI.Page
     InsertErrorLogs inEr = new InsertErrorLogs();
     protected void Page_Load(object sender, EventArgs e)
     {
-        // CheckKey();
+        // CheckKey();iugi
+        chk.InputAttributes["class"] = "form-check-input";
+
     }
     private string Decrypt(string cipherText)
     {
@@ -176,6 +178,7 @@ public partial class _Default : System.Web.UI.Page
                                 }
                                 else
                                 {
+                                    chkRemb2FA.InputAttributes["class"] = "form-check-input";
                                     string chkremb2fa = Convert.ToString(dt.Rows[0]["RememberISMfa"]);
                                     string Serialno = Convert.ToString(dt.Rows[0]["Serialno"]);
                                     string Currentsystemserialno = GetBIOSserNo();
