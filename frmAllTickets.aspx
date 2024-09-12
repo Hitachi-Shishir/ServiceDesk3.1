@@ -325,22 +325,15 @@
     </asp:UpdatePanel>
 
     <script type="text/javascript">
-        function grdHeaderCheckBox(objRef) {
-            var grd = objRef.parentNode.parentNode.parentNode;
-            var inputList = grd.getElementsByTagName("input");
-            for (var i = 0; i < inputList.length; i++) {
-                var row = inputList[i].parentNode.parentNode;
-                if (inputList[i].type == "checkbox" && objRef != inputList[i]) {
-                    if (objRef.checked) {
-                        inputList[i].checked = true;
-                    }
-                    else {
-                        inputList[i].checked = false;
-                    }
+        function grdHeaderCheckBox(chkAll) {
+            var checkboxes = document.querySelectorAll("#<%= gvAllTickets.ClientID %> input[type='checkbox']");
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] !== chkAll) {
+                    checkboxes[i].checked = chkAll.checked;
                 }
             }
         }
-    </script>
+</script>
     <script type="text/javascript">
         function Showalert(imtype, imtitle) {
             // alert('Call JavaScript function from codebehind');
