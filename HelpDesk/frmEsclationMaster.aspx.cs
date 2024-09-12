@@ -92,7 +92,7 @@ public partial class frmEsclationMaster : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
