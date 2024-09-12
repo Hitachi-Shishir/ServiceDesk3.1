@@ -3,7 +3,32 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+        <style>
+        .badage-sucess > span{
+           color:white !important;
+           background-image: linear-gradient(310deg, #17ad37, #98ec2d) !important;
+           padding:2px 5px;
+           border-radius:5px
+        } 
+        .badage-yellow > span{
+           color:white !important;
+               background: linear-gradient(310deg, #f7971e, #ffd200) !important;
+           padding:2px 5px;
+           border-radius:5px
+        }
+        .badage-red > span{
+           color:white !important;
+             background: linear-gradient(310deg, #ee0979, #ff6a00) !important;
+           padding:2px 5px;
+           border-radius:5px
+        }
+        .badage-info > span{
+           color:white !important;
+           background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
+           padding:2px 5px;
+           border-radius:5px
+        }
+    </style>
     <script>
         function getxtValue(that) {
             document.getElementById("lable").innerHTML = that.value;
@@ -49,15 +74,17 @@
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item active" aria-current="page"><i class="bx bx-home-alt"></i>All Tickets</li>
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Tickets</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">All Tickets </li>
                         </ol>
                     </nav>
                 </div>
 
             </div>
 
-            <div class="row ">
-                <div class="col-md-12 ">
+
+      
 
                     <div class="card ">
 
@@ -85,23 +112,23 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Status</label>
-                                        <asp:DropDownList ID="ddlStatus" runat="server" ToolTip="Status" CssClass="form-select form-select-sm single-select-optgroup-field" >
+                                        <asp:DropDownList ID="ddlStatus" runat="server" ToolTip="Status" CssClass="form-select form-select-sm single-select-optgroup-field">
                                         </asp:DropDownList>
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Created From</label>
-                                        <asp:TextBox ID="txtFrmdate" class="form-control form-control-sm datepicker" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtFrmdate" class="form-control form-control-sm date-time" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Created To</label>
-                                        <asp:TextBox ID="txtTodate" class="form-control form-control-sm datepicker" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtTodate" class="form-control form-control-sm date-time" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Action</label>
                                         <div class="btn-group">
                                             <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnGridFilter_Click" />
-                                            <asp:Button ID="btnDelteBulkTicket" runat="server" Text="Delete" ToolTip="Delete Ticket" class="btn btn-sm btn-inverse-danger" OnClick="btnDelteBulkTicket_Click" />
-                                            <asp:Button ID="btnPickupTicket" runat="server" Text="PickUp" ToolTip="Assign Ticket To Self" class="btn btn-sm btn-inverse-primary" OnClick="btnPickupTicket_Click" />
+                                            <asp:Button ID="btnDelteBulkTicket" runat="server" Text="Delete" ToolTip="Delete Ticket" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnDelteBulkTicket_Click" />
+                                            <asp:Button ID="btnPickupTicket" runat="server" Text="PickUp" ToolTip="Assign Ticket To Self" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnPickupTicket_Click" />
                                         </div>
 
                                     </div>
@@ -185,9 +212,9 @@
 
                             <div class="row mt-3">
                                 <div class="col-md-12">
-                                    <div class="table-responsive">
+                                    <div class="table-responsive table-container">
                                         <!-- Removed the div with table classes -->
-                                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table1 table-striped table-bordered table-head-fixed text-nowrap table-hover" DataKeyNames="ID"
+                                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table1 table-striped table-sm table table-head-fixed text-nowrap " DataKeyNames="ID"
                                             AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" HeaderStyle-Height="25px"
                                             OnRowDataBound="gvAllTickets_RowDataBound" OnRowEditing="gvAllTickets_RowEditing">
                                             <%--AllowCustomPaging="True"  OnSorting="gvAllTickets_Sorting"   AllowSorting="True"--%>
@@ -264,8 +291,7 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
+        
 
 
             <div class="modal fade" id="CategoryModal">

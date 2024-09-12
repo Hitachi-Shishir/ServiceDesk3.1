@@ -106,7 +106,7 @@
                         <div class="cl-md-12">
                             <div class="table-responsive table-container">
                                 <asp:GridView ID="grv" HeaderStyle-Height="25px" OnRowDataBound="grv_RowDataBound" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                    runat="server" Width="100%"  Class="data-table table table-striped table-bordered table-sm text-nowrap">
+                                    runat="server" Width="100%"  Class="data-table table table-striped  table-sm text-nowrap">
                                     <Columns>
                                         <asp:TemplateField HeaderStyle-Width="10%" HeaderText="Sr No">
                                             <ItemTemplate>

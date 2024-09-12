@@ -30,7 +30,7 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlOrg.Items.Insert(0, new ListItem("----Select----", "0"));
         }
         catch (Exception ex)
         {
@@ -144,7 +144,7 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
             ddlUser.DataTextField = "UserName";
             ddlUser.DataValueField = "UserID";
             ddlUser.DataBind();
-            ddlUser.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlUser.Items.Insert(0, new ListItem("----Select----", "0"));
         }
         catch (Exception ex)
         {

@@ -2,15 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 
-    <%--    <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" />
-    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css" />
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />--%>
-    <!-- overlayScrollbars -->
-    <%--<link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css" />--%>
-    <!-- Theme style -->
-    <%-- <link rel="stylesheet" href="../Scripts/chosen.css" />
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css" />
-    <link rel="stylesheet" href="../dist/css/ServiceDeskCustom.css" />--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
@@ -45,7 +36,7 @@
                                 <asp:ImageButton ID="imgcolumnfilter" runat="server" CssClass="ml-1" AlternateText="Column Chooser" Visible="false" Width="25px" ToolTip="Select Column" ImageAlign="left" ImageUrl="~/Images/New folder/columnfilter.png" OnClick="imgcolumnfilter_Click" />
 
                                 <%--<asp:ImageButton ID="imgRowFilter" runat="server" AlternateText="Column Chooser" ToolTip="Select Column" Width="15px" ImageAlign="left" ImageUrl="~/Images/New folder/funnelfilter.png" OnClick="imgRowFilter_Click" OnClientClick="togglePanel(); return false;" />--%>
-                                <asp:LinkButton ID="imgRowFilter" runat="server" OnClick="imgRowFilter_Click" ToolTip="Select Column" OnClientClick="togglePanel(); return false;" class="btn btn-outline-secondary btn-sm"><i class="fadeIn animated bx bx-filter-alt"></i></asp:LinkButton>
+                                <asp:LinkButton ID="imgRowFilter" runat="server" OnClick="imgRowFilter_Click" ToolTip="Select Column" OnClientClick="togglePanel(); return false;" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-filter"></i></asp:LinkButton>
 
 
                             </div>
@@ -109,7 +100,7 @@
                     <asp:Panel ID="pnlRowFilter" runat="server" Visible="false">
                         <div class="row mt-1 gx-2 gy-3">
                             <div class="col-md-2 col-6">
-                                <asp:TextBox ID="txtTicketNoFltr" runat="server" CssClass="form-control form-control-sm p-0 pl-1" placeholder="Enter Ticket No"></asp:TextBox>
+                                <asp:TextBox ID="txtTicketNoFltr" runat="server" CssClass="form-control form-control-sm " placeholder="Enter Ticket No"></asp:TextBox>
                             </div>
                             <div class="col-md-3 col-6">
                                 <asp:TextBox ID="txtTickSumFltr" runat="server" CssClass="form-control form-control-sm" placeholder="Enter  Summary"></asp:TextBox>
@@ -127,7 +118,7 @@
                                 <%--<asp:ImageButton ID="" runat="server" ImageUrl="~/Images/reset1.png"  />--%>
                                 <div class="btn-group">
                                     <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" CssClass="btn btn-outline-secondary btn-sm  " OnClick="btnGridFilter_Click" />
-                                    <asp:LinkButton ID="imgRemoveFilter" runat="server" OnClick="imgRemoveFilter_Click" class="btn btn-outline-secondary btn-sm" ToolTip="Removes Filter" ><i class="fadeIn animated bx bx-filter-alt"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="imgRemoveFilter" runat="server" OnClick="imgRemoveFilter_Click" class="btn btn-outline-secondary btn-sm" ToolTip="Removes Filter" ><i class="fa-solid fa-filter-circle-xmark"></i></asp:LinkButton>
 
                                 </div>
                             </div>
@@ -163,8 +154,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="table-responsive table-container mt-3" style="height: 400px;">
-                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap table-hover table-sm" DataKeyNames="ID" AllowCustomPaging="True"
+                            <div class="table-responsive table-container mt-3" >
+                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm data-table" DataKeyNames="ID" AllowCustomPaging="True"
                                     AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
                                     <Columns>
                                         <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30" ItemStyle-Height="5px">
