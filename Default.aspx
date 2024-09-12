@@ -14,19 +14,19 @@
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/pace.min.js"></script>
 
     <!--plugins-->
-    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/metismenu/mm-vertical.css">
     <!--bootstrap css-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     <!--main css-->
-    <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
-    <link href="sass/main.css" rel="stylesheet">
-    <link href="sass/dark-theme.css" rel="stylesheet">
-    <link href="sass/blue-theme.css" rel="stylesheet">
-    <link href="sass/responsive.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/main.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020//dark-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/blue-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/responsive.css" rel="stylesheet">
 </head>
 
 <body>
@@ -236,7 +236,7 @@
 
     <!--authentication-->
 
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>
 
     <script>
     $(document).ready(function () {
