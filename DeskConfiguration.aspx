@@ -61,8 +61,6 @@
                 <div class="row">
                     <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
                         <div class="col-md-3">
-
-
                             <!-- Step 1 -->
                             <asp:LinkButton ID="stepper1trigger1" runat="server" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' OnClick="StepButton_Click1">
                          <div class="bs-stepper-circle">1</div>
@@ -70,10 +68,8 @@
                              <h5 class="mb-0 steper-title">Organisation Info</h5>
                              <p class="mb-0 steper-sub-title">Enter Org Details</p>
                          </div>
-                        
                             </asp:LinkButton>
                         </div>
-
                         <div class="col-md-3">
                             <div class="bs-stepper-line"></div>
 
@@ -128,8 +124,18 @@
                         <asp:LinkButton ID="stepper1trigger6" runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
                         <div class="bs-stepper-circle">6</div>
                         <div class="">
-                            <h5 class="mb-0 steper-title">Add Severity</h5>
-                            <p class="mb-0 steper-sub-title">Severity Details</p>
+                            <h5 class="mb-0 steper-title">Add Priority</h5>
+                            <p class="mb-0 steper-sub-title">Priority Details</p>
+                        </div>
+                        </asp:LinkButton>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Step 6 -->
+                        <asp:LinkButton ID="stepper1trigger7" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
+                        <div class="bs-stepper-circle">7</div>
+                        <div class="">
+                            <h5 class="mb-0 steper-title">Add Category</h5>
+                            <p class="mb-0 steper-sub-title">Category Details</p>
                         </div>
                         </asp:LinkButton>
                     </div>
@@ -193,7 +199,6 @@
                                     </div>
                                     <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                         Contact PersonII Name : <span title="*"></span>
-
                                     </label>
 
                                     <div class="col-sm-4 pr-5">
@@ -891,7 +896,310 @@
             </asp:Panel>
             <%--Add Severity End--%>
 
+            <%--Add Priority Start--%>
+            <asp:Panel ID="pnlAddPriority" runat="server" Visible="false">
+                <asp:UpdatePanel ID="updatepanel6" runat="server">
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Organization: <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:DropDownList ID="ddlOrg5" runat="server" CssClass="form-control form-control-sm chzn-select" AutoPostBack="true" OnSelectedIndexChanged="ddlOrg5_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Request Type: <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="ddlRequestType" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:DropDownList ID="ddlRequestTypePriority" runat="server" CssClass="form-control form-control-sm chzn-select" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestTypePriority_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Priority Name : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtpriority" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:TextBox ID="txtpriority" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Priority Description : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPriorityDescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-10 pr-5">
+                                                <asp:TextBox ID="txtPriorityDescription" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-3  offset-5">
+                                                <asp:Button ID="btnInsertPriority" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsertPriority_Click" ValidationGroup="Priority" />
+                                                <asp:Button ID="btnUpdatePriority" runat="server" Text="Update" Visible="false" class="btn btn-sm savebtn" OnClick="btnUpdatePriority_Click" ValidationGroup="Priority" />
+                                                <asp:Button ID="btnCancel6" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel6_Click" CausesValidation="false" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousSeverity" runat="server" OnClick="lnkPreviousSeverity_Click">Previous</asp:LinkButton>
+                                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextCategory" runat="server" OnClick="lnkNextCategory_Click">Next</asp:LinkButton>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8 graphs">
+                                                <div class="xs">
+                                                    <div class="well1 white">
+                                                        <div class="card card-default">
+                                                            <div class="card-body">
+                                                                <div class="row ">
+                                                                    <div class="col-md-4">
+                                                                        <asp:Label ID="Label15" runat="server" Text="Priority Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <asp:Label ID="Label16" runat="server"></asp:Label>
+                                                                        <asp:Label ID="Label17" runat="server"></asp:Label>
+                                                                    </div>
+                                                                    <div class="col-md-2 ">
+                                                                        <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
+                                                                            <label class="mr-2 ml-1 mb-0">Export</label>
+                                                                            <asp:LinkButton ID="ImgBtnExport7" runat="server" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport7_Click">Import</asp:LinkButton>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <asp:GridView GridLines="None" ID="gvPriority" runat="server" DataKeyNames="PriorityRef" AutoGenerateColumns="false" CssClass="table table-bordered"
+                                                                    Width="100%" OnRowCommand="gvPriority_RowCommand" OnRowDataBound="gvPriority_RowDataBound">
+                                                                    <Columns>
+                                                                        <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                                            <ItemTemplate>
+                                                                                <%#Container.DataItemIndex+1 %>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
+                                                                        <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
+                                                                        <asp:BoundField DataField="PriorityCodeRef" HeaderText="Priority Name" NullDisplayText="NA" />
+                                                                        <asp:BoundField DataField="PriorityDesc" HeaderText="Priority Description" NullDisplayText="NA" />
+                                                                        <asp:TemplateField HeaderText=" Organization">
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                                                                                <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
+                                                                        <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                                        <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                                    </Columns>
+                                                                </asp:GridView>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ContentTemplate>
 
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="ImgBtnExport7" />
+                        <asp:PostBackTrigger ControlID="ddlRequestType" />
+                        <asp:PostBackTrigger ControlID="btnInsertPriority" />
+                        <asp:PostBackTrigger ControlID="gvPriority" />
+                        <asp:PostBackTrigger ControlID="ddlOrg" />
+                        <asp:PostBackTrigger ControlID="btnUpdatePriority" />
+                        <asp:PostBackTrigger ControlID="lnkPreviousSeverity" />
+                        <asp:PostBackTrigger ControlID="lnkNextCategory" />
+
+                    </Triggers>
+
+                </asp:UpdatePanel>
+            </asp:Panel>
+            <%--Add Priority End--%>
+
+            <%--Add Category Start--%>
+            <asp:Panel ID="pnlCategory" runat="server" Visible="false">
+                <asp:UpdatePanel ID="updatepanel7" runat="server">
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-md-12  ">
+                                <div class="card card-default">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="labelcolorl1">Category</label>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-4 ">
+                                                <label class="control-label ">
+                                                    Organization:
+
+                                                </label>
+                                                <asp:DropDownList ID="ddlOrg6" runat="server" CssClass="form-control form-control-sm" AutoPostBack="true" Enabled="false" OnSelectedIndexChanged="ddlOrg6_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="control-label ">
+                                                    Request Type:
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="ddlRequestType" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                                </label>
+                                                <asp:DropDownList ID="ddlRequestTypeCategory" runat="server" CssClass="form-control form-control-sm chzn-select" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestTypeCategory_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class=" col-form-label">
+                                                    Category: <span title="*"></span>
+                                                    <asp:ImageButton ID="imgbtnAddParentCategory" runat="server" ImageUrl="~/Images/plus.png" ToolTip="Add Category" OnClick="imgbtnAddParentCategory_Click" />
+                                                    <asp:ImageButton ID="imgbtnSaveParentCategory" runat="server" ImageUrl="~/Images/save.png" ToolTip="Save Category" OnClick="imgbtnSaveParentCategory_Click" ValidationGroup="SaveCatI" Enabled="false" />
+                                                    <asp:ImageButton ID="imgbtnUpdateParentCategory" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateParentCategory_Click" ValidationGroup="SaveCatI" Visible="false" />
+                                                    <asp:ImageButton ID="imgbtnEditParentCategory" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditParentCategory_Click" />
+                                                    <asp:ImageButton ID="imgbtnCancelParent" runat="server" Enabled="false" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelParent_Click" />
+                                                    <asp:RequiredFieldValidator ID="rfvtxtParentCategory" runat="server" ControlToValidate="txtParentCategory" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatI"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="rfvddlParentCategory" runat="server" ControlToValidate="ddlParentCategory" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatII"></asp:RequiredFieldValidator>
+                                                </label>
+                                                <asp:TextBox ID="txtParentCategory" runat="server" CssClass="form-control  form-control-sm" ToolTip="Add Category" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlParentCategory" runat="server" CssClass="form-control form-control-sm chzn-select" AutoPostBack="true" OnSelectedIndexChanged="ddlParentCategory_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-md-4">
+                                                <label class=" col-form-label">
+                                                    Category II: <span title="*"></span>
+                                                    <asp:ImageButton ID="imgbtnCatII" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnCatII_Click" ValidationGroup="AddCatII" />
+                                                    <asp:ImageButton ID="imgbtnSaveCatII" runat="server" ImageUrl="~/Images/save.png" ToolTip="Save Category" OnClick="imgbtnSaveCatII_Click" ValidationGroup="SaveCatII" Enabled="false" />
+                                                    <asp:ImageButton ID="imtbtnUpdateCatII" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imtbtnUpdateCatII_Click" ValidationGroup="SaveCatII" Visible="false" />
+                                                    <asp:ImageButton ID="imgbtnEditCatII" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatII_Click" />
+                                                    <asp:ImageButton ID="imgbtnCancelCatII" runat="server" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatII_Click" />
+                                                    <asp:RequiredFieldValidator ID="rfvtxtCatII" runat="server" ControlToValidate="txtCatII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatII"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="rfvddlCatII" runat="server" ControlToValidate="ddlCatII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIII"></asp:RequiredFieldValidator>
+                                                </label>
+                                                <asp:TextBox ID="txtCatII" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatII" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlCatII" runat="server" CssClass="form-control form-control-sm chzn-select" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="ddlCatII_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-md-4">
+                                                <label class=" col-form-label">
+                                                    Category III: <span title="*"></span>
+                                                    <asp:ImageButton ID="imgAddCatIII" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgAddCatIII_Click" ValidationGroup="AddCatIII" />
+                                                    <asp:ImageButton ID="imgSaveCatIII" runat="server" ImageUrl="~/Images/save.png" OnClick="imgSaveCatIII_Click" ValidationGroup="SaveCatIII" Enabled="false" />
+                                                    <asp:ImageButton ID="imgbtnUpdateCatIII" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateCatIII_Click" ValidationGroup="SaveCatIII" Visible="false" />
+                                                    <asp:ImageButton ID="imgbtnEditCatIII" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatIII_Click" />
+                                                    <asp:ImageButton ID="imgbtnCancelCatIII" runat="server" Enabled="false" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatIII_Click" />
+                                                    <asp:RequiredFieldValidator ID="rfvtxtCatLevelIII" runat="server" ControlToValidate="txtCatLevelIII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIII"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="rfvddlCateLevelIII" runat="server" ControlToValidate="ddlCateLevelIII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIV"></asp:RequiredFieldValidator>
+                                                </label>
+                                                <asp:TextBox ID="txtCatLevelIII" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatIII" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlCateLevelIII" runat="server" CssClass="form-control form-control-sm chzn-select" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="ddlCateLevelIII_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-md-4">
+                                                <label class=" col-form-label">
+                                                    Category IV: <span title="*"></span>
+                                                    <asp:ImageButton ID="imgbtnCatelevelIV" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnCatelevelIV_Click" ValidationGroup="AddCatIV" />
+                                                    <asp:ImageButton ID="imgbtnSaveCateLvlIV" runat="server" ImageUrl="~/Images/save.png" OnClick="imgbtnSaveCateLvlIV_Click" ValidationGroup="SaveCatIV" Enabled="false" />
+                                                    <asp:ImageButton ID="imgbtnUpdateCateLvIV" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateCateLvIV_Click" ValidationGroup="SaveCatIV" Visible="false" />
+                                                    <asp:ImageButton ID="imgbtnEditCatLvIV" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatLvIV_Click" />
+                                                    <asp:ImageButton ID="imgbtnCancelCatIV" runat="server" Enabled="false" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatIV_Click" />
+                                                    <asp:RequiredFieldValidator ID="rfvtxtCateLevelIV" runat="server" ControlToValidate="txtCateLevelIV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIV"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="rfvddlCateLevelIV" runat="server" ControlToValidate="ddlCateLevelIV" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatV"></asp:RequiredFieldValidator>
+                                                </label>
+                                                <asp:TextBox ID="txtCateLevelIV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatIV" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlCateLevelIV" runat="server" CssClass="form-control form-control-sm chzn-select" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="ddlCateLevelIV_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-md-4">
+
+                                                <label class=" col-form-label">
+                                                    Category V: <span title="*"></span>
+                                                    <asp:ImageButton ID="imgbtnAddCatV" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnAddCatV_Click" ValidationGroup="AddCatV" />
+                                                    <asp:ImageButton ID="imgbtnSaveCatV" runat="server" ImageUrl="~/Images/save.png" OnClick="imgbtnSaveCatV_Click" ValidationGroup="SaveCatV" Enabled="false" />
+                                                    <asp:ImageButton ID="imgbtnUpdateCatV" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateCatV_Click" ValidationGroup="SaveCatV" Visible="false" />
+                                                    <asp:ImageButton ID="imgbtnEditCatV" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatV_Click" />
+                                                    <asp:ImageButton ID="imgbtnCancelCatV" runat="server" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatV_Click" />
+                                                    <asp:RequiredFieldValidator ID="rfvtxtCatV" runat="server" ControlToValidate="txtCatV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatV"></asp:RequiredFieldValidator>
+                                                </label>
+                                                <asp:TextBox ID="txtCatV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatV" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlCatV" runat="server" CssClass="form-control form-control-sm chzn-select" Enabled="false">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-2 offset-10 ">
+                                                <asp:Button ID="btnClose7" runat="server" Text="Close" class="btn btn-danger" OnClick="btnClose7_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex align-items-center gap-3">
+                                <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousPriority" runat="server" OnClick="lnkPreviousPriority_Click">Previous</asp:LinkButton>
+                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextResolution" runat="server" OnClick="lnkNextResolution_Click">Next</asp:LinkButton>
+                            </div>
+                        </div>
+                        <asp:HiddenField ID="hdnVarCategoryI" runat="server" />
+                        <asp:HiddenField ID="hdnVarCategoryII" runat="server" />
+                        <asp:HiddenField ID="hdnVarCategoryIII" runat="server" />
+                        <asp:HiddenField ID="hdnVarCategoryIV" runat="server" />
+                        <asp:HiddenField ID="hdnVarCategoryV" runat="server" />
+                    </ContentTemplate>
+
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="ddlRequestType" />
+                        <%--Parent Controls  Category I Controls--%>
+                        <asp:PostBackTrigger ControlID="ddlParentCategory" />
+                        <asp:PostBackTrigger ControlID="imgbtnAddParentCategory" />
+                        <asp:PostBackTrigger ControlID="imgbtnSaveParentCategory" />
+                        <asp:PostBackTrigger ControlID="imgbtnEditParentCategory" />
+                        <asp:PostBackTrigger ControlID="imgbtnCancelParent" />
+                        <%--Parent Controls  Category II Controls--%>
+                        <asp:PostBackTrigger ControlID="ddlCatII" />
+                        <asp:PostBackTrigger ControlID="imgbtnCatII" />
+                        <asp:PostBackTrigger ControlID="imgbtnSaveCatII" />
+                        <asp:PostBackTrigger ControlID="imgbtnEditCatII" />
+                        <asp:PostBackTrigger ControlID="imgbtnCancelCatII" />
+                        <%--Parent Controls  Category III Controls--%>
+                        <asp:PostBackTrigger ControlID="ddlCateLevelIII" />
+                        <asp:PostBackTrigger ControlID="imgAddCatIII" />
+                        <asp:PostBackTrigger ControlID="imgSaveCatIII" />
+                        <asp:PostBackTrigger ControlID="imgbtnEditCatIII" />
+                        <asp:PostBackTrigger ControlID="imgbtnCancelCatIII" />
+
+                        <%--Parent Controls  Category IV Controls--%>
+                        <asp:PostBackTrigger ControlID="ddlCateLevelIV" />
+                        <asp:PostBackTrigger ControlID="imgbtnCatelevelIV" />
+                        <asp:PostBackTrigger ControlID="imgbtnSaveCateLvlIV" />
+                        <asp:PostBackTrigger ControlID="imgbtnEditCatLvIV" />
+                        <asp:PostBackTrigger ControlID="imgbtnCancelCatIV" />
+                        <%--Parent Controls  Category V Controls--%>
+
+                        <asp:PostBackTrigger ControlID="imgbtnAddCatV" />
+                        <asp:PostBackTrigger ControlID="imgbtnSaveCatV" />
+                        <asp:PostBackTrigger ControlID="imgbtnEditCatV" />
+                        <asp:PostBackTrigger ControlID="imgbtnCancelCatV" />
+                        <asp:PostBackTrigger ControlID="lnkPreviousPriority" />
+                        <asp:PostBackTrigger ControlID="lnkNextResolution" />
+                    </Triggers>
+                </asp:UpdatePanel>
+            </asp:Panel>
+            <%--Add Category End--%>
         </div>
     </div>
 

@@ -873,6 +873,7 @@ public partial class frmAllTickets : System.Web.UI.Page
                             Response.Write("<script type='text/javascript'>");
                             Response.Write("window.open('/frmEditTicketbyAssigne.aspx?TicketId=" + TicketNumber + "&redirected=true&Desk=" + ddlRequestType.SelectedValue + "&NamelyId=" + ddlOrg.SelectedValue + "','_blank');");
                             Response.Write("</script>");
+                            this.GetTicket(1, 500, "creationDate", true);
                         }
                         else if (chkRow.Checked == false)
                         {
