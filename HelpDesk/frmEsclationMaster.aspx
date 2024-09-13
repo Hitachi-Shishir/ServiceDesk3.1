@@ -132,19 +132,20 @@
                      </asp:TemplateField>
                      <%--<asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />--%>
                      <asp:TemplateField HeaderText="Edit">
-                     <ItemTemplate>
-                     <asp:LinkButton ID="lnkEdit" runat="server" CommandName="UpdateEcslevel">
-                     <i class="fa-solid fa-edit"></i>
-                     </asp:LinkButton>
-                     </ItemTemplate>
-                     </asp:TemplateField>
-<asp:TemplateField HeaderText="Delete">
     <ItemTemplate>
-        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEcslevel" OnClientClick="return confirm('Are you sure you want to delete this item?');">
-         <i class="fa-solid fa-xmark text-danger"></i>
+        <asp:LinkButton ID="lnkEdit" runat="server" CommandName="UpdateEcslevel" CommandArgument="<%# Container.DataItemIndex %>">
+            <i class="fa-solid fa-edit"></i> <!-- FontAwesome icon -->
         </asp:LinkButton>
     </ItemTemplate>
 </asp:TemplateField>
+<asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEcslevel" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="return confirm('Are you sure you want to delete this item?');">
+            <i class="fa-solid fa-xmark text-danger"></i> <!-- FontAwesome delete icon -->
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
+
                      </Columns>
                      <%--<RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="10px" />
                         <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />

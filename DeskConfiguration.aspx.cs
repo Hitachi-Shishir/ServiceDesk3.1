@@ -3064,7 +3064,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
         else
         {
-            ddlOrg.Enabled = true;
+            ddlOrg6.Enabled = true;
         }
         DataBind();
     }
@@ -3261,7 +3261,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             {
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(@"SELECT CategoryCodeRef,
-           Categoryref FROM [dbo].fnGetCategoryFullPathForDesk('" + ddlRequestType.SelectedValue + "','" + ddlOrg.SelectedValue + "', 1) where Level=1   order by Categoryref asc", con))
+           Categoryref FROM [dbo].fnGetCategoryFullPathForDesk('" + ddlRequestTypeCategory.SelectedValue + "','" + ddlOrg6.SelectedValue + "', 1) where Level=1   order by Categoryref asc", con))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter adp = new SqlDataAdapter(cmd))

@@ -39,7 +39,7 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
 
     public void getData()
     {
-        string sql = "select u.UserID,UserName,LoginName,Designation,o.OrgName, RememberISMfa, u.ISMfa," +
+        string sql = "select u.UserID,UserName,LoginName,Designation,o.OrgName, RememberISMfa, u.ISMfa,mf.MFAStatus," +
             " DATEDIFF(DAY, Cast(RememberISMfaTime as date), cast(getdate() as date)) - 30 RemainingDays, " +
             "mf.SecretKey from SD_User_Master u left join SD_OrgMaster o on u.Org_ID = o.Org_ID " +
             "left join SD_MFa mf on mf.UserID = u.UserID ";
@@ -112,27 +112,30 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             Image imgIsMfaStatus = (Image)e.Row.FindControl("imgIsMfaStatus");
-            bool isMfaEnabled = Convert.ToBoolean(DataBinder.Eval(e.Row.DataItem, "ISMfa"));
+            object isMfaEnabledObj = DataBinder.Eval(e.Row.DataItem, "MFAStatus");
             object secretKey = DataBinder.Eval(e.Row.DataItem, "SecretKey");
 
-            if (secretKey == DBNull.Value && isMfaEnabled)
+            // Convert MFAStatus to a boolean, handle null or 0 as disabled (false)
+            bool isMfaEnabled = (isMfaEnabledObj != null && isMfaEnabledObj != DBNull.Value && Convert.ToBoolean(isMfaEnabledObj));
+
+            // Check SecretKey for null or DBNull.Value
+            if ((secretKey == null || secretKey == DBNull.Value) && isMfaEnabled)
             {
                 imgIsMfaStatus.ImageUrl = "~/assets/icon/pngwing.com.png";
-                imgIsMfaStatus.ToolTip = "2 FA is Enable but not Registered !";
+                imgIsMfaStatus.ToolTip = "2 FA is Enabled but not Registered!";
             }
             else if (isMfaEnabled)
             {
                 imgIsMfaStatus.ImageUrl = "~/assets/icon/checkmark.png";
-                imgIsMfaStatus.ToolTip = "2 FA is Enable and Registered.";
+                imgIsMfaStatus.ToolTip = "2 FA is Enabled and Registered.";
             }
             else
             {
                 imgIsMfaStatus.ImageUrl = "~/assets/icon/cross.png";
-                imgIsMfaStatus.ToolTip = "2 FA is Disabled !";
+                imgIsMfaStatus.ToolTip = "2 FA is Disabled!";
             }
         }
     }
-
 
     public void getUser()
     {
@@ -193,7 +196,7 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
         {
 
             string sql = "update SD_Mfa set SecretKey=null, MFAStatus='1' where UserID='" + UserID + "'" +
-                        "update SD_User_Master set ISMfa='1' where UserID='" + UserID + "'";
+                        "update SD_User_Master set ISMfa='0' where UserID='" + UserID + "'";
             database.ExecuteNonQuery(sql);
         }
         getData();

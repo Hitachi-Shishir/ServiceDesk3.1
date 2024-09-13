@@ -105,8 +105,9 @@
                     <div class="row py-2" id="MFA" runat="server" visible="false">
                         <div class="cl-md-12">
                             <div class="table-responsive table-container">
-                                <asp:GridView ID="grv" HeaderStyle-Height="25px" OnRowDataBound="grv_RowDataBound" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                    runat="server" Width="100%"  Class="data-table table table-striped  table-sm text-nowrap">
+                                <asp:GridView ID="grv" HeaderStyle-Height="25px" OnRowDataBound="grv_RowDataBound" ShowHeaderWhenEmpty="true" 
+                                    AutoGenerateColumns="false" runat="server" Width="100%"  
+                                    Class="data-table table table-striped  table-sm text-nowrap">
                                     <Columns>
                                         <asp:TemplateField HeaderStyle-Width="10%" HeaderText="Sr No">
                                             <ItemTemplate>
@@ -116,7 +117,7 @@
                                         <asp:TemplateField HeaderText="User Name">
                                             <ItemTemplate>
                                                 <asp:HiddenField ID="hdnuid" Value='<%#Eval("UserID")%>' runat="server" />
-                                                <asp:HiddenField ID="hdnismfa" Value='<%#Eval("ISMfa")%>' runat="server" />
+                                                <asp:HiddenField ID="hdnismfa" Value='<%#Eval("MFAStatus")%>' runat="server" />
                                                 <asp:Label ID="lblUserName" runat="server" Text='<%#Eval("UserName")%>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
