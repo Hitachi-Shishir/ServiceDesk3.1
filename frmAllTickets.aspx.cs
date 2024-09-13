@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Activities.Statements;
+using System.Globalization;
 
 public partial class frmAllTickets : System.Web.UI.Page
 {
@@ -1068,25 +1069,20 @@ public partial class frmAllTickets : System.Web.UI.Page
             string filterExpression = "";
             string FromDate = "";
             string ToDate = "";
-            bool isFromDateValid = false;
-            bool isToDateValid = false;
-            string todate = "";
-            string dateFormat = "dd-MM-yyyy";
+            string todate ="";
+            string inputFormat = "MM-dd-yyyy";
             if (txtFrmdate.Text != "")
             {
-                DateTime frmdate;
-                isFromDateValid = DateTime.TryParseExact(txtFrmdate.Text, dateFormat, null, System.Globalization.DateTimeStyles.None, out frmdate);
-                FromDate = frmdate.ToString("yyyy-MM-dd HH:mm:ss");
+                //FromDate = Convert.ToDateTime(txtFrmdate.Text).ToString("yyyy-MM-dd");
+                FromDate = DateTime.ParseExact(txtFrmdate.Text, inputFormat, CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+
             }
             if (txtTodate.Text != "")
             {
-                DateTime tdate;
-                isToDateValid = DateTime.TryParseExact(txtTodate.Text, dateFormat, null, System.Globalization.DateTimeStyles.None, out tdate);
-                ToDate = tdate.ToString("yyyy-MM-dd HH:mm:ss");
-                DateTime Todat = tdate.AddHours(24);
-                todate = Todat.ToString("yyyy-MM-dd HH:mm:ss");
+                ToDate = DateTime.ParseExact(txtTodate.Text, inputFormat, CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                todate = DateTime.ParseExact(ToDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).AddHours(23).ToString("yyyy-MM-dd HH:mm:ss");
             }
-            if (isFromDateValid && isToDateValid)
+            if (txtFrmdate.Text!="" && txtTodate.Text != "")
             {
                 filterExpression += @"CreationDate >= '" + FromDate + "' AND CreationDate <= '" + todate + "' AND ";
             }

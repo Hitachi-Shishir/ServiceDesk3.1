@@ -20,6 +20,10 @@ public partial class Site : System.Web.UI.MasterPage
     {
         try
         {
+            if (Session["UserName"]==null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
             string Login_Session_Id = Convert.ToString(Session["Login_Session_Id"]);
             if (Login_Session_Id != "")
             {
@@ -29,7 +33,7 @@ public partial class Site : System.Web.UI.MasterPage
                 {
                     Session.Abandon();
                     Session.RemoveAll();
-                    Response.Redirect("~/Default.aspx");
+                    Response.Redirect("~/Default.aspx", true);
                 }
             }
 
@@ -354,6 +358,72 @@ public partial class Site : System.Web.UI.MasterPage
     //        }
     //    }
     //}
+    //protected void rptCategories_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    //{
+    //    if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+    //    {
+    //        if (allCategories != null)
+    //        {
+    //            DataRowView drv = e.Item.DataItem as DataRowView;
+    //            string ID = drv["MenuID"].ToString();
+    //            string parentMenuLocation = drv["MenuLocation"].ToString();
+    //            string menuIcon = drv["MenuIcon"].ToString(); // Get icon class from the database
+
+    //            Label lblName = e.Item.FindControl("lblName") as Label;
+    //            if (lblName != null)
+    //            {
+    //                lblName.Text = drv["IconName"].ToString();
+    //            }
+
+    //            bool isParentActive = IsCurrentPage(parentMenuLocation);
+
+    //            DataRow[] rows = allCategories.Select("ParentID=" + ID, "MenuName");
+    //            if (rows.Length > 0)
+    //            {
+    //                StringBuilder sb = new StringBuilder();
+    //                sb.Append("<ul>");
+
+    //                bool hasActiveChild = false;
+    //                foreach (var item in rows)
+    //                {
+    //                    string menuLocation = item["MenuLocation"].ToString();
+    //                    string menuName = item["MenuName"].ToString();
+    //                    string subMenuIcon = item["MenuIcon"].ToString(); // Get child menu icon class
+    //                    bool isCurrentPage = IsCurrentPage(menuLocation);
+    //                    string cssClass = isCurrentPage ? "active" : "";
+    //                    if (isCurrentPage) hasActiveChild = true;
+
+    //                    // Append submenu item with arrow_right icon
+    //                    sb.Append("<li><a href='" + menuLocation + "' class='" + cssClass + "'><i class='material-icons-outlined'>arrow_right</i>" + menuName + "</a></li>");
+    //                }
+
+    //                sb.Append("</ul>");
+
+    //                Literal ltrlSubMenu = e.Item.FindControl("ltrlSubMenu") as Literal;
+    //                if (ltrlSubMenu != null)
+    //                {
+    //                    ltrlSubMenu.Text = sb.ToString();
+    //                }
+
+    //                // Set parent menu item classes
+    //                if (isParentActive || hasActiveChild)
+    //                {
+    //                    var parentLi = e.Item.FindControl("parentLi") as HtmlGenericControl;
+    //                    if (parentLi != null)
+    //                    {
+    //                        parentLi.Attributes["class"] += " menu-open";
+    //                    }
+
+    //                    var parentMenu = e.Item.FindControl("parentmenu") as HtmlAnchor;
+    //                    if (parentMenu != null)
+    //                    {
+    //                        parentMenu.Attributes["class"] += " active";
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
     protected void rptCategories_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -361,6 +431,8 @@ public partial class Site : System.Web.UI.MasterPage
             if (allCategories != null)
             {
                 DataRowView drv = e.Item.DataItem as DataRowView;
+                if (drv == null) return;
+
                 string ID = drv["MenuID"].ToString();
                 string parentMenuLocation = drv["MenuLocation"].ToString();
                 string menuIcon = drv["MenuIcon"].ToString(); // Get icon class from the database
@@ -380,7 +452,7 @@ public partial class Site : System.Web.UI.MasterPage
                     sb.Append("<ul>");
 
                     bool hasActiveChild = false;
-                    foreach (var item in rows)
+                    foreach (DataRow item in rows)
                     {
                         string menuLocation = item["MenuLocation"].ToString();
                         string menuName = item["MenuName"].ToString();
@@ -390,7 +462,7 @@ public partial class Site : System.Web.UI.MasterPage
                         if (isCurrentPage) hasActiveChild = true;
 
                         // Append submenu item with arrow_right icon
-                        sb.Append("<li><a href='" + menuLocation + "' class='" + cssClass + "'><i class='material-icons-outlined'>arrow_right</i>" + menuName + "</a></li>");
+                        sb.Append($"<li><a href='{menuLocation}' class='{cssClass}'><i class='material-icons-outlined'>arrow_right</i>{menuName}</a></li>");
                     }
 
                     sb.Append("</ul>");
@@ -401,25 +473,42 @@ public partial class Site : System.Web.UI.MasterPage
                         ltrlSubMenu.Text = sb.ToString();
                     }
 
+                    // Handle parent menu
+                    if (parentMenuLocation != "#" && !string.IsNullOrEmpty(parentMenuLocation))
+                    {
+                        // Set href to the actual URL if available
+                        var parentMenu = e.Item.FindControl("parentmenu") as HtmlAnchor;
+                        if (parentMenu != null)
+                        {
+                            parentMenu.HRef = parentMenuLocation;
+                            parentMenu.Attributes["class"] = parentMenu.Attributes["class"] + (isParentActive ? " active" : "");
+                        }
+                    }
+                    else
+                    {
+                        // Handle case where parentMenuLocation is "#" or empty
+                        var parentMenu = e.Item.FindControl("parentmenu") as HtmlAnchor;
+                        if (parentMenu != null)
+                        {
+                            parentMenu.Attributes["class"] = parentMenu.Attributes["class"] + (isParentActive ? " menu-open" : "");
+                            parentMenu.Attributes["href"] = "javascript:void(0);"; // Prevent default action
+                        }
+                    }
+
                     // Set parent menu item classes
                     if (isParentActive || hasActiveChild)
                     {
                         var parentLi = e.Item.FindControl("parentLi") as HtmlGenericControl;
                         if (parentLi != null)
                         {
-                            parentLi.Attributes["class"] += " menu-open";
-                        }
-
-                        var parentMenu = e.Item.FindControl("parentmenu") as HtmlAnchor;
-                        if (parentMenu != null)
-                        {
-                            parentMenu.Attributes["class"] += " active";
+                            parentLi.Attributes["class"] = parentLi.Attributes["class"] + " menu-open";
                         }
                     }
                 }
             }
         }
     }
+
 
 
 
