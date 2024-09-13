@@ -18,38 +18,6 @@ public partial class frmAddIncident : System.Web.UI.Page
 {
     Random r = new Random();
     InsertErrorLogs inEr = new InsertErrorLogs();
-    public enum MessageType { success, error, info, warning };
-    protected void ShowMessage(MessageType type, string Message)
-    {
-        ScriptManager.RegisterStartupScript(this, this.GetType(), System.Guid.NewGuid().ToString(), "Showalert('" + type + "','" + Message + "');", true);
-    }
-    protected override void OnInit(EventArgs e)
-    {
-        try
-        {
-            //Change your condition here
-            if (Session["Popup"] != null)
-            {
-                if (Session["Popup"].ToString() == "Insert")
-                {
-                    ShowMessage(MessageType.success, "Ticket Generated  Successfully!!");
-
-
-                }
-
-                Session.Remove("Popup");
-                //Session.Remove("hdnCategoryID.Value");
-            }
-            //	ShowCustomFields();
-
-
-        }
-        catch (Exception ex)
-        {
-            ExceptionLogging.SendErrorToText(ex);
-
-        }
-    }
     DataTable oddNumberCstmFlds;
     DataTable EvenNumberCstmFlds;
     DataTable oddNumberDdlCstmFlds;
@@ -108,7 +76,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -148,7 +117,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -226,7 +196,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -292,7 +263,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -355,7 +327,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -438,7 +411,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -472,7 +446,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -526,7 +501,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -580,7 +556,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+                    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -707,7 +684,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -780,8 +758,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
-
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -846,8 +824,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
-
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -902,8 +880,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
-
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -956,7 +934,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -1034,7 +1013,8 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1075,7 +1055,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1116,7 +1096,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1155,7 +1135,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1289,7 +1269,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            lblErrorMsg.Text = "Something Went Wrong Please try again.";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     public static string TicketRef;
@@ -1321,8 +1301,9 @@ public partial class frmAddIncident : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        string msg = "Your Ticket has been Created, Your Ticket No is " + TicketRef + "";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddIncident.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("'" + msg + "'")}'); setTimeout(function() {{ window.location.reload(); }}, 3000); }}", true);
                     }
                 }
             }
@@ -1345,7 +1326,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1471,7 +1452,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                         int res = cmd.ExecuteNonQuery();
                         string ticketnumber = cmd.Parameters["@Ticketref"].Value.ToString();
                         string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
-                        TicketRef = ticketnumber; 
+                        TicketRef = ticketnumber;
                         ScriptCall();
                         if (res > 1 && string.IsNullOrEmpty(ErrorChk))
                         {
@@ -1484,7 +1465,9 @@ public partial class frmAddIncident : System.Web.UI.Page
                             ADDMailinDB(ticketnumber);
                             AutoAssign(ticketnumber);
                             msg = "Ticket has been Created, Your Ticket Number is '" + TicketRef + "'.";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + HttpUtility.JavaScriptStringEncode(msg) + "');window.location ='frmAddIncident.aspx';", true);
+                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + HttpUtility.JavaScriptStringEncode(msg) + "');window.location ='frmAddIncident.aspx';", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddIncident.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("'" + msg + "'")}'); setTimeout(function() {{ window.location.reload(); }}, 3000); }}", true);
 
                         }
                         else
@@ -1510,7 +1493,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            lblErrorMsg.Text = "Something Went Wrong Please try again.";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void CloudTicketDetails()
@@ -1590,7 +1573,7 @@ public partial class frmAddIncident : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
         , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            lblErrorMsg.Text = "Something Went Wrong Please try again.";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     private void ADDMailinDB(string ticketNumber)
@@ -1633,7 +1616,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1680,7 +1663,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1723,7 +1706,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1761,7 +1744,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1800,7 +1783,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -1837,7 +1820,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                lblErrorMsg.Text = "Something Went Wrong Please try again.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -2391,5 +2374,5 @@ public partial class frmAddIncident : System.Web.UI.Page
         }
     }
 
-    
+
 }
