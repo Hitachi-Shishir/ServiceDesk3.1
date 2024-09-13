@@ -1,7 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAllArchiveTickets.aspx.cs" Inherits="frmAllArchiveTickets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-
+        <style>
+    .badage-sucess > span{
+       color:white !important;
+       background-image: linear-gradient(310deg, #17ad37, #98ec2d) !important;
+       padding:2px 5px;
+       border-radius:5px
+    } 
+    .badage-yellow > span{
+       color:white !important;
+           background: linear-gradient(310deg, #f7971e, #ffd200) !important;
+       padding:2px 5px;
+       border-radius:5px
+    }
+    .badage-red > span{
+       color:white !important;
+         background: linear-gradient(310deg, #ee0979, #ff6a00) !important;
+       padding:2px 5px;
+       border-radius:5px
+    }
+    .badage-info > span{
+       color:white !important;
+       background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
+       padding:2px 5px;
+       border-radius:5px
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
@@ -9,19 +34,19 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="breadcrumb-title pe-3">Tickets</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Tickets</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Archive Ticket </li>
+                        <ol class="breadcrumb mb-0 p-0">                            
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> Archive Ticket </li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="card ">
                 <div class="card-body">
+                    <div class="card border bg-transparent shadow-none mb-3">
+                        <div class="card-body">
                     <asp:Panel ID="pnlgridrow" runat="server">
                         <div class="row">
                             <div class="col-md-12" style="border-bottom: none">
@@ -45,7 +70,7 @@
                                 <asp:DropDownList ID="ddlOrg" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrg_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </div>
-                            <div class="col-md-3 col-6">
+                            <div class="col-md-3 ">
                                 <label class="form-label">Request Type</label>
                                 <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
                                 </asp:DropDownList>
@@ -63,7 +88,7 @@
            
 										</button>--%>
                             </div>
-                            <div class="col-md-3 col-6">
+                            <div class="col-md-3 col-6 ">
                                 <label class="form-label">Paging</label>
                                 <br />
                                 <asp:Repeater ID="rptpageindexing" runat="server">
@@ -114,7 +139,7 @@
                             <div class="col-md-2 col-6">
                                 <asp:TextBox ID="txtStatfltr" runat="server" CssClass="form-control form-control-sm" placeholder="Enter Status"></asp:TextBox>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-1 col-6">
                                 <%--<asp:ImageButton ID="" runat="server" ImageUrl="~/Images/reset1.png"  />--%>
                                 <div class="btn-group">
                                     <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" CssClass="btn btn-outline-secondary btn-sm  " OnClick="btnGridFilter_Click" />
@@ -154,7 +179,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="table-responsive table-container mt-3" >
+                            <div class="table-responsive table-container mt-3" style="max-height:400px">
                                 <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm data-table" DataKeyNames="ID" AllowCustomPaging="True"
                                     AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
                                     <Columns>
@@ -243,6 +268,8 @@
                     </div>
 
 
+                </div>
+                </div>
                 </div>
 
             </div>

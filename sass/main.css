@@ -123,6 +123,7 @@ input::placeholder {
   transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   gap: 0.5rem;
 }
+
 .top-header .navbar .search-bar .search-popup .kewords:hover {
   color: #efefef;
   background-color: #28292d;
@@ -605,11 +606,11 @@ input::placeholder {
   padding: 1.5rem;
 }
 .main-wrapper .main-content .breadcrumb-title {
-  font-size: 20px;
+  font-size: 15px !important;
   border-right: 1.5px solid #aaa4a4;
 }
 .main-wrapper .main-content .page-breadcrumb .breadcrumb li.breadcrumb-item {
-  font-size: 16px;
+  font-size: 15px;
 }
 .main-wrapper .main-content .page-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;

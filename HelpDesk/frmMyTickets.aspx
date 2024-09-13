@@ -1,64 +1,42 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmMyTickets.aspx.cs" Inherits="frmMyTickets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script>
-        function getxtValue(that) {
-            document.getElementById("lable").innerHTML = that.value;
-        }
-    </script>
-    <script>
-        function pageLoad() {
-            jQuery(".chzn-select").data("placeholder", "Select Frameworks...").chosen();
-        }
-    </script>
-
-    <%-- <style>
-        .c {
-            color: white;
-            /*  //background: #698DF2;*/
-            background: transparent linear-gradient(180deg, #5D7FA7 0%, #2E4E74 100%) 0% 0% no-repeat padding-box;
-            border: none;
-        }
-
-        .chart_label {
-            font-size: larger;
-            font-weight: 500;
-            letter-spacing: 0px;
-            opacity: 1;
-            text-align: left;
-        }
-
-        .fonts {
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-        }
-    </style>
-    <style>
-        .header {
-            position: sticky;
-            top: 0;
-            bottom: 2px;
-            font-weight: 200;
-            border: #EEEEEE;
-        }
-    </style>--%>
+  
+  <style>
+      .dataTables_filter {
+          margin-top: -29px !important;
+      }
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    margin-top: -1.7rem!important;
+}
+  </style>
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="breadcrumb-title pe-3">Tickets</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Tickets</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">My Ticket Details</li>
+                           
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> My Ticket Details</li>
                         </ol>
                     </nav>
                 </div>
          
-                <div class="ms-auto">
+                <div class="ms-auto d-none">
                <div class="btn-group">
                    	<button type="button" class="btn btn-outline-secondary btn-sm">Export</button>
                     <asp:ImageButton ID="ImgBtnExport" runat="server" ImageUrl="Images/excelWH.png" class="btn btn-outline-secondary btn-sm" OnClick="ImgBtnExport_Click" />
@@ -69,8 +47,9 @@
 
                 <div class="card-body">
                    
-
-                    <div class="table-responsive table-container" style="height: 400px">
+<div class="card shadow-none border  ">
+                                <div class="card-body ">
+                    <div class="table-responsive table-container" >
 
                         <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped table-bordered table-sm text-nowrap" DataKeyNames="TicketNumber" 
                             AutoGenerateColumns="true" OnPageIndexChanging="gvAllTickets_PageIndexChanging">
@@ -88,6 +67,8 @@
                     </div>
                     <%--	</div>--%>
                 </div>
+            </div>
+            </div>
             </div>
 
             <div class="modal" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

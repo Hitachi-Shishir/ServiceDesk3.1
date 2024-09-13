@@ -29,6 +29,23 @@
            border-radius:5px
         }
     </style>
+      <style>
+      /*.dataTables_filter {
+          margin-top: -29px !important;
+      }*/
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    /*margin-top: -1.7rem!important;*/
+}
+  </style>
     <script>
         function getxtValue(that) {
             document.getElementById("lable").innerHTML = that.value;
@@ -70,12 +87,11 @@
 
         <ContentTemplate>
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="breadcrumb-title pe-3 small">Tickets</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Tickets</a>
-                            </li>
+                           
                             <li class="breadcrumb-item active" aria-current="page">All Tickets </li>
                         </ol>
                     </nav>
@@ -83,16 +99,14 @@
 
             </div>
 
-
-      
-
                     <div class="card ">
 
                         <div class="card-body">
-
+                              <div class="card border bg-transparent shadow-none ">
+      <div class="card-body">
                             <asp:Panel ID="pnlgridrow" runat="server">
 
-                                <div class="row gx-2">
+                                <div class="row gx-2 gy-3">
                                     <%--<div class="col-md-1">
                                         <label class="form-label">Filter</label>
                                         <div class="btn-group">
@@ -125,6 +139,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Action</label>
+                                        <br />
                                         <div class="btn-group">
                                             <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnGridFilter_Click" />
                                             <asp:Button ID="btnDelteBulkTicket" runat="server" Text="Delete" ToolTip="Delete Ticket" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnDelteBulkTicket_Click" />
@@ -289,6 +304,7 @@
 
 
                         </div>
+                    </div>       </div>
                     </div>
 
         

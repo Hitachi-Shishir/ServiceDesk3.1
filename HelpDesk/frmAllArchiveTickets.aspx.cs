@@ -1125,24 +1125,40 @@ public partial class frmAllArchiveTickets : System.Web.UI.Page
                     if (label.Text.ToLower() == "green")
                     {
                         //e.Row.Cells[2].BackColor = Color.Green;
-                        e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
-                        e.Row.Cells[2].CssClass = "badge bg-success";
+                    
+                        e.Row.Cells[2].CssClass = "badage-sucess";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                     if (label.Text.ToLower() == "yellow")
                     {
-                        e.Row.Cells[2].CssClass = "badge bg-warning";
+                        e.Row.Cells[2].CssClass = "badage-yellow";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                     if (label.Text.ToLower() == "red")
                     {
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
 
-                        e.Row.Cells[2].CssClass = "badge bg-danger";
+                        e.Row.Cells[2].CssClass = "badage-red";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                     if (label.Text.ToLower() == "orange")
                     {
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
 
-                        e.Row.Cells[2].CssClass = "badge bg-info";
+                        e.Row.Cells[2].CssClass = "badage-info";
+                        e.Row.Cells[2].Style["font-size"] = "Smaller";
+                        e.Row.Cells[2].Style["display"] = "table-cell";
+                        e.Row.Cells[2].Style["text-align"] = "center";
+                        e.Row.Cells[2].Style["vertical-align"] = "middle";
                     }
                 }
             }
