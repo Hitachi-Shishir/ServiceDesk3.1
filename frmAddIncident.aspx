@@ -7,28 +7,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
-<<<<<<< HEAD
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Tickets</div>
-        <div class="ps-3">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 p-0">
-
-                    <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> New Ticket </li>
-                </ol>
-            </nav>
-        </div>
-
-    </div>
-    <div class="card ">
-        <div class="card-body">
-
-            <div class="row">
-                <div class="col-md-6 col-lg-12 col-sm-4">
-
-                    <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
-                    <asp:Label ID="lblErrorMsg" runat="server" Text="" ForeColor="Red" Style="font-weight: bold;"></asp:Label>
-=======
     <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
@@ -43,7 +21,6 @@
                             <li class="breadcrumb-item active" aria-current="page">New Ticket </li>
                         </ol>
                     </nav>
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                 </div>
 
             </div>
@@ -57,33 +34,6 @@
                             <asp:Label ID="lblErrorMsg" runat="server" Text="" ForeColor="Red" Style="font-weight: bold;"></asp:Label>
                         </div>
                     </div>
-<<<<<<< HEAD
-                </div>
-
-            </asp:Panel>
-
-            <asp:Panel ID="pnlIncident" runat="server">
-                <div class="card border bg-transparent shadow-none mb-3">
-                    <div class="card-body">
-                        <div class="row gx-2 gy-2">
-                            <div class="col-md-6">
-                                <label class="form-label" for="staticEmail">
-                                    Service Desk  
-                                    <asp:RequiredFieldValidator ID="RfvddlRequestType" runat="server" InitialValue="0" ControlToValidate="ddlRequestType" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                </label>
-                                <asp:DropDownList ID="ddlRequestType" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="staticEmail" class="form-label">
-                                    Employee ID 
-                                    <asp:RequiredFieldValidator ID="rfvtxtLoginName" runat="server" ControlToValidate="txtLoginName" ErrorMessage="*" ForeColor="Red" ValidationGroup="SearchUser"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="input-group input-group-sm ">
-                                    <asp:TextBox ID="txtLoginName" runat="server" class="form-control " autocomplete="off" ValidationGroup="SearchUser"></asp:TextBox>
-
-                                    <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click" ValidationGroup="SearchUser" CssClass="btn btn-outline-secondary"><i class="fa-solid fa-search"></i></asp:LinkButton>
-
-=======
                     <asp:Panel ID="showChangeControl" runat="server">
                         <div class="row mb-2">
                             <div class="col-12 ">
@@ -93,9 +43,7 @@
                                     <asp:Button ID="btnRolloutPlan" runat="server" Text="RollOut Details" CssClass="btn btn-sm btn-outline-secondary btnDisabled" CausesValidation="false" OnClick="btnRolloutPlan_Click" />
                                     <asp:Button ID="btnDowntime" runat="server" Text="Downtime" CssClass="btn btn-sm btn-outline-secondary btnDisabled" CausesValidation="false" OnClick="btnDowntime_Click" />
                                     <asp:Button ID="btnTaskAssociation" runat="server" Text="Task " CssClass="btn btn-sm btn-outline-secondary btnDisabled" CausesValidation="false" OnClick="btnTaskAssociationShowPanel_Click" />
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                                 </div>
-
                             </div>
                         </div>
 
@@ -441,24 +389,9 @@
 
 
 
-<<<<<<< HEAD
-                        </div>
-                        <div class="row">
-                            <div class="col-12 mt-2">
-                                <label for="staticEmail" class="form-label">
-                                    Issue in Detail 
-                     <asp:RequiredFieldValidator ID="RfvtxtDescription" runat="server" ControlToValidate="txtDescription" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                </label>
-
-                                <%--	<asp:TextBox ID="txtDescription" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" MaxLength="500" Height="200px"></asp:TextBox>--%>
-                                <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" Rows="5" Columns="5" TextMode="MultiLine"></asp:TextBox>
-                            </div>
-                        </div>
-=======
                                                         <asp:TextBox ID="txteven" runat="server" CssClass="form-control  form-control-sm" Text='<%# Eval("FieldMode") %>'></asp:TextBox>
 
                                                     </div>
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
 
                                                 </div>
                                                 <%--<asp:PlaceHolder ID="pnlEvenTypeCustFlds" runat="server"></asp:PlaceHolder>--%>
@@ -489,44 +422,6 @@
 
 
 
-<<<<<<< HEAD
-            <%-- _____________Grid will Show Impact Details ________________________________--%>
-            <asp:Panel ID="pnlShowImpactDetails" runat="server">
-                <div class="card mb-0">
-                    <div class="card-body p-0">
-                        <div class="card border bg-transparent shadow-none mb-3">
-                            <div class="card-body">
-                                <p class="fs-5">Impact Details</p>
-                                <div class="row gy-3 gx-2">
-                                    <div class="col-md-12">
-                                        <label for="staticEmail" class="form-label">
-                                            Impact Description 
-                                            <asp:RequiredFieldValidator ID="rfvtxtImpactDesc" runat="server" ControlToValidate="txtImpactDesc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddImapct">
-
-                                            </asp:RequiredFieldValidator>
-                                        </label>
-
-                                        <asp:TextBox ID="txtImpactDesc" TextMode="MultiLine" Rows="4" Columns="10" class="form-control form-control-sm" runat="server"></asp:TextBox>
-
-                                    </div>
-                                    <div class="col-md-12 text-end">
-                                        <asp:Button ID="btnAddImpactDetails" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-info" CausesValidation="true" ValidationGroup="AddImapct" OnClick="btnAddImpactDetails_Click"></asp:Button>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-md-12 table-responsive table-container">
-                                        <asp:GridView ID="gridAddImpact" runat="server" CssClass="table table-head-fixed text-nowrap table-sm table-striped"
-                                            AutoGenerateColumns="false">
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                                                    <ItemTemplate>
-                                                        <%#Container.DataItemIndex+1 %>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:BoundField HeaderStyle-Width="120px" HeaderText="ImpactDetails" DataField="ImpactDetails" />
-                                            </Columns>
-                                            <%--    <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />
-=======
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
@@ -583,7 +478,6 @@
                                                         <asp:BoundField HeaderStyle-Width="120px" HeaderText="ImpactDetails" DataField="ImpactDetails" />
                                                     </Columns>
                                                     <%--    <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                                     <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />
                                     <PagerStyle BackColor="#EDEDED" ForeColor="#000000" HorizontalAlign="Left" Height="20px" VerticalAlign="NotSet" CssClass="header" />
                                     <SelectedRowStyle BackColor="#fff" Font-Bold="True" ForeColor="#000000" Height="5px" />
@@ -605,17 +499,8 @@
 
                     <%--        ________________________ Grid will show RollOut Plan   _____________________________--%>
 
-<<<<<<< HEAD
-            <%--        ________________________ Grid will show RollOut Plan   _____________________________--%>
-
-            <asp:Panel ID="pnlShowRollOutDetails" runat="server">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <div class="card border bg-transparent shadow-none mb-3">
-=======
                     <asp:Panel ID="pnlShowRollOutDetails" runat="server">
                         <div class="card">
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                             <div class="card-body">
                                 <div class="card border bg-transparent shadow-none mb-3">
                                     <div class="card-body">
@@ -631,21 +516,12 @@
                                         </asp:RequiredFieldValidator>
                                                 </label>
 
-<<<<<<< HEAD
-                                        <asp:TextBox ID="txtRollOut" TextMode="MultiLine" Rows="4" Columns="10" class="form-control form-control-sm" runat="server"></asp:TextBox>
-                                    </div>
-                                    <div class="col-md-12 text-end ">
-                                        <asp:Button ID="btnAddRollOutGrid" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-info" CausesValidation="true" ValidationGroup="RollOut" OnClick="btnAddRollOutGrid_Click"></asp:Button>
-                                    </div>
-                                </div>
-=======
                                                 <asp:TextBox ID="txtRollOut" TextMode="MultiLine" Rows="4" Columns="10" class="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                             <div class="col-md-12 text-end ">
                                                 <asp:Button ID="btnAddRollOutGrid" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-primary" CausesValidation="true" ValidationGroup="RollOut" OnClick="btnAddRollOutGrid_Click"></asp:Button>
                                             </div>
                                         </div>
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
 
                                         <div class="row">
                                             <div class="col-md-12  mt-2">
@@ -667,65 +543,14 @@
                                             <HeaderStyle BackColor="#EEEEEE" Font-Bold="True" ForeColor="#414141" Height="5px" BorderColor="WhiteSmoke" CssClass="header sorting_asc" Font-Size="Small" />
                                             <EditRowStyle BackColor="#e9edf2" BorderColor="#e3e4e6" BorderStyle="Solid" BorderWidth="1px" Height="5px" />
                                             <EmptyDataRowStyle HorizontalAlign="Center" BorderStyle="None" Height="5px" BorderColor="#EDEDED" BackColor="#EDEDED" />--%>
-<<<<<<< HEAD
-                                                <EmptyDataTemplate>No Record Available</EmptyDataTemplate>
-                                                <%--<AlternatingRowStyle BackColor="#EAEEFF" BorderColor="#e3e4e6" Height="5px" BorderStyle="Solid" BorderWidth="1px" />--%>
-                                            </asp:GridView>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </asp:Panel>
-
-            <%--        ________________________ Grid will show DownTime Plan   _____________________________--%>
-            <asp:Panel ID="pnlDownTime" runat="server" CssClass="mb-1">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <div class="card border bg-transparent shadow-none mb-3">
-                            <div class="card-body">
-                                <p class="fs-5">Down Time Details</p>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label class="form-label">
-                                            Summary 
-                                        </label>
-                                        <asp:TextBox ID="txtDownTimeName" class="form-control form-control-sm " runat="server"></asp:TextBox>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">
-                                            Duration From 
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div class="input-group ">
-                                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
-                                                <asp:TextBox ID="txtDownTimeStart" runat="server" CssClass="form-control form-control-sm date-time" MaxLength="10" autocomplete="off" ClientIDMode="static"></asp:TextBox>
-=======
                                                         <EmptyDataTemplate>No Record Available</EmptyDataTemplate>
                                                         <%--<AlternatingRowStyle BackColor="#EAEEFF" BorderColor="#e3e4e6" Height="5px" BorderStyle="Solid" BorderWidth="1px" />--%>
                                                     </asp:GridView>
                                                 </div>
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                                             </div>
                                         </div>
 
                                     </div>
-<<<<<<< HEAD
-                                    <div class="col-md-4">
-                                        <label class="form-label">
-                                            Duration To
-                                        </label>
-                                        <div class="col-sm-12">
-
-                                            <div class="input-group ">
-                                                <span class="input-group-text" id="basic-addon2"><i class="fas fa-calendar"></i></span>
-                                                <asp:TextBox ID="txtDownTimeTo" runat="server" CssClass="form-control form-control-sm date-time" MaxLength="10" autocomplete="off" ClientIDMode="static"></asp:TextBox>
-=======
                                 </div>
                             </div>
                         </div>
@@ -772,7 +597,6 @@
                                                         <asp:TextBox ID="txtDownTimeTo" runat="server" CssClass="form-control form-control-sm" MaxLength="10" autocomplete="off" ClientIDMode="static"></asp:TextBox>
                                                     </div>
                                                 </div>
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                                             </div>
                                         </div>
                                     </div>
@@ -785,18 +609,7 @@
                     <%--________________________ Task Association   _____________________________--%>
                     <asp:Panel ID="pnlTaksAssociation" runat="server">
 
-<<<<<<< HEAD
-            <%--________________________ Task Association   _____________________________--%>
-            <asp:Panel ID="pnlTaksAssociation" runat="server">
-
-                <div class="card">
-                    <div class="card-body p-0">
-
-                        <div class="card border bg-transparent shadow-none mb-3">
-                         
-=======
                         <div class="card">
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
                             <div class="card-body">
 
                                 <div class="card border bg-transparent shadow-none mb-3">
@@ -838,11 +651,7 @@
                                             </div>
                                             <div class="col-md-12 text-end">
 
-<<<<<<< HEAD
-                                        <asp:Button ID="btnAddTaskAssociationData" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-info" ValidationGroup="Task" OnClick="btnAddTaskAssociationData_Click"></asp:Button>
-=======
                                                 <asp:Button ID="btnAddTaskAssociationData" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-primary" ValidationGroup="Task" OnClick="btnAddTaskAssociationData_Click"></asp:Button>
->>>>>>> 9877d0c273b8707e0007c8869b4646a36d745211
 
                                             </div>
                                             <div class="col-md-12 ">
