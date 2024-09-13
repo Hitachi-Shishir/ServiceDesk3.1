@@ -7,19 +7,22 @@
 https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="
 https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .note-editor {
+            border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scr" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="breadcrumb-title pe-3">Template</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Templates</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Email Template </li>
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-regular fa-envelope"></i> Email Template </li>
                         </ol>
                     </nav>
                 </div>
@@ -31,7 +34,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                     <div class=" row gy-3 gx-2">
                         <div class="col-md-4">
                             <label for="staticEmail" class="form-label">
-                                Organization <span title="*"></span>
+                                Organization  
 
                                 <asp:RequiredFieldValidator ID="rfvddlOrg" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddEmailTemp"></asp:RequiredFieldValidator>
                             </label>
@@ -41,7 +44,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                         </div>
                         <div class="col-md-4">
                             <label for="staticEmail" class="form-label ">
-                                Service Desk  <span class="red">*</span>
+                                Service Desk  
                                 <asp:RequiredFieldValidator ID="RfvddlRequestType" runat="server" InitialValue="0" ControlToValidate="ddlRequestType" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
                             </label>
 
@@ -52,8 +55,8 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                         <div class="col-md-4">
                             <label for="staticEmail" class="form-label">
                                 Email Template 
-							<span title="*"></span>
-                                <asp:ImageButton ID="ImgAddEmailTemp" runat="server" ImageUrl="~/Images/plus.png" OnClick="ImgAddEmailTemp_Click" />
+							 <asp:LinkButton ID="ImgAddEmailTemp" runat="server" OnClick="ImgAddEmailTemp_Click"><i class="fa-solid fa-plus border small rounded-circle p-1"></i></asp:LinkButton>
+                                <%--<asp:ImageButton ID="" runat="server" ImageUrl="~/Images/plus.png" OnClick="ImgAddEmailTemp_Click" />--%>
                                 <%--<asp:LinkButton ID="LinkButton1" runat="server">LinkButton</asp:LinkButton>--%>
                                 <asp:RequiredFieldValidator ID="rfvddlEmailTemplate" runat="server" ControlToValidate="ddlEmailTemplate" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddEmailTemp"></asp:RequiredFieldValidator>
                             </label>
@@ -61,7 +64,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
 
 
                             <asp:TextBox ID="txtEmailTemplate" runat="server" CssClass="form-control form-control-sm" />
-                            <asp:DropDownList ID="ddlEmailTemplate" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEmailTemplate_SelectedIndexChanged" CssClass="form-control  form-control-sm chzn-select"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlEmailTemplate" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEmailTemplate_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
 
 
 
@@ -94,7 +97,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                         </div>
 
                         <div class="col-md-12 text-end">
-                            <asp:Button ID="btnSave" runat="server" Text="Submit" ValidationGroup="AddEmailTemp" OnClick="btnSave_Click" CssClass="btn btn-sm  btn-grd btn-grd-primary  " />
+                            <asp:Button ID="btnSave" runat="server" Text="Submit" ValidationGroup="AddEmailTemp" OnClick="btnSave_Click" CssClass="btn btn-sm  btn-grd btn-grd-info  " />
                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" CausesValidation="false" OnClick="btnCancel_Click" CssClass="btn btn-sm  btn-grd btn-grd-danger " />
                         </div>
 

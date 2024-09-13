@@ -82,7 +82,7 @@ public partial class frmEmailTemplate : System.Web.UI.Page
             ddlEmailTemplate.DataTextField = "templateName";
             ddlEmailTemplate.DataValueField = "templateName";
             ddlEmailTemplate.DataBind();
-            ddlEmailTemplate.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Template----------", "0"));
+            ddlEmailTemplate.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -121,7 +121,7 @@ public partial class frmEmailTemplate : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -259,7 +259,7 @@ public partial class frmEmailTemplate : System.Web.UI.Page
             }
         }
     }
-    protected void ImgAddEmailTemp_Click(object sender, ImageClickEventArgs e)
+    protected void ImgAddEmailTemp_Click (object sender, EventArgs e)
     {
         txtEmailTemplate.Visible = true;
         ddlEmailTemplate.Visible = false;

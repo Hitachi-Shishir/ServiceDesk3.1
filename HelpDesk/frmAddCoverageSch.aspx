@@ -1,6 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddCoverageSch.aspx.cs" Inherits="frmAddCoverageSch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+                  <style>
+      .dataTables_filter {
+          margin-top: -29px !important;
+      }
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    /*margin-top: -1.7rem!important;*/
+}
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
@@ -8,13 +25,12 @@
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="breadcrumb-title pe-3">Coverage Schedules</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Coverage Schedules</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Operational Hours</li>
+                           
+                            <li class="breadcrumb-item active" aria-current="page"> <i class="fa-regular fa-clock"></i> Operational Hours</li>
                         </ol>
                     </nav>
                 </div>
@@ -127,8 +143,20 @@
                                                     <asp:BoundField DataField="HoursCovered" HeaderText="HoursCovered" NullDisplayText="NA" />
                                                     <asp:BoundField DataField="BeginHour" HeaderText="Begin Hour" NullDisplayText="NA" />
                                                     <asp:BoundField DataField="EndHour" HeaderText="End Hour" NullDisplayText="NA" />
-                                                    <asp:ButtonField ButtonType="Image" CommandName="UpdateSLA" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteSLA" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+<asp:TemplateField HeaderText="Edit">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkUpdateSLA" runat="server" CommandName="UpdateSLA">
+            <i class="fa-solid fa-edit"></i>
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
+<asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkDeleteSLA" runat="server" CommandName="DeleteSLA">
+           <i class="fa-solid fa-xmark text-danger"></i>
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                                                 </Columns>
                                                 <%-- <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="10px" />
         <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />

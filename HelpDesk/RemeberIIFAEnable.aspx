@@ -1,16 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="RemeberIIFAEnable.aspx.cs" Inherits="RemeberIIFAEnable" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style>
+      .dataTables_filter {
+          margin-top: -29px !important;
+      }
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    /*margin-top: -1.7rem!important;*/
+}
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
                 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Components</div>
+    <div class="breadcrumb-title pe-3">User and Permissions</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
-                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> User and Permissions</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page"> II FA Reset</li>
+                
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-reply"></i> II FA Reset</li>
             </ol>
         </nav>
     </div>
@@ -139,7 +155,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="MFA Status" HeaderStyle-Width="20px">
                                             <ItemTemplate>
-                                                <asp:Image ID="imgIsMfaStatus" runat="server" Style="width: 40%!important" />
+                                                <asp:Image ID="imgIsMfaStatus" runat="server" Style="width: 20%!important" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Reset">

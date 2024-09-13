@@ -1,13 +1,42 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmTechLeaveApply.aspx.cs" Inherits="frmTechLeaveApply" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+          <style>
+      .dataTables_filter {
+          margin-top: -29px !important;
+      }
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    /*margin-top: -1.7rem!important;*/
+}
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
      <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
  </asp:ScriptManager>
  <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
      <ContentTemplate>
-    
+     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+    <div class="breadcrumb-title pe-3">Coverage Schedules</div>
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-right-from-bracket"></i> Apply Leave </li>
+            </ol>
+        </nav>
+    </div>
+
+</div>
+
         <div class="card">
             <div class="card-body">
             <div class="row gy-3 gx-2">
@@ -73,7 +102,7 @@
                                 <asp:TemplateField HeaderText="Action">
                                     <ItemTemplate>
                                         <asp:LinkButton runat="server" ID="lnkdelete" OnClick="lnkdelete_Click" OnClientClick="return confirm('Are you sure you want to Delete this ?');">
-                                <label style="color:red; font-weight: bold;">X</label>
+                              <i class="fa-solid fa-xmark text-danger"></i>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>

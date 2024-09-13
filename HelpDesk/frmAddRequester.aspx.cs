@@ -26,8 +26,10 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
     {
         try
         {
+
             if (Session["UserScope"] != null)
             {
+                chkEnableTechnician.InputAttributes["class"] = "form-check-input";
                 if (!IsPostBack)
                 {
 

@@ -631,7 +631,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory2.DataValueField = "Categoryref";
                 ddlCategory2.DataBind();
                 ddlCategory2.Items.Insert(0, new ListItem("--Select--", "0"));
-                divCategory2.Attributes.Add("style", "display: flex;");
+                divCategory2.Attributes.Add("style", "display: block;");
                 lblCategory2.Visible = true;
                 ddlCategory2.Visible = true;
                 ddlCategory2.Enabled = true;
@@ -707,7 +707,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory3.DataValueField = "Categoryref";
                 ddlCategory3.DataBind();
                 ddlCategory3.Items.Insert(0, new ListItem("--Select--", "0"));
-                divCategory3.Attributes.Add("style", "display: flex;");
+                divCategory3.Attributes.Add("style", "display: block;");
                 RfvddlCategory2.Enabled = true;
                 RfvddlCategory3.Enabled = true;
                 rfvddlCategory4.Enabled = false;
@@ -780,7 +780,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory4.Enabled = true;
                 ddlCategory4.Visible = true;
                 lblCategory4.Visible = true;
-                divCategory4.Attributes.Add("style", "display: flex;");
+                divCategory4.Attributes.Add("style", "display: block;");
                 RfvddlCategory2.Enabled = true;
                 RfvddlCategory3.Enabled = true;
                 rfvddlCategory4.Enabled = true;
@@ -845,7 +845,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                 ddlCategory5.DataBind();
                 ddlCategory5.Items.Insert(0, new ListItem("--Select--", "0"));
                 ddlCategory5.Enabled = true;
-                divCategory5.Attributes.Add("style", "display: flex;");
+                divCategory5.Attributes.Add("style", "display: block;");
             }
             else
             {

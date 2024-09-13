@@ -24,6 +24,7 @@ public partial class _Default : System.Web.UI.Page
     {
         // CheckKey();iugi
         chk.InputAttributes["class"] = "form-check-input";
+        chkRemb2FA.InputAttributes["class"] = "form-check-input";
 
     }
     private string Decrypt(string cipherText)

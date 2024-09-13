@@ -212,7 +212,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlDepartment.DataTextField = "DepartmentName";
             ddlDepartment.DataValueField = "DepartmentCode";
             ddlDepartment.DataBind();
-            ddlDepartment.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Department----------", "0"));
+            ddlDepartment.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -251,7 +251,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlLocation.DataTextField = "LocName";
             ddlLocation.DataValueField = "LocCode";
             ddlLocation.DataBind();
-            ddlLocation.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Location----------", "0"));
+            ddlLocation.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -683,7 +683,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlRequestType.DataTextField = "ReqTypeRef";
             ddlRequestType.DataValueField = "ReqTypeRef";
             ddlRequestType.DataBind();
-            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -739,7 +739,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                                 ddlCategory1.DataTextField = "CategoryCodeRef";
                                 ddlCategory1.DataValueField = "Categoryref";
                                 ddlCategory1.DataBind();
-                                ddlCategory1.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category----------", "0"));
+                                ddlCategory1.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
                             }
                             else
                             {
@@ -887,7 +887,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory2.DataTextField = "CategoryCodeRef";
                 ddlCategory2.DataValueField = "Categoryref";
                 ddlCategory2.DataBind();
-                ddlCategory2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 2----------", "0"));
+                ddlCategory2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
                 divCategory2.Attributes.Add("style", "display: block;");
                 divCategory3.Attributes.Add("style", "display: none;");
@@ -954,7 +954,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory3.DataTextField = "CategoryCodeRef";
                 ddlCategory3.DataValueField = "Categoryref";
                 ddlCategory3.DataBind();
-                ddlCategory3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 3----------", "0"));
+                ddlCategory3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
                 divCategory3.Attributes.Add("style", "display: block;");
                 divCategory4.Attributes.Add("style", "display: none;");
@@ -1017,7 +1017,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory4.DataTextField = "CategoryCodeRef";
                 ddlCategory4.DataValueField = "Categoryref";
                 ddlCategory4.DataBind();
-                ddlCategory4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
                 divCategory2.Attributes.Add("style", "display: block;");
@@ -1083,7 +1083,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlCategory5.DataTextField = "CategoryCodeRef";
                 ddlCategory5.DataValueField = "Categoryref";
                 ddlCategory5.DataBind();
-                ddlCategory5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 5----------", "0"));
+                ddlCategory5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
                 divCategory2.Attributes.Add("style", "display: block;");
                 divCategory3.Attributes.Add("style", "display: block;");
@@ -1163,7 +1163,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlCategory6.DataTextField = "CategoryCodeRef";
             ddlCategory6.DataValueField = "Categoryref";
             ddlCategory6.DataBind();
-            ddlCategory6.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 5----------", "0"));
+            ddlCategory6.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
         }
         else
         {
@@ -1199,7 +1199,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlStage.DataTextField = "StageCodeRef";
             ddlStage.DataValueField = "id";
             ddlStage.DataBind();
-            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Stage----------", "0"));
+            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -1441,7 +1441,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                     selectList.DataTextField = lbl.Text;
                     selectList.DataValueField = lbl.Text;
                     selectList.DataBind();
-                    selectList.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Value----------", "0"));
+                    selectList.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
                     //selectList.DataTextField = "SomeColumn";
                     //selectList.DataValueField = "SomeID";
@@ -1509,7 +1509,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                     selectListEven.DataTextField = lbleven.Text;
                     selectListEven.DataValueField = lbleven.Text;
                     selectListEven.DataBind();
-                    selectListEven.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Value----------", "0"));
+                    selectListEven.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
                 }
                 DataTable dtEven = new SDTemplateFileds().FillCustomFieldValueDropdown(lbleven.Text, Request.QueryString["TicketId"].ToString(), Request.QueryString["NamelyId"].ToString());
                 if (dtEven.Rows.Count > 0)
@@ -1564,7 +1564,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlSeverity.DataTextField = "Serveritycoderef";
             ddlSeverity.DataValueField = "id";
             ddlSeverity.DataBind();
-            ddlSeverity.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Severity----------", "0"));
+            ddlSeverity.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -1606,7 +1606,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlPriority.DataTextField = "PriorityCodeRef";
             ddlPriority.DataValueField = "id";
             ddlPriority.DataBind();
-            ddlPriority.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Priority----------", "0"));
+            ddlPriority.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -1648,7 +1648,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlStatus.DataTextField = "StatusCodeRef";
             ddlStatus.DataValueField = "id";
             ddlStatus.DataBind();
-            ddlStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Status----------", "0"));
+            ddlStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -1689,7 +1689,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             ddlAssigne.DataTextField = "TechLoginName";
             ddlAssigne.DataValueField = "TechID";
             ddlAssigne.DataBind();
-            ddlAssigne.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Assignee----------", "0"));
+            ddlAssigne.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -1729,7 +1729,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             lstTechAssoc.DataTextField = "TechLoginName";
             lstTechAssoc.DataValueField = "TechID";
             lstTechAssoc.DataBind();
-            lstTechAssoc.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Assignee----------", "0"));
+            lstTechAssoc.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
         }
         catch (ThreadAbortException e2)
@@ -1776,7 +1776,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                 ddlResoultion.DataTextField = "ResolutionCodeRef";
                 ddlResoultion.DataValueField = "id";
                 ddlResoultion.DataBind();
-                ddlResoultion.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Resolution----------", "0"));
+                ddlResoultion.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
             }
             else
             {
