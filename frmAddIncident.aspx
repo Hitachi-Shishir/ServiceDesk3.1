@@ -5,6 +5,11 @@
     <link href="assets/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .note-editor {
+            border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
@@ -12,13 +17,12 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Components</div>
+                <div class="breadcrumb-title pe-3">Tickets</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i>Tickets</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">New Ticket </li>
+
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> Create Ticket </li>
                         </ol>
                     </nav>
                 </div>
@@ -55,23 +59,21 @@
                                 <div class="row gx-2 gy-2">
                                     <div class="col-md-6">
                                         <label class="form-label" for="staticEmail">
-                                            Service Desk <span class="red">*</span>
+                                            Service Desk  
                                             <asp:RequiredFieldValidator ID="RfvddlRequestType" runat="server" InitialValue="0" ControlToValidate="ddlRequestType" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
                                         </label>
                                         <asp:DropDownList ID="ddlRequestType" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="staticEmail" class="form-label">
-                                            Employee ID<span class="red">*</span>
+                                            Employee ID 
                                             <asp:RequiredFieldValidator ID="rfvtxtLoginName" runat="server" ControlToValidate="txtLoginName" ErrorMessage="*" ForeColor="Red" ValidationGroup="SearchUser"></asp:RequiredFieldValidator>
                                         </label>
                                         <div class="input-group input-group-sm ">
-                                            <asp:TextBox ID="txtLoginName" runat="server" class="form-control " autocomplete="off" ValidationGroup="SearchUser"></asp:TextBox>
-                                            <span class="input-group-append">
-                                                <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click" ValidationGroup="SearchUser" CssClass="input-group-text"><img src="assets/images/icon/searchWH.png" /></asp:LinkButton>
-                                            </span>
-
+                                            <asp:TextBox ID="txtLoginName" runat="server" class="form-control form-control-sm" autocomplete="off" ValidationGroup="SearchUser"></asp:TextBox>
+                                            <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click" ValidationGroup="SearchUser" CssClass="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-search"></i></asp:LinkButton>
                                         </div>
+
                                     </div>
                                     <div class="col-md-12">
                                         <label for="staticEmail" class="form-label">
@@ -383,13 +385,13 @@
                                                             <asp:Label ID="lbleven" Text='<%# Eval("FieldValue") %>' Visible="false" runat="server"></asp:Label>
                                                             <asp:Label ID="Label3" Text='<%# Eval("FieldName") %>' runat="server"></asp:Label>
 
-                                                            <asp:RequiredFieldValidator ID="rfvddl" runat="server" ControlToValidate="txteven" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserScope"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="rfvddl" runat="server" ControlToValidate="txteven" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserScope" ></asp:RequiredFieldValidator>
                                                         </label>
 
 
 
 
-                                                        <asp:TextBox ID="txteven" runat="server" CssClass="form-control  form-control-sm" Text='<%# Eval("FieldMode") %>'></asp:TextBox>
+                                                        <asp:TextBox ID="txteven" runat="server" CssClass="form-control   form-control-sm" Text='<%# Eval("FieldMode") %>'></asp:TextBox>
 
                                                     </div>
 
@@ -423,7 +425,7 @@
 
 
                                 </div>
-                                <div class="row">
+                                <div class="row mt-1 gy-3 gx-2">
                                     <div class="col-12">
                                         <label for="staticEmail" class="form-label">
                                             Issue in Detail 
@@ -431,7 +433,7 @@
                                         </label>
 
                                         <%--	<asp:TextBox ID="txtDescription" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" MaxLength="500" Height="200px"></asp:TextBox>--%>
-                                        <asp:TextBox ID="txtDescription" runat="server" Rows="5" Columns="5" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescription" runat="server" Rows="5" Columns="5" CssClass="border" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -445,14 +447,14 @@
                     <%-- _____________Grid will Show Impact Details ________________________________--%>
                     <asp:Panel ID="pnlShowImpactDetails" runat="server">
                         <div class="card mb-0">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="card border bg-transparent shadow-none mb-3">
                                     <div class="card-body">
                                         <p class="fs-5">Impact Details</p>
                                         <div class="row gy-3 gx-2">
                                             <div class="col-md-12">
                                                 <label for="staticEmail" class="form-label">
-                                                    Impact Description<span class="red">*</span>
+                                                    Impact Description 
                                                     <asp:RequiredFieldValidator ID="rfvtxtImpactDesc" runat="server" ControlToValidate="txtImpactDesc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddImapct">
 
                                                     </asp:RequiredFieldValidator>
@@ -462,7 +464,7 @@
 
                                             </div>
                                             <div class="col-md-12 text-end">
-                                                <asp:Button ID="btnAddImpactDetails" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-primary" CausesValidation="true" ValidationGroup="AddImapct" OnClick="btnAddImpactDetails_Click"></asp:Button>
+                                                <asp:Button ID="btnAddImpactDetails" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-info" CausesValidation="true" ValidationGroup="AddImapct" OnClick="btnAddImpactDetails_Click"></asp:Button>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -501,7 +503,7 @@
 
                     <asp:Panel ID="pnlShowRollOutDetails" runat="server">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="card border bg-transparent shadow-none mb-3">
                                     <div class="card-body">
                                         <p class="fs-5">Roll Out Details</p>
@@ -519,7 +521,7 @@
                                                 <asp:TextBox ID="txtRollOut" TextMode="MultiLine" Rows="4" Columns="10" class="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                             <div class="col-md-12 text-end ">
-                                                <asp:Button ID="btnAddRollOutGrid" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-primary" CausesValidation="true" ValidationGroup="RollOut" OnClick="btnAddRollOutGrid_Click"></asp:Button>
+                                                <asp:Button ID="btnAddRollOutGrid" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-info" CausesValidation="true" ValidationGroup="RollOut" OnClick="btnAddRollOutGrid_Click"></asp:Button>
                                             </div>
                                         </div>
 
@@ -560,7 +562,7 @@
                     <%--        ________________________ Grid will show DownTime Plan   _____________________________--%>
                     <asp:Panel ID="pnlDownTime" runat="server" CssClass="mb-1">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="card border bg-transparent shadow-none mb-3">
                                     <div class="card-body">
                                         <p class="fs-5">Down Time Details</p>
@@ -570,19 +572,18 @@
                                                 <label class="form-label">
                                                     Summary 
                                                 </label>
-                                                <asp:TextBox ID="txtDownTimeName" class="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtDownTimeName" class="form-control form-control-sm" runat="server" ></asp:TextBox>
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="form-label">
                                                     Duration From 
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <div class="input-group ">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-                                                        </div>
-                                                        <asp:TextBox ID="txtDownTimeStart" runat="server" CssClass="form-control form-control-sm" MaxLength="10" autocomplete="off" ClientIDMode="static"></asp:TextBox>
+                                                    <div class="input-group input-group-sm">
+                                                        <asp:TextBox ID="txtDownTimeStart" runat="server" CssClass="form-control form-control-sm " MaxLength="10" autocomplete="off" ClientIDMode="static" type="date"></asp:TextBox>
+                                                        <span class="input-group-text" id="basic-addon8"><i class="fas fa-calendar"></i></span>
                                                     </div>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -590,12 +591,11 @@
                                                     Duration To
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <div class="input-group ">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-                                                        </div>
-                                                        <asp:TextBox ID="txtDownTimeTo" runat="server" CssClass="form-control form-control-sm" MaxLength="10" autocomplete="off" ClientIDMode="static"></asp:TextBox>
+                                                    <div class="input-group input-group-sm">
+                                                        <asp:TextBox ID="txtDownTimeTo" runat="server" CssClass="form-control form-control-sm" MaxLength="10" autocomplete="off" ClientIDMode="static" type="date"></asp:TextBox>
+                                                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-calendar"></i></span>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -610,7 +610,7 @@
                     <asp:Panel ID="pnlTaksAssociation" runat="server">
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body p-0">
 
                                 <div class="card border bg-transparent shadow-none mb-3">
                                     <div class="card-body">
@@ -651,7 +651,7 @@
                                             </div>
                                             <div class="col-md-12 text-end">
 
-                                                <asp:Button ID="btnAddTaskAssociationData" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-primary" ValidationGroup="Task" OnClick="btnAddTaskAssociationData_Click"></asp:Button>
+                                                <asp:Button ID="btnAddTaskAssociationData" runat="server" Text="Add" CssClass="btn btn-sm btn-grd btn-grd-info" ValidationGroup="Task" OnClick="btnAddTaskAssociationData_Click"></asp:Button>
 
                                             </div>
                                             <div class="col-md-12 ">

@@ -1,23 +1,57 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmSDAccount.aspx.cs" Inherits="HelpDesk_frmSDAccount" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style>
+      .dataTables_filter {
+          margin-top: -29px !important;
+      }
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    /*margin-top: -1.7rem!important;*/
+}
+  </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
+            
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+    <div class="breadcrumb-title pe-3">User and Permissions</div>
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-file-invoice"></i> SD Account </li>
+            </ol>
+        </nav>
+    </div>
+
+</div>
+
+                       <div class="card">
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-12">
+                                    <div class="btn-group">
                                 <asp:Repeater ID="rptAccount" runat="server" OnItemDataBound="rptAccount_ItemDataBound" OnItemCommand="rptAccount_ItemCommand">
                                     <ItemTemplate>
-                                        <div class="col-lg-1 ml-4 pl-2">
-                                            <asp:Button ID="btn" runat="server" CssClass="form-control  form-control-sm p-1 " Width="100px" CommandName='<%# Eval("UserScope") %>' Text='<%# Eval("UserScope") %>'></asp:Button>
-                                        </div>
+                                      
+                                            <asp:Button ID="btn" runat="server" CssClass="btn btn-sm btn-outline-secondary " Width="100px" CommandName='<%# Eval("UserScope") %>' Text='<%# Eval("UserScope") %>'></asp:Button>
+                                       
                                     </ItemTemplate>
                                 </asp:Repeater>
+                            </div>
+                            </div>
                             </div>
                             <div class="row ">
                                 <div class="col-md-4">
@@ -27,7 +61,7 @@
                                     <asp:Label ID="Label1" runat="server"></asp:Label>
                                     <asp:Label ID="Label3" runat="server"></asp:Label>
                                 </div>
-                                <div class="col-md-2 ">
+                                <div class="col-md-2 d-none">
                                     <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
                                         <label class="mr-3 ml-1 mb-0">Export</label>
                                         <%--<asp:ImageButton ID="ImgBtnExport" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport_Click" />--%>
@@ -60,8 +94,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+           
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="rptAccount" />

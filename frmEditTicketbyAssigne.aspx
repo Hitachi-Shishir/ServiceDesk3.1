@@ -7,7 +7,11 @@
 https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="
 https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
+<style>
+    .note-editor {
+	border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scr" runat="server"></asp:ScriptManager>
@@ -40,7 +44,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <div class="btn-group">
                                 <asp:Button ID="btnUpdateTickView" Text="View Tickets" runat="server" CssClass="btn btn-sm btn-outline-secondary " OnClick="btnUpdateTickView_Click" />
                                 <asp:Button ID="btnImpactDetails" runat="server" Text="Impact Details" CssClass="btn btn-sm btnDisabled btn-outline-secondary" CausesValidation="false" OnClick="btnImpactDetails_Click" />
@@ -50,8 +54,11 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
 
                                 <asp:Button ID="btnViewNotes" runat="server" Text-="View Notes" CssClass="btn btn-sm  btnDisabled btn-outline-secondary" OnClick="btnViewNotes_Click" />
                                 <asp:Button ID="btnViwPyres" runat="server" Text-="Notes Summary" CssClass="btn btn-sm  btnDisabled btn-outline-secondary" OnClick="btnViwpYres_Click" />
-                                <asp:TextBox ID="txtPyoutput" runat="server"></asp:TextBox>
+                                
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <asp:TextBox ID="txtPyoutput" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
                         </div>
                     </div>
                     <asp:Panel ID="pnlTicket" runat="server">
@@ -253,9 +260,9 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class=" row">
-                                        <div class="col-6">
+                                     </div>
+                                    <div class="  row mt-1 gy-3 gx-2 ">
+                                        <div class="col-6 py-0 px-1">
                                             <asp:Repeater ID="rptOddControl" runat="server" OnItemDataBound="rptOddControl_ItemDataBound">
                                                 <ItemTemplate>
                                                     <div class=" row ">
@@ -377,7 +384,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                                             <textarea id="txtResolution" runat="server"></textarea>
                                         </div>
                                     </div>
-                                </div>
+                               
 
                             </asp:Panel>
 
@@ -773,7 +780,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                                 <asp:Label ID="Label1" runat="server"></asp:Label>
                                 <asp:Label ID="Label3" runat="server"></asp:Label>
                             </div>
-                            <div class="col-md-12 text-end">
+                            <div class="col-md-12 text-end d-none">
 
                                 <%--<label class="mr-2 ml-1 mb-0">Export</label>--%>
                                 <%--<asp:ImageButton ID="" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1"/>--%>
@@ -783,10 +790,10 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                         </div>
 
 
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="table-responsive table-container">
-                                    <asp:GridView GridLines="None" ID="gvTicketNotes" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-sm"
+                                    <asp:GridView GridLines="None" ID="gvTicketNotes" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-sm data-table text-nowrap table-striped"
                                         Width="100%">
                                         <Columns>
                                             <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">

@@ -1,22 +1,53 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddHolidays.aspx.cs" Inherits="frmAddHolidays" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+              <style>
+      .dataTables_filter {
+          margin-top: -29px !important;
+      }
+      .dt-buttons > .btn-outline-secondary{
+          padding:0.25rem 0.5rem!important;
+          font-size: 0.875rem!important;
+	
+}
+      .pagination{
+	--bs-pagination-padding-x: 0.5rem;
+	--bs-pagination-padding-y: 0.25rem;
+	--bs-pagination-font-size: 0.875rem;
+	--bs-pagination-border-radius: var(--bs-border-radius-sm);
+    /*margin-top: -1.7rem!important;*/
+}
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
+             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+    <div class="breadcrumb-title pe-3">Coverage Schedules</div>
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-right-from-bracket"></i> Holiday</li>
+            </ol>
+        </nav>
+    </div>
+
+</div>
+
             <div class="card">
 
-                <div class="row p-2 mx-2 mt-1">
-                    <div class="col-md-12">
-                        <asp:Button ID="btnAddHoliday" runat="server" Text="Add Holiday" CausesValidation="false" OnClick="btnAddHoliday_Click" />
-                        <asp:Button ID="btnimportUser" runat="server" Text="Import Holidays" CausesValidation="false" OnClick="btnimportUser_Click" />
-                        <asp:Button ID="btnViewUsers" runat="server" Text="View Holiday" CausesValidation="false" OnClick="btnViewUsers_Click" />
-                    </div>
-
-                </div>
+              
                 <div class="card-body">
+                      <div class="row mb-2 ">
+      <div class="col-md-12">
+          <asp:Button ID="btnAddHoliday" runat="server" Text="Add Holiday" CausesValidation="false" OnClick="btnAddHoliday_Click" />
+          <asp:Button ID="btnimportUser" runat="server" Text="Import Holidays" CausesValidation="false" OnClick="btnimportUser_Click" />
+          <asp:Button ID="btnViewUsers" runat="server" Text="View Holiday" CausesValidation="false" OnClick="btnViewUsers_Click" />
+      </div>
+
+  </div>
                     <div class="card border bg-transparent shadow-none mb-3">
                         <div class="card-body">
                             <asp:Panel ID="pnlAddHoliday" Visible="false" runat="server">
@@ -49,7 +80,7 @@
                                                         <asp:RequiredFieldValidator ID="rfvtxtholidayDatee" runat="server" ControlToValidate="txtholidayDate" ErrorMessage="*" ForeColor="Red" ValidationGroup="SearchUser"></asp:RequiredFieldValidator>
                                                     </label>
 
-                                                    <asp:TextBox ID="txtholidayDate" autocomplete="off" ClientIDMode="static" class="form-control form-control-sm date-time" runat="server" />
+                                                    <asp:TextBox ID="txtholidayDate" autocomplete="off" ClientIDMode="static" class="form-control form-control-sm datepicker" runat="server" />
                                                 </div>
                                                 <div class="col-md-12 text-end">
 
@@ -74,7 +105,7 @@
                                         <asp:Label ID="Label1" runat="server"></asp:Label>
                                         <asp:Label ID="Label3" runat="server"></asp:Label>
                                     </div>
-                                    <div class="col-md-12 text-end">
+                                    <div class="col-md-12 text-end d-none">
                                         <asp:LinkButton ID="ImgBtnExport" runat="server" OnClick="ImgBtnExport_Click" CssClass="btn btn-sm btn-outline-secondary">Export</asp:LinkButton>
 
                                     </div>
@@ -84,7 +115,15 @@
                                                 Width="100%" OnRowCommand="gvHoliday_RowCommand" OnRowDataBound="gvHoliday_RowDataBound">
                                                 <Columns>
                                                     <asp:ButtonField ButtonType="Image" CommandName="SelectTech" HeaderText="Edit" ImageUrl="../Images/editWHT.png" ItemStyle-Width="20px" />
-                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+<%--                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                   <asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx">
+           <i class="fa-solid fa-xmark text-danger"></i>
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
+
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
                                                         <ItemTemplate>
                                                             <%#Container.DataItemIndex+1 %>
