@@ -142,6 +142,12 @@ public partial class DeskConfiguration : System.Web.UI.Page
         CurrentStep = 7;
         // Your logic here
         DataBind();
+    } 
+    protected void StepButton_Click8(object sender, EventArgs e)
+    {
+        CurrentStep = 8;
+        // Your logic here
+        DataBind();
     }
     #endregion Common End
 
@@ -268,10 +274,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                pnlShowRqstType.Visible = false;
-                                lblsuccess.ForeColor = System.Drawing.Color.Green;
-                                lblsuccess.Text = PriorityName + " Deleted successfully";
-                                Session["Popup"] = "Delete";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully !")}');", true);
                             }
 
@@ -1152,9 +1154,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                pnlShowRqstType.Visible = false;
-                                lblsuccess.ForeColor = System.Drawing.Color.Green;
-                                lblsuccess.Text = SeverityName + " Deleted successfully";
+
                                 Session["Popup"] = "Delete";
                                 Response.Redirect(Request.Url.AbsoluteUri);
                             }
@@ -1680,9 +1680,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                pnlShowRqstType.Visible = false;
-                                lblsuccess.ForeColor = System.Drawing.Color.Green;
-                                lblsuccess.Text = SeverityName + " Deleted successfully";
                                 Session["Popup"] = "Delete";
                                 Response.Redirect(Request.Url.AbsoluteUri);
                             }
@@ -2263,9 +2260,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                pnlShowRqstType.Visible = false;
-                                lblsuccess.ForeColor = System.Drawing.Color.Green;
-                                lblsuccess.Text = SeverityName + " Deleted successfully";
                                 Session["Popup"] = "Delete";
                                 Response.Redirect(Request.Url.AbsoluteUri);
                             }
@@ -2803,9 +2797,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                pnlShowRqstType.Visible = false;
-                                lblsuccess.ForeColor = System.Drawing.Color.Green;
-                                lblsuccess.Text = PriorityName + " Deleted successfully";
                                 Session["Popup"] = "Delete";
                                 Response.Redirect(Request.Url.AbsoluteUri);
                             }
@@ -2849,11 +2840,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     ddlOrg5.SelectedValue = OrgID.Text;
                     FillRequestTypePriority(Convert.ToInt64(OrgID.Text));
                 }
-
                 ddlRequestTypePriority.SelectedValue = gvPriority.Rows[rowIndex].Cells[1].Text;
                 txtpriority.Text = gvPriority.Rows[rowIndex].Cells[2].Text;
                 txtPriorityDescription.Text = gvPriority.Rows[rowIndex].Cells[3].Text;
-
                 btnInsertPriority.Visible = false;
                 btnUpdatePriority.Visible = true;
             }
@@ -3054,7 +3043,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         CurrentStep = 7;
         cleardata();
         pnlCategory.Visible = true;
-        pnlAddPriority.Visible=false;
+        pnlAddPriority.Visible = false;
         FillOrganizationCategory();
         if (Session["UserScope"].ToString().ToLower() == "admin")
         {
@@ -3068,7 +3057,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
         DataBind();
     }
-
     #endregion Add Priority End
 
     #region Add Category Start
@@ -4789,4 +4777,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     }
     #endregion Add Category End
 
+    #region Email Config Start
+
+    #endregion Email Config End
 }
