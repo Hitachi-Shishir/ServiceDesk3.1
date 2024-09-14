@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="DeskConfiguration.aspx.cs" Inherits="DeskConfiguration" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="DeskConfiguration.aspx.cs" Inherits="DeskConfiguration" MaintainScrollPositionOnPostback="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
@@ -59,7 +59,6 @@
             <%--Stepper Start--%>
             <asp:UpdatePanel ID="updtcardbtn" runat="server">
                 <ContentTemplate>
-
                     <div class="card-header">
                         <div class="row">
                             <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
@@ -145,11 +144,11 @@
                             <div class="col-md-3">
                                 <!-- Step 8 -->
                                 <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
-                        <div class="bs-stepper-circle">8</div>
-                        <div class="">
-                            <h5 class="mb-0 steper-title">Email Config</h5>
-                            <p class="mb-0 steper-sub-title">Add Email Config</p>
-                        </div>
+                                <div class="bs-stepper-circle">8</div>
+                                <div class="">
+                                    <h5 class="mb-0 steper-title">Email Config</h5>
+                                    <p class="mb-0 steper-sub-title">Add Email Config</p>
+                                </div>
                                 </asp:LinkButton>
                             </div>
                             <div class="col-md-3">
@@ -160,6 +159,26 @@
                             <h5 class="mb-0 steper-title">Resolution</h5>
                             <p class="mb-0 steper-sub-title">Add Resolution</p>
                         </div>
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Step 10 -->
+                                <asp:LinkButton ID="stepper1trigger10" runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
+                                <div class="bs-stepper-circle">10</div>
+                                <div class="">
+                                    <h5 class="mb-0 steper-title">Add SLA</h5>
+                                    <p class="mb-0 steper-sub-title">Add SLA</p>
+                                </div>
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Step 11 -->
+                                <asp:LinkButton ID="stepper1trigger11" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
+                                <div class="bs-stepper-circle">11</div>
+                                <div class="">
+                                    <h5 class="mb-0 steper-title">Add SLA</h5>
+                                    <p class="mb-0 steper-sub-title">Add SLA</p>
+                                </div>
                                 </asp:LinkButton>
                             </div>
                         </div>
@@ -786,14 +805,11 @@
                                         <div class="form-group row mt-3">
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Response Time(in Min): <span title="*"></span>
-
                                                 <asp:RequiredFieldValidator ID="rfvtxtResponseTime" runat="server" ControlToValidate="txtResponseTime" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity"></asp:RequiredFieldValidator>
                                             </label>
 
                                             <div class="col-sm-4 pr-5">
-
                                                 <asp:TextBox ID="txtResponseTime" runat="server" CssClass="form-control  form-control-sm" TextMode="Number"></asp:TextBox>
-
                                             </div>
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Resolution Time(in Min) : <span title="*"></span>
@@ -836,9 +852,7 @@
                                                             <div class="card-body">
                                                                 <div class="row ">
                                                                     <div class="col-md-4">
-
                                                                         <asp:Label ID="Label12" runat="server" Text="Severity Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
-
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <asp:Label ID="Label13" runat="server"></asp:Label>
@@ -1320,10 +1334,6 @@
                                                                     <div class="col-md-4">
                                                                         <asp:Label ID="Label18" runat="server" Text="EmailConfig Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <asp:Label ID="Label19" runat="server"></asp:Label>
-                                                                        <asp:Label ID="Label20" runat="server"></asp:Label>
-                                                                    </div>
                                                                     <div class="col-md-2 ">
                                                                         <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
                                                                             <label class="mr-2 ml-1 mb-0">Export</label>
@@ -1444,6 +1454,12 @@
                                                 <asp:Button ID="btnCancel9" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel9_Click" CausesValidation="false" />
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousEmailConfig" runat="server" OnClick="lnkPreviousEmailConfig_Click">Previous</asp:LinkButton>
+                                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextSLA" runat="server" OnClick="lnkNextSLA_Click">Next</asp:LinkButton>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-md-8 graphs">
                                                 <div class="xs">
@@ -1461,7 +1477,7 @@
                                                                     <div class="col-md-2 ">
                                                                         <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
                                                                             <label class="mr-2 ml-1 mb-0">Export</label>
-                                                                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport_Click" />
+                                                                            <asp:ImageButton ID="ImgBtnExport9" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport9_Click" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1498,20 +1514,123 @@
                         </div>
                     </ContentTemplate>
                     <Triggers>
-                        <asp:PostBackTrigger ControlID="ImgBtnExport" />
-                        <asp:AsyncPostBackTrigger ControlID="ImgAddRequestType" EventName="Click" />
-                        <asp:PostBackTrigger ControlID="ddlOrg" />
-                        <asp:PostBackTrigger ControlID="ddlRequestType" />
+                        <asp:PostBackTrigger ControlID="ImgBtnExport9" />
+                        <asp:PostBackTrigger ControlID="ddlOrgResolution" />
+                        <asp:PostBackTrigger ControlID="ddlRequestTypeResolution" />
                         <asp:PostBackTrigger ControlID="btnInsertResolution" />
-                        <asp:PostBackTrigger ControlID="btnAddResolution" />
-                        <asp:PostBackTrigger ControlID="btnViewResolution" />
                         <asp:PostBackTrigger ControlID="gvResolution" />
                         <asp:PostBackTrigger ControlID="btnUpdateResolution" />
-                        <asp:AsyncPostBackTrigger ControlID="imgbtnAddOrg" EventName="Click" />
+                        <asp:PostBackTrigger ControlID="lnkPreviousEmailConfig" />
+                        <asp:PostBackTrigger ControlID="lnkNextSLA" />
                     </Triggers>
                 </asp:UpdatePanel>
-                </asp:Panel>
-                <%--Add Resolution End--%>
+            </asp:Panel>
+            <%--Add Resolution End--%>
+
+            <%--Add SLA Start--%>
+            <asp:Panel ID="pnlAddSLA" runat="server" Visible="false">
+                <asp:UpdatePanel ID="updatepanel10" runat="server">
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Organization: : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="ddlOrgSLA" ErrorMessage="*" Font-Bold="true" InitialValue="0" ForeColor="Red" ValidationGroup="SLA"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:DropDownList ID="ddlOrgSLA" runat="server" CssClass="form-control form-control-sm chzn-select">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                SLA Name : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="rfvtxtSLAName" runat="server" ControlToValidate="txtSLAName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SLA"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:TextBox ID="txtSLAName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                            </div>
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                SLA Description : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="rfvtxtSLADescription" runat="server" ControlToValidate="txtSLADescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SLA"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:TextBox ID="txtSLADescription" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-3 offset-5 ">
+                                                <asp:Button ID="btnInsertSLA" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsertSLA_Click" ValidationGroup="SLA" />
+                                                <asp:Button ID="btnUpdateSLA" runat="server" Text="Update" Visible="false" class="btn btn-sm savebtn" OnClick="btnUpdateSLA_Click" ValidationGroup="SLA" />
+                                                <asp:Button ID="btnCancel10" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel10_Click" CausesValidation="false" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousResolution" runat="server" OnClick="lnkPreviousResolution_Click">Previous</asp:LinkButton>
+                                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="LinkButton2" runat="server" OnClick="lnkNextSLA_Click">Next</asp:LinkButton>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-10 col-md-8 col-sm-6 graphs">
+                                                    <div class="xs">
+                                                        <div class="well1 white">
+                                                            <div class="card card-default">
+
+                                                                <div class="card-body">
+                                                                    <div class="row ">
+                                                                        <div class="col-md-2 ">
+                                                                            <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
+                                                                                <label class="mr-2 ml-1 mb-0">Export</label>
+                                                                                <asp:ImageButton ID="ImgBtnExport10" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport10_Click" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="table-responsive p-0" style="height: 400px; width: 100%">
+                                                                        <asp:GridView GridLines="None" ID="gvSLA" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap"
+                                                                            Width="100%" OnRowCommand="gvSLA_RowCommand" OnRowDataBound="gvSLA_RowDataBound">
+                                                                            <Columns>
+                                                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                                                    <ItemTemplate>
+                                                                                        <%#Container.DataItemIndex+1 %>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:BoundField DataField="SlaName" HeaderText="SLA Name" NullDisplayText="NA" />
+                                                                                <asp:BoundField DataField="SLADesc" HeaderText="SLA Description" NullDisplayText="NA" />
+                                                                                <asp:TemplateField HeaderText=" Organization">
+                                                                                    <ItemTemplate>
+                                                                                        <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                                                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                                                    </ItemTemplate>
+                                                                                </asp:TemplateField>
+                                                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateSLA" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteSLA" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                                            </Columns>
+                                                                        </asp:GridView>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="ImgBtnExport10" />
+                        <asp:PostBackTrigger ControlID="btnInsertSLA" />
+                        <asp:PostBackTrigger ControlID="gvSLA" />
+                        <asp:PostBackTrigger ControlID="btnUpdateSLA" />
+                    </Triggers>
+
+                </asp:UpdatePanel>
+            </asp:Panel>
+            <%--Add SLA End--%>
         </div>
     </div>
 </asp:Content>

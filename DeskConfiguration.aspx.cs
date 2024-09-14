@@ -155,6 +155,18 @@ public partial class DeskConfiguration : System.Web.UI.Page
         // Your logic here
         DataBind();
     }
+    protected void StepButton_Click10(object sender, EventArgs e)
+    {
+        CurrentStep = 10;
+        // Your logic here
+        DataBind();
+    }
+    protected void StepButton_Click11(object sender, EventArgs e)
+    {
+        CurrentStep = 11;
+        // Your logic here
+        DataBind();
+    }
     #endregion Common End
 
     #region Start Add Orgainsation
@@ -5216,15 +5228,979 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         Response.Redirect(Request.Url.AbsoluteUri);
     }
-    #endregion Email Config End
-
     protected void lnkPreviousCategory_Click(object sender, EventArgs e)
     {
         pnlAddEmailConfig.Visible = false;
-        lnkNextCategory_Click(null,null);
+        lnkNextCategory_Click(null, null);
     }
     protected void lnkNextResolution_Click(object sender, EventArgs e)
     {
+        pnlAddResolution.Visible = true;
+        pnlAddEmailConfig.Visible = false;
+        CurrentStep = 9;
+        if (Session["UserScope"] != null)
+        {
+            FillOrganizationResolution();
+            if (Session["UserScope"].ToString().ToLower() == "admin")
+            {
+                FillResolutionDetailsCustomer();
+                ddlOrgResolution.Enabled = false;
+                ddlOrgResolution.SelectedValue = Session["OrgId"].ToString();
+                ddlOrgResolution.Items.FindByValue(Session["OrgID"].ToString()).Selected = true;
+                ddlOrgResolution_SelectedIndexChanged(sender, e);
+            }
+            else
+            {
+                ddlOrg.Enabled = true;
 
+                FillResolutionDetails();
+            }
+        }
+        else
+        {
+            Response.Redirect("/Default.aspx");
+        }
+        DataBind();
     }
+    #endregion Email Config End
+
+    #region Resolution Add
+    private void FillResolutionDetailsCustomer()
+    {
+        try
+        {
+            DataTable SD_Resolution = new FillSDFields().FillResolutionCustomer(Session["OrgId"].ToString());
+            if (SD_Resolution.Rows.Count > 0)
+            {
+                this.gvResolution.DataSource = (object)SD_Resolution;
+                this.gvResolution.DataBind();
+            }
+            else
+            {
+                this.gvResolution.DataSource = (object)null;
+                this.gvResolution.DataBind();
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    private void FillOrganizationResolution()
+    {
+
+        try
+        {
+
+            DataTable SD_Org = new FillSDFields().FillOrganization(); ;
+
+            ddlOrgResolution.DataSource = SD_Org;
+            ddlOrgResolution.DataTextField = "OrgName";
+            ddlOrgResolution.DataValueField = "Org_ID";
+            ddlOrgResolution.DataBind();
+            ddlOrgResolution.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    private void FillResolutionDetails()
+    {
+        try
+        {
+
+            DataTable SD_Resolution = new FillSDFields().FillResolution(); ;
+
+            if (SD_Resolution.Rows.Count > 0)
+            {
+                //  this.lb.Text = dataTable.Rows.Count.ToString();
+                this.gvResolution.DataSource = (object)SD_Resolution;
+                this.gvResolution.DataBind();
+            }
+            else
+            {
+                this.gvResolution.DataSource = (object)null;
+                this.gvResolution.DataBind();
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+            }
+        }
+    }
+    protected void ddlRequestTypeResolution_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["SDRef"] = ddlRequestTypeResolution.SelectedValue.ToString();
+    }
+    private void FillRequestTypeResolution(long OrgId)
+    {
+        try
+        {
+            DataTable RequestType = new SDTemplateFileds().FillRequestType(OrgId);
+            ddlRequestTypeResolution.DataSource = RequestType;
+            ddlRequestTypeResolution.DataTextField = "ReqTypeRef";
+            ddlRequestTypeResolution.DataValueField = "ReqTypeRef";
+            ddlRequestTypeResolution.DataBind();
+            ddlRequestTypeResolution.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void ImgBtnExport9_Click(object sender, ImageClickEventArgs e)
+    {
+        try
+        {
+
+            DataTable dt = new DataTable("GridView_Data");
+            foreach (System.Web.UI.WebControls.TableCell cell in gvResolution.HeaderRow.Cells)
+            {
+                dt.Columns.Add(cell.Text);
+            }
+            foreach (GridViewRow row in gvResolution.Rows)
+            {
+                dt.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
+                }
+            }
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename=ResolutionType.xlsx");
+                using (MemoryStream MyMemoryStream = new MemoryStream())
+                {
+                    wb.SaveAs(MyMemoryStream);
+                    MyMemoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void gvResolution_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "DeleteEx")
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                //Get the value of column from the DataKeys using the RowIndex.
+                string ResolutionRef = gvResolution.DataKeys[rowIndex].Values["ResolutionRef"].ToString();
+                string Deskref = gvResolution.Rows[rowIndex].Cells[1].Text;
+                string ResolutionName = gvResolution.Rows[rowIndex].Cells[2].Text;
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                    {
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SD_spAddResolution", con))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ResolutionRef", ResolutionRef);
+                            cmd.Parameters.AddWithValue("@DeskRef", Deskref);
+                            cmd.Parameters.AddWithValue("@Option", "DeleteResolution");
+                            cmd.CommandTimeout = 180;
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                Session["Popup"] = "Delete";
+                                Response.Redirect(Request.Url.AbsoluteUri);
+                            }
+
+
+                            //	ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('error','" + ResolutionName + " Deleted successfully" + "');", true);
+
+                            //Response.Redirect(Request.Url.AbsoluteUri);
+                            con.Close();
+                            FillResolutionDetails();
+
+                        }
+                    }
+                    //
+                }
+                catch (ThreadAbortException e2)
+                {
+                    Console.WriteLine("Exception message: {0}", e2.Message);
+                    Thread.ResetAbort();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+                    {
+
+                    }
+                    else
+                    {
+                        var st = new StackTrace(ex, true);
+                        // Get the top stack frame
+                        var frame = st.GetFrame(0);
+                        // Get the line number from the stack frame
+                        var line = frame.GetFileLineNumber();
+                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                        Response.Redirect("~/Error/Error.html");
+
+                    }
+                }
+
+            }
+            if (e.CommandName == "SelectState")
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvResolution.Rows[rowIndex];
+                //Get the value of column from the DataKeys using the RowIndex.
+                string ResolutionRef = gvResolution.DataKeys[rowIndex].Values["ResolutionRef"].ToString();
+                Label OrgID = (row.FindControl("lblOrgFk") as Label);
+                if (ddlOrgResolution.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
+                {
+                    ddlOrgResolution.SelectedValue = OrgID.Text;
+                    FillRequestTypeResolution(Convert.ToInt64(OrgID.Text));
+                }
+                ddlRequestTypeResolution.SelectedValue = gvResolution.Rows[rowIndex].Cells[1].Text;
+                txtResolution.Text = gvResolution.Rows[rowIndex].Cells[2].Text;
+                txtResolutnDesc.Text = gvResolution.Rows[rowIndex].Cells[3].Text;
+
+                btnInsertResolution.Visible = false;
+                btnUpdateResolution.Visible = true;
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void SaveDataResolution()
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SD_spAddResolution", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", r.Next());
+                    cmd.Parameters.AddWithValue("@DeskRef", ddlRequestTypeResolution.SelectedItem.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ResolutionRef", ddlRequestTypeResolution.SelectedItem.Text.Trim() + "||" + txtResolution.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ResolutionCodeRef", txtResolution.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ResolutionDesc", txtResolutnDesc.Text);
+                    cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrgResolution.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "AddResolution");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Insert";
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnInsertResolution_Click(object sender, EventArgs e)
+    {
+        SaveDataResolution();
+    }
+    protected void gvResolution_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (Session["UserScope"].ToString() == "Master")
+        {
+            e.Row.Cells[5].Visible = true;
+            e.Row.Cells[6].Visible = true;
+        }
+
+        if (Session["UserScope"].ToString() == "Technician" || Session["UserScope"].ToString() == "Admin")
+        {
+            e.Row.Cells[5].Visible = true;
+            e.Row.Cells[6].Visible = false;
+
+        }
+    }
+    protected void btnUpdateResolution_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand("SD_spAddResolution", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@DeskRef", ddlRequestTypeResolution.SelectedValue);
+                    cmd.Parameters.AddWithValue("@ResolutionRef", ddlRequestTypeResolution.SelectedValue.ToString().Trim() + "||" + txtResolution.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ResolutionCodeRef", txtResolution.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ResolutionDesc", txtResolutnDesc.Text);
+                    cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrgResolution.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "UpdateResolution");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Update";
+                    }
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnCancel9_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.Url.AbsoluteUri);
+    }
+    protected void LoadOrgControl()
+    {
+        try
+        {
+            // pnlShowRqstType.Controls.Clear();
+            System.Web.UI.Control featuredProduct = Page.LoadControl("/HelpDesk/UserControlOrg.ascx");
+            featuredProduct.ID = "12321";
+            pnlShowOrg.Controls.Add(featuredProduct);
+        }
+        catch (Exception ex)
+        {
+            var st = new StackTrace(ex, true);
+            // Get the top stack frame
+            var frame = st.GetFrame(0);
+            // Get the line number from the stack frame
+            var line = frame.GetFileLineNumber();
+            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+            Response.Redirect("~/Error/Error.html");
+        }
+    }
+    protected void ddlOrgResolution_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            FillRequestTypeResolution(Convert.ToInt64(ddlOrgResolution.SelectedValue));
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void lnkPreviousEmailConfig_Click(object sender, EventArgs e)
+    {
+        pnlAddResolution.Visible = false;
+        lnkNextResolution_Click(null, null);
+    }
+    protected void lnkNextSLA_Click(object sender, EventArgs e)
+    {
+        CurrentStep = 10;
+        DataBind();
+        pnlAddSLA.Visible = true;
+        pnlAddResolution.Visible = false;
+        if (Session["UserScope"] != null)
+        {
+            FillSLADetails();
+            FillOrganizationSLA();
+        }
+        else
+        {
+            Response.Redirect("/Default.aspx");
+        }
+    }
+    #endregion Resolution End
+    #region Add SLA Start
+    private void FillOrganizationSLA()
+    {
+        try
+        {
+            DataTable SD_Org = new FillSDFields().FillOrganization();
+            ddlOrgSLA.DataSource = SD_Org;
+            ddlOrgSLA.DataTextField = "OrgName";
+            ddlOrgSLA.DataValueField = "Org_ID";
+            ddlOrgSLA.DataBind();
+            ddlOrgSLA.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+            }
+        }
+    }
+    private void FillSLADetails()
+    {
+
+        try
+        {
+
+            DataTable SD_SLA = new FillSDFields().FillUserSLAdetails(); ;
+
+            if (SD_SLA.Rows.Count > 0)
+            {
+                //  this.lb.Text = dataTable.Rows.Count.ToString();
+                this.gvSLA.DataSource = (object)SD_SLA;
+                this.gvSLA.DataBind();
+            }
+            else
+            {
+                this.gvSLA.DataSource = (object)null;
+                this.gvSLA.DataBind();
+            }
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void ImgBtnExport10_Click(object sender, ImageClickEventArgs e)
+    {
+        try
+        {
+
+            DataTable dt = new DataTable("GridView_Data");
+            foreach (System.Web.UI.WebControls.TableCell cell in gvSLA.HeaderRow.Cells)
+            {
+                dt.Columns.Add(cell.Text);
+            }
+            foreach (GridViewRow row in gvSLA.Rows)
+            {
+                dt.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
+                }
+            }
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename=SLA.xlsx");
+                using (MemoryStream MyMemoryStream = new MemoryStream())
+                {
+                    wb.SaveAs(MyMemoryStream);
+                    MyMemoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    static long SLAID;
+    protected void gvSLA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "DeleteSLA")
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                //Get the value of column from the DataKeys using the RowIndex.
+                SLAID = Convert.ToInt32(gvSLA.DataKeys[rowIndex].Values["ID"]);
+
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                    {
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SD_spAddDeskSLA", con))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ID", SLAID);
+                            cmd.Parameters.AddWithValue("@Option", "DeleteDeskSLA");
+                            cmd.CommandTimeout = 180;
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                Session["Popup"] = "Delete";
+                                Response.Redirect(Request.Url.AbsoluteUri);
+                            }
+                            con.Close();
+                            FillSLADetails();
+
+                        }
+                    }
+                }
+                catch (ThreadAbortException e2)
+                {
+                    Console.WriteLine("Exception message: {0}", e2.Message);
+                    Thread.ResetAbort();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+                    {
+
+                    }
+                    else
+                    {
+                        var st = new StackTrace(ex, true);
+                        // Get the top stack frame
+                        var frame = st.GetFrame(0);
+                        // Get the line number from the stack frame
+                        var line = frame.GetFileLineNumber();
+                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                        Response.Redirect("~/Error/Error.html");
+                    }
+                }
+            }
+
+            if (e.CommandName == "UpdateSLA")
+            {
+                btnInsertSLA.Visible = false;
+                btnUpdateSLA.Visible = true;
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvSLA.Rows[rowIndex];
+                SLAID = Convert.ToInt32(gvSLA.DataKeys[rowIndex].Values["ID"]);
+                txtSLAName.Text = gvSLA.Rows[rowIndex].Cells[1].Text;
+                txtSLADescription.Text = gvSLA.Rows[rowIndex].Cells[2].Text;
+                Label OrgID = (row.FindControl("lblOrgFk") as Label);
+                if (ddlOrgSLA.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
+                {
+                    ddlOrgSLA.SelectedValue = OrgID.Text;
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void SaveDataSLA()
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SD_spAddDeskSLA", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", r.Next());
+                    cmd.Parameters.AddWithValue("@SlaName", txtSLAName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@SLADesc", txtSLADescription.Text);
+                    cmd.Parameters.AddWithValue("@OrgID", ddlOrgSLA.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Option", "AddDeskSLA");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Insert";
+                    }
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void gvSLA_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (Session["UserScope"].ToString() == "Master")
+            {
+                e.Row.Cells[3].Visible = true;
+                e.Row.Cells[4].Visible = true;
+            }
+
+            if (Session["UserScope"].ToString() == "Technician")
+            {
+                e.Row.Cells[3].Visible = true;
+                e.Row.Cells[4].Visible = false;
+
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnInsertSLA_Click(object sender, EventArgs e)
+    {
+        SaveDataSLA();
+    }
+    protected void btnUpdateSLA_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand("SD_spAddDeskSLA", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", SLAID);
+                    cmd.Parameters.AddWithValue("@SlaName", txtSLAName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@SLADesc", txtSLADescription.Text);
+                    cmd.Parameters.AddWithValue("@OrgID", ddlOrgSLA.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Option", "UpdateDeskSLA");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Update";
+
+                    }
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnCancel10_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.Url.AbsoluteUri);
+    }
+
+    #endregion Add SLA End
 }
