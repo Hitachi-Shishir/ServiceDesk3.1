@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="DeskConfiguration.aspx.cs" Inherits="DeskConfiguration" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="DeskConfiguration.aspx.cs" Inherits="DeskConfiguration" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
@@ -57,100 +57,115 @@
     <div id="stepper1" class="bs-stepper">
         <div class="card">
             <%--Stepper Start--%>
-            <div class="card-header">
-                <div class="row">
-                    <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
-                        <div class="col-md-3">
-                            <!-- Step 1 -->
-                            <asp:LinkButton ID="stepper1trigger1" runat="server" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' OnClick="StepButton_Click1">
+            <asp:UpdatePanel ID="updtcardbtn" runat="server">
+                <ContentTemplate>
+
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
+                                <div class="col-md-3">
+                                    <!-- Step 1 -->
+                                    <asp:LinkButton ID="stepper1trigger1" runat="server" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' OnClick="StepButton_Click1">
                          <div class="bs-stepper-circle">1</div>
                          <div class="">
                              <h5 class="mb-0 steper-title">Organisation Info</h5>
                              <p class="mb-0 steper-sub-title">Enter Org Details</p>
                          </div>
-                            </asp:LinkButton>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="bs-stepper-line"></div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="bs-stepper-line"></div>
 
-                            <!-- Step 2 -->
-                            <asp:LinkButton ID="stepper1trigger2" runat="server" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
+                                    <!-- Step 2 -->
+                                    <asp:LinkButton ID="stepper1trigger2" runat="server" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
                         <div class="bs-stepper-circle">2</div>
                         <div class="">
                             <h5 class="mb-0 steper-title">Add Request Type</h5>
                             <p class="mb-0 steper-sub-title">Setup Request Details</p>
                         </div>
-                            </asp:LinkButton>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="bs-stepper-line"></div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="bs-stepper-line"></div>
 
-                            <!-- Step 3 -->
-                            <asp:LinkButton ID="stepper1trigger3" runat="server" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
+                                    <!-- Step 3 -->
+                                    <asp:LinkButton ID="stepper1trigger3" runat="server" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
                          <div class="bs-stepper-circle">3</div>
                          <div class="">
                              <h5 class="mb-0 steper-title">Add Stage</h5>
                              <p class="mb-0 steper-sub-title">Stage Details</p>
                          </div>
-                            </asp:LinkButton>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="bs-stepper-line"></div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="bs-stepper-line"></div>
 
-                            <!-- Step 4 -->
-                            <asp:LinkButton ID="stepper1trigger4" runat="server" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
+                                    <!-- Step 4 -->
+                                    <asp:LinkButton ID="stepper1trigger4" runat="server" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
                             <div class="bs-stepper-circle">4</div>
                             <div class="">
                                 <h5 class="mb-0 steper-title">Add Status</h5>
                                 <p class="mb-0 steper-sub-title">Status Details</p>
                             </div>
-                            </asp:LinkButton>
+                                    </asp:LinkButton>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <!-- Step 5 -->
-                        <asp:LinkButton ID="stepper1trigger5" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <!-- Step 5 -->
+                                <asp:LinkButton ID="stepper1trigger5" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
                         <div class="bs-stepper-circle">5</div>
                         <div class="">
                             <h5 class="mb-0 steper-title">Add Severity</h5>
                             <p class="mb-0 steper-sub-title">Severity Details</p>
                         </div>
-                        </asp:LinkButton>
-                    </div>
-                    <div class="col-md-3">
-                        <!-- Step 6 -->
-                        <asp:LinkButton ID="stepper1trigger6" runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Step 6 -->
+                                <asp:LinkButton ID="stepper1trigger6" runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
                         <div class="bs-stepper-circle">6</div>
                         <div class="">
                             <h5 class="mb-0 steper-title">Add Priority</h5>
                             <p class="mb-0 steper-sub-title">Priority Details</p>
                         </div>
-                        </asp:LinkButton>
-                    </div>
-                    <div class="col-md-3">
-                        <!-- Step 7 -->
-                        <asp:LinkButton ID="stepper1trigger7" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Step 7 -->
+                                <asp:LinkButton ID="stepper1trigger7" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
                         <div class="bs-stepper-circle">7</div>
                         <div class="">
                             <h5 class="mb-0 steper-title">Add Category</h5>
                             <p class="mb-0 steper-sub-title">Category Details</p>
                         </div>
-                        </asp:LinkButton>
-                    </div>
-                    <div class="col-md-3">
-                        <!-- Step 8 -->
-                        <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Step 8 -->
+                                <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
                         <div class="bs-stepper-circle">8</div>
                         <div class="">
-                            <h5 class="mb-0 steper-title">Add Category</h5>
-                            <p class="mb-0 steper-sub-title">Category Details</p>
+                            <h5 class="mb-0 steper-title">Email Config</h5>
+                            <p class="mb-0 steper-sub-title">Add Email Config</p>
                         </div>
-                        </asp:LinkButton>
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Step 9 -->
+                                <asp:LinkButton ID="stepper1trigger9" runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
+                        <div class="bs-stepper-circle">9</div>
+                        <div class="">
+                            <h5 class="mb-0 steper-title">Resolution</h5>
+                            <p class="mb-0 steper-sub-title">Add Resolution</p>
+                        </div>
+                                </asp:LinkButton>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <%--Stepper End--%>
 
             <%--ADD Organisation Start--%>
@@ -1147,7 +1162,7 @@
                         <div class="col-12">
                             <div class="d-flex align-items-center gap-3">
                                 <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousPriority" runat="server" OnClick="lnkPreviousPriority_Click">Previous</asp:LinkButton>
-                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextResolution" runat="server" OnClick="lnkNextResolution_Click">Next</asp:LinkButton>
+                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextEmailConfig" runat="server" OnClick="lnkNextEmailConfig_Click">Next</asp:LinkButton>
                             </div>
                         </div>
                         <asp:HiddenField ID="hdnVarCategoryI" runat="server" />
@@ -1191,88 +1206,59 @@
                         <asp:PostBackTrigger ControlID="imgbtnEditCatV" />
                         <asp:PostBackTrigger ControlID="imgbtnCancelCatV" />
                         <asp:PostBackTrigger ControlID="lnkPreviousPriority" />
-                        <asp:PostBackTrigger ControlID="lnkNextResolution" />
+                        <asp:PostBackTrigger ControlID="lnkNextEmailConfig" />
                     </Triggers>
                 </asp:UpdatePanel>
             </asp:Panel>
             <%--Add Category End--%>
 
             <%--Add Email Config Start--%>
-            <asp:ScriptManager ID="scriptmanager2" runat="server"></asp:ScriptManager>
-
-            <asp:UpdatePanel ID="updatepanel8" runat="server">
-                <ContentTemplate>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <asp:Button ID="btnAddEmailConfig" Text="Add EmailConfig" runat="server" CssClass="btn btn-sm btnDisabled" OnClick="btnAddEmailConfig_Click" />
-                            <asp:Button ID="btnViewEmailConfig" runat="server" Text-="View Details" CssClass="btn btn-sm btnEnabled" OnClick="btnViewEmailConfig_Click" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <asp:Panel ID="pnlAddEmailConfig" runat="server" Visible="false">
+            <asp:Panel ID="pnlAddEmailConfig" runat="server" Visible="false">
+                <asp:UpdatePanel ID="updatepanel8" runat="server">
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
                                         <div class="form-group row mt-3">
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Host Name : <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="rfvtxtHostName" runat="server" ControlToValidate="txtHostName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
-
-
                                             <div class="col-sm-4 pr-5">
-
                                                 <asp:TextBox ID="txtHostName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
-
                                             </div>
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Port: <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="rfvtxtPort" runat="server" ControlToValidate="txtPort" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-4 pr-5">
-
                                                 <asp:TextBox ID="txtPort" runat="server" TextMode="Number" CssClass="form-control  form-control-sm"></asp:TextBox>
-
                                             </div>
-
-
                                         </div>
                                         <div class="form-group row mt-3">
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 User Name: <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="rfvtxtUserName" runat="server" ControlToValidate="txtUserName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
-
-
                                             <div class="col-sm-4 pr-5">
-
                                                 <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
-
                                             </div>
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Password : <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="rfvtxtPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-4 pr-5">
-
                                                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control  form-control-sm"></asp:TextBox>
-
                                             </div>
-
-
                                         </div>
-
                                         <div class="form-group row mt-3">
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Sender Email: <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="rfvtxtEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
-
-
                                             <div class="col-sm-4 pr-5">
-
                                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
-
                                             </div>
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 RetryInterval : <span title="*"></span>
@@ -1280,7 +1266,6 @@
                                             </label>
                                             <div class="col-sm-4 pr-5">
                                                 <asp:TextBox ID="txtRetry" runat="server" TextMode="Number" CssClass="form-control  form-control-sm"></asp:TextBox>
-
                                             </div>
                                         </div>
                                         <div class="form-group row mt-3">
@@ -1288,7 +1273,6 @@
                                                 Client ID: <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="rfvtxtClientID" runat="server" ControlToValidate="txtClientID" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
-
                                             <div class="col-sm-4 pr-5">
                                                 <asp:TextBox ID="txtClientID" runat="server" TextMode="MultiLine" CssClass="form-control  form-control-sm"></asp:TextBox>
                                             </div>
@@ -1311,13 +1295,11 @@
 
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Organization: <span title="*"></span>
-
-                                                <asp:ImageButton ID="imgbtnAddOrg" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnAddOrg_Click" hidden />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrgEmailConfig" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
                                             </label>
 
                                             <div class="col-sm-4 pr-5">
-                                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control form-control-sm chzn-select">
+                                                <asp:DropDownList ID="ddlOrgEmailConfig" runat="server" CssClass="form-control form-control-sm chzn-select">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -1325,7 +1307,7 @@
                                             <div class="col-md-3 offset-5 ">
                                                 <asp:Button ID="btnInsertEmailConfig" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsertEmailConfig_Click" ValidationGroup="EmailConfig" />
                                                 <asp:Button ID="btnUpdateEmailConfig" runat="server" Text="Update" Visible="false" class="btn btn-sm savebtn" OnClick="btnUpdateEmailConfig_Click" ValidationGroup="EmailConfig" />
-                                                <asp:Button ID="Button2" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel_Click" CausesValidation="false" />
+                                                <asp:Button ID="btnCancel8" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel8_Click" CausesValidation="false" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -1333,13 +1315,10 @@
                                                 <div class="xs">
                                                     <div class="well1 white">
                                                         <div class="card card-default">
-
                                                             <div class="card-body">
                                                                 <div class="row ">
                                                                     <div class="col-md-4">
-
                                                                         <asp:Label ID="Label18" runat="server" Text="EmailConfig Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
-
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <asp:Label ID="Label19" runat="server"></asp:Label>
@@ -1348,10 +1327,15 @@
                                                                     <div class="col-md-2 ">
                                                                         <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
                                                                             <label class="mr-2 ml-1 mb-0">Export</label>
-                                                                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport_Click" />
+                                                                            <asp:ImageButton ID="ImgBtnExport8" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport8_Click" />
                                                                         </div>
                                                                     </div>
-
+                                                                    <div class="col-12">
+                                                                        <div class="d-flex align-items-center gap-3">
+                                                                            <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousCategory" runat="server" OnClick="lnkPreviousCategory_Click">Previous</asp:LinkButton>
+                                                                            <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextResolution" runat="server" OnClick="lnkNextResolution_Click">Next</asp:LinkButton>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="table-responsive p-0" style="height: 400px; width: 100%">
                                                                     <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap"
@@ -1384,7 +1368,6 @@
                                                                             <asp:ButtonField ButtonType="Image" CommandName="UpdateEmailConfig" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
                                                                             <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEmailConfig" ItemStyle-Width="20px" ItemStyle-Height="5px" />
                                                                         </Columns>
-                                                                        
                                                                     </asp:GridView>
                                                                 </div>
                                                             </div>
@@ -1393,24 +1376,143 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </ContentTemplate>
-                <Triggers>
-                    <asp:PostBackTrigger ControlID="ImgBtnExport" />
-                    <asp:PostBackTrigger ControlID="btnAddEmailConfig" />
-                    <asp:PostBackTrigger ControlID="btnViewEmailConfig" />
-                    <asp:PostBackTrigger ControlID="btnInsertEmailConfig" />
-                    <asp:PostBackTrigger ControlID="gvEmailConfig" />
-                    <asp:PostBackTrigger ControlID="btnUpdateEmailConfig" />
-                </Triggers>
-
-            </asp:UpdatePanel>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="ImgBtnExport" />
+                        <asp:PostBackTrigger ControlID="btnInsertEmailConfig" />
+                        <asp:PostBackTrigger ControlID="gvEmailConfig" />
+                        <asp:PostBackTrigger ControlID="btnUpdateEmailConfig" />
+                        <asp:PostBackTrigger ControlID="lnkPreviousCategory" />
+                        <asp:PostBackTrigger ControlID="lnkNextResolution" />
+                    </Triggers>
+                </asp:UpdatePanel>
+            </asp:Panel>
             <%--Add Email Config End--%>
+
+            <%--Add Resolution Start--%>
+            <asp:Panel ID="pnlAddResolution" runat="server" Visible="false">
+                <asp:UpdatePanel ID="updatepanel9" runat="server">
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Organization: <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:DropDownList ID="ddlOrgResolution" runat="server" CssClass="form-control form-control-sm chzn-select" AutoPostBack="true" OnSelectedIndexChanged="ddlOrgResolution_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Request Type: <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddlRequestType" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:DropDownList ID="ddlRequestTypeResolution" runat="server" CssClass="form-control form-control-sm chzn-select" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </div>
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Resolution Name : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="rfvtxtResolution" runat="server" ControlToValidate="txtResolution" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-4 pr-5">
+                                                <asp:TextBox ID="txtResolution" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mt-3">
+                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                                Resolution Description : <span title="*"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtResolutnDesc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-10 pr-5">
+                                                <asp:TextBox ID="txtResolutnDesc" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-3  offset-5">
+                                                <asp:Button ID="btnInsertResolution" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsertResolution_Click" ValidationGroup="Resol" />
+                                                <asp:Button ID="btnUpdateResolution" runat="server" Text="Update" Visible="false" class="btn btn-sm savebtn" OnClick="btnUpdateResolution_Click" ValidationGroup="Resol" />
+                                                <asp:Button ID="btnCancel9" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel9_Click" CausesValidation="false" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8 graphs">
+                                                <div class="xs">
+                                                    <div class="well1 white">
+                                                        <div class="card card-default">
+                                                            <div class="card-body">
+                                                                <div class="row ">
+                                                                    <div class="col-md-4">
+                                                                        <asp:Label ID="Label21" runat="server" Text="Resolution Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <asp:Label ID="Label22" runat="server"></asp:Label>
+                                                                        <asp:Label ID="Label23" runat="server"></asp:Label>
+                                                                    </div>
+                                                                    <div class="col-md-2 ">
+                                                                        <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
+                                                                            <label class="mr-2 ml-1 mb-0">Export</label>
+                                                                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport_Click" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <asp:GridView GridLines="None" ID="gvResolution" runat="server" DataKeyNames="ResolutionRef" AutoGenerateColumns="false" CssClass="table table-bordered"
+                                                                    Width="100%" OnRowCommand="gvResolution_RowCommand" OnRowDataBound="gvResolution_RowDataBound">
+                                                                    <Columns>
+                                                                        <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                                            <ItemTemplate>
+                                                                                <%#Container.DataItemIndex+1 %>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
+                                                                        <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
+                                                                        <asp:BoundField DataField="ResolutionCodeRef" HeaderText=" Resolution Name" NullDisplayText="NA" />
+                                                                        <asp:BoundField DataField="ResolutionDesc" HeaderText="Resolution Description" NullDisplayText="NA" />
+                                                                        <asp:TemplateField HeaderText=" Organization">
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                                                                                <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
+                                                                        <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                                        <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                                    </Columns>
+                                                                </asp:GridView>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="ImgBtnExport" />
+                        <asp:AsyncPostBackTrigger ControlID="ImgAddRequestType" EventName="Click" />
+                        <asp:PostBackTrigger ControlID="ddlOrg" />
+                        <asp:PostBackTrigger ControlID="ddlRequestType" />
+                        <asp:PostBackTrigger ControlID="btnInsertResolution" />
+                        <asp:PostBackTrigger ControlID="btnAddResolution" />
+                        <asp:PostBackTrigger ControlID="btnViewResolution" />
+                        <asp:PostBackTrigger ControlID="gvResolution" />
+                        <asp:PostBackTrigger ControlID="btnUpdateResolution" />
+                        <asp:AsyncPostBackTrigger ControlID="imgbtnAddOrg" EventName="Click" />
+                    </Triggers>
+                </asp:UpdatePanel>
+                </asp:Panel>
+                <%--Add Resolution End--%>
         </div>
     </div>
-
 </asp:Content>
 

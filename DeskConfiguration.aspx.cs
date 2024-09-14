@@ -142,10 +142,16 @@ public partial class DeskConfiguration : System.Web.UI.Page
         CurrentStep = 7;
         // Your logic here
         DataBind();
-    } 
+    }
     protected void StepButton_Click8(object sender, EventArgs e)
     {
         CurrentStep = 8;
+        // Your logic here
+        DataBind();
+    }
+    protected void StepButton_Click9(object sender, EventArgs e)
+    {
+        CurrentStep = 9;
         // Your logic here
         DataBind();
     }
@@ -4771,13 +4777,454 @@ public partial class DeskConfiguration : System.Web.UI.Page
         FillOrganizationPriority();
         DataBind();
     }
-    protected void lnkNextResolution_Click(object sender, EventArgs e)
+    protected void lnkNextEmailConfig_Click(object sender, EventArgs e)
     {
-
+        pnlAddEmailConfig.Visible = true;
+        pnlCategory.Visible = false;
+        CurrentStep = 8;
+        if (Session["UserScope"] != null)
+        {
+            FillEmailConfigDetails();
+            FillOrganizationEmailConfig();
+        }
+        else
+        {
+            Response.Redirect("/Default.aspx");
+        }
+        DataBind();
     }
     #endregion Add Category End
 
     #region Email Config Start
+    private void FillOrganizationEmailConfig()
+    {
+        try
+        {
+            DataTable SD_Org = new FillSDFields().FillOrganization();
+            ddlOrgEmailConfig.DataSource = SD_Org;
+            ddlOrgEmailConfig.DataTextField = "OrgName";
+            ddlOrgEmailConfig.DataValueField = "Org_ID";
+            ddlOrgEmailConfig.DataBind();
+            ddlOrgEmailConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
 
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    private void FillEmailConfigDetails()
+    {
+        try
+        {
+            DataTable SD_EmailConfig = new FillSDFields().FillUserEmailConfigdetails();
+            if (SD_EmailConfig.Rows.Count > 0)
+            {
+                this.gvEmailConfig.DataSource = (object)SD_EmailConfig;
+                this.gvEmailConfig.DataBind();
+            }
+            else
+            {
+                this.gvEmailConfig.DataSource = (object)null;
+                this.gvEmailConfig.DataBind();
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void ImgBtnExport8_Click(object sender, ImageClickEventArgs e)
+    {
+        try
+        {
+
+            DataTable dt = new DataTable("GridView_Data");
+            foreach (System.Web.UI.WebControls.TableCell cell in gvEmailConfig.HeaderRow.Cells)
+            {
+                dt.Columns.Add(cell.Text);
+            }
+            foreach (GridViewRow row in gvEmailConfig.Rows)
+            {
+                dt.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
+                }
+            }
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename=EmailConfig.xlsx");
+                using (MemoryStream MyMemoryStream = new MemoryStream())
+                {
+                    wb.SaveAs(MyMemoryStream);
+                    MyMemoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            var st = new StackTrace(ex, true);
+            // Get the top stack frame
+            var frame = st.GetFrame(0);
+            // Get the line number from the stack frame
+            var line = frame.GetFileLineNumber();
+            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+            Response.Redirect("~/Error/Error.html");
+        }
+    }
+    static long EmailConfigID;
+    protected void gvEmailConfig_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "DeleteEmailConfig")
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                EmailConfigID = Convert.ToInt64(gvEmailConfig.DataKeys[rowIndex].Values["ID"]);
+
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                    {
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ID", EmailConfigID);
+                            cmd.Parameters.AddWithValue("@Option", "DeleteEmailConfig");
+                            cmd.CommandTimeout = 180;
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                Session["Popup"] = "Delete";
+                                Response.Redirect(Request.Url.AbsoluteUri);
+                            }
+                            con.Close();
+                            FillEmailConfigDetails();
+                        }
+                    }
+                }
+                catch (ThreadAbortException e2)
+                {
+                    Console.WriteLine("Exception message: {0}", e2.Message);
+                    Thread.ResetAbort();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+                    {
+
+                    }
+                    else
+                    {
+                        var st = new StackTrace(ex, true);
+                        // Get the top stack frame
+                        var frame = st.GetFrame(0);
+                        // Get the line number from the stack frame
+                        var line = frame.GetFileLineNumber();
+                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                        Response.Redirect("~/Error/Error.html");
+
+                    }
+                }
+
+            }
+
+
+            if (e.CommandName == "UpdateEmailConfig")
+            {
+                rfvtxtPassword.Enabled = false;
+
+                AddEmailConfigPanel();
+                btnInsertEmailConfig.Visible = false;
+                btnUpdateEmailConfig.Visible = true;
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvEmailConfig.Rows[rowIndex];
+                EmailConfigID = Convert.ToInt32(gvEmailConfig.DataKeys[rowIndex].Values["ID"]);
+                txtHostName.Text = gvEmailConfig.Rows[rowIndex].Cells[1].Text;
+                txtPort.Text = gvEmailConfig.Rows[rowIndex].Cells[2].Text;
+                txtUserName.Text = gvEmailConfig.Rows[rowIndex].Cells[3].Text;
+                txtEmail.Text = gvEmailConfig.Rows[rowIndex].Cells[4].Text;
+                txtRetry.Text = gvEmailConfig.Rows[rowIndex].Cells[6].Text;
+                txtClientID.Text = gvEmailConfig.Rows[rowIndex].Cells[7].Text;
+                txtClientSecretKey.Text = gvEmailConfig.Rows[rowIndex].Cells[8].Text;
+                txtTenantID.Text = gvEmailConfig.Rows[rowIndex].Cells[9].Text;
+                Label OrgID = (row.FindControl("lblOrgFk") as Label);
+                if (ddlOrgEmailConfig.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
+                {
+                    ddlOrgEmailConfig.SelectedValue = OrgID.Text;
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void SaveDataEmailConfig()
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", r.Next());
+                    cmd.Parameters.AddWithValue("@Hostname", txtHostName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Port", txtPort.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("@ClientID", txtClientID.Text);
+                    cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
+                    cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
+                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "AddEmailConfig");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Insert";
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+
+                }
+            }
+
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void gvEmailConfig_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (Session["UserScope"].ToString() == "Master")
+            {
+                e.Row.Cells[5].Visible = true;
+                e.Row.Cells[6].Visible = true;
+            }
+
+            if (Session["UserScope"].ToString() == "Technician")
+            {
+                e.Row.Cells[5].Visible = true;
+                e.Row.Cells[6].Visible = false;
+
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnInsertEmailConfig_Click(object sender, EventArgs e)
+    {
+        SaveDataEmailConfig();
+    }
+    protected void AddEmailConfigPanel()
+    {
+        pnlAddEmailConfig.Visible = true;
+        txtHostName.Text = "";
+        txtPort.Text = "";
+        txtUserName.Text = "";
+        txtEmail.Text = "";
+        txtPassword.Text = "";
+        txtRetry.Text = "";
+        txtClientID.Text = "";
+        txtClientSecretKey.Text = "";
+        txtTenantID.Text = "";
+        btnInsertEmailConfig.Visible = true;
+        btnUpdateEmailConfig.Visible = false;
+    }
+    protected void btnUpdateEmailConfig_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@ID", EmailConfigID);
+                    cmd.Parameters.AddWithValue("@Hostname", txtHostName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Port", txtPort.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("@Retry", txtRetry.Text);
+                    cmd.Parameters.AddWithValue("@ClientID", txtClientID.Text);
+                    cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
+                    cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
+                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "UpdateEmailConfig");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        Session["Popup"] = "Update";
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                Response.Redirect("~/Error/Error.html");
+
+            }
+        }
+    }
+    protected void btnCancel8_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.Url.AbsoluteUri);
+    }
     #endregion Email Config End
+
+    protected void lnkPreviousCategory_Click(object sender, EventArgs e)
+    {
+        pnlAddEmailConfig.Visible = false;
+        lnkNextCategory_Click(null,null);
+    }
+    protected void lnkNextResolution_Click(object sender, EventArgs e)
+    {
+
+    }
 }
