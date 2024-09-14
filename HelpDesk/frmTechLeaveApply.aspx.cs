@@ -20,8 +20,6 @@ public partial class frmTechLeaveApply : System.Web.UI.Page
         if (!IsPostBack)
         {
             FillOrganization();
-            //ddlOrg.SelectedValue = Convert.ToString(Session["SD_OrgID"]);
-            //ddlOrg.Enabled = false;
             bindAssigne();
             getleavedata();
         }
@@ -46,9 +44,6 @@ public partial class frmTechLeaveApply : System.Web.UI.Page
 
         // Use ScriptManager for partial postbacks or ClientScript for full postbacks
         ScriptManager.RegisterStartupScript(this, GetType(), "initializeDataTable", script, false);
-
-
-
     }
     public void getleavedata()
     {
@@ -169,11 +164,7 @@ on a.AppliedbyUserid=b.UserID";
         string msg = obj.InsertInsertTechLeave(ddltech.SelectedValue, ddltech.SelectedItem.Text.Trim(),
             Convert.ToDateTime(fdate), Convert.ToDateTime(tdate), Convert.ToString(Session["UserID"]));
         if (msg != "")
-        {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Saved Successfully.');window.location ='frmTechLeaveApply.aspx';", true);
-            //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Sucessfully !")}');", true);
-            //        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-            //$"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+        {   
             ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
         $"if (window.location.pathname.endsWith('/frmTechLeaveApply.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
             DataTableScript();
