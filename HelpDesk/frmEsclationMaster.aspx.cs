@@ -36,9 +36,6 @@ public partial class frmEsclationMaster : System.Web.UI.Page
                     pnlViewEcslevel.Visible = true;
                     btnViewEcslevel.CssClass = "btn btn-sm btnEnabled";
                     btnViewEcslevel.Enabled = false;
-
-
-                    // Check if the query parameter is present and update the visibility of the panels accordingly
                     if (Request.QueryString["pnlAddEcslevel"] == "true")
                     {
                         pnlAddEcslevel.Visible = true;
@@ -168,7 +165,6 @@ public partial class frmEsclationMaster : System.Web.UI.Page
             }
         }
     }
-
     private void Modal()
     {
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -182,9 +178,6 @@ public partial class frmEsclationMaster : System.Web.UI.Page
 
 
     }
-
-
-
     protected void ImgBtnExport_Click(object sender, ImageClickEventArgs e)
     {
         try
@@ -462,7 +455,6 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
             }
         }
     }
-
     public override void VerifyRenderingInServerForm(Control control)
     {
         /* Verifies that the control is rendered */
@@ -527,7 +519,6 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
             }
         }
     }
-
     protected void AddEcslevelPanel()
     {
         pnlAddEcslevel.Visible = true;
@@ -547,7 +538,6 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
         btnAddUserEcslevel.Enabled = true;
         FillEcslevelDetails();
     }
-
     protected void btnAddUserEcslevel_Click(object sender, EventArgs e)
     {
         AddEcslevelPanel();
