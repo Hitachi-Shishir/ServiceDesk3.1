@@ -156,6 +156,7 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
     protected void ddlOrg_SelectedIndexChanged(object sender, EventArgs e)
     {
         getUser();
+        getData();
     }
 
     protected void btnGO_Click(object sender, EventArgs e)
