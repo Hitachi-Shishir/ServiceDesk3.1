@@ -57,6 +57,24 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         /*.dataTables_filter {
             margin-top: -31px !important;
         }*/
+        .main-wrapper .main-content .page-breadcrumb .breadcrumb li.breadcrumb-item {
+    font-size: 14px;
+}
+[data-bs-theme=blue-theme] body .page-breadcrumb .breadcrumb-title {
+
+    font-size: 15px;
+
+}
+        .select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field {
+            color: #0f1535 !important;
+            font-size: 0.875rem !important;
+        }
+        .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
+       padding: .25rem .5rem !important;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
     </style>
 </head>
 <body>
@@ -164,40 +182,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     </div>
                 </div>
                 <ul class="navbar-nav gap-1 nav-right-links align-items-center">
-                    <li class="nav-item d-lg-none mobile-search-btn">
-                        <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown">
-                            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/02.png" width="22" alt="">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/01.png" width="20" alt=""><span class="ms-2">English</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/02.png" width="20" alt=""><span class="ms-2">Catalan</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/03.png" width="20" alt=""><span class="ms-2">French</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/04.png" width="20" alt=""><span class="ms-2">Belize</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/05.png" width="20" alt=""><span class="ms-2">Colombia</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/06.png" width="20" alt=""><span class="ms-2">Spanish</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/07.png" width="20" alt=""><span class="ms-2">Georgian</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;">
-                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/county/08.png" width="20" alt=""><span class="ms-2">Hindi</span></a>
-                            </li>
-                        </ul>
-                    </li>
+              
                     <li class="nav-item dropdown position-static  d-md-flex d-none">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-auto-close="outside"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">done_all</i></a>
@@ -360,38 +345,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">apps</i></a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-apps shadow-lg p-3">
                             <div class="border rounded-4 overflow-hidden">
-                                <div class="row row-cols-3 g-0 border-bottom">
-                                    <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/01.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Gmail</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/02.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Skype</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/03.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Slack</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                                 <!--end row-->
 
                                 <div class="row row-cols-3 g-0 border-bottom">
@@ -426,75 +380,42 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                         </div>
                                     </div>
                                 </div>
+
+                                                              <div class="row row-cols-3 g-0 border-bottom">
+                                  <div class="col border-end">
+                                      <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                          <div class="app-icon">
+                                              <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/01.png" width="36" alt="">
+                                          </div>
+                                          <div class="app-name">
+                                              <p class="mb-0">Gmail</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                                    <div class="col">
+    <div class="app-wrapper d-flex flex-column gap-2 text-center">
+        <div class="app-icon">
+            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/09.png" width="36" alt="">
+        </div>
+        <div class="app-name">
+            <p class="mb-0">Facebook</p>
+        </div>
+    </div>
+</div>
+                                    <div class="col border-start">
+    <div class="app-wrapper d-flex flex-column gap-2 text-center">
+        <div class="app-icon">
+            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/11.png" width="36" alt="">
+        </div>
+        <div class="app-name">
+            <p class="mb-0">Paypal</p>
+        </div>
+    </div>
+</div>
+                                  
+                              </div>
                                 <!--end row-->
 
-                                <div class="row row-cols-3 g-0 border-bottom">
-                                    <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/07.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Spotify</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/08.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Yahoo</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/09.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Facebook</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end row-->
-
-                                <div class="row row-cols-3 g-0">
-                                    <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/10.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Figma</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/11.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Paypal</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/12.png" width="36" alt="">
-                                            </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Photo</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end row-->
                             </div>
                         </div>
                     </li>
@@ -503,7 +424,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
                             <span class="badge-notify">5</span>
                         </a>
-                        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+                        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow d-none">
                             <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
                                 <h5 class="notiy-title mb-0">Notifications</h5>
                                 <div class="dropdown">
@@ -647,28 +568,30 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     </li>
                     <li class="nav-item d-md-flex d-none">
                         <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasCart"><i
-                            class="material-icons-outlined">shopping_cart</i>
-                            <span class="badge-notify">8</span>
+                            class="material-icons-outlined">tune</i>
+                            
                         </a>
-                    </li>
+                    </li> 
+                 
+               
                     <li class="nav-item dropdown">
                         <a href="javascrpt:;" class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-                            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" class="rounded-circle p-1 border" width="45" height="45" alt="">
+                         <asp:Image ID="img" runat="server"  class="rounded-circle p-1 border" width="45" height="45" alt=""/>
                         </a>
                         <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
                             <a class="dropdown-item  gap-2 py-2" href="javascript:;">
                                 <div class="text-center">
                                     <%--<img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" class="rounded-circle p-1 shadow mb-3" width="90" height="90"
                                         alt="">--%>
-                                    <asp:Image ID="img" runat="server" class="rounded-circle p-1 shadow mb-3" Style="width: 90px; height: 90px" />
                                     <asp:Label ID="lblUserID" runat="server" class="user-name mb-0 fw-bold"></asp:Label>
+
                                 </div>
                             </a>
                             <hr class="dropdown-divider">
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="Admin/frmMyProfile.aspx"><i
                                 class="material-icons-outlined">person_outline</i>Profile</a>
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
-                                class="material-icons-outlined">local_bar</i>Setting</a>
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="frmChgPass.aspx"><i
+                                class="material-icons-outlined">local_bar</i>Change Password</a>
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
                                 class="material-icons-outlined">dashboard</i>Dashboard</a>
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
@@ -676,7 +599,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
                                 class="material-icons-outlined">cloud_download</i>Downloads</a>
                             <hr class="dropdown-divider">
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="<%= ResolveUrl("~/Logout.aspx") %>">><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="<%= ResolveUrl("~/Logout.aspx") %>"><i
                                 class="material-icons-outlined">power_settings_new</i>Logout</a>
                         </div>
                     </li>
@@ -722,212 +645,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </ul>
 
 
-                <!--navigation-->
-                <%--<ul class="metismenu" id="sidenav1">
-                    <li>
-                        <a href="cards.html">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">inventory_2</i>
-                            </div>
-                            <div class="menu-title">Home</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">widgets</i>
-                            </div>
-                            <div class="menu-title">Tickets</div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Archive Ticket</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Create Ticket</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>My Ticket</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i> Ticket Details</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">apps</i>
-                            </div>
-                            <div class="menu-title">Template</div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Desk Template</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Template Email </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">shopping_bag</i>
-                            </div>
-                            <div class="menu-title">Desk Configuration</div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Stage</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Add SLA</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Categroy</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Custome Field Value</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Desk Template</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Email Configuration</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Organization </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Priority </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Request Type </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Resolution </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>SD Custome Field</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Severity </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Status </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">card_giftcard</i>
-                            </div>
-                            <div class="menu-title">
-                                Coverage Schedules
-                            </div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Holidays</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Opertional Hours</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">view_agenda</i>
-                            </div>
-                            <div class="menu-title">
-                                Users And Permissions
-                            </div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>CAB Approver</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Esclation Matrix</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Requesters</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Roles</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>SD Account</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>User Approvers</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>User Scope</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">toc</i>
-                            </div>
-                            <div class="menu-title">Admin</div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Add Department </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Add Location </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Check </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Email Logs </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>My Profile </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Org Logo </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>SD Custome Role </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>SD Pool  </a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Test </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">api</i>
-                            </div>
-                            <div class="menu-title">Dashboard</div>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>All Tickets</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Assignee Wise</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Categroy Wise</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Department Wise</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>SLA</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Ticket Counts</a>
-                            </li>
-                            <li><a href="#"><i class="material-icons-outlined">arrow_right</i>User Feedback</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">lock</i>
-                            </div>
-                            <div class="menu-title">Change Management</div>
-                        </a>
-                        <ul>
-                            <li><a href="#" target="_blank"><i class="material-icons-outlined">arrow_right</i>Change Type</a></li>
-                            <li><a href="#" target="_blank"><i class="material-icons-outlined">arrow_right</i>Reson for Change</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:;">
-                            <div class="parent-icon">
-                                <i class="material-icons-outlined">lock</i>
-                            </div>
-                            <div class="menu-title">Knowledge Base</div>
-                        </a>
-                        <ul>
-                            <li><a href="#" target="_blank"><i class="material-icons-outlined">arrow_right</i>Add Article</a></li>
-                        </ul>
-                    </li>
-
-
-                </ul>--%>
-                <!--end navigation-->
+             
             </div>
         </aside>
         <!--end sidebar-->
@@ -949,17 +667,249 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         <!--end overlay-->
 
         <!--start footer-->
-        <footer class="page-footer">
+        <footer class="page-footer d-none">
             <p class="mb-0">Copyright © 2024. All right reserved.</p>
         </footer>
         <!--top footer-->
 
+        
+  <!--start cart-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
+  <div class="offcanvas-header border-bottom h-70">
+  <div class="">
+    <h5 class="mb-0">Theme Customizer</h5>
+    <p class="mb-0">Customize your theme</p>
+  </div>
+  <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+    <i class="material-icons-outlined">close</i>
+  </a>
+</div>
+  <div class="offcanvas-body">
+  <div>
+    <p>Theme variation</p>
+
+    <div class="row g-3">
+      <div class="col-12 col-xl-6">
+        <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
+        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
+          <span class="material-icons-outlined">contactless</span>
+          <span>Blue</span>
+        </label>
+      </div>
+      <div class="col-12 col-xl-6">
+        <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
+        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
+          <span class="material-icons-outlined">light_mode</span>
+          <span>Light</span>
+        </label>
+      </div>
+      <div class="col-12 col-xl-6">
+        <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
+        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
+          <span class="material-icons-outlined">dark_mode</span>
+          <span>Dark</span>
+        </label>
+      </div>
+      <div class="col-12 col-xl-6">
+        <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
+        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
+          <span class="material-icons-outlined">contrast</span>
+          <span>Semi Dark</span>
+        </label>
+      </div>
+      <div class="col-12 col-xl-6">
+        <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
+        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
+          <span class="material-icons-outlined">border_style</span>
+          <span>Bordered</span>
+        </label>
+      </div>
+    </div><!--end row-->
+
+  </div>
+</div>
+   
+  </div>
+  <!--end cart-->
+
+
+  <!--start switcher-->
+
+  
+
+
 
     </form>
+    <script>
 
+
+        $(function () {
+            "use strict";
+
+
+            /* scrollar */
+
+            new PerfectScrollbar(".notify-list")
+
+            new PerfectScrollbar(".search-content")
+
+            // new PerfectScrollbar(".mega-menu-widgets")
+
+
+
+            /* toggle button */
+
+            $(".btn-toggle").click(function () {
+                $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () {
+                    $("body").addClass("sidebar-hovered")
+                }, function () {
+                    $("body").removeClass("sidebar-hovered")
+                }))
+            })
+
+
+
+
+            /* menu */
+
+            $(function () {
+                $('#sidenav').metisMenu();
+            });
+
+            $(".sidebar-close").on("click", function () {
+                $("body").removeClass("toggled")
+            })
+
+
+
+            /* dark mode button */
+
+            $(".dark-mode i").click(function () {
+                $(this).text(function (i, v) {
+                    return v === 'dark_mode' ? 'light_mode' : 'dark_mode'
+                })
+            });
+
+
+            $(".dark-mode").click(function () {
+                $("html").attr("data-bs-theme", function (i, v) {
+                    return v === 'dark' ? 'light' : 'dark';
+                })
+            })
+
+
+            /* sticky header */
+
+            $(document).ready(function () {
+                $(window).on("scroll", function () {
+                    if ($(this).scrollTop() > 60) {
+                        $('.top-header .navbar').addClass('sticky-header');
+                    } else {
+                        $('.top-header .navbar').removeClass('sticky-header');
+                    }
+                });
+            });
+
+
+            /* email */
+
+            $(".email-toggle-btn").on("click", function () {
+                $(".email-wrapper").toggleClass("email-toggled")
+            }), $(".email-toggle-btn-mobile").on("click", function () {
+                $(".email-wrapper").removeClass("email-toggled")
+            }), $(".compose-mail-btn").on("click", function () {
+                $(".compose-mail-popup").show()
+            }), $(".compose-mail-close").on("click", function () {
+                $(".compose-mail-popup").hide()
+            }),
+
+
+                /* chat */
+
+                $(".chat-toggle-btn").on("click", function () {
+                    $(".chat-wrapper").toggleClass("chat-toggled")
+                }), $(".chat-toggle-btn-mobile").on("click", function () {
+                    $(".chat-wrapper").removeClass("chat-toggled")
+                }),
+
+
+
+                /* switcher */
+
+                $("#BlueTheme").on("click", function () {
+                    $("html").attr("data-bs-theme", "blue-theme")
+                }),
+
+                $("#LightTheme").on("click", function () {
+                    $("html").attr("data-bs-theme", "light")
+                }),
+
+                $("#DarkTheme").on("click", function () {
+                    $("html").attr("data-bs-theme", "dark")
+                }),
+
+                $("#SemiDarkTheme").on("click", function () {
+                    $("html").attr("data-bs-theme", "semi-dark")
+                }),
+
+                $("#BoderedTheme").on("click", function () {
+                    $("html").attr("data-bs-theme", "bodered-theme")
+                })
+
+
+
+            /* search control */
+
+            $(".search-control").click(function () {
+                $(".search-popup").addClass("d-block");
+                $(".search-close").addClass("d-block");
+            });
+
+
+            $(".search-close").click(function () {
+                $(".search-popup").removeClass("d-block");
+                $(".search-close").removeClass("d-block");
+            });
+
+
+            $(".mobile-search-btn").click(function () {
+                $(".search-popup").addClass("d-block");
+            });
+
+
+            $(".mobile-search-close").click(function () {
+                $(".search-popup").removeClass("d-block");
+            });
+
+
+
+
+            /* menu active */
+
+            $(function () {
+                for (var e = window.location, o = $(".metismenu li a").filter(function () {
+                    return this.href == e
+                }).addClass("").parent().addClass("mm-active"); o.is("li");) o = o.parent("").addClass("mm-show").parent("").addClass("mm-active")
+            });
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+    </script>
 
     <!--bootstrap js-->
-    <%--<script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>--%>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>
 
 
     <!--plugins-->
@@ -970,7 +920,6 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/select2/js/select2-custom.js"></script>
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/main.js"></script>
