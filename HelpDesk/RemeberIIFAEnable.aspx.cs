@@ -158,7 +158,6 @@ public partial class RemeberIIFAEnable : System.Web.UI.Page
         getUser();
         getData();
     }
-
     protected void btnGO_Click(object sender, EventArgs e)
     {
         getData();

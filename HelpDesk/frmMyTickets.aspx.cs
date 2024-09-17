@@ -182,6 +182,7 @@ public partial class frmMyTickets : System.Web.UI.Page
                             gvAllTickets.DataSource = null;
                             gvAllTickets.DataBind();
                         }
+                        if(dt.Rows.Count>0)
                         GridFormat(dt);
                     }
                 }
