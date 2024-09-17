@@ -259,7 +259,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
             if (SD_Org.Rows.Count > 0 && SD_Org != null)
             {
-                GridFormat1(SD_Org);
+                //GridFormat1(SD_Org);
             }
         }
         catch (ThreadAbortException e2)
@@ -367,7 +367,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             con.Close();
                             if (res > 0)
                             {
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully !")}');", true);
+                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully !")}');", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
+                                FillOrgDetails();
                             }
                         }
                     }
@@ -465,7 +467,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         FillOrgDetails();
                         cleardata();
                     }
@@ -570,7 +573,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         FillOrgDetails();
                         cleardata();
                     }
@@ -719,7 +723,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvReqType.DataSource = (object)null;
                 this.gvReqType.DataBind();
             }
-            GridFormat2(SD_ReqType);
+            //GridFormat2(SD_ReqType);
         }
         catch (ThreadAbortException e2)
         {
@@ -763,8 +767,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         FillRequestTypeDetails();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         cleardata();
                     }
 
@@ -864,13 +869,11 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         int res = cmd.ExecuteNonQuery();
                         if (res > 0)
                         {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                            //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
                         }
-
-
                         con.Close();
                         FillRequestTypeDetails();
-
                     }
                 }
             }
@@ -928,8 +931,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         FillRequestTypeDetails();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         cleardata();
                     }
                 }
@@ -1049,9 +1053,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
         if (Session["UserScope"].ToString().ToLower() == "admin" || Session["UserScope"].ToString().ToLower() == "technician")
         {
-            FillStageDetailsCustomer(Session["OrgId"].ToString());
+            FillStageDetailsCustomer(Session["OrgID"].ToString());
             ddlOrg.Enabled = false;
-            ddlOrg.SelectedValue = Session["OrgId"].ToString();
+            ddlOrg.SelectedValue = Session["OrgID"].ToString();
         }
         else
         {
@@ -1095,7 +1099,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
             if (SD_Stage.Rows.Count > 0)
             {
-                GridFormat3(SD_Stage);
+                //GridFormat3(SD_Stage);
             }
         }
         catch (ThreadAbortException e2)
@@ -1191,7 +1195,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvStage.DataSource = (object)null;
                 this.gvStage.DataBind();
             }
-            GridFormat3(SD_Stage);
+            //GridFormat3(SD_Stage);
         }
         catch (ThreadAbortException e2)
         {
@@ -1279,7 +1283,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.ExecuteNonQuery();
                 }
             }
-            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+            //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
             cleardata();
             FillStageDetails();
         }
@@ -1339,7 +1344,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             {
 
                                 Session["Popup"] = "Delete";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
                                 cleardata();
                             }
                             con.Close();
@@ -1537,7 +1543,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         FillStageDetails();
                         cleardata();
                     }
@@ -1704,7 +1711,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvStatus.DataSource = (object)null;
                 this.gvStatus.DataBind();
             }
-            GridFormat4(SD_Status);
+            //GridFormat4(SD_Status);
         }
         catch (ThreadAbortException e2)
         {
@@ -2247,7 +2254,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvSeverity.DataSource = (object)null;
                 this.gvSeverity.DataBind();
             }
-            GridFormat5(SD_Severity);
+            //GridFormat5(SD_Severity);
         }
         catch (ThreadAbortException e2)
         {
@@ -2325,7 +2332,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvSeverity.DataSource = (object)null;
                 this.gvSeverity.DataBind();
             }
-            GridFormat5(SD_Severity);
+            //GridFormat5(SD_Severity);
         }
         catch (ThreadAbortException e2)
         {
@@ -2416,7 +2423,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         cleardata();
                         FillSeverityDetails();
                     }
@@ -2687,7 +2695,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         cleardata();
                         FillSeverityDetails();
                     }
@@ -2773,7 +2782,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         {
             FillPriorityDetailsCustomer();
             ddlOrg5.Enabled = false;
-            ddlOrg5.SelectedValue = Session["OrgId"].ToString();
+            ddlOrg5.SelectedValue = Session["OrgID"].ToString();
         }
         else
         {
@@ -2808,7 +2817,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
-            DataTable SD_Priority = new FillSDFields().FillPriorityWithCustomer(Session["OrgId"].ToString());
+            DataTable SD_Priority = new FillSDFields().FillPriorityWithCustomer(Session["OrgID"].ToString());
             if (SD_Priority.Rows.Count > 0)
             {
                 this.gvPriority.DataSource = (object)SD_Priority;
@@ -2819,8 +2828,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvPriority.DataSource = (object)null;
                 this.gvPriority.DataBind();
             }
-            if (SD_Priority.Rows.Count > 0)
-                GridFormat6(SD_Priority);
+            if (SD_Priority.Rows.Count > 0) { }
+                //GridFormat6(SD_Priority);
         }
         catch (ThreadAbortException e2)
         {
@@ -2889,7 +2898,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvPriority.DataSource = (object)null;
                 this.gvPriority.DataBind();
             }
-            GridFormat6(SD_Priority);
+            //GridFormat6(SD_Priority);
         }
         catch (ThreadAbortException e2)
         {
@@ -3035,7 +3044,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
                                 lnkNextPriority_Click(null, null);
                                 cleardata();
                             }
@@ -3124,7 +3134,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@PriorityRef", Session["SDRef"].ToString().Trim() + "||" + txtpriority.Text.Trim());
                     cmd.Parameters.AddWithValue("@PriorityCodeRef", txtpriority.Text.Trim());
                     cmd.Parameters.AddWithValue("@PriorityDesc", txtPriorityDescription.Text);
-                    cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg5.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@Option", "AddPriority");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
@@ -3278,8 +3288,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
         if (Session["UserScope"].ToString().ToLower() == "admin")
         {
             ddlOrg6.Enabled = false;
-            ddlOrg6.SelectedValue = Session["OrgId"].ToString();
-            FillRequestTypeCategory(Convert.ToInt64(Session["OrgId"].ToString()));
+            ddlOrg6.SelectedValue = Session["OrgID"].ToString();
+            FillRequestTypeCategory(Convert.ToInt64(Session["OrgID"].ToString()));
         }
         else
         {
@@ -4825,7 +4835,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     }
     protected void ddlOrg6_SelectedIndexChanged(object sender, EventArgs e)
     {
-        FillRequestTypeCategory(Convert.ToInt64(ddlOrg.SelectedValue));
+        FillRequestTypeCategory(Convert.ToInt64(ddlOrg6.SelectedValue));
     }
     protected void imgbtnUpdateParentCategory_Click(object sender, ImageClickEventArgs e)
     {
@@ -4994,470 +5004,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
     }
     protected void lnkNextEmailConfig_Click(object sender, EventArgs e)
     {
-        pnlAddEmailConfig.Visible = true;
+        pnlAddResolution.Visible = true;
         pnlCategory.Visible = false;
         CurrentStep = 8;
-        DataBind();
-        ViewState["CurrentStep"] = CurrentStep;
-        if (Session["UserScope"] != null)
-        {
-            FillEmailConfigDetails();
-            FillOrganizationEmailConfig();
-        }
-        else
-        {
-            Response.Redirect("/Default.aspx");
-        }
-    }
-    #endregion Add Category End
-
-    #region Email Config Start
-
-    protected void GridFormat7(DataTable dt)
-    {
-        gvEmailConfig.UseAccessibleHeader = true;
-        gvEmailConfig.HeaderRow.TableSection = TableRowSection.TableHeader;
-        if (gvEmailConfig.TopPagerRow != null)
-        {
-            gvEmailConfig.TopPagerRow.TableSection = TableRowSection.TableHeader;
-        }
-        if (gvEmailConfig.BottomPagerRow != null)
-        {
-            gvEmailConfig.BottomPagerRow.TableSection = TableRowSection.TableFooter;
-        }
-        if (dt.Rows.Count > 0)
-            gvEmailConfig.FooterRow.TableSection = TableRowSection.TableFooter;
-    }
-    private void FillOrganizationEmailConfig()
-    {
-        try
-        {
-            DataTable SD_Org = new FillSDFields().FillOrganization();
-            ddlOrgEmailConfig.DataSource = SD_Org;
-            ddlOrgEmailConfig.DataTextField = "OrgName";
-            ddlOrgEmailConfig.DataValueField = "Org_ID";
-            ddlOrgEmailConfig.DataBind();
-            ddlOrgEmailConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    private void FillEmailConfigDetails()
-    {
-        try
-        {
-            DataTable SD_EmailConfig = new FillSDFields().FillUserEmailConfigdetails();
-            if (SD_EmailConfig.Rows.Count > 0)
-            {
-                this.gvEmailConfig.DataSource = (object)SD_EmailConfig;
-                this.gvEmailConfig.DataBind();
-            }
-            else
-            {
-                this.gvEmailConfig.DataSource = (object)null;
-                this.gvEmailConfig.DataBind();
-            }
-            GridFormat7(SD_EmailConfig);
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void ImgBtnExport8_Click(object sender, ImageClickEventArgs e)
-    {
-        try
-        {
-
-            DataTable dt = new DataTable("GridView_Data");
-            foreach (System.Web.UI.WebControls.TableCell cell in gvEmailConfig.HeaderRow.Cells)
-            {
-                dt.Columns.Add(cell.Text);
-            }
-            foreach (GridViewRow row in gvEmailConfig.Rows)
-            {
-                dt.Rows.Add();
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
-                }
-            }
-            using (XLWorkbook wb = new XLWorkbook())
-            {
-                wb.Worksheets.Add(dt);
-
-                Response.Clear();
-                Response.Buffer = true;
-                Response.Charset = "";
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", "attachment;filename=EmailConfig.xlsx");
-                using (MemoryStream MyMemoryStream = new MemoryStream())
-                {
-                    wb.SaveAs(MyMemoryStream);
-                    MyMemoryStream.WriteTo(Response.OutputStream);
-                    Response.Flush();
-                    Response.End();
-                }
-            }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            var st = new StackTrace(ex, true);
-            // Get the top stack frame
-            var frame = st.GetFrame(0);
-            // Get the line number from the stack frame
-            var line = frame.GetFileLineNumber();
-            inEr.InsertErrorLogsF(Session["UserName"].ToString()
-, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-        }
-    }
-    static long EmailConfigID;
-    protected void gvEmailConfig_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        try
-        {
-            if (e.CommandName == "DeleteEmailConfig")
-            {
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                EmailConfigID = Convert.ToInt64(gvEmailConfig.DataKeys[rowIndex].Values["ID"]);
-
-                try
-                {
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
-                    {
-                        con.Open();
-                        using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
-                        {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@ID", EmailConfigID);
-                            cmd.Parameters.AddWithValue("@Option", "DeleteEmailConfig");
-                            cmd.CommandTimeout = 180;
-                            int res = cmd.ExecuteNonQuery();
-                            if (res > 0)
-                            {
-                                Session["Popup"] = "Delete";
-                                Response.Redirect(Request.Url.AbsoluteUri);
-                            }
-                            con.Close();
-                            FillEmailConfigDetails();
-                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        }
-                    }
-                }
-                catch (ThreadAbortException e2)
-                {
-                    Console.WriteLine("Exception message: {0}", e2.Message);
-                    Thread.ResetAbort();
-                }
-                catch (Exception ex)
-                {
-                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-                    {
-
-                    }
-                    else
-                    {
-                        var st = new StackTrace(ex, true);
-                        // Get the top stack frame
-                        var frame = st.GetFrame(0);
-                        // Get the line number from the stack frame
-                        var line = frame.GetFileLineNumber();
-                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
-            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-                    }
-                }
-
-            }
-
-
-            if (e.CommandName == "UpdateEmailConfig")
-            {
-                rfvtxtPassword.Enabled = false;
-
-                AddEmailConfigPanel();
-                btnInsertEmailConfig.Visible = false;
-                btnUpdateEmailConfig.Visible = true;
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvEmailConfig.Rows[rowIndex];
-                EmailConfigID = Convert.ToInt32(gvEmailConfig.DataKeys[rowIndex].Values["ID"]);
-                txtHostName.Text = gvEmailConfig.Rows[rowIndex].Cells[1].Text;
-                txtPort.Text = gvEmailConfig.Rows[rowIndex].Cells[2].Text;
-                txtUserName.Text = gvEmailConfig.Rows[rowIndex].Cells[3].Text;
-                txtEmail.Text = gvEmailConfig.Rows[rowIndex].Cells[4].Text;
-                txtRetry.Text = gvEmailConfig.Rows[rowIndex].Cells[6].Text;
-                txtClientID.Text = gvEmailConfig.Rows[rowIndex].Cells[7].Text;
-                txtClientSecretKey.Text = gvEmailConfig.Rows[rowIndex].Cells[8].Text;
-                txtTenantID.Text = gvEmailConfig.Rows[rowIndex].Cells[9].Text;
-                Label OrgID = (row.FindControl("lblOrgFk") as Label);
-                if (ddlOrgEmailConfig.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
-                {
-                    ddlOrgEmailConfig.SelectedValue = OrgID.Text;
-                }
-            }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void SaveDataEmailConfig()
-    {
-        try
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", r.Next());
-                    cmd.Parameters.AddWithValue("@Hostname", txtHostName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Port", txtPort.Text);
-                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                    cmd.Parameters.AddWithValue("@ClientID", txtClientID.Text);
-                    cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
-                    cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
-                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@Option", "AddEmailConfig");
-                    con.Open();
-                    int res = cmd.ExecuteNonQuery();
-                    if (res > 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        FillOrganizationEmailConfig();
-                    }
-                }
-            }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void gvEmailConfig_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        try
-        {
-            if (Session["UserScope"].ToString() == "Master")
-            {
-                e.Row.Cells[5].Visible = true;
-                e.Row.Cells[6].Visible = true;
-            }
-
-            if (Session["UserScope"].ToString() == "Technician")
-            {
-                e.Row.Cells[5].Visible = true;
-                e.Row.Cells[6].Visible = false;
-
-            }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void btnInsertEmailConfig_Click(object sender, EventArgs e)
-    {
-        SaveDataEmailConfig();
-    }
-    protected void AddEmailConfigPanel()
-    {
-        pnlAddEmailConfig.Visible = true;
-        txtHostName.Text = "";
-        txtPort.Text = "";
-        txtUserName.Text = "";
-        txtEmail.Text = "";
-        txtPassword.Text = "";
-        txtRetry.Text = "";
-        txtClientID.Text = "";
-        txtClientSecretKey.Text = "";
-        txtTenantID.Text = "";
-        btnInsertEmailConfig.Visible = true;
-        btnUpdateEmailConfig.Visible = false;
-    }
-    protected void btnUpdateEmailConfig_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
-            {
-
-                using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@ID", EmailConfigID);
-                    cmd.Parameters.AddWithValue("@Hostname", txtHostName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Port", txtPort.Text);
-                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                    cmd.Parameters.AddWithValue("@Retry", txtRetry.Text);
-                    cmd.Parameters.AddWithValue("@ClientID", txtClientID.Text);
-                    cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
-                    cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
-                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@Option", "UpdateEmailConfig");
-                    con.Open();
-                    int res = cmd.ExecuteNonQuery();
-                    if (res > 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        FillOrganizationEmailConfig();
-                    }
-                }
-            }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void btnCancel8_Click(object sender, EventArgs e)
-    {
-        Response.Redirect(Request.Url.AbsoluteUri);
-    }
-    protected void lnkPreviousCategory_Click(object sender, EventArgs e)
-    {
-        pnlAddEmailConfig.Visible = false;
-        lnkNextCategory_Click(null, null);
-    }
-    protected void lnkNextResolution_Click(object sender, EventArgs e)
-    {
-        pnlAddResolution.Visible = true;
-        pnlAddEmailConfig.Visible = false;
-        CurrentStep = 9;
         DataBind();
         ViewState["CurrentStep"] = CurrentStep;
         if (Session["UserScope"] != null)
@@ -5467,7 +5016,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             {
                 FillResolutionDetailsCustomer();
                 ddlOrgResolution.Enabled = false;
-                ddlOrgResolution.SelectedValue = Session["OrgId"].ToString();
+                ddlOrgResolution.SelectedValue = Session["OrgID"].ToString();
                 ddlOrgResolution.Items.FindByValue(Session["OrgID"].ToString()).Selected = true;
                 ddlOrgResolution_SelectedIndexChanged(sender, e);
             }
@@ -5483,7 +5032,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             Response.Redirect("/Default.aspx");
         }
     }
-    #endregion Email Config End
+    #endregion Add Category End
 
     #region Resolution Add
     protected void GridFormat8(DataTable dt)
@@ -5505,7 +5054,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
-            DataTable SD_Resolution = new FillSDFields().FillResolutionCustomer(Session["OrgId"].ToString());
+            DataTable SD_Resolution = new FillSDFields().FillResolutionCustomer(Session["OrgID"].ToString());
             if (SD_Resolution.Rows.Count > 0)
             {
                 this.gvResolution.DataSource = (object)SD_Resolution;
@@ -5516,7 +5065,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvResolution.DataSource = (object)null;
                 this.gvResolution.DataBind();
             }
-            GridFormat8(SD_Resolution);
+            //GridFormat8(SD_Resolution);
         }
         catch (ThreadAbortException e2)
         {
@@ -5602,7 +5151,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvResolution.DataSource = (object)null;
                 this.gvResolution.DataBind();
             }
-            GridFormat8(SD_Resolution);
+            //GridFormat8(SD_Resolution);
         }
         catch (ThreadAbortException e2)
         {
@@ -5758,20 +5307,14 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                Session["Popup"] = "Delete";
-                                Response.Redirect(Request.Url.AbsoluteUri);
+                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
+                                lnkNextResolution_Click(null, null);
                             }
-
-
-                            //	ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('error','" + ResolutionName + " Deleted successfully" + "');", true);
-
-                            //Response.Redirect(Request.Url.AbsoluteUri);
                             con.Close();
                             FillResolutionDetails();
-
                         }
                     }
-                    //
                 }
                 catch (ThreadAbortException e2)
                 {
@@ -5865,7 +5408,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         lnkNextResolution_Click(null,null);
                     }
                 }
@@ -5936,7 +5480,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         lnkNextResolution_Click(null, null);
                     }
                 }
@@ -6026,11 +5571,11 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void lnkPreviousEmailConfig_Click(object sender, EventArgs e)
     {
         pnlAddResolution.Visible = false;
-        lnkNextResolution_Click(null, null);
+        lnkNextCategory_Click(null, null);
     }
     protected void lnkNextSLA_Click(object sender, EventArgs e)
     {
-        CurrentStep = 10;
+        CurrentStep = 9;
         ViewState["CurrentStep"] = CurrentStep;
         DataBind();
         pnlAddSLA.Visible = true;
@@ -6219,8 +5764,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                Session["Popup"] = "Delete";
-                                Response.Redirect(Request.Url.AbsoluteUri);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                lnkNextResolution_Click(null, null);
                             }
                             con.Close();
                             FillSLADetails();
@@ -6312,7 +5857,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        lnkNextSLA_Click(null, null);
                     }
                 }
             }
@@ -6407,8 +5953,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Update";
-
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        lnkNextResolution_Click(null, null);
                     }
                 }
             }
@@ -6445,13 +5992,13 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void lnkPreviousResolution_Click(object sender, EventArgs e)
     {
         pnlAddSLA.Visible = false;
-        lnkNextResolution_Click(null, null);
+        lnkNextEmailConfig_Click(null, null);
     }
     protected void lnkNextDeskConfig_Click(object sender, EventArgs e)
     {
         pnlAdddeskConfig.Visible = true;
         pnlAddSLA.Visible = false;
-        CurrentStep = 11;
+        CurrentStep = 10;
         DataBind();
         pnlAddEmailConfig.Visible = false;
         pnlAdddeskConfig.Visible = true;
@@ -6561,7 +6108,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         try
         {
 
-            DataTable SD_Severity = new SDTemplateFileds().FillSeverity(Session["SDRef"].ToString(), ddlOrg.SelectedValue.ToString()); ;
+            DataTable SD_Severity = new SDTemplateFileds().FillSeverity(Session["SDRef"].ToString(), ddlOrgDeskConfig.SelectedValue.ToString()); ;
 
             ddlSeverity.DataSource = SD_Severity;
             ddlSeverity.DataTextField = "Serveritycoderef";
@@ -6764,7 +6311,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         try
         {
 
-            DataTable SD_Priority = new SDTemplateFileds().FillPriority(Session["SDRef"].ToString(), ddlOrg.SelectedValue.ToString()); ;
+            DataTable SD_Priority = new SDTemplateFileds().FillPriority(Session["SDRef"].ToString(), ddlOrgDeskConfig.SelectedValue.ToString()); ;
 
             ddlPriority.DataSource = SD_Priority;
             ddlPriority.DataTextField = "PriorityCodeRef";
@@ -6804,7 +6351,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         try
         {
 
-            DataTable SD_Status = new SDTemplateFileds().FillStatus(Session["SDRef"].ToString(), ddlStage.SelectedValue.ToString(), ddlOrg.SelectedValue.ToString());
+            DataTable SD_Status = new SDTemplateFileds().FillStatus(Session["SDRef"].ToString(), ddlStageDeskConfig.SelectedValue.ToString(), ddlOrgDeskConfig.SelectedValue.ToString());
 
             ddlStatus.DataSource = SD_Status;
             ddlStatus.DataTextField = "StatusCodeRef";
@@ -6845,13 +6392,12 @@ public partial class DeskConfiguration : System.Web.UI.Page
         try
         {
 
-            DataTable SD_Status = new SDTemplateFileds().FillStage(Session["SDRef"].ToString(), ddlOrg.SelectedValue.ToString());
-
-            ddlStage.DataSource = SD_Status;
-            ddlStage.DataTextField = "StageCodeRef";
-            ddlStage.DataValueField = "id";
-            ddlStage.DataBind();
-            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Stage----------", "0"));
+            DataTable SD_Status = new SDTemplateFileds().FillStage(Session["SDRef"].ToString(), ddlOrgDeskConfig.SelectedValue.ToString());
+            ddlStageDeskConfig.DataSource = SD_Status;
+            ddlStageDeskConfig.DataTextField = "StageCodeRef";
+            ddlStageDeskConfig.DataValueField = "id";
+            ddlStageDeskConfig.DataBind();
+            ddlStageDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Stage----------", "0"));
 
 
         }
@@ -6889,7 +6435,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(@"SELECT CategoryCodeRef,
-           Categoryref FROM [dbo].fnGetCategoryFullPathForDesk('" + ddlRequestType.SelectedValue + "','" + ddlOrg.SelectedValue + "', 1) where Level=1   order by Categoryref asc", con))
+           Categoryref FROM [dbo].fnGetCategoryFullPathForDesk('" + ddlRequestTypeDeskConfig.SelectedValue + "','" + ddlOrgDeskConfig.SelectedValue + "', 1) where Level=1   order by Categoryref asc", con))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
@@ -7413,7 +6959,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(@"SELECT * FROM [dbo].[fn_GetCategoryChildrenByRef]('" + ddlCategory1.SelectedValue + "', 1,'" + ddlOrg.SelectedValue + "') where level='" + categoryLevel + "'  order by Categoryref asc", con))
+                using (SqlCommand cmd = new SqlCommand(@"SELECT * FROM [dbo].[fn_GetCategoryChildrenByRef]('" + ddlCategory1.SelectedValue + "', 1,'" + ddlOrgDeskConfig.SelectedValue + "') where level='" + categoryLevel + "'  order by Categoryref asc", con))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
@@ -7467,7 +7013,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@DeskRef", ddlRequestTypeDeskConfig.SelectedValue);
                     cmd.Parameters.AddWithValue("@DeskDesc", txtSDDescription.Text);
                     cmd.Parameters.AddWithValue("@sdPrefix", txtSDPrefix.Text);
-                    cmd.Parameters.AddWithValue("@sdStageFK", ddlStage.SelectedValue);
+                    cmd.Parameters.AddWithValue("@sdStageFK", ddlStageDeskConfig.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdStatusFK", ddlStatus.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdSeverityFK", ddlSeverity.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdPriorityFK", ddlPriority.SelectedValue);
@@ -7482,8 +7028,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        //Session["Popup"] = "Insert";
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        lnkNextDeskConfig_Click(null, null);
                     }
 
                 }
@@ -7526,28 +7074,29 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@ID", r.Next());
-                    cmd.Parameters.AddWithValue("@DeskRef", ddlRequestType.SelectedValue);
+                    cmd.Parameters.AddWithValue("@DeskRef", ddlRequestTypeDeskConfig.SelectedValue);
                     cmd.Parameters.AddWithValue("@DeskDesc", txtSDDescription.Text);
                     cmd.Parameters.AddWithValue("@sdPrefix", txtSDPrefix.Text);
-                    cmd.Parameters.AddWithValue("@sdStageFK", ddlStage.SelectedValue);
+                    cmd.Parameters.AddWithValue("@sdStageFK", ddlStageDeskConfig.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdStatusFK", ddlStatus.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdPriorityFK", ddlPriority.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdSolutionTypeFK", ddlSolutionType.SelectedValue);
                     cmd.Parameters.AddWithValue("@sdCategoryRef", hdnCategoryID.Value);
-                    cmd.Parameters.AddWithValue("@templateName", "Hitachi " + ddlRequestType.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@templateName", "Hitachi " + ddlRequestTypeDeskConfig.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@sdSeverityFK", ddlSeverity.SelectedValue);
                     //cmd.Parameters.AddWithValue("@sdRolePermissionFK", ddlSeverity.SelectedValue);
                     cmd.Parameters.AddWithValue("@autoArchiveTime", txtArchiveTime.Text);
                     cmd.Parameters.AddWithValue("@SLA", ddlSlA.SelectedValue);
                     cmd.Parameters.AddWithValue("@CoverageSch", ddlCoverageSch.SelectedValue);
-                    cmd.Parameters.AddWithValue("@OrgFk", ddlOrg.SelectedValue);
+                    cmd.Parameters.AddWithValue("@OrgFk", ddlOrgDeskConfig.SelectedValue);
                     cmd.Parameters.AddWithValue("@Option", "AddServDeskDefn");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
+                        lnkNextDeskConfig_Click(null, null);
                     }
 
                 }
@@ -7582,10 +7131,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
-            Session["SDRef"] = ddlRequestType.SelectedValue.ToString();
+            Session["SDRef"] = ddlRequestTypeDeskConfig.SelectedValue.ToString();
             FillSeverity();
 
-            FillStage();
+            FillStageDeskConfig();
             FillPriority();
             FillCategory1();
             FillSolution();
@@ -7647,8 +7196,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                Session["Popup"] = "Delete";
-                                Response.Redirect(Request.Url.AbsoluteUri);
+                                //Session["Popup"] = "Delete";
+                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
+                                lnkNextDeskConfig_Click(null, null);
                             }
                             con.Close();
                         }
@@ -7783,9 +7334,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     ddlPriority.SelectedValue = Priority.Text;
                 }
                 Label Stage = (row.FindControl("lblSDStageFk") as Label);
-                if (ddlStage.Items.FindByValue(Stage.Text.ToString().Trim()) != null)
+                if (ddlStageDeskConfig.Items.FindByValue(Stage.Text.ToString().Trim()) != null)
                 {
-                    ddlStage.SelectedValue = Stage.Text;
+                    ddlStageDeskConfig.SelectedValue = Stage.Text;
                 }
                 FillStatus();
                 Label Status = (row.FindControl("lblSDStatusFk") as Label);
@@ -8007,38 +7558,27 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ddlStage_SelectedIndexChanged(object sender, EventArgs e)
+    protected void ddlStageDeskConfig_SelectedIndexChanged(object sender, EventArgs e)
     {
         FillStatus();
     }
     protected void lnkNextCustomFields_Click(object sender, EventArgs e)
     {
-        pnlAddCustomFields.Visible = true;
+        pnlAddEmailConfig.Visible = true;
         pnlAdddeskConfig.Visible = false;
-        CurrentStep = 12;
-        ViewState["CurrentStep"] = CurrentStep;
+        CurrentStep = 11;
         DataBind();
+        ViewState["CurrentStep"] = CurrentStep;
         if (Session["UserScope"] != null)
         {
-            FillOrganization();
-            if (Session["UserScope"].ToString().ToLower() == "admin")
-            {
-                FillSDCustomFieldsCustomer();
-                ddlOrgCustomField.Enabled = false;
-                ddlOrgCustomField.SelectedValue = Session["OrgId"].ToString();
-                ddlOrgCustomField.Items.FindByValue(Session["OrgID"].ToString()).Selected = true;
-                ddlOrgCustomField_SelectedIndexChanged(sender, e);
-            }
-            else
-            {
-                ddlOrgCustomField.Enabled = true;
-                FillSDCustomFieldsDetails();
-            }
+            FillEmailConfigDetails();
+            FillOrganizationEmailConfig();
         }
         else
         {
             Response.Redirect("/Default.aspx");
         }
+        
     }
     protected void lnkPreviousSLA_Click(object sender, EventArgs e)
     {
@@ -8049,60 +7589,541 @@ public partial class DeskConfiguration : System.Web.UI.Page
     #endregion Add Desk Config End
 
     #region Add Custom Fields
-    private void FillSDCustomFieldsCustomer()
+    //private void FillSDCustomFieldsCustomer()
+    //{
+    //    try
+    //    {
+    //        DataTable SD_SDCustomFields = new FillSDFields().FillSDCustomFieldsCustomer(Session["OrgID"].ToString());
+    //        if (SD_SDCustomFields.Rows.Count > 0)
+    //        {
+    //            this.gvSDCustomFields.DataSource = (object)SD_SDCustomFields;
+    //            this.gvSDCustomFields.DataBind();
+    //        }
+    //        else
+    //        {
+    //            this.gvSDCustomFields.DataSource = (object)null;
+    //            this.gvSDCustomFields.DataBind();
+    //        }
+
+
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            // Get the top stack frame
+    //            var frame = st.GetFrame(0);
+    //            // Get the line number from the stack frame
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //private void FillOrganizationCustomField()
+    //{
+    //    try
+    //    {
+    //        DataTable SD_Org = new FillSDFields().FillOrganization();
+    //        ddlOrgCustomField.DataSource = SD_Org;
+    //        ddlOrgCustomField.DataTextField = "OrgName";
+    //        ddlOrgCustomField.DataValueField = "Org_ID";
+    //        ddlOrgCustomField.DataBind();
+    //        ddlOrgCustomField.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            // Get the top stack frame
+    //            var frame = st.GetFrame(0);
+    //            // Get the line number from the stack frame
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //private void FillSDCustomFieldsDetails()
+    //{
+
+    //    try
+    //    {
+
+    //        DataTable SD_SDCustomFields = new FillSDFields().FillSDCustomFields(); 
+
+    //        if (SD_SDCustomFields.Rows.Count > 0)
+    //        {
+    //            //  this.lb.Text = dataTable.Rows.Count.ToString();
+    //            this.gvSDCustomFields.DataSource = (object)SD_SDCustomFields;
+    //            this.gvSDCustomFields.DataBind();
+    //        }
+    //        else
+    //        {
+    //            this.gvSDCustomFields.DataSource = (object)null;
+    //            this.gvSDCustomFields.DataBind();
+    //        }
+
+
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            // Get the top stack frame
+    //            var frame = st.GetFrame(0);
+    //            // Get the line number from the stack frame
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //protected void ddlRequestTypeCustomField_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    Session["SDRef"] = ddlRequestTypeCustomField.SelectedValue.ToString();
+    //}
+    //private void FillRequestTypeCustomField(long OrgID)
+    //{
+
+    //    try
+    //    {
+
+    //        DataTable RequestType = new SDTemplateFileds().FillRequestType(OrgID);
+    //        ddlRequestTypeCustomField.DataSource = RequestType;
+    //        ddlRequestTypeCustomField.DataTextField = "ReqTypeRef";
+    //        ddlRequestTypeCustomField.DataValueField = "ReqTypeRef";
+    //        ddlRequestTypeCustomField.DataBind();
+    //        ddlRequestTypeCustomField.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            // Get the top stack frame
+    //            var frame = st.GetFrame(0);
+    //            // Get the line number from the stack frame
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //protected void ImgBtnExport13_Click(object sender, ImageClickEventArgs e)
+    //{
+    //    try
+    //    {
+
+    //        DataTable dt = new DataTable("GridView_Data");
+    //        foreach (System.Web.UI.WebControls.TableCell cell in gvSDCustomFields.HeaderRow.Cells)
+    //        {
+    //            dt.Columns.Add(cell.Text);
+    //        }
+    //        foreach (GridViewRow row in gvSDCustomFields.Rows)
+    //        {
+    //            dt.Rows.Add();
+    //            for (int i = 0; i < row.Cells.Count; i++)
+    //            {
+    //                dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
+    //            }
+    //        }
+    //        using (XLWorkbook wb = new XLWorkbook())
+    //        {
+    //            wb.Worksheets.Add(dt);
+
+    //            Response.Clear();
+    //            Response.Buffer = true;
+    //            Response.Charset = "";
+    //            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    //            Response.AddHeader("content-disposition", "attachment;filename=SD_CustomFields.xlsx");
+    //            using (MemoryStream MyMemoryStream = new MemoryStream())
+    //            {
+    //                wb.SaveAs(MyMemoryStream);
+    //                MyMemoryStream.WriteTo(Response.OutputStream);
+    //                Response.Flush();
+    //                Response.End();
+    //            }
+    //        }
+
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            // Get the top stack frame
+    //            var frame = st.GetFrame(0);
+    //            // Get the line number from the stack frame
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //protected void gvSDCustomFields_RowCommand(object sender, GridViewCommandEventArgs e)
+    //{
+    //    try
+    //    {
+    //        // Handle delete command
+    //        if (e.CommandName == "DeleteEx")
+    //        {
+    //            int rowIndex = Convert.ToInt32(e.CommandArgument);
+    //            long ID = Convert.ToInt64(gvSDCustomFields.DataKeys[rowIndex].Values["ID"]);
+    //            string Deskref = gvSDCustomFields.Rows[rowIndex].Cells[1].Text;
+
+    //            // SQL Connection & Deletion logic
+    //            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+    //            {
+    //                con.Open();
+    //                using (SqlCommand cmd = new SqlCommand("SD_spCustomFieldCntl", con))
+    //                {
+    //                    cmd.CommandType = CommandType.StoredProcedure;
+    //                    cmd.Parameters.AddWithValue("@ID", ID);
+    //                    cmd.Parameters.AddWithValue("@DeskRef", Deskref);
+    //                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgCustomField.SelectedValue.ToString());
+    //                    cmd.Parameters.AddWithValue("@Option", "DeleteCustomField");
+    //                    cmd.CommandTimeout = 180;
+    //                    int res = cmd.ExecuteNonQuery();
+
+    //                    if (res > 0)
+    //                    {
+    //                        // Flag the session for deletion success
+    //                        Session["Popup"] = "Delete";
+    //                    }
+    //                }
+    //                con.Close();
+    //            }
+
+    //            // Refetch the data and refresh the GridView
+    //            FillSDCustomFieldsDetails();
+    //        }
+
+    //        // Handle select/edit command
+    //        if (e.CommandName == "SelectState")
+    //        {
+    //            // Hide Insert, show Update button
+    //            btnInsertSDCustomFields.Visible = false;
+    //            btnUpdateSDCustomFields.Visible = true;
+
+    //            int rowIndex = Convert.ToInt32(e.CommandArgument);
+    //            GridViewRow row = gvSDCustomFields.Rows[rowIndex];
+
+    //            long ID = Convert.ToInt64(gvSDCustomFields.DataKeys[rowIndex].Values["ID"]);
+
+    //            // Get the organization reference from hidden label
+    //            Label OrgID = (row.FindControl("lblOrgFk") as Label);
+
+    //            // Set dropdowns and other controls
+    //            if (ddlOrgCustomField.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
+    //            {
+    //                ddlOrgCustomField.SelectedValue = OrgID.Text;
+    //                FillRequestTypeCustomField(Convert.ToInt64(OrgID.Text));
+    //                ddlRequestTypeCustomField.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[1].Text;
+    //            }
+
+    //            // Set values in other fields
+    //            ddlFieldType.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[5].Text;
+    //            ddlVisibilty.SelectedValue = (gvSDCustomFields.Rows[rowIndex].Cells[6].Text.Trim() == "True") ? "1" : "0";
+    //            ddlRequiredStatus.SelectedValue = (gvSDCustomFields.Rows[rowIndex].Cells[7].Text.Trim() == "True") ? "1" : "0";
+
+    //            ddlFieldType.Enabled = false;
+    //            txtFieldName.Text = gvSDCustomFields.Rows[rowIndex].Cells[3].Text;
+    //            txtFieldName.Enabled = false;
+    //            ddlFieldMode.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[4].Text;
+    //            ddlFieldScope.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[8].Text;
+    //        }
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        // Handle thread abort exception
+    //        Console.WriteLine("Thread Abort: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // Log detailed error and display notification to user
+    //        var st = new StackTrace(ex, true);
+    //        var frame = st.GetFrame(0);
+    //        var line = frame.GetFileLineNumber();
+
+    //        // Log the exception details
+    //        inEr.InsertErrorLogsF(Session["UserName"].ToString(),
+    //            $"Error in {Request.Url.ToString()}, Line: {line}, Exception: {ex.ToString()}");
+
+    //        // Display the error notification on the frontend
+    //        ScriptManager.RegisterStartupScript(this, GetType(),
+    //            "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+    //    }
+    //}
+
+    //protected void SaveDataCustomField()
+    //{
+    //    long id = r.Next();
+    //    try
+    //    {
+    //        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+    //        {
+
+    //            using (SqlCommand cmd = new SqlCommand("SD_spCustomFieldCntl", con))
+    //            {
+    //                cmd.CommandType = CommandType.StoredProcedure;
+    //                cmd.Parameters.AddWithValue("@ID", id);
+    //                cmd.Parameters.AddWithValue("@Deskref", ddlRequestType.SelectedValue);
+    //                if (ddlFieldType.SelectedValue.ToString() == "TextBox")
+    //                {
+    //                    cmd.Parameters.AddWithValue("@FieldID", "txt" + id);
+    //                }
+    //                else if (ddlFieldType.SelectedValue.ToString() == "DropDown")
+    //                {
+    //                    cmd.Parameters.AddWithValue("@FieldID", "ddl" + id);
+
+    //                }
+    //                cmd.Parameters.AddWithValue("@FieldName", txtFieldName.Text.ToString());
+    //                cmd.Parameters.AddWithValue("@FieldValue", txtFieldName.Text.ToString().Replace(" ", "_"));
+    //                cmd.Parameters.AddWithValue("@FieldType", ddlFieldType.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@FieldMode", ddlFieldMode.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@Status", ddlVisibilty.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@IsFieldReq", ddlRequiredStatus.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@FieldScope", ddlFieldScope.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@OrgRef", ddlOrgCustomField.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@Option", "AddCustomField");
+    //                con.Open();
+    //                int res = cmd.ExecuteNonQuery();
+    //                if (res > 0)
+    //                {
+    //                    Session["Popup"] = "Insert";
+    //                    Response.Redirect(Request.Url.AbsoluteUri);
+    //                }
+
+    //            }
+    //        }
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            // Get the top stack frame
+    //            var frame = st.GetFrame(0);
+    //            // Get the line number from the stack frame
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //protected void btnInsertSDCustomFields_Click(object sender, EventArgs e)
+    //{
+    //    SaveDataCustomField();
+    //}
+    //protected void gvSDCustomFields_RowDataBound(object sender, GridViewRowEventArgs e)
+    //{
+    //    CurrentStep = 13;
+    //    ViewState["CurrentStep"] = CurrentStep;
+    //    DataBind();
+    //    if (Session["UserScope"].ToString() == "Master")
+    //    {
+    //        e.Row.Cells[10].Visible = true;
+    //        e.Row.Cells[11].Visible = true;
+    //    }
+
+    //    if (Session["UserScope"].ToString() == "Technician")
+    //    {
+    //        e.Row.Cells[10].Visible = false;
+    //        e.Row.Cells[11].Visible = false;
+
+    //    }
+    //    if (Session["UserScope"].ToString() == "Admin")
+    //    {
+    //        e.Row.Cells[10].Visible = true;
+    //        e.Row.Cells[11].Visible = false;
+
+    //    }
+    //}
+    //protected void btnUpdateSDCustomFields_Click(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+    //        {
+    //            using (SqlCommand cmd = new SqlCommand("SD_spCustomFieldCntl", con))
+    //            {
+    //                cmd.CommandType = CommandType.StoredProcedure;
+    //                cmd.Parameters.AddWithValue("@ID", ID);
+    //                cmd.Parameters.AddWithValue("@Deskref", ddlRequestType.SelectedValue);
+    //                cmd.Parameters.AddWithValue("@FieldMode", ddlFieldMode.SelectedValue);
+    //                cmd.Parameters.AddWithValue("@Status", ddlVisibilty.SelectedValue);
+    //                cmd.Parameters.AddWithValue("@IsFieldReq", ddlRequiredStatus.SelectedValue);
+    //                cmd.Parameters.AddWithValue("@FieldScope", ddlFieldScope.SelectedValue);
+    //                cmd.Parameters.AddWithValue("@OrgRef", ddlOrg.SelectedValue.ToString());
+    //                cmd.Parameters.AddWithValue("@Option", "UpdateCustomField");
+    //                con.Open();
+    //                int res = cmd.ExecuteNonQuery();
+    //                if (res > 0)
+    //                {
+    //                    Session["Popup"] = "Update";
+    //                    Response.Redirect(Request.Url.AbsoluteUri);
+    //                }
+    //                //  ErrorMessage(this, "Welcome", "Greeting");
+    //                // ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('success','Data has been updated');", true);
+    //            }
+    //        }
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+    //        {
+
+    //        }
+    //        else
+    //        {
+    //            var st = new StackTrace(ex, true);
+    //            var frame = st.GetFrame(0);
+    //            var line = frame.GetFileLineNumber();
+    //            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+    //        }
+    //    }
+    //}
+    //protected void btnCancel12_Click(object sender, EventArgs e)
+    //{
+    //    Response.Redirect(Request.Url.AbsoluteUri);
+    //}
+    //protected void ddlOrgCustomField_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    FillRequestTypeCustomField(Convert.ToInt64(ddlOrgCustomField.SelectedValue));
+    //}
+    //protected void lnkNextEsclation_Click(object sender, EventArgs e)
+    //{
+    //    pnlExclation.Visible = true;
+    //    pnlAdddeskConfig.Visible = false;
+    //    cleardata();
+    //    CurrentStep = 13;
+    //    ViewState["CurrentStep"] = CurrentStep;
+    //    DataBind();
+    //    if (Session["UserScope"] != null)
+    //    {
+    //        FillEcslevelDetails();
+    //        FillOrganization();
+    //    }
+    //    else
+    //    {
+    //        Response.Redirect("/Default.aspx");
+    //    }
+    //}
+    //protected void lnkPreviousDeskConfig_Click(object sender, EventArgs e)
+    //{
+    //    pnlAddCustomFields.Visible = false;
+    //    lnkNextCustomFields_Click(null, null);
+    //}
+    #endregion End Cutom Fileds
+
+
+    #region Email Config Start
+    protected void GridFormat7(DataTable dt)
     {
-        try
+        gvEmailConfig.UseAccessibleHeader = true;
+        gvEmailConfig.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (gvEmailConfig.TopPagerRow != null)
         {
-            DataTable SD_SDCustomFields = new FillSDFields().FillSDCustomFieldsCustomer(Session["OrgId"].ToString());
-            if (SD_SDCustomFields.Rows.Count > 0)
-            {
-                this.gvSDCustomFields.DataSource = (object)SD_SDCustomFields;
-                this.gvSDCustomFields.DataBind();
-            }
-            else
-            {
-                this.gvSDCustomFields.DataSource = (object)null;
-                this.gvSDCustomFields.DataBind();
-            }
-
-
+            gvEmailConfig.TopPagerRow.TableSection = TableRowSection.TableHeader;
         }
-        catch (ThreadAbortException e2)
+        if (gvEmailConfig.BottomPagerRow != null)
         {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
+            gvEmailConfig.BottomPagerRow.TableSection = TableRowSection.TableFooter;
         }
-
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
+        if (dt.Rows.Count > 0)
+            gvEmailConfig.FooterRow.TableSection = TableRowSection.TableFooter;
     }
-    private void FillOrganizationCustomField()
+    private void FillOrganizationEmailConfig()
     {
         try
         {
             DataTable SD_Org = new FillSDFields().FillOrganization();
-            ddlOrgCustomField.DataSource = SD_Org;
-            ddlOrgCustomField.DataTextField = "OrgName";
-            ddlOrgCustomField.DataValueField = "Org_ID";
-            ddlOrgCustomField.DataBind();
-            ddlOrgCustomField.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrgEmailConfig.DataSource = SD_Org;
+            ddlOrgEmailConfig.DataTextField = "OrgName";
+            ddlOrgEmailConfig.DataValueField = "Org_ID";
+            ddlOrgEmailConfig.DataBind();
+            ddlOrgEmailConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -8129,70 +8150,22 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    private void FillSDCustomFieldsDetails()
+    private void FillEmailConfigDetails()
     {
-
         try
         {
-
-            DataTable SD_SDCustomFields = new FillSDFields().FillSDCustomFields(); ;
-
-            if (SD_SDCustomFields.Rows.Count > 0)
+            DataTable SD_EmailConfig = new FillSDFields().FillUserEmailConfigdetails();
+            if (SD_EmailConfig.Rows.Count > 0)
             {
-                //  this.lb.Text = dataTable.Rows.Count.ToString();
-                this.gvSDCustomFields.DataSource = (object)SD_SDCustomFields;
-                this.gvSDCustomFields.DataBind();
+                this.gvEmailConfig.DataSource = (object)SD_EmailConfig;
+                this.gvEmailConfig.DataBind();
             }
             else
             {
-                this.gvSDCustomFields.DataSource = (object)null;
-                this.gvSDCustomFields.DataBind();
+                this.gvEmailConfig.DataSource = (object)null;
+                this.gvEmailConfig.DataBind();
             }
-
-
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void ddlRequestTypeCustomField_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        Session["SDRef"] = ddlRequestTypeCustomField.SelectedValue.ToString();
-    }
-    private void FillRequestTypeCustomField(long OrgID)
-    {
-
-        try
-        {
-
-            DataTable RequestType = new SDTemplateFileds().FillRequestType(OrgID);
-            ddlRequestTypeCustomField.DataSource = RequestType;
-            ddlRequestTypeCustomField.DataTextField = "ReqTypeRef";
-            ddlRequestTypeCustomField.DataValueField = "ReqTypeRef";
-            ddlRequestTypeCustomField.DataBind();
-            ddlRequestTypeCustomField.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            //GridFormat7(SD_EmailConfig);
         }
         catch (ThreadAbortException e2)
         {
@@ -8219,17 +8192,17 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport13_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport8_Click(object sender, ImageClickEventArgs e)
     {
         try
         {
 
             DataTable dt = new DataTable("GridView_Data");
-            foreach (System.Web.UI.WebControls.TableCell cell in gvSDCustomFields.HeaderRow.Cells)
+            foreach (System.Web.UI.WebControls.TableCell cell in gvEmailConfig.HeaderRow.Cells)
             {
                 dt.Columns.Add(cell.Text);
             }
-            foreach (GridViewRow row in gvSDCustomFields.Rows)
+            foreach (GridViewRow row in gvEmailConfig.Rows)
             {
                 dt.Rows.Add();
                 for (int i = 0; i < row.Cells.Count; i++)
@@ -8245,7 +8218,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 Response.Buffer = true;
                 Response.Charset = "";
                 Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", "attachment;filename=SD_CustomFields.xlsx");
+                Response.AddHeader("content-disposition", "attachment;filename=EmailConfig.xlsx");
                 using (MemoryStream MyMemoryStream = new MemoryStream())
                 {
                     wb.SaveAs(MyMemoryStream);
@@ -8254,7 +8227,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     Response.End();
                 }
             }
-
         }
         catch (ThreadAbortException e2)
         {
@@ -8263,160 +8235,98 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
+            var st = new StackTrace(ex, true);
+            // Get the top stack frame
+            var frame = st.GetFrame(0);
+            // Get the line number from the stack frame
+            var line = frame.GetFileLineNumber();
+            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
-    protected void gvSDCustomFields_RowCommand(object sender, GridViewCommandEventArgs e)
+    static long EmailConfigID;
+    protected void gvEmailConfig_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
         {
-            if (e.CommandName == "DeleteEx")
+            if (e.CommandName == "DeleteEmailConfig")
             {
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
-                ID = Convert.ToInt64(gvSDCustomFields.DataKeys[rowIndex].Values["ID"]);
+                EmailConfigID = Convert.ToInt64(gvEmailConfig.DataKeys[rowIndex].Values["ID"]);
 
-                string Deskref = gvSDCustomFields.Rows[rowIndex].Cells[1].Text;
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                try
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("SD_spCustomFieldCntl", con))
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", ID);
-                        cmd.Parameters.AddWithValue("@DeskRef", Deskref);
-                        cmd.Parameters.AddWithValue("@OrgRef", ddlOrgCustomField.SelectedValue.ToString());
-                        cmd.Parameters.AddWithValue("@Option", "DeleteCustomField");
-                        cmd.CommandTimeout = 180;
-                        int res = cmd.ExecuteNonQuery();
-                        if (res > 0)
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
                         {
-                            Session["Popup"] = "Delete";
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ID", EmailConfigID);
+                            cmd.Parameters.AddWithValue("@Option", "DeleteEmailConfig");
+                            cmd.CommandTimeout = 180;
+                            int res = cmd.ExecuteNonQuery();
+                            if (res > 0)
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
+                            }
+                            con.Close();
+                            FillEmailConfigDetails();
+                            
                         }
-                        con.Close();
-                        FillSDCustomFieldsDetails();
+                    }
+                }
+                catch (ThreadAbortException e2)
+                {
+                    Console.WriteLine("Exception message: {0}", e2.Message);
+                    Thread.ResetAbort();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+                    {
+
+                    }
+                    else
+                    {
+                        var st = new StackTrace(ex, true);
+                        // Get the top stack frame
+                        var frame = st.GetFrame(0);
+                        // Get the line number from the stack frame
+                        var line = frame.GetFileLineNumber();
+                        inEr.InsertErrorLogsF(Session["UserName"].ToString()
+            , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
                     }
                 }
+
             }
-            if (e.CommandName == "SelectState")
+
+
+            if (e.CommandName == "UpdateEmailConfig")
             {
-                btnInsertSDCustomFields.Visible = false;
-                btnUpdateSDCustomFields.Visible = true;
+                rfvtxtPassword.Enabled = false;
+
+                AddEmailConfigPanel();
+                btnInsertEmailConfig.Visible = false;
+                btnUpdateEmailConfig.Visible = true;
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvSDCustomFields.Rows[rowIndex];
-                ID = Convert.ToInt64(gvSDCustomFields.DataKeys[rowIndex].Values["ID"]);
+                GridViewRow row = gvEmailConfig.Rows[rowIndex];
+                EmailConfigID = Convert.ToInt32(gvEmailConfig.DataKeys[rowIndex].Values["ID"]);
+                txtHostName.Text = gvEmailConfig.Rows[rowIndex].Cells[1].Text;
+                txtPort.Text = gvEmailConfig.Rows[rowIndex].Cells[2].Text;
+                txtUserName.Text = gvEmailConfig.Rows[rowIndex].Cells[3].Text;
+                txtEmail.Text = gvEmailConfig.Rows[rowIndex].Cells[4].Text;
+                txtRetry.Text = gvEmailConfig.Rows[rowIndex].Cells[6].Text;
+                txtClientID.Text = gvEmailConfig.Rows[rowIndex].Cells[7].Text;
+                txtClientSecretKey.Text = gvEmailConfig.Rows[rowIndex].Cells[8].Text;
+                txtTenantID.Text = gvEmailConfig.Rows[rowIndex].Cells[9].Text;
                 Label OrgID = (row.FindControl("lblOrgFk") as Label);
-                if (ddlOrgCustomField.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
+                if (ddlOrgEmailConfig.Items.FindByValue(OrgID.Text.ToString().Trim()) != null)
                 {
-                    ddlOrgCustomField.SelectedValue = OrgID.Text;
-                    FillRequestTypeCustomField(Convert.ToInt64(OrgID.Text));
-                    ddlRequestTypeCustomField.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[1].Text;
-                }
-
-                ddlFieldType.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[5].Text;
-                if (ddlVisibilty.Items.FindByText(gvSDCustomFields.Rows[rowIndex].Cells[6].Text.Trim()).ToString() == "True")
-                {
-                    ddlVisibilty.SelectedValue = "1";
-                }
-                else
-                {
-                    ddlVisibilty.SelectedValue = "0";
-                }
-                if (ddlRequiredStatus.Items.FindByText(gvSDCustomFields.Rows[rowIndex].Cells[7].Text.Trim()).ToString() == "True")
-                {
-                    ddlRequiredStatus.SelectedValue = "1";
-                }
-                else
-                {
-                    ddlRequiredStatus.SelectedValue = "0";
-                }
-
-                ddlFieldType.Enabled = false;
-                txtFieldName.Text = gvSDCustomFields.Rows[rowIndex].Cells[3].Text;
-                txtFieldName.Enabled = false;
-                ddlFieldMode.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[4].Text;
-                ddlFieldScope.SelectedValue = gvSDCustomFields.Rows[rowIndex].Cells[8].Text;
-            }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
-        }
-        catch (Exception ex)
-        {
-            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
-            {
-
-            }
-            else
-            {
-                var st = new StackTrace(ex, true);
-                // Get the top stack frame
-                var frame = st.GetFrame(0);
-                // Get the line number from the stack frame
-                var line = frame.GetFileLineNumber();
-                inEr.InsertErrorLogsF(Session["UserName"].ToString()
-    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
-
-            }
-        }
-    }
-    protected void SaveDataCustomField()
-    {
-        long id = r.Next();
-        try
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
-            {
-
-                using (SqlCommand cmd = new SqlCommand("SD_spCustomFieldCntl", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@Deskref", ddlRequestType.SelectedValue);
-                    if (ddlFieldType.SelectedValue.ToString() == "TextBox")
-                    {
-                        cmd.Parameters.AddWithValue("@FieldID", "txt" + id);
-                    }
-                    else if (ddlFieldType.SelectedValue.ToString() == "DropDown")
-                    {
-                        cmd.Parameters.AddWithValue("@FieldID", "ddl" + id);
-
-                    }
-                    cmd.Parameters.AddWithValue("@FieldName", txtFieldName.Text.ToString());
-                    cmd.Parameters.AddWithValue("@FieldValue", txtFieldName.Text.ToString().Replace(" ", "_"));
-                    cmd.Parameters.AddWithValue("@FieldType", ddlFieldType.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@FieldMode", ddlFieldMode.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@Status", ddlVisibilty.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@IsFieldReq", ddlRequiredStatus.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@FieldScope", ddlFieldScope.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgCustomField.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@Option", "AddCustomField");
-                    con.Open();
-                    int res = cmd.ExecuteNonQuery();
-                    if (res > 0)
-                    {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
-                    }
-
+                    ddlOrgEmailConfig.SelectedValue = OrgID.Text;
                 }
             }
         }
@@ -8445,60 +8355,34 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void btnInsertSDCustomFields_Click(object sender, EventArgs e)
-    {
-        SaveDataCustomField();
-    }
-    protected void gvSDCustomFields_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        CurrentStep = 13;
-        ViewState["CurrentStep"] = CurrentStep;
-        DataBind();
-        if (Session["UserScope"].ToString() == "Master")
-        {
-            e.Row.Cells[10].Visible = true;
-            e.Row.Cells[11].Visible = true;
-        }
-
-        if (Session["UserScope"].ToString() == "Technician")
-        {
-            e.Row.Cells[10].Visible = false;
-            e.Row.Cells[11].Visible = false;
-
-        }
-        if (Session["UserScope"].ToString() == "Admin")
-        {
-            e.Row.Cells[10].Visible = true;
-            e.Row.Cells[11].Visible = false;
-
-        }
-    }
-    protected void btnUpdateSDCustomFields_Click(object sender, EventArgs e)
+    protected void SaveDataEmailConfig()
     {
         try
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SD_spCustomFieldCntl", con))
+                using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", ID);
-                    cmd.Parameters.AddWithValue("@Deskref", ddlRequestType.SelectedValue);
-                    cmd.Parameters.AddWithValue("@FieldMode", ddlFieldMode.SelectedValue);
-                    cmd.Parameters.AddWithValue("@Status", ddlVisibilty.SelectedValue);
-                    cmd.Parameters.AddWithValue("@IsFieldReq", ddlRequiredStatus.SelectedValue);
-                    cmd.Parameters.AddWithValue("@FieldScope", ddlFieldScope.SelectedValue);
-                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrg.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@Option", "UpdateCustomField");
+                    cmd.Parameters.AddWithValue("@ID", r.Next());
+                    cmd.Parameters.AddWithValue("@Hostname", txtHostName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Port", txtPort.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("@ClientID", txtClientID.Text);
+                    cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
+                    cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
+                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "AddEmailConfig");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Update";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
+                        FillOrganizationEmailConfig();
                     }
-                    //  ErrorMessage(this, "Welcome", "Greeting");
-                    // ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "Showalert('success','Data has been updated');", true);
                 }
             }
         }
@@ -8516,7 +8400,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
             else
             {
                 var st = new StackTrace(ex, true);
+                // Get the top stack frame
                 var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
@@ -8525,38 +8411,156 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void btnCancel12_Click(object sender, EventArgs e)
+    protected void gvEmailConfig_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (Session["UserScope"].ToString() == "Master")
+            {
+                e.Row.Cells[5].Visible = true;
+                e.Row.Cells[6].Visible = true;
+            }
+
+            if (Session["UserScope"].ToString() == "Technician")
+            {
+                e.Row.Cells[5].Visible = true;
+                e.Row.Cells[6].Visible = false;
+
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+            }
+        }
+    }
+    protected void btnInsertEmailConfig_Click(object sender, EventArgs e)
+    {
+        SaveDataEmailConfig();
+    }
+    protected void AddEmailConfigPanel()
+    {
+        pnlAddEmailConfig.Visible = true;
+        txtHostName.Text = "";
+        txtPort.Text = "";
+        txtUserName.Text = "";
+        txtEmail.Text = "";
+        txtPassword.Text = "";
+        txtRetry.Text = "";
+        txtClientID.Text = "";
+        txtClientSecretKey.Text = "";
+        txtTenantID.Text = "";
+        btnInsertEmailConfig.Visible = true;
+        btnUpdateEmailConfig.Visible = false;
+    }
+    protected void btnUpdateEmailConfig_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+
+                using (SqlCommand cmd = new SqlCommand("SD_spEmailConfig", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@ID", EmailConfigID);
+                    cmd.Parameters.AddWithValue("@Hostname", txtHostName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Port", txtPort.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("@Retry", txtRetry.Text);
+                    cmd.Parameters.AddWithValue("@ClientID", txtClientID.Text);
+                    cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
+                    cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
+                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@Option", "UpdateEmailConfig");
+                    con.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    if (res > 0)
+                    {
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        FillOrganizationEmailConfig();
+                    }
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            if (ex.ToString().Contains("System.Threading.Thread.AbortInternal()"))
+            {
+
+            }
+            else
+            {
+                var st = new StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                inEr.InsertErrorLogsF(Session["UserName"].ToString()
+    , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+            }
+        }
+    }
+    protected void btnCancel8_Click(object sender, EventArgs e)
     {
         Response.Redirect(Request.Url.AbsoluteUri);
     }
-    protected void ddlOrgCustomField_SelectedIndexChanged(object sender, EventArgs e)
+    protected void lnkPreviousCategory_Click(object sender, EventArgs e)
     {
-        FillRequestTypeCustomField(Convert.ToInt64(ddlOrgCustomField.SelectedValue));
+        pnlAddEmailConfig.Visible = false;
+        lnkNextDeskConfig_Click(null, null);
     }
-    protected void lnkNextEsclation_Click(object sender, EventArgs e)
+    protected void lnkNextResolution_Click(object sender, EventArgs e)
     {
         pnlExclation.Visible = true;
-        pnlAdddeskConfig.Visible = false;
+        pnlAddEmailConfig.Visible = false;
         cleardata();
-        CurrentStep = 13;
+        CurrentStep = 12;
         ViewState["CurrentStep"] = CurrentStep;
         DataBind();
         if (Session["UserScope"] != null)
         {
             FillEcslevelDetails();
-            FillOrganization();
+            FillOrganizationEsclationMatrix();
         }
         else
         {
             Response.Redirect("/Default.aspx");
         }
     }
-    protected void lnkPreviousDeskConfig_Click(object sender, EventArgs e)
-    {
-        pnlAddCustomFields.Visible = false;
-        lnkNextCustomFields_Click(null, null);
-    }
-    #endregion End Cutom Fileds
+    #endregion Email Config End
+
+
 
     #region Esclation Matrix Start
     private void FillOrganizationEsclationMatrix()
@@ -8614,7 +8618,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
             if (SD_Ecslevel.Rows.Count > 0)
             {
-                GridFormat(SD_Ecslevel);
+                //GridFormat(SD_Ecslevel);
             }
         }
         catch (ThreadAbortException e2)
@@ -8732,8 +8736,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             {
                                 Session["Popup"] = "Delete";
                                 //Response.Redirect(Request.Url.AbsoluteUri);
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-$"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                //                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+                                //$"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
+                                //lnkNextResolution_Click(null,null);
                             }
                             else
                             {
@@ -8780,8 +8786,8 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
                 GridViewRow row = gvEcslevel.Rows[rowIndex];
                 EcslevelID = Convert.ToInt32(gvEcslevel.DataKeys[rowIndex].Values["ID"]);
                 ddlEsclationLevel.SelectedValue = gvEcslevel.Rows[rowIndex].Cells[1].Text;
-                txtUserName.Text = gvEcslevel.Rows[rowIndex].Cells[2].Text;
-                txtEmail.Text = gvEcslevel.Rows[rowIndex].Cells[3].Text;
+                txtUserNameEsc.Text = gvEcslevel.Rows[rowIndex].Cells[2].Text;
+                txtEmailEsc.Text = gvEcslevel.Rows[rowIndex].Cells[3].Text;
                 txtMobile.Text = gvEcslevel.Rows[rowIndex].Cells[4].Text;
                 txttimeforEsclation.Text = gvEcslevel.Rows[rowIndex].Cells[5].Text;
                 Label OrgID = (row.FindControl("lblOrgFk") as Label);
@@ -8827,11 +8833,11 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@EsclationLevel", ddlEsclationLevel.Text.Trim());
-                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
-                    cmd.Parameters.AddWithValue("@UserEmail", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUserNameEsc.Text);
+                    cmd.Parameters.AddWithValue("@UserEmail", txtEmailEsc.Text);
                     cmd.Parameters.AddWithValue("@Mobile", txtMobile.Text);
                     cmd.Parameters.AddWithValue("@TimeForEsclatn", txttimeforEsclation.Text);
-                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrg.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEcs.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@Option", "AddEsclationUser");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
@@ -8839,8 +8845,10 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
                     {
                         Session["Popup"] = "Insert";
                         //Response.Redirect(Request.Url.AbsoluteUri + "?pnlAddEcslevel=true");
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-        $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 5000); }}", true);
+                        //                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+                        //$"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 5000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
+                        FillEcslevelDetails();
                     }
                 }
             }
@@ -8929,8 +8937,8 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
 
                     cmd.Parameters.AddWithValue("@ID", EcslevelID);
                     cmd.Parameters.AddWithValue("@EsclationLevel", ddlEsclationLevel.Text.Trim());
-                    cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
-                    cmd.Parameters.AddWithValue("@UserEmail", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtUserNameEsc.Text);
+                    cmd.Parameters.AddWithValue("@UserEmail", txtEmailEsc.Text);
                     cmd.Parameters.AddWithValue("@Mobile", txtMobile.Text);
                     cmd.Parameters.AddWithValue("@TimeForEsclatn", txttimeforEsclation.Text);
                     cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEcs.SelectedValue.ToString());
@@ -8941,8 +8949,10 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
                     {
                         Session["Popup"] = "Update";
                         //Response.Redirect(Request.Url.AbsoluteUri + "?pnlAddEcslevel=true");
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-        $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 4000); }}", true);
+                        //                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+                        //$"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 4000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        FillEcslevelDetails();
                     }
                 }
             }
