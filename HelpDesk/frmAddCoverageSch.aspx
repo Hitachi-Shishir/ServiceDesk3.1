@@ -1,23 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddCoverageSch.aspx.cs" Inherits="frmAddCoverageSch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-                  <style>
-      .dataTables_filter {
-          margin-top: -29px !important;
-      }
-      .dt-buttons > .btn-outline-secondary{
-          padding:0.25rem 0.5rem!important;
-          font-size: 0.875rem!important;
-	
-}
-      .pagination{
-	--bs-pagination-padding-x: 0.5rem;
-	--bs-pagination-padding-y: 0.25rem;
-	--bs-pagination-font-size: 0.875rem;
-	--bs-pagination-border-radius: var(--bs-border-radius-sm);
-    /*margin-top: -1.7rem!important;*/
-}
-  </style>
+    <style>
+        .dataTables_filter {
+            margin-top: -29px !important;
+        }
+
+        .dt-buttons > .btn-outline-secondary {
+            padding: 0.25rem 0.5rem !important;
+            font-size: 0.875rem !important;
+        }
+
+        .pagination {
+            --bs-pagination-padding-x: 0.5rem;
+            --bs-pagination-padding-y: 0.25rem;
+            --bs-pagination-font-size: 0.875rem;
+            --bs-pagination-border-radius: var(--bs-border-radius-sm);
+            /*margin-top: -1.7rem!important;*/
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
@@ -29,8 +30,8 @@
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                           
-                            <li class="breadcrumb-item active" aria-current="page"> <i class="fa-regular fa-clock"></i> Operational Hours</li>
+
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-regular fa-clock"></i>Operational Hours</li>
                         </ol>
                     </nav>
                 </div>
@@ -74,12 +75,12 @@
                                         </asp:ListBox>
                                     </div>
                                     <div class="  col-md-12">
-                                        
+
                                         <label for="staticEmail" class="form-label">
                                             Hours Covered
                                         <asp:RequiredFieldValidator ID="rfvrdblist" runat="server" ControlToValidate="rdblist" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SLA"></asp:RequiredFieldValidator>
                                         </label>
-                                        <asp:RadioButtonList ID="rdblist" runat="server" RepeatDirection="Horizontal" CellPadding="5"  CellSpacing="20" AutoPostBack="true" OnSelectedIndexChanged="rdblist_SelectedIndexChanged">
+                                        <asp:RadioButtonList ID="rdblist" runat="server" RepeatDirection="Horizontal" CellPadding="5" CellSpacing="20" AutoPostBack="true" OnSelectedIndexChanged="rdblist_SelectedIndexChanged">
                                             <asp:ListItem Text="No Coverage" Value="NoCoverage" Selected="True"></asp:ListItem>
                                             <asp:ListItem Text="24 Hour Coverage" Value="24hrCoverage"></asp:ListItem>
                                             <asp:ListItem Text="Use these Hours" Value="UseTheseHours"></asp:ListItem>
@@ -89,19 +90,19 @@
                                 <asp:Panel ID="pnlcvrgSch" runat="server" Enabled="false">
                                     <div class="  row mt-2 gy-3 gx-2">
                                         <div class="col-md-6">
-                                        <label for="staticEmail" class="form-label">
-                                            Begin Hour
+                                            <label for="staticEmail" class="form-label">
+                                                Begin Hour
                                             <asp:RequiredFieldValidator ID="rfvtxtBeginHour" runat="server" ControlToValidate="txtBeginHour" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SLA"></asp:RequiredFieldValidator>
-                                        </label>
-                                            <asp:TextBox ID="txtBeginHour" runat="server" CssClass="form-control time-picker  form-control-sm "></asp:TextBox>
+                                            </label>
+                                            <asp:TextBox ID="txtBeginHour" TextMode="Time" runat="server" CssClass="form-control  form-control-sm "></asp:TextBox>
                                         </div>
                                         <div class="col-md-6">
-                                        <label for="staticEmail" class="form-label">
-                                            End  Hour 
+                                            <label for="staticEmail" class="form-label">
+                                                End  Hour 
                                             <asp:RequiredFieldValidator ID="rfvtxtEndHour" runat="server" ControlToValidate="txtEndHour" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SLA"></asp:RequiredFieldValidator>
-                                        </label>
-                                    
-                                            <asp:TextBox ID="txtEndHour" runat="server" CssClass=" form-control-sm form-control time-picker"></asp:TextBox>
+                                            </label>
+
+                                            <asp:TextBox ID="txtEndHour" TextMode="Time" runat="server" CssClass=" form-control-sm form-control "></asp:TextBox>
                                         </div>
                                     </div>
                                 </asp:Panel>
@@ -143,20 +144,20 @@
                                                     <asp:BoundField DataField="HoursCovered" HeaderText="HoursCovered" NullDisplayText="NA" />
                                                     <asp:BoundField DataField="BeginHour" HeaderText="Begin Hour" NullDisplayText="NA" />
                                                     <asp:BoundField DataField="EndHour" HeaderText="End Hour" NullDisplayText="NA" />
-<asp:TemplateField HeaderText="Edit">
-    <ItemTemplate>
-        <asp:LinkButton ID="lnkUpdateSLA" runat="server" CommandName="UpdateSLA">
+                                                    <asp:TemplateField HeaderText="Edit">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkUpdateSLA" runat="server" CommandName="UpdateSLA">
             <i class="fa-solid fa-edit"></i>
-        </asp:LinkButton>
-    </ItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField HeaderText="Delete">
-    <ItemTemplate>
-        <asp:LinkButton ID="lnkDeleteSLA" runat="server" CommandName="DeleteSLA">
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Delete">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkDeleteSLA" runat="server" CommandName="DeleteSLA">
            <i class="fa-solid fa-xmark text-danger"></i>
-        </asp:LinkButton>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                 </Columns>
                                                 <%-- <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="10px" />
         <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />
@@ -170,12 +171,12 @@
                                     </div>
 
                                 </div>
-                   
 
-                        </asp:Panel>
+
+                            </asp:Panel>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
             </div>
             </div>

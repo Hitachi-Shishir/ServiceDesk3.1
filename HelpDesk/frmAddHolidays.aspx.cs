@@ -185,7 +185,7 @@ public partial class frmAddHolidays : System.Web.UI.Page
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", r.Next());
                     cmd.Parameters.AddWithValue("@HolidayName", txtHolidayName.Text);
-                    cmd.Parameters.AddWithValue("@HolidayDate", txtholidayDate.Text);
+                    cmd.Parameters.AddWithValue("@HolidayDate", Convert.ToDateTime(txtholidayDate.Text));
                     cmd.Parameters.AddWithValue("@OrgID", ddlOrg.SelectedValue.ToString());
 
                     cmd.Parameters.AddWithValue("@Option", "AddHoliday");
