@@ -1,32 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAllArchiveTickets.aspx.cs" Inherits="frmAllArchiveTickets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-        <style>
-    .badage-sucess > span{
-       color:white !important;
-       background-image: linear-gradient(310deg, #17ad37, #98ec2d) !important;
-       padding:2px 5px;
-       border-radius:5px
-    } 
-    .badage-yellow > span{
-       color:white !important;
-           background: linear-gradient(310deg, #f7971e, #ffd200) !important;
-       padding:2px 5px;
-       border-radius:5px
-    }
-    .badage-red > span{
-       color:white !important;
-         background: linear-gradient(310deg, #ee0979, #ff6a00) !important;
-       padding:2px 5px;
-       border-radius:5px
-    }
-    .badage-info > span{
-       color:white !important;
-       background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
-       padding:2px 5px;
-       border-radius:5px
-    }
-</style>
+    <style>
+        .badage-sucess > span {
+            color: white !important;
+            background-image: linear-gradient(310deg, #17ad37, #98ec2d) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
+
+        .badage-yellow > span {
+            color: white !important;
+            background: linear-gradient(310deg, #f7971e, #ffd200) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
+
+        .badage-red > span {
+            color: white !important;
+            background: linear-gradient(310deg, #ee0979, #ff6a00) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
+
+        .badage-info > span {
+            color: white !important;
+            background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
@@ -37,16 +40,15 @@
                 <div class="breadcrumb-title pe-3">Tickets</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">                            
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> Archive Ticket </li>
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i>Archive Ticket </li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="card ">
                 <div class="card-body">
-                    <div class="card border bg-transparent shadow-none mb-3">
-                        <div class="card-body">
+
                     <asp:Panel ID="pnlgridrow" runat="server">
                         <div class="row">
                             <div class="col-md-12" style="border-bottom: none">
@@ -143,7 +145,7 @@
                                 <%--<asp:ImageButton ID="" runat="server" ImageUrl="~/Images/reset1.png"  />--%>
                                 <div class="btn-group">
                                     <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" CssClass="btn btn-outline-secondary btn-sm  " OnClick="btnGridFilter_Click" />
-                                    <asp:LinkButton ID="imgRemoveFilter" runat="server" OnClick="imgRemoveFilter_Click" class="btn btn-outline-secondary btn-sm" ToolTip="Removes Filter" ><i class="fa-solid fa-filter-circle-xmark"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="imgRemoveFilter" runat="server" OnClick="imgRemoveFilter_Click" class="btn btn-outline-secondary btn-sm" ToolTip="Removes Filter"><i class="fa-solid fa-filter-circle-xmark"></i></asp:LinkButton>
 
                                 </div>
                             </div>
@@ -179,7 +181,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="table-responsive table-container mt-3" style="max-height:400px">
+                            <div class="table-responsive table-container mt-3" style="max-height: 400px">
                                 <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm data-table" DataKeyNames="ID" AllowCustomPaging="True"
                                     AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
                                     <Columns>
@@ -197,7 +199,13 @@
                                             <HeaderStyle Wrap="False" />
                                             <ItemStyle Width="20px" Height="20px" Wrap="False" />
                                         </asp:ButtonField>
-
+                                        <asp:TemplateField HeaderText="Edit">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditTicket" CommandArgument="<%# Container.DataItemIndex %>">
+                                                     <i class="fa-solid fa-edit"></i> <!-- FontAwesome icon -->
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="TicketNumber" ItemStyle-Font-Size="Smaller" SortExpression="TicketNumber" Visible="true">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblTicketNumberColor" runat="server" Text='<%# Eval("color") %>' Font-Size="Smaller" Visible="false"></asp:Label>
@@ -269,8 +277,7 @@
 
 
                 </div>
-                </div>
-                </div>
+
 
             </div>
 

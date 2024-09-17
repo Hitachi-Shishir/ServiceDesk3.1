@@ -92,7 +92,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
                            
-                            <li class="breadcrumb-item active" aria-current="page">All Tickets </li>
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> All Tickets </li>
                         </ol>
                     </nav>
                 </div>
@@ -102,8 +102,7 @@
                     <div class="card ">
 
                         <div class="card-body">
-                              <div class="card border bg-transparent shadow-none ">
-      <div class="card-body">
+                         
                             <asp:Panel ID="pnlgridrow" runat="server">
 
                                 <div class="row gx-2 gy-3">
@@ -303,8 +302,7 @@
                             </div>
 
 
-                        </div>
-                    </div>       </div>
+                              </div>
                     </div>
 
         
