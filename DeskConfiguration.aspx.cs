@@ -29,7 +29,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         try
-        {   
+        {
             //checkPanel();
             if (Session["UserScope"] != null)
             {
@@ -2112,7 +2112,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
-                    {  
+                    {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         DataTableScript();
                         lnkbtnNextStatus_Click(null, null);
@@ -2760,7 +2760,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         ViewState["CurrentStep"] = CurrentStep;
         DataBind();
         cleardata();
-        lnkbtnNextStatus_Click(null,null);
+        lnkbtnNextStatus_Click(null, null);
         pnlAddSeverity.Visible = false;
     }
     protected void lnkNextPriority_Click(object sender, EventArgs e)
@@ -2783,7 +2783,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddPriority.Visible = true;
         pnlAddSeverity.Visible = false;
         FillOrganizationPriority();
-        
+
     }
     #endregion Add Severity End
 
@@ -2808,7 +2808,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
-            DataTable SD_Priority = new FillSDFields().FillPriorityWithCustomer(Session["OrgId"].ToString()); 
+            DataTable SD_Priority = new FillSDFields().FillPriorityWithCustomer(Session["OrgId"].ToString());
             if (SD_Priority.Rows.Count > 0)
             {
                 this.gvPriority.DataSource = (object)SD_Priority;
@@ -2819,8 +2819,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvPriority.DataSource = (object)null;
                 this.gvPriority.DataBind();
             }
-            if(SD_Priority.Rows.Count>0)
-            GridFormat6(SD_Priority);
+            if (SD_Priority.Rows.Count > 0)
+                GridFormat6(SD_Priority);
         }
         catch (ThreadAbortException e2)
         {
@@ -3264,7 +3264,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         cleardata();
         CurrentStep = 5;
         DataBind();
-        lnkNextSeverity_Click(null,null);
+        lnkNextSeverity_Click(null, null);
         pnlAddPriority.Visible = false;
     }
     protected void lnkNextCategory_Click(object sender, EventArgs e)
@@ -4990,13 +4990,14 @@ public partial class DeskConfiguration : System.Web.UI.Page
         lnkNextPriority_Click(null, null);
         pnlAddPriority.Visible = true;
         pnlCategory.Visible = false;
-        
+
     }
     protected void lnkNextEmailConfig_Click(object sender, EventArgs e)
     {
         pnlAddEmailConfig.Visible = true;
         pnlCategory.Visible = false;
         CurrentStep = 8;
+        DataBind();
         ViewState["CurrentStep"] = CurrentStep;
         if (Session["UserScope"] != null)
         {
@@ -5007,11 +5008,26 @@ public partial class DeskConfiguration : System.Web.UI.Page
         {
             Response.Redirect("/Default.aspx");
         }
-        DataBind();
     }
     #endregion Add Category End
 
     #region Email Config Start
+
+    protected void GridFormat7(DataTable dt)
+    {
+        gvEmailConfig.UseAccessibleHeader = true;
+        gvEmailConfig.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (gvEmailConfig.TopPagerRow != null)
+        {
+            gvEmailConfig.TopPagerRow.TableSection = TableRowSection.TableHeader;
+        }
+        if (gvEmailConfig.BottomPagerRow != null)
+        {
+            gvEmailConfig.BottomPagerRow.TableSection = TableRowSection.TableFooter;
+        }
+        if (dt.Rows.Count > 0)
+            gvEmailConfig.FooterRow.TableSection = TableRowSection.TableFooter;
+    }
     private void FillOrganizationEmailConfig()
     {
         try
@@ -5063,6 +5079,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvEmailConfig.DataSource = (object)null;
                 this.gvEmailConfig.DataBind();
             }
+            GridFormat7(SD_EmailConfig);
         }
         catch (ThreadAbortException e2)
         {
@@ -5171,6 +5188,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             }
                             con.Close();
                             FillEmailConfigDetails();
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         }
                     }
                 }
@@ -5276,13 +5294,11 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        FillOrganizationEmailConfig();
                     }
-
                 }
             }
-
         }
         catch (ThreadAbortException e2)
         {
@@ -5397,8 +5413,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Update";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        FillOrganizationEmailConfig();
                     }
                 }
             }
@@ -5442,6 +5458,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddResolution.Visible = true;
         pnlAddEmailConfig.Visible = false;
         CurrentStep = 9;
+        DataBind();
         ViewState["CurrentStep"] = CurrentStep;
         if (Session["UserScope"] != null)
         {
@@ -5465,11 +5482,25 @@ public partial class DeskConfiguration : System.Web.UI.Page
         {
             Response.Redirect("/Default.aspx");
         }
-        DataBind();
     }
     #endregion Email Config End
 
     #region Resolution Add
+    protected void GridFormat8(DataTable dt)
+    {
+        gvResolution.UseAccessibleHeader = true;
+        gvResolution.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (gvResolution.TopPagerRow != null)
+        {
+            gvResolution.TopPagerRow.TableSection = TableRowSection.TableHeader;
+        }
+        if (gvResolution.BottomPagerRow != null)
+        {
+            gvResolution.BottomPagerRow.TableSection = TableRowSection.TableFooter;
+        }
+        if (dt.Rows.Count > 0)
+            gvResolution.FooterRow.TableSection = TableRowSection.TableFooter;
+    }
     private void FillResolutionDetailsCustomer()
     {
         try
@@ -5485,6 +5516,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvResolution.DataSource = (object)null;
                 this.gvResolution.DataBind();
             }
+            GridFormat8(SD_Resolution);
         }
         catch (ThreadAbortException e2)
         {
@@ -5570,6 +5602,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvResolution.DataSource = (object)null;
                 this.gvResolution.DataBind();
             }
+            GridFormat8(SD_Resolution);
         }
         catch (ThreadAbortException e2)
         {
@@ -5832,8 +5865,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Insert";
-                        Response.Redirect(Request.Url.AbsoluteUri);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        lnkNextResolution_Click(null,null);
                     }
                 }
             }
@@ -5903,7 +5936,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        Session["Popup"] = "Update";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        lnkNextResolution_Click(null, null);
                     }
                 }
             }

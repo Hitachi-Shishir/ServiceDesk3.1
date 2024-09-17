@@ -1321,7 +1321,7 @@
 
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Organization: <span title="*"></span>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrgEmailConfig" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrgEmailConfig" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
 
                                             <div class="col-sm-4 pr-5">
@@ -1360,7 +1360,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="table-responsive p-0" style="height: 400px; width: 100%">
-                                                                    <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap"
+                                                                    <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm"
                                                                         Width="100%" OnRowCommand="gvEmailConfig_RowCommand" OnRowDataBound="gvEmailConfig_RowDataBound">
                                                                         <Columns>
                                                                             <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
@@ -1405,9 +1405,7 @@
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="ImgBtnExport" />
-                        <asp:PostBackTrigger ControlID="btnInsertEmailConfig" />
                         <asp:PostBackTrigger ControlID="gvEmailConfig" />
-                        <asp:PostBackTrigger ControlID="btnUpdateEmailConfig" />
                         <asp:PostBackTrigger ControlID="lnkPreviousCategory" />
                         <asp:PostBackTrigger ControlID="lnkNextResolution" />
                     </Triggers>
