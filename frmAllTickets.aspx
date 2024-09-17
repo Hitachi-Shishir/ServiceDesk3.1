@@ -131,11 +131,11 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Created From</label>
-                                        <asp:TextBox ID="txtFrmdate" class="form-control form-control-sm date-time" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtFrmdate" class="form-control form-control-sm datepicker" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Created To</label>
-                                        <asp:TextBox ID="txtTodate" class="form-control form-control-sm date-time" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtTodate" class="form-control form-control-sm datepicker" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-2">
                                         <label class="form-label">Action</label>
