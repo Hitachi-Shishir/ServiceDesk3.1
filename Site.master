@@ -58,11 +58,11 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             margin-top: -31px !important;
         }*/
         .main-wrapper .main-content .page-breadcrumb .breadcrumb li.breadcrumb-item {
-            font-size: 14px;
+            font-size: 13px;
         }
 
         [data-bs-theme=blue-theme] body .page-breadcrumb .breadcrumb-title {
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field {
@@ -77,9 +77,9 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             font-weight: 400;
             line-height: 1.2 !important;
         }
-       
-        .table{
-               border-color:var(--bs-table-border-color)
+
+        .table {
+            border-color: var(--bs-table-border-color)
         }
 
         table td {
@@ -87,27 +87,29 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         }
 
         th {
-            background: var(--bs-body-bg)!important;
-           
+            background: var(--bs-body-bg) !important;
         }
-         .logo-img {
-   width: 67px !important;
- }
-       th {
-    position: sticky;
-    top: 0;
-    z-index: 1; /* Ensure header stays on top of other content */
-    padding: 10px;
-}
 
-      .fa-edit{
-             color: var(--bs-body-color) !important;
-             font-weight:400
-     }
-      .wh-42 {
-    width: 20px;
-    height: 20px;
-}
+        .logo-img {
+            width: 67px !important;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            z-index: 1; /* Ensure header stays on top of other content */
+            padding: 10px;
+        }
+
+        .fa-edit {
+            color: var(--bs-body-color) !important;
+            font-weight: 400
+        }
+
+        .wh-42 {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +120,19 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <div class="btn-toggle">
                     <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
                 </div>
+                                <div class="page-breadcrumb d-none d-sm-flex align-items-center border px-3 py-2 rounded-5" >
+    <div class="breadcrumb-title pe-3">Admin</div>
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0 ">
+
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i> Profile </li>
+              
+            </ol>
+        </nav>
+    </div>
+
+</div>
                 <div class="search-bar flex-grow-1">
                     <div class="position-relative">
                         <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
@@ -214,6 +229,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         </div>
                     </div>
                 </div>
+                 
                 <ul class="navbar-nav gap-1 nav-right-links align-items-center">
 
                     <li class="nav-item dropdown position-static  d-md-flex d-none">
@@ -647,9 +663,9 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             <div class="sidebar-header">
                 <div class="logo-icon">
                     <%--<img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/logo-icon.png" class="logo-img" alt="">--%>
-                    <asp:Image ID="imgOrg" runat="server" CssClass="logo-img"  />
+                    <asp:Image ID="imgOrg" runat="server" CssClass="logo-img" />
                 </div>
-                 <div class="logo-name flex-grow-1">
+                <div class="logo-name flex-grow-1">
                     <h6 class="mb-0">Company Name</h6>
                 </div>
                 <div class="sidebar-close">
@@ -957,6 +973,8 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/main.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apex-custom-chart.js"></script>
     <%--DATATABLE START--%>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
