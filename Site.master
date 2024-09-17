@@ -58,22 +58,55 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             margin-top: -31px !important;
         }*/
         .main-wrapper .main-content .page-breadcrumb .breadcrumb li.breadcrumb-item {
-    font-size: 14px;
-}
-[data-bs-theme=blue-theme] body .page-breadcrumb .breadcrumb-title {
+            font-size: 14px;
+        }
 
-    font-size: 15px;
+        [data-bs-theme=blue-theme] body .page-breadcrumb .breadcrumb-title {
+            font-size: 15px;
+        }
 
-}
         .select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field {
             color: #0f1535 !important;
             font-size: 0.875rem !important;
+            padding: .175rem .75rem;
         }
+
         .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
-       padding: .25rem .5rem !important;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5;
+            /*padding: .25rem .5rem !important;*/
+            font-size: 0.875rem !important;
+            font-weight: 400;
+            line-height: 1.2 !important;
+        }
+       
+        .table{
+               border-color:var(--bs-table-border-color)
+        }
+
+        table td {
+            color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color))) !important;
+        }
+
+        th {
+            background: var(--bs-body-bg)!important;
+           
+        }
+         .logo-img {
+   width: 67px !important;
+ }
+       th {
+    position: sticky;
+    top: 0;
+    z-index: 1; /* Ensure header stays on top of other content */
+    padding: 10px;
+}
+
+      .fa-edit{
+             color: var(--bs-body-color) !important;
+             font-weight:400
+     }
+      .wh-42 {
+    width: 20px;
+    height: 20px;
 }
     </style>
 </head>
@@ -182,7 +215,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     </div>
                 </div>
                 <ul class="navbar-nav gap-1 nav-right-links align-items-center">
-              
+
                     <li class="nav-item dropdown position-static  d-md-flex d-none">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-auto-close="outside"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">done_all</i></a>
@@ -345,7 +378,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">apps</i></a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-apps shadow-lg p-3">
                             <div class="border rounded-4 overflow-hidden">
-                               
+
                                 <!--end row-->
 
                                 <div class="row row-cols-3 g-0 border-bottom">
@@ -381,39 +414,39 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                     </div>
                                 </div>
 
-                                                              <div class="row row-cols-3 g-0 border-bottom">
-                                  <div class="col border-end">
-                                      <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                          <div class="app-icon">
-                                              <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/01.png" width="36" alt="">
-                                          </div>
-                                          <div class="app-name">
-                                              <p class="mb-0">Gmail</p>
-                                          </div>
-                                      </div>
-                                  </div>
+                                <div class="row row-cols-3 g-0 border-bottom">
+                                    <div class="col border-end">
+                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                            <div class="app-icon">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/01.png" width="36" alt="">
+                                            </div>
+                                            <div class="app-name">
+                                                <p class="mb-0">Gmail</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col">
-    <div class="app-wrapper d-flex flex-column gap-2 text-center">
-        <div class="app-icon">
-            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/09.png" width="36" alt="">
-        </div>
-        <div class="app-name">
-            <p class="mb-0">Facebook</p>
-        </div>
-    </div>
-</div>
+                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                            <div class="app-icon">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/09.png" width="36" alt="">
+                                            </div>
+                                            <div class="app-name">
+                                                <p class="mb-0">Facebook</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col border-start">
-    <div class="app-wrapper d-flex flex-column gap-2 text-center">
-        <div class="app-icon">
-            <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/11.png" width="36" alt="">
-        </div>
-        <div class="app-name">
-            <p class="mb-0">Paypal</p>
-        </div>
-    </div>
-</div>
-                                  
-                              </div>
+                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                            <div class="app-icon">
+                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/11.png" width="36" alt="">
+                                            </div>
+                                            <div class="app-name">
+                                                <p class="mb-0">Paypal</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                                 <!--end row-->
 
                             </div>
@@ -569,14 +602,14 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <li class="nav-item d-md-flex d-none">
                         <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasCart"><i
                             class="material-icons-outlined">tune</i>
-                            
+
                         </a>
-                    </li> 
-                 
-               
+                    </li>
+
+
                     <li class="nav-item dropdown">
                         <a href="javascrpt:;" class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-                         <asp:Image ID="img" runat="server"  class="rounded-circle p-1 border" width="45" height="45" alt=""/>
+                            <asp:Image ID="img" runat="server" class="rounded-circle p-1 border" Width="45" Height="45" alt="" />
                         </a>
                         <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
                             <a class="dropdown-item  gap-2 py-2" href="javascript:;">
@@ -614,11 +647,11 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             <div class="sidebar-header">
                 <div class="logo-icon">
                     <%--<img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/logo-icon.png" class="logo-img" alt="">--%>
-                    <asp:Image ID="imgOrg" runat="server" CssClass="brand-image" Style="opacity: .8; width: 150px; margin-left: 33px;" />
+                    <asp:Image ID="imgOrg" runat="server" CssClass="logo-img"  />
                 </div>
-                <%-- <div class="logo-name flex-grow-1">
-                    <h5 class="mb-0">Logo</h5>
-                </div>--%>
+                 <div class="logo-name flex-grow-1">
+                    <h6 class="mb-0">Company Name</h6>
+                </div>
                 <div class="sidebar-close">
                     <span class="material-icons-outlined">close</span>
                 </div>
@@ -645,7 +678,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </ul>
 
 
-             
+
             </div>
         </aside>
         <!--end sidebar-->
@@ -672,70 +705,71 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         </footer>
         <!--top footer-->
 
-        
-  <!--start cart-->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
-  <div class="offcanvas-header border-bottom h-70">
-  <div class="">
-    <h5 class="mb-0">Theme Customizer</h5>
-    <p class="mb-0">Customize your theme</p>
-  </div>
-  <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-    <i class="material-icons-outlined">close</i>
-  </a>
-</div>
-  <div class="offcanvas-body">
-  <div>
-    <p>Theme variation</p>
 
-    <div class="row g-3">
-      <div class="col-12 col-xl-6">
-        <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
-        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
-          <span class="material-icons-outlined">contactless</span>
-          <span>Blue</span>
-        </label>
-      </div>
-      <div class="col-12 col-xl-6">
-        <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
-        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
-          <span class="material-icons-outlined">light_mode</span>
-          <span>Light</span>
-        </label>
-      </div>
-      <div class="col-12 col-xl-6">
-        <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
-        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
-          <span class="material-icons-outlined">dark_mode</span>
-          <span>Dark</span>
-        </label>
-      </div>
-      <div class="col-12 col-xl-6">
-        <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
-        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
-          <span class="material-icons-outlined">contrast</span>
-          <span>Semi Dark</span>
-        </label>
-      </div>
-      <div class="col-12 col-xl-6">
-        <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
-        <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
-          <span class="material-icons-outlined">border_style</span>
-          <span>Bordered</span>
-        </label>
-      </div>
-    </div><!--end row-->
+        <!--start cart-->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
+            <div class="offcanvas-header border-bottom h-70">
+                <div class="">
+                    <h5 class="mb-0">Theme Customizer</h5>
+                    <p class="mb-0">Customize your theme</p>
+                </div>
+                <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+                    <i class="material-icons-outlined">close</i>
+                </a>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    <p>Theme variation</p>
 
-  </div>
-</div>
-   
-  </div>
-  <!--end cart-->
+                    <div class="row g-3">
+                        <div class="col-12 col-xl-6">
+                            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
+                                <span class="material-icons-outlined">contactless</span>
+                                <span>Blue</span>
+                            </label>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
+                                <span class="material-icons-outlined">light_mode</span>
+                                <span>Light</span>
+                            </label>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
+                                <span class="material-icons-outlined">dark_mode</span>
+                                <span>Dark</span>
+                            </label>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
+                                <span class="material-icons-outlined">contrast</span>
+                                <span>Semi Dark</span>
+                            </label>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
+                                <span class="material-icons-outlined">border_style</span>
+                                <span>Bordered</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!--end row-->
+
+                </div>
+            </div>
+
+        </div>
+        <!--end cart-->
 
 
-  <!--start switcher-->
+        <!--start switcher-->
 
-  
+
 
 
 
@@ -909,7 +943,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     <!--bootstrap js-->
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>
+    <%--<script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>--%>
 
 
     <!--plugins-->
@@ -934,7 +968,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-   
+
 
 
     <script>

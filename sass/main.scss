@@ -471,12 +471,12 @@ $dropdownAnimation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animd
     border-right: 1px solid var(--bs-border-color);
 
     .logo-img {
-      width: 45px;
+      width: 67px !important;
     }
 
     .logo-name {
-      h5 {
-        font-size: 24px;
+      h6 {
+        font-size: 18px;
         text-transform: capitalize;
         font-weight: 600;
       }

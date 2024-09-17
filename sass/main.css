@@ -439,17 +439,18 @@ input::placeholder {
 }
 /* Custom scrollbar for the container */
 .table-container::-webkit-scrollbar {
-    width: 2px !important; /* Width of the scrollbar */
+    width: 6px !important; /* Width of the scrollbar */
     height: 2px !important; /* Height of the horizontal scrollbar */
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background-color: #fff !important; /* Color of the scrollbar thumb */
+    background-color: var( --bs-heading-color) !important;
+    /* Color of the scrollbar thumb */
     border-radius: 0px !important; /* Roundness of the scrollbar thumb */
 }
 
     .table-container::-webkit-scrollbar-thumb:hover {
-        background-color: #fff !important; /* Color on hover */
+        background-color: var( --bs-heading-color) !important; /* Color on hover */
     }
 
 .table-container::-webkit-scrollbar-track {
