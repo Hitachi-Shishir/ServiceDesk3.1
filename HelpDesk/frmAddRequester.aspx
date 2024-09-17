@@ -14,7 +14,7 @@
 	--bs-pagination-padding-y: 0.25rem;
 	--bs-pagination-font-size: 0.875rem;
 	--bs-pagination-border-radius: var(--bs-border-radius-sm);
-    /*margin-top: -1.7rem!important;*/
+    margin-top: -1.7rem!important;
 }
   </style>
 </asp:Content>
@@ -22,7 +22,7 @@
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+         <%--   <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div class="breadcrumb-title pe-3">User and Permissions</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
@@ -32,8 +32,52 @@
                         </ol>
                     </nav>
                 </div>
-            </div>
+            </div>--%>
             <div class="card">
+                	<div class="card-header py-3">
+						<div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
+							<div class="step" data-target="#test-l-1">
+							  <div class="step-trigger d-flex" role="tab" id="stepper1trigger1" aria-controls="test-l-1">
+								<div class="bs-stepper-circle ">1</div>
+								<div class="ps-3">
+									<h5 class="mb-0 steper-title">Add Requestor</h5>
+									<p class="mb-0 steper-sub-title">Enter Your Details</p>
+								</div>
+							  </div>
+							</div>
+							<div class="bs-stepper-line"></div>
+							<div class="step" data-target="#test-l-2">
+								<div class="step-trigger d-flex" role="tab" id="stepper1trigger2" aria-controls="test-l-2">
+								  <div class="bs-stepper-circle">2</div>
+								  <div class="ps-3">
+									  <h5 class="mb-0 steper-title">Import User</h5>
+									  <p class="mb-0 steper-sub-title">Setup Account Details</p>
+								  </div>
+								</div>
+							  </div>
+							<div class="bs-stepper-line"></div>
+							<div class="step" data-target="#test-l-3">
+								<div class="step-trigger d-flex" role="tab" id="stepper1trigger3" aria-controls="test-l-3">
+								  <div class="bs-stepper-circle">3</div>
+								  <div class="ps-3">
+									  <h5 class="mb-0 steper-title">View User</h5>
+									  <p class="mb-0 steper-sub-title">Education Details</p>
+								  </div>
+								</div>
+							  </div>	
+                            <div class="bs-stepper-line"></div>
+							<div class="step" data-target="#test-l-3">
+								<div class="step-trigger d-flex" role="tab" id="stepper1trigger4" aria-controls="test-l-3">
+								  <div class="bs-stepper-circle">3</div>
+								  <div class="ps-3">
+									  <h5 class="mb-0 steper-title">View User</h5>
+									  <p class="mb-0 steper-sub-title">Education Details</p>
+								  </div>
+								</div>
+							  </div>
+						
+						  </div>
+					 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 mb-2">
