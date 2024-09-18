@@ -147,9 +147,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0 ">
-
-<<<<<<< HEAD
-                                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i>
+                                <li class="breadcrumb-item active" aria-current="page">
                                     <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label>
                                 </li>
 
@@ -254,16 +252,6 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         </div>
                     </div>
                 </div>--%>
-=======
-                <li class="breadcrumb-item active" aria-current="page"> <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label> </li>
-              
-            </ol>
-        </nav>
-    </div>
-
-</div>
-                
->>>>>>> 90b8b6f2481f68ad0b615e5734dd265c16fa8749
 
                 <div class="search-bar flex-grow-1">
                     <div class="position-relative">
@@ -801,35 +789,35 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                     <div class="row g-3">
                         <div class="col-12 col-xl-6">
-                            <asp:RadioButton ID="rbdBlueTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <asp:RadioButton ID="rbdBlueTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
                             <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBlueTheme">
                                 <span class="material-icons-outlined">contactless</span>
                                 <span>Blue</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <asp:RadioButton ID="rbdLightTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <asp:RadioButton ID="rbdLightTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
                             <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdLightTheme">
                                 <span class="material-icons-outlined">light_mode</span>
                                 <span>Light</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <asp:RadioButton ID="rbdDarkTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <asp:RadioButton ID="rbdDarkTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
                             <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdDarkTheme">
                                 <span class="material-icons-outlined">dark_mode</span>
                                 <span>Dark</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <asp:RadioButton ID="rbdSemiDarkTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <asp:RadioButton ID="rbdSemiDarkTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
                             <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdSemiDarkTheme">
                                 <span class="material-icons-outlined">contrast</span>
                                 <span>Semi Dark</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <asp:RadioButton ID="rbdBoderedTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <asp:RadioButton ID="rbdBoderedTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
                             <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBoderedTheme">
                                 <span class="material-icons-outlined">border_style</span>
                                 <span>Bordered</span>
