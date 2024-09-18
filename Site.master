@@ -63,13 +63,15 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             z-index: 1000;
         }
+
         .search-result-item {
             padding: 10px;
             cursor: pointer;
         }
-        .search-result-item:hover {
-            background-color: #f0f0f0;
-        }
+
+            .search-result-item:hover {
+                background-color: #f0f0f0;
+            }
     </style>
     <style>
         /*.dataTables_filter {
@@ -138,19 +140,23 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <div class="btn-toggle">
                     <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
                 </div>
-                                <div class="page-breadcrumb d-none d-sm-flex align-items-center border px-3 py-2 rounded-5" >
-    <div class="breadcrumb-title pe-3"><asp:Label ID="lblpnl" runat="server">Admin</asp:Label></div>
-    <div class="ps-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0 ">
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center border px-3 py-2 rounded-5">
+                    <div class="breadcrumb-title pe-3">
+                        <asp:Label ID="lblpnl" runat="server">Admin</asp:Label>
+                    </div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0 ">
 
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i> <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label> </li>
-              
-            </ol>
-        </nav>
-    </div>
+                                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i>
+                                    <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label>
+                                </li>
 
-</div>
+                            </ol>
+                        </nav>
+                    </div>
+
+                </div>
                 <%--<div class="search-bar flex-grow-1">
                     <div class="position-relative">
                         <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
@@ -249,32 +255,32 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </div>--%>
 
                 <div class="search-bar flex-grow-1">
-    <div class="position-relative">
-        <input id="searchInput" class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search menu items">
-        <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
-        <span id="searchClose" class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
-        <div id="searchPopup" class="search-popup p-3" style="display: none;">
-            <div class="card rounded-4 overflow-hidden">
-                <div class="card-body search-content">
-                    <div id="recentSearchesContainer">
-                        <p class="search-title">Recent Searches</p>
-                        <div id="recentSearches" class="d-flex align-items-start flex-wrap gap-2 kewords-wrapper">
-                            <!-- Recent searches will be dynamically added here -->
-                        </div>
-                        <hr>
-                    </div>
-                    <div id="searchResultsContainer" style="display: none;">
-                        <p class="search-title">Search Results</p>
-                        <div id="searchResults" class="search-list d-flex flex-column gap-2">
-                            <!-- Search results will be dynamically added here -->
+                    <div class="position-relative">
+                        <input id="searchInput" class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search menu items">
+                        <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+                        <span id="searchClose" class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+                        <div id="searchPopup" class="search-popup p-3" style="display: none;">
+                            <div class="card rounded-4 overflow-hidden">
+                                <div class="card-body search-content">
+                                    <div id="recentSearchesContainer">
+                                        <p class="search-title">Recent Searches</p>
+                                        <div id="recentSearches" class="d-flex align-items-start flex-wrap gap-2 kewords-wrapper">
+                                            <!-- Recent searches will be dynamically added here -->
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div id="searchResultsContainer" style="display: none;">
+                                        <p class="search-title">Search Results</p>
+                                        <div id="searchResults" class="search-list d-flex flex-column gap-2">
+                                            <!-- Search results will be dynamically added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-                 
+
                 <ul class="navbar-nav gap-1 nav-right-links align-items-center">
 
                     <li class="nav-item dropdown position-static  d-md-flex d-none">
@@ -784,41 +790,45 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                     <div class="row g-3">
                         <div class="col-12 col-xl-6">
-                            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
-                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
+                            <asp:RadioButton ID="rbdBlueTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBlueTheme">
                                 <span class="material-icons-outlined">contactless</span>
                                 <span>Blue</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
-                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
+                            <asp:RadioButton ID="rbdLightTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdLightTheme">
                                 <span class="material-icons-outlined">light_mode</span>
                                 <span>Light</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
-                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
+                            <asp:RadioButton ID="rbdDarkTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdDarkTheme">
                                 <span class="material-icons-outlined">dark_mode</span>
                                 <span>Dark</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
-                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
+                            <asp:RadioButton ID="rbdSemiDarkTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdSemiDarkTheme">
                                 <span class="material-icons-outlined">contrast</span>
                                 <span>Semi Dark</span>
                             </label>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
-                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
+                            <asp:RadioButton ID="rbdBoderedTheme" class="btn-check" runat="server" groupname="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBoderedTheme">
                                 <span class="material-icons-outlined">border_style</span>
                                 <span>Bordered</span>
                             </label>
                         </div>
                     </div>
+
+
+
+
                     <!--end row-->
 
                 </div>

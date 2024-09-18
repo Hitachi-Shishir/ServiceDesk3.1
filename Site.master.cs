@@ -21,6 +21,8 @@ public partial class Site : System.Web.UI.MasterPage
     {
         try
         {
+            
+
             if (Session["UserName"] == null)
             {
                 Response.Redirect("~/Default.aspx");
@@ -46,6 +48,37 @@ public partial class Site : System.Web.UI.MasterPage
             HandleException(ex);
         }
     }
+    protected void Theme_CheckedChanged(object sender, EventArgs e)
+    {
+        string theme = string.Empty;
+
+        // Determine which theme is selected
+        if (rbdBlueTheme.Checked)
+        {
+            theme = "blue-theme";
+        }
+        else if (rbdLightTheme.Checked)
+        {
+            theme = "light";
+        }
+        else if (rbdDarkTheme.Checked)
+        {
+            theme = "dark";
+        }
+        else if (rbdSemiDarkTheme.Checked)
+        {
+            theme = "semi-dark";
+        }
+        else if (rbdBoderedTheme.Checked)
+        {
+            theme = "bodered-theme";
+        }
+
+        // Inject a script to update the data-bs-theme attribute on the <html> element
+        string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTheme", script, true);
+    }
+
 
     private void ValidateLoginSession()
     {
@@ -91,10 +124,8 @@ public partial class Site : System.Web.UI.MasterPage
                 }
 
                 bool isParentActive = IsCurrentPage(parentMenuLocation);
-                if (isParentActive)
-                {
-                    lblpnlPage.Text = parentMenuName;
-                }
+                //lblpnl.Text = parentMenuName;
+                
 
                 DataRow[] rows = allCategories.Select($"ParentID = {id}", "MenuName");
                 if (rows.Length > 0)
@@ -139,12 +170,17 @@ public partial class Site : System.Web.UI.MasterPage
                             parentMenu.Attributes["href"] = "javascript:void(0);";
                             parentMenu.Attributes["class"] = (parentMenu.Attributes["class"] ?? "") + (isParentActive ? " menu-open" : "");
                         }
+                        
                     }
 
                     var parentLi = e.Item.FindControl("parentLi") as HtmlGenericControl;
                     if (parentLi != null)
                     {
                         parentLi.Attributes["class"] = (parentLi.Attributes["class"] ?? "") + (isParentActive || hasActiveChild ? " menu-open" : "");
+                    }
+                    if ((parentLi.Attributes["class"]).Contains("menu-open"))
+                    {
+                        lblpnl.Text = parentMenuName;
                     }
                 }
             }
