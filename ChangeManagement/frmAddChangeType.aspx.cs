@@ -146,7 +146,7 @@ public partial class ChangeManagement_frmAddChangeType : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -568,21 +568,27 @@ public partial class ChangeManagement_frmAddChangeType : System.Web.UI.Page
         ShowPanelAdd.Visible = true;
         pnlViewRequestType.Visible = false;
         btnAddReqType.Enabled = false;
-        btnAddReqType.CssClass = "btn btn-sm btnEnabled";
-        btnViewReqType.CssClass = "btn btn-sm btnDisabled";
-        btnViewReqType.Enabled = true;
 
+        // Set the btnAddReqType to red (active)
+        btnAddReqType.CssClass = "btn btn-sm btn-secondary";
+
+        btnViewReqType.CssClass = "btn btn-sm btn-outline-secondary";
+        btnViewReqType.Enabled = true;
     }
+
     protected void ShowReqdetailPanle()
     {
-
         ShowPanelAdd.Visible = false;
         pnlViewRequestType.Visible = true;
         btnAddReqType.Enabled = true;
-        btnAddReqType.CssClass = "btn btn-sm btnDisabled";
-        btnViewReqType.CssClass = "btn btn-sm btnEnabled";
+
+        // Remove the red (active) class from btnAddReqType
+        btnAddReqType.CssClass = "btn btn-sm btn-outline-secondary";
+
+        btnViewReqType.CssClass = "btn btn-sm btn-secondary";
         btnViewReqType.Enabled = false;
     }
+
     protected void btnAddReqType_Click(object sender, EventArgs e)
     {
         ShowAddReqPanel();
@@ -591,8 +597,8 @@ public partial class ChangeManagement_frmAddChangeType : System.Web.UI.Page
         txtChangeType.Text = "";
         txtReqDescription.Text = "";
         ddlOrg.ClearSelection();
-
     }
+
 
     protected void btnViewReqType_Click(object sender, EventArgs e)
     {

@@ -6,19 +6,8 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Admin</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i> Profile </li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
-            <div class="row">
+        
+            <div class="row mt-4">
             <div class="col-md-8">   <div class="card rounded-4">
        <div class="card-body p-4">
            <div class="position-relative mb-5">
