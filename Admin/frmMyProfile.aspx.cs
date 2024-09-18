@@ -20,7 +20,13 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
     {
         try
         {
-
+            string sql = "select Theme from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+            string theme = Convert.ToString(database.GetScalarValue(sql));
+            if (theme != null)
+            {
+                string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTheme", script, true);
+            }
             if (Session["LoginName"] != null && Session["UserScope"] != null)
             {
                 if (!Page.IsPostBack)
@@ -37,10 +43,13 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
             }
             try
             {
-                //if (!string.IsNullOrEmpty(FileUpload1.PostedFile.FileName))
-                //{
-                //    btnUpload_Click(null, null);
-                //}
+                if (IsPostBack && FileUpload1.PostedFile != null)
+                {
+                    if (FileUpload1.HasFile)
+                    {
+                        btnUpload_Click();
+                    }
+                }
             }
             catch
             {
@@ -180,7 +189,7 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
         }
     }
 
-    protected void btnUpload_Click(object sender, EventArgs e)
+    protected void btnUpload_Click()
     {
         Byte[] bytes;
         string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
