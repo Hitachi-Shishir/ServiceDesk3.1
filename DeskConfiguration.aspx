@@ -164,8 +164,8 @@
                                 <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
                                 <div class="bs-stepper-circle">8</div>
                                 <div class="">
-                                    <h5 class="mb-0 steper-title">Email Config</h5>
-                                    <p class="mb-0 steper-sub-title">Add Email Config</p>
+                                    <h5 class="mb-0 steper-title">Resolution</h5>
+                                    <p class="mb-0 steper-sub-title">Add Resolution</p>
                                 </div>
                                 </asp:LinkButton>
                             </div>
@@ -174,8 +174,8 @@
                                 <asp:LinkButton ID="stepper1trigger9" runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
                         <div class="bs-stepper-circle">9</div>
                         <div class="">
-                            <h5 class="mb-0 steper-title">Resolution</h5>
-                            <p class="mb-0 steper-sub-title">Add Resolution</p>
+                            <h5 class="mb-0 steper-title">Add SLA</h5>
+                            <p class="mb-0 steper-sub-title">Add SLA</p>
                         </div>
                                 </asp:LinkButton>
                             </div>
@@ -184,8 +184,8 @@
                                 <asp:LinkButton ID="stepper1trigger10" runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
                                 <div class="bs-stepper-circle">10</div>
                                 <div class="">
-                                    <h5 class="mb-0 steper-title">Add SLA</h5>
-                                    <p class="mb-0 steper-sub-title">Add SLA</p>
+                                    <h5 class="mb-0 steper-title">Desk Template</h5>
+                                    <p class="mb-0 steper-sub-title">Add Desk Template</p>
                                 </div>
                                 </asp:LinkButton>
                             </div>
@@ -194,28 +194,28 @@
                                 <asp:LinkButton ID="stepper1trigger11" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
                                 <div class="bs-stepper-circle">11</div>
                                 <div class="">
-                                    <h5 class="mb-0 steper-title">Add SLA</h5>
-                                    <p class="mb-0 steper-sub-title">Add SLA</p>
+                                    <h5 class="mb-0 steper-title">Email Config</h5>
+                                    <p class="mb-0 steper-sub-title">Add Email Config</p>
                                 </div>
                                 </asp:LinkButton>
                             </div>
                             <div class="col-md-3">
-                                <!-- Step 11 -->
+                                <!-- Step 12 -->
                                 <asp:LinkButton ID="stepper1trigger12" runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
                                 <div class="bs-stepper-circle">12</div>
                                 <div class="">
-                                    <h5 class="mb-0 steper-title">Desk Config</h5>
-                                    <p class="mb-0 steper-sub-title">Add Desk Config</p>
+                                    <h5 class="mb-0 steper-title">Exclation Matrix</h5>
+                                    <p class="mb-0 steper-sub-title">Add Exclation Matrix</p>
                                 </div>
                                 </asp:LinkButton>
                             </div>
-                            <div class="col-md-3">
-                                <!-- Step 11 -->
-                                <asp:LinkButton ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click13">
+                            <div class="col-md-3" hidden>
+                                <!-- Step 13 -->
+                                <asp:LinkButton ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 13 %>' OnClick="StepButton_Click13">
                                 <div class="bs-stepper-circle">13</div>
                                 <div class="">
-                                    <h5 class="mb-0 steper-title">Custom Fields</h5>
-                                    <p class="mb-0 steper-sub-title">Add Custom Fields</p>
+                                    <h5 class="mb-0 steper-title">Exclation Matrix</h5>
+                                    <p class="mb-0 steper-sub-title">Exclation Matrix</p>
                                 </div>
                                 </asp:LinkButton>
                             </div>
@@ -1233,6 +1233,7 @@
                         <asp:PostBackTrigger ControlID="imgbtnCancelCatV" />
                         <asp:PostBackTrigger ControlID="lnkPreviousPriority" />
                         <asp:PostBackTrigger ControlID="lnkNextEmailConfig" />
+                        <asp:PostBackTrigger ControlID="ddlRequestTypeCategory" />
                     </Triggers>
                 </asp:UpdatePanel>
             </asp:Panel>
@@ -1321,7 +1322,7 @@
 
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 Organization: <span title="*"></span>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrgEmailConfig" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrgEmailConfig" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                             </label>
 
                                             <div class="col-sm-4 pr-5">
@@ -1360,7 +1361,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="table-responsive p-0" style="height: 400px; width: 100%">
-                                                                    <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap"
+                                                                    <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm"
                                                                         Width="100%" OnRowCommand="gvEmailConfig_RowCommand" OnRowDataBound="gvEmailConfig_RowDataBound">
                                                                         <Columns>
                                                                             <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
@@ -1405,9 +1406,7 @@
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="ImgBtnExport" />
-                        <asp:PostBackTrigger ControlID="btnInsertEmailConfig" />
                         <asp:PostBackTrigger ControlID="gvEmailConfig" />
-                        <asp:PostBackTrigger ControlID="btnUpdateEmailConfig" />
                         <asp:PostBackTrigger ControlID="lnkPreviousCategory" />
                         <asp:PostBackTrigger ControlID="lnkNextResolution" />
                     </Triggers>
@@ -1529,9 +1528,7 @@
                         <asp:PostBackTrigger ControlID="ImgBtnExport9" />
                         <asp:PostBackTrigger ControlID="ddlOrgResolution" />
                         <asp:PostBackTrigger ControlID="ddlRequestTypeResolution" />
-                        <asp:PostBackTrigger ControlID="btnInsertResolution" />
                         <asp:PostBackTrigger ControlID="gvResolution" />
-                        <asp:PostBackTrigger ControlID="btnUpdateResolution" />
                         <asp:PostBackTrigger ControlID="lnkPreviousEmailConfig" />
                         <asp:PostBackTrigger ControlID="lnkNextSLA" />
                     </Triggers>
@@ -1635,9 +1632,7 @@
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="ImgBtnExport10" />
-                        <asp:PostBackTrigger ControlID="btnInsertSLA" />
                         <asp:PostBackTrigger ControlID="gvSLA" />
-                        <asp:PostBackTrigger ControlID="btnUpdateSLA" />
                         <asp:PostBackTrigger ControlID="lnkPreviousResolution" />
                         <asp:PostBackTrigger ControlID="lnkNextDeskConfig" />
                     </Triggers>
@@ -1736,7 +1731,7 @@
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="ddlStage" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-4 pr-5">
-                                                <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlStage_SelectedIndexChanged"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlStageDeskConfig" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlStageDeskConfig_SelectedIndexChanged"></asp:DropDownList>
                                             </div>
 
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
@@ -1917,13 +1912,14 @@
                         <asp:PostBackTrigger ControlID="btnUpdate" />
                         <asp:PostBackTrigger ControlID="lnkPreviousSLA" />
                         <asp:PostBackTrigger ControlID="lnkNextCustomFields" />
+                        <asp:PostBackTrigger ControlID="ddlStageDeskConfig" />
                     </Triggers>
                 </asp:UpdatePanel>
             </asp:Panel>
             <%--Add DeskConfig End--%>
 
             <%--Add Custom Fields Start--%>
-            <asp:Panel runat="server" ID="pnlAddCustomFields" Visible="false">
+            <%--<asp:Panel runat="server" ID="pnlAddCustomFields" Visible="false">
                 <asp:UpdatePanel ID="updatepanel12" runat="server">
                     <ContentTemplate>
                         <div class="row">
@@ -2122,12 +2118,12 @@
                         <asp:PostBackTrigger ControlID="lnkNextEsclation" />
                     </Triggers>
                 </asp:UpdatePanel>
-            </asp:Panel>
+            </asp:Panel>--%>
             <%--Add Custom Fields End--%>
 
             <%--Add Esclation Matrix Strat--%>
-            <asp:Panel ID="pnlExclation" runat="server">
-                <asp:UpdatePanel ID="updatepanel13" runat="server" Visible="false">
+            <asp:Panel ID="pnlExclation" runat="server" Visible="false">
+                <asp:UpdatePanel ID="updatepanel13" runat="server" >
                     <ContentTemplate>
                         <div class="row">
                             <div class="col-md-12">
@@ -2149,10 +2145,10 @@
                                             </div>
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
                                                 User Name: <span title="*"></span>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtUserName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtUserNameEsc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-4 pr-5">
-                                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control  form-control-sm ">
+                                                <asp:TextBox ID="txtUserNameEsc" runat="server" CssClass="form-control  form-control-sm ">
                                                 </asp:TextBox>
                                             </div>
                                         </div>
@@ -2162,10 +2158,10 @@
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
                                                     ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                                                     Display="Dynamic" ErrorMessage="Invalid Email" ValidationGroup="UserEcslevel" />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtEmailEsc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-4 pr-5">
-                                                <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control  form-control-sm ">
+                                                <asp:TextBox ID="txtEmailEsc" runat="server" CssClass="form-control  form-control-sm ">
                                                 </asp:TextBox>
                                             </div>
                                             <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
@@ -2272,10 +2268,8 @@
                         </div>
                     </ContentTemplate>
                     <Triggers>
-                        <asp:PostBackTrigger ControlID="btnInsertEcslevel" />
                         <asp:PostBackTrigger ControlID="ImgBtnExport" />
                         <asp:PostBackTrigger ControlID="gvEcslevel" />
-                        <asp:PostBackTrigger ControlID="btnUpdateEcslevel" />
                         <asp:PostBackTrigger ControlID="lnkPreviousCustomField" />
                     </Triggers>
 

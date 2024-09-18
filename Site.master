@@ -54,6 +54,24 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
+        /* Add any additional styles here */
+        .search-results {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .search-result-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .search-result-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+    <style>
         /*.dataTables_filter {
             margin-top: -31px !important;
         }*/
@@ -121,19 +139,19 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
                 </div>
                                 <div class="page-breadcrumb d-none d-sm-flex align-items-center border px-3 py-2 rounded-5" >
-    <div class="breadcrumb-title pe-3">Admin</div>
+    <div class="breadcrumb-title pe-3"><asp:Label ID="lblpnl" runat="server">Admin</asp:Label></div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0 ">
 
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i> Profile </li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i> <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label> </li>
               
             </ol>
         </nav>
     </div>
 
 </div>
-                <div class="search-bar flex-grow-1">
+                <%--<div class="search-bar flex-grow-1">
                     <div class="position-relative">
                         <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
                         <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
@@ -228,7 +246,34 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             </div>
                         </div>
                     </div>
+                </div>--%>
+
+                <div class="search-bar flex-grow-1">
+    <div class="position-relative">
+        <input id="searchInput" class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search menu items">
+        <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+        <span id="searchClose" class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+        <div id="searchPopup" class="search-popup p-3" style="display: none;">
+            <div class="card rounded-4 overflow-hidden">
+                <div class="card-body search-content">
+                    <div id="recentSearchesContainer">
+                        <p class="search-title">Recent Searches</p>
+                        <div id="recentSearches" class="d-flex align-items-start flex-wrap gap-2 kewords-wrapper">
+                            <!-- Recent searches will be dynamically added here -->
+                        </div>
+                        <hr>
+                    </div>
+                    <div id="searchResultsContainer" style="display: none;">
+                        <p class="search-title">Search Results</p>
+                        <div id="searchResults" class="search-list d-flex flex-column gap-2">
+                            <!-- Search results will be dynamically added here -->
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
                  
                 <ul class="navbar-nav gap-1 nav-right-links align-items-center">
 
@@ -1056,6 +1101,290 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         });
     </script>
 
+    <%--<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            const searchResultsContainer = document.getElementById('searchResultsContainer');
+            const searchClose = document.getElementById('searchClose');
+            const recentSearches = document.getElementById('recentSearches');
+            const recentSearchesContainer = document.getElementById('recentSearchesContainer');
+            const searchPopup = document.getElementById('searchPopup');
+
+            // This should be populated with your actual menu items
+            const menuItems = [
+                { name: 'Ticket Details', url: '/frmAddIncident.aspx' },
+                { name: 'Profile', url: '/profile' },
+                { name: 'Settings', url: '/settings' },
+                // Add more menu items as needed
+            ];
+
+            // Load recent searches from localStorage
+            let recentSearchList = JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+            function updateRecentSearches() {
+                recentSearches.innerHTML = '';
+                recentSearchList.forEach(search => {
+                    const a = document.createElement('a');
+                    a.href = 'javascript:;';
+                    a.className = 'kewords';
+                    a.innerHTML = `<span>${search}</span><i class="material-icons-outlined fs-6">search</i>`;
+                    a.addEventListener('click', function () {
+                        searchInput.value = search;
+                        performSearch(search);
+                    });
+                    recentSearches.appendChild(a);
+                });
+            }
+
+            function addToRecentSearches(search) {
+                if (!recentSearchList.includes(search)) {
+                    recentSearchList.unshift(search);
+                    if (recentSearchList.length > 5) {
+                        recentSearchList.pop();
+                    }
+                    localStorage.setItem('recentSearches', JSON.stringify(recentSearchList));
+                    updateRecentSearches();
+                }
+            }
+
+            function performSearch(searchTerm) {
+                const filteredItems = menuItems.filter(item =>
+                    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                displayResults(filteredItems);
+                if (searchTerm.trim() !== '') {
+                    addToRecentSearches(searchTerm);
+                }
+            }
+
+            searchInput.addEventListener('input', function () {
+                performSearch(this.value);
+            });
+
+            searchClose.addEventListener('click', function () {
+                searchInput.value = '';
+                hideSearchPopup();
+            });
+
+            function displayResults(items) {
+                searchResults.innerHTML = '';
+                if (items.length > 0) {
+                    items.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'search-list-item d-flex align-items-center gap-3';
+                        div.innerHTML = `
+                    <div class="list-icon">
+                        <i class="material-icons-outlined fs-5">chevron_right</i>
+                    </div>
+                    <div>
+                        <h5 class="mb-0 search-list-title">${item.name}</h5>
+                    </div>
+                `;
+                        div.addEventListener('click', function () {
+                            window.location.href = item.url;
+                        });
+                        searchResults.appendChild(div);
+                    });
+                    showSearchResults();
+                } else if (searchInput.value.trim() !== '') {
+                    const div = document.createElement('div');
+                    div.className = 'search-list-item';
+                    div.textContent = 'No results found';
+                    searchResults.appendChild(div);
+                    showSearchResults();
+                } else {
+                    showRecentSearches();
+                }
+            }
+
+            function showSearchResults() {
+                searchPopup.style.display = 'block';
+                recentSearchesContainer.style.display = 'none';
+                searchResultsContainer.style.display = 'block';
+            }
+
+            function showRecentSearches() {
+                searchPopup.style.display = 'block';
+                recentSearchesContainer.style.display = 'block';
+                searchResultsContainer.style.display = 'none';
+            }
+
+            function hideSearchPopup() {
+                searchPopup.style.display = 'none';
+            }
+
+            // Show recent searches when focusing on search input
+            searchInput.addEventListener('focus', function () {
+                if (this.value.trim() === '') {
+                    showRecentSearches();
+                } else {
+                    performSearch(this.value);
+                }
+            });
+
+            // Close search results when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!searchInput.contains(event.target) && !searchPopup.contains(event.target)) {
+                    hideSearchPopup();
+                }
+            });
+
+            // Initialize recent searches
+            updateRecentSearches();
+        });
+    </script>--%>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            const searchResultsContainer = document.getElementById('searchResultsContainer');
+            const searchClose = document.getElementById('searchClose');
+            const recentSearches = document.getElementById('recentSearches');
+            const recentSearchesContainer = document.getElementById('recentSearchesContainer');
+            const searchPopup = document.getElementById('searchPopup');
+
+            // Function to extract sub-menu items from the DOM
+            function getSubMenuItems() {
+                const subMenuItems = [];
+                const sideNav = document.getElementById('sidenav');
+                const menuItems = sideNav.querySelectorAll('li');
+
+                menuItems.forEach(item => {
+                    const subMenuContainer = item.querySelector('ul');
+                    if (subMenuContainer) {
+                        const subMenuLinks = subMenuContainer.querySelectorAll('a');
+                        subMenuLinks.forEach(link => {
+                            subMenuItems.push({
+                                // Use replace to remove 'arrow_right' from the name
+                                name: link.textContent.trim().replace('arrow_right', ''),
+                                url: link.getAttribute('href')
+                            });
+                        });
+                    }
+                });
+
+                return subMenuItems;
+            }
+
+            // Get sub-menu items
+            const menuItems = getSubMenuItems();
+
+            // Load recent searches from localStorage
+            let recentSearchList = JSON.parse(localStorage.getItem('recentSearches')) || [];
+
+            function updateRecentSearches() {
+                recentSearches.innerHTML = '';
+                recentSearchList.forEach(search => {
+                    const a = document.createElement('a');
+                    a.href = 'javascript:;';
+                    a.className = 'kewords';
+                    a.innerHTML = `<span>${search}</span><i class="material-icons-outlined fs-6">search</i>`;
+                    a.addEventListener('click', function () {
+                        searchInput.value = search;
+                        performSearch(search);
+                    });
+                    recentSearches.appendChild(a);
+                });
+            }
+
+            function addToRecentSearches(search) {
+                if (!recentSearchList.includes(search)) {
+                    recentSearchList.unshift(search);
+                    if (recentSearchList.length > 5) {
+                        recentSearchList.pop();
+                    }
+                    localStorage.setItem('recentSearches', JSON.stringify(recentSearchList));
+                    updateRecentSearches();
+                }
+            }
+
+            function performSearch(searchTerm) {
+                const filteredItems = menuItems.filter(item =>
+                    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                displayResults(filteredItems);
+                if (searchTerm.trim() !== '') {
+                    addToRecentSearches(searchTerm);
+                }
+            }
+
+            searchInput.addEventListener('input', function () {
+                performSearch(this.value);
+            });
+
+            searchClose.addEventListener('click', function () {
+                searchInput.value = '';
+                hideSearchPopup();
+            });
+
+            function displayResults(items) {
+                searchResults.innerHTML = '';
+                if (items.length > 0) {
+                    items.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'search-list-item d-flex align-items-center gap-3';
+                        div.innerHTML = `
+                <div class="list-icon">
+                    <i class="material-icons-outlined fs-5">chevron_right</i>
+                </div>
+                <div>
+                    <h5 class="mb-0 search-list-title">${item.name}</h5>
+                </div>
+            `;
+                        div.addEventListener('click', function () {
+                            window.location.href = item.url;
+                        });
+                        searchResults.appendChild(div);
+                    });
+                    showSearchResults();
+                } else if (searchInput.value.trim() !== '') {
+                    const div = document.createElement('div');
+                    div.className = 'search-list-item';
+                    div.textContent = 'No results found';
+                    searchResults.appendChild(div);
+                    showSearchResults();
+                } else {
+                    showRecentSearches();
+                }
+            }
+
+            function showSearchResults() {
+                searchPopup.style.display = 'block';
+                recentSearchesContainer.style.display = 'none';
+                searchResultsContainer.style.display = 'block';
+            }
+
+            function showRecentSearches() {
+                searchPopup.style.display = 'block';
+                recentSearchesContainer.style.display = 'block';
+                searchResultsContainer.style.display = 'none';
+            }
+
+            function hideSearchPopup() {
+                searchPopup.style.display = 'none';
+            }
+
+            // Show recent searches when focusing on search input
+            searchInput.addEventListener('focus', function () {
+                if (this.value.trim() === '') {
+                    showRecentSearches();
+                } else {
+                    performSearch(this.value);
+                }
+            });
+
+            // Close search results when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!searchInput.contains(event.target) && !searchPopup.contains(event.target)) {
+                    hideSearchPopup();
+                }
+            });
+
+            // Initialize recent searches
+            updateRecentSearches();
+        });
+    </script>
 
 </body>
 </html>
