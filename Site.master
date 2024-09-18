@@ -144,109 +144,14 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0 ">
 
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-user"></i> <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label> </li>
+                <li class="breadcrumb-item active" aria-current="page"> <asp:Label ID="lblpnlPage" runat="server">Profile</asp:Label> </li>
               
             </ol>
         </nav>
     </div>
 
 </div>
-                <%--<div class="search-bar flex-grow-1">
-                    <div class="position-relative">
-                        <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
-                        <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
-                        <span class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
-                        <div class="search-popup p-3">
-                            <div class="card rounded-4 overflow-hidden">
-                                <div class="card-header d-lg-none">
-                                    <div class="position-relative">
-                                        <input class="form-control rounded-5 px-5 mobile-search-control" type="text" placeholder="Search">
-                                        <span class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
-                                        <span class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 mobile-search-close">close</span>
-                                    </div>
-                                </div>
-                                <div class="card-body search-content">
-                                    <p class="search-title">Recent Searches</p>
-                                    <div class="d-flex align-items-start flex-wrap gap-2 kewords-wrapper">
-                                        <a href="javascript:;" class="kewords"><span>Angular Template</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                        <a href="javascript:;" class="kewords"><span>Dashboard</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                        <a href="javascript:;" class="kewords"><span>Admin Template</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                        <a href="javascript:;" class="kewords"><span>Bootstrap 5 Admin</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                        <a href="javascript:;" class="kewords"><span>Html eCommerce</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                        <a href="javascript:;" class="kewords"><span>Sass</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                        <a href="javascript:;" class="kewords"><span>laravel 9</span><i
-                                            class="material-icons-outlined fs-6">search</i></a>
-                                    </div>
-                                    <hr>
-                                    <p class="search-title">Tutorials</p>
-                                    <div class="search-list d-flex flex-column gap-2">
-                                        <div class="search-list-item d-flex align-items-center gap-3">
-                                            <div class="list-icon">
-                                                <i class="material-icons-outlined fs-5">play_circle</i>
-                                            </div>
-                                            <div class="">
-                                                <h5 class="mb-0 search-list-title ">Wordpress Tutorials</h5>
-                                            </div>
-                                        </div>
-                                        <div class="search-list-item d-flex align-items-center gap-3">
-                                            <div class="list-icon">
-                                                <i class="material-icons-outlined fs-5">shopping_basket</i>
-                                            </div>
-                                            <div class="">
-                                                <h5 class="mb-0 search-list-title">eCommerce Website Tutorials</h5>
-                                            </div>
-                                        </div>
-                                        <div class="search-list-item d-flex align-items-center gap-3">
-                                            <div class="list-icon">
-                                                <i class="material-icons-outlined fs-5">laptop</i>
-                                            </div>
-                                            <div class="">
-                                                <h5 class="mb-0 search-list-title">Responsive Design</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p class="search-title">Members</p>
-                                    <div class="search-list d-flex flex-column gap-2">
-                                        <div class="search-list-item d-flex align-items-center gap-3">
-                                            <div class="memmber-img">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/01.png" width="32" height="32" class="rounded-circle" alt="">
-                                            </div>
-                                            <div class="">
-                                                <h5 class="mb-0 search-list-title ">Andrew Stark</h5>
-                                            </div>
-                                        </div>
-                                        <div class="search-list-item d-flex align-items-center gap-3">
-                                            <div class="memmber-img">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/02.png" width="32" height="32" class="rounded-circle" alt="">
-                                            </div>
-                                            <div class="">
-                                                <h5 class="mb-0 search-list-title ">Snetro Jhonia</h5>
-                                            </div>
-                                        </div>
-                                        <div class="search-list-item d-flex align-items-center gap-3">
-                                            <div class="memmber-img">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/avatars/03.png" width="32" height="32" class="rounded-circle" alt="">
-                                            </div>
-                                            <div class="">
-                                                <h5 class="mb-0 search-list-title">Michle Clark</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-center bg-transparent">
-                                    <a href="javascript:;" class="btn w-100">See All Search Results</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>--%>
+                
 
                 <div class="search-bar flex-grow-1">
     <div class="position-relative">

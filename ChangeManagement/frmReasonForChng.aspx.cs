@@ -146,7 +146,7 @@ public partial class ChangeManagement_frmReasonForChng : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -579,8 +579,8 @@ public partial class ChangeManagement_frmReasonForChng : System.Web.UI.Page
         ShowPanelAdd.Visible = true;
         pnlViewRequestType.Visible = false;
         btnAddReqType.Enabled = false;
-        btnAddReqType.CssClass = "btn btn-sm btnEnabled";
-        btnViewReqType.CssClass = "btn btn-sm btnDisabled";
+        btnAddReqType.CssClass = "btn btn-sm btn-secondary";
+        btnViewReqType.CssClass = "btn btn-sm btn-outline-secondary";
         btnViewReqType.Enabled = true;
 
     }
@@ -590,8 +590,8 @@ public partial class ChangeManagement_frmReasonForChng : System.Web.UI.Page
         ShowPanelAdd.Visible = false;
         pnlViewRequestType.Visible = true;
         btnAddReqType.Enabled = true;
-        btnAddReqType.CssClass = "btn btn-sm btnDisabled";
-        btnViewReqType.CssClass = "btn btn-sm btnEnabled";
+        btnAddReqType.CssClass = "btn btn-sm btn-outline-secondary";
+        btnViewReqType.CssClass = "btn btn-sm btn-secondary";
         btnViewReqType.Enabled = false;
     }
     protected void btnAddReqType_Click(object sender, EventArgs e)
