@@ -33,6 +33,9 @@
          padding: 2px 5px;
          border-radius: 5px
      }
+         a {
+    color: var(--bs-heading-color) !important;
+}
  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
@@ -170,7 +173,7 @@
                         <div class="col-md-12">
                             <div class="table-responsive table-container" style="height: 400px;">
 
-                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm" DataKeyNames="ID" AllowCustomPaging="True"
+                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-striped table-sm" DataKeyNames="ID" AllowCustomPaging="True"
                                     AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
                                     <Columns>
                                         <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30" ItemStyle-Height="5px">
