@@ -114,7 +114,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
                     FillAssigneeForChange();
                     FillSummary();
                     UpdateTicketPanel();
-                    lblTicket.Text = " Number :" + TicketId;
+                    lblTicket.Text = " -Number : " + TicketId;
 
                     AssigneClick = 0;
                     if (Session["UserScope"].ToString() == "Technician")

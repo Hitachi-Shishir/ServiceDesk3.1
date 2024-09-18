@@ -33,6 +33,9 @@
         padding: 2px 5px;
         border-radius: 5px
     }
+    a {
+    color: var(--bs-heading-color) !important;
+}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
@@ -40,16 +43,7 @@
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Tickets</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i>Archive Ticket </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+           
             <div class="card ">
                 <div class="card-body">
 
