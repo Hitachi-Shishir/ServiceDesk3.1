@@ -140,9 +140,9 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
     protected void ShowAddPriorityPanel()
     {
         pnlIncident.Visible = true;
-        btnAddPriority.CssClass = "btn btn-sm btnEnabled";
+        btnAddPriority.CssClass = "btn btn-sm btn-secondary";
         pnlShowPriority.Visible = false;
-        btnViewPriority.CssClass = "btn btn-sm btnDisabled";
+        btnViewPriority.CssClass = "btn btn-sm btn-outline-secondary";
         btnAddPriority.Enabled = false;
         btnViewPriority.Enabled = true;
     }
@@ -325,9 +325,9 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
         {
 
             pnlIncident.Visible = false;
-            btnAddPriority.CssClass = "btn btn-sm btnDisabled";
+            btnAddPriority.CssClass = "btn btn-sm btn-outline-secondary";
             pnlShowPriority.Visible = true;
-            btnViewPriority.CssClass = "btn btn-sm btnEnabled";
+            btnViewPriority.CssClass = "btn btn-sm btn-secondary";
             btnAddPriority.Enabled = true;
             btnViewPriority.Enabled = false;
             FillShowResolution();

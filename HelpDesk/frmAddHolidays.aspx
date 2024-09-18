@@ -23,18 +23,7 @@
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Coverage Schedules</div>
-    <div class="ps-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0">
-              
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-right-from-bracket"></i> Holiday</li>
-            </ol>
-        </nav>
-    </div>
-
-</div>
+           
 
             <div class="card">
 
@@ -42,13 +31,15 @@
                 <div class="card-body">
                       <div class="row mb-2 ">
       <div class="col-md-12">
+          <div class="btn-group">
           <asp:Button ID="btnAddHoliday" runat="server" Text="Add Holiday" CausesValidation="false" OnClick="btnAddHoliday_Click" />
           <asp:Button ID="btnimportUser" runat="server" Text="Import Holidays" CausesValidation="false" OnClick="btnimportUser_Click" />
           <asp:Button ID="btnViewUsers" runat="server" Text="View Holiday" CausesValidation="false" OnClick="btnViewUsers_Click" />
       </div>
+      </div>
 
   </div>
-                    <div class="card border bg-transparent shadow-none mb-3">
+                    <div class="card border bg-transparent shadow-none">
                         <div class="card-body">
                             <asp:Panel ID="pnlAddHoliday" Visible="false" runat="server">
                                 <div class="row">
@@ -114,9 +105,16 @@
                                             <asp:GridView GridLines="None" ID="gvHoliday" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm text-nowrap table-hover"
                                                 Width="100%" OnRowCommand="gvHoliday_RowCommand" OnRowDataBound="gvHoliday_RowDataBound">
                                                 <Columns>
-                                                    <asp:ButtonField ButtonType="Image" CommandName="SelectTech" HeaderText="Edit" ImageUrl="../Images/editWHT.png" ItemStyle-Width="20px" />
 <%--                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
-                                                   <asp:TemplateField HeaderText="Delete">
+                                                   
+                                                       <asp:TemplateField HeaderText="Edit">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectTech" CommandArgument="<%# Container.DataItemIndex %>">
+                                                  <i class="fa-solid fa-edit"></i> 
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Delete">
     <ItemTemplate>
         <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx">
            <i class="fa-solid fa-xmark text-danger"></i>

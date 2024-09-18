@@ -489,9 +489,9 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
         try
         {
             pnlAddSLA.Visible = true;
-            btnAddSLA.CssClass = "btn btn-sm btnEnabled";
+            btnAddSLA.CssClass = "btn btn-sm btn-secondary";
             pnlViewSLA.Visible = false;
-            btnViewSLA.CssClass = "btn btn-sm btnDisabled";
+            btnViewSLA.CssClass = "btn btn-sm btn-outline-secondary";
             btnAddSLA.Enabled = false;
             btnViewSLA.Enabled = true;
         }
@@ -525,9 +525,9 @@ public partial class frmAddCoverageSch : System.Web.UI.Page
         try
         {
             pnlAddSLA.Visible = false;
-            btnAddSLA.CssClass = "btn btn-sm btnDisabled";
+            btnAddSLA.CssClass = "btn btn-sm btn-outline-secondary";
             pnlViewSLA.Visible = true;
-            btnViewSLA.CssClass = "btn btn-sm btnEnabled";
+            btnViewSLA.CssClass = "btn btn-sm btn-secondary";
             btnViewSLA.Enabled = false;
             btnAddSLA.Enabled = true;
             FillSLADetails();

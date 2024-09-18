@@ -16,7 +16,7 @@
             --bs-pagination-padding-y: 0.25rem;
             --bs-pagination-font-size: 0.875rem;
             --bs-pagination-border-radius: var(--bs-border-radius-sm);
-            /*margin-top: -1.7rem!important;*/
+            margin-top: -1.7rem!important;
         }
     </style>
 </asp:Content>
@@ -25,28 +25,19 @@
 
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Coverage Schedules</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-regular fa-clock"></i>Operational Hours</li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
+           
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 mb-2">
-                            <asp:Button ID="btnAddSLA" Text="Coverage Schedule" runat="server" CssClass="btn btn-sm btnDisabled" OnClick="btnAddSLA_Click" />
-                            <asp:Button ID="btnViewSLA" runat="server" Text-="View Details" CssClass="btn btn-sm btnEnabled" OnClick="btnViewSLA_Click" />
+                            <div class="btn-group">
+                            <asp:Button ID="btnAddSLA" Text="Coverage Schedule" runat="server" CssClass="btn btn-sm btn-outline-secondary" OnClick="btnAddSLA_Click" />
+                            <asp:Button ID="btnViewSLA" runat="server" Text-="View Details" CssClass="btn btn-sm btn-outline-secondary" OnClick="btnViewSLA_Click" />
                         </div>
                     </div>
+                    </div>
 
-                    <div class="card border bg-transparent shadow-none mb-3">
+                    <div class="card border bg-transparent shadow-none ">
                         <div class="card-body">
 
                             <asp:Panel ID="pnlAddSLA" runat="server" Visible="false">

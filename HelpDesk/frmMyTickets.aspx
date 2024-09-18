@@ -25,30 +25,13 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Tickets</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                           
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> My Ticket Details</li>
-                        </ol>
-                    </nav>
-                </div>
-         
-                <div class="ms-auto d-none">
-               <div class="btn-group">
-                   	<button type="button" class="btn btn-outline-secondary btn-sm">Export</button>
-                    <asp:ImageButton ID="ImgBtnExport" runat="server" ImageUrl="Images/excelWH.png" class="btn btn-outline-secondary btn-sm" OnClick="ImgBtnExport_Click" />
-                   </div>
-                </div>
-            </div>
+           
+                    <asp:ImageButton ID="ImgBtnExport" runat="server" ImageUrl="Images/excelWH.png" class="btn btn-outline-secondary btn-sm d-none" OnClick="ImgBtnExport_Click" />
             <div class="card ">
 
                 <div class="card-body">
                    
-<div class="card shadow-none border  ">
-                                <div class="card-body ">
+
                     <div class="table-responsive table-container" >
 
                         <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped table-bordered table-sm text-nowrap" DataKeyNames="TicketNumber" 
@@ -68,8 +51,7 @@
                     <%--	</div>--%>
                 </div>
             </div>
-            </div>
-            </div>
+       
 
             <div class="modal" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog">

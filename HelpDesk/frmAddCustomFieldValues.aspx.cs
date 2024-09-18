@@ -125,10 +125,10 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
 
                     FillOrganization();
 
-                    btnViewUsers.CssClass = "btn btn-sm btnEnabled";
+                    btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
                     btnViewUsers.Enabled = false;
-                    btnAddCustomField.CssClass = "btn btn-sm btnDisabled ";
-                    btnimportUser.CssClass = "btn btn-sm btnDisabled";
+                    btnAddCustomField.CssClass = "btn btn-sm  btn-outline-secondary";
+                    btnimportUser.CssClass = "btn btn-sm btn-secondary";
                     pnlShowUsers.Visible = true;
                 }
             }
@@ -175,7 +175,7 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -215,7 +215,7 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
         ddlCustomFieldName.DataTextField = "FieldName";
         ddlCustomFieldName.DataValueField = "FieldValue";
         ddlCustomFieldName.DataBind();
-        ddlCustomFieldName.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Custom Field----------", "0"));
+        ddlCustomFieldName.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         //	}
@@ -255,7 +255,7 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
         ddlCustomField.DataTextField = "FieldName";
         ddlCustomField.DataValueField = "FieldValue";
         ddlCustomField.DataBind();
-        ddlCustomField.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Custom Field----------", "0"));
+        ddlCustomField.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         //	}
@@ -700,9 +700,9 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
             pnlImportUser.Visible = true;
             pnlAddCustomField.Visible = false;
             pnlShowUsers.Visible = false;
-            btnAddCustomField.CssClass = "btn btn-sm btnDisabled";
-            btnViewUsers.CssClass = "btn btn-sm btnDisabled";
-            btnimportUser.CssClass = "btn btn-sm btnEnabled";
+            btnAddCustomField.CssClass = "btn btn-sm btn-outline-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
+            btnimportUser.CssClass = "btn btn-sm    btn-secondary";
             btnimportUser.Enabled = false;
             btnAddCustomField.Enabled = true;
             btnViewUsers.Enabled = true;
@@ -808,9 +808,9 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
             pnlAddCustomField.Visible = false;
             pnlImportUser.Visible = false;
             pnlShowUsers.Visible = true;
-            btnAddCustomField.CssClass = "btn btn-sm btnDisabled ";
-            btnimportUser.CssClass = "btn btn-sm btnDisabled";
-            btnViewUsers.CssClass = "btn btn-sm btnEnabled";
+            btnAddCustomField.CssClass = "btn btn-sm btn-outline-secondary ";
+            btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-secondary";
             btnViewUsers.Enabled = false;
             btnAddCustomField.Enabled = true;
             btnimportUser.Enabled = true;
@@ -844,9 +844,9 @@ public partial class HelpDesk_frmAddCustomFieldValues : System.Web.UI.Page
         try
         {
             pnlAddCustomField.Visible = true;
-            btnAddCustomField.CssClass = "btn btn-sm btnEnabled";
-            btnViewUsers.CssClass = "btn btn-sm btnDisabled";
-            btnimportUser.CssClass = "btn btn-sm btnDisabled";
+            btnAddCustomField.CssClass = "btn btn-sm btn-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
+            btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
             btnAddCustomField.Enabled = false;
             btnViewUsers.Enabled = true;
             btnimportUser.Enabled = true;

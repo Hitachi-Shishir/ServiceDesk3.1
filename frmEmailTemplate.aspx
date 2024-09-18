@@ -17,17 +17,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
     <asp:ScriptManager ID="scr" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Template</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-regular fa-envelope"></i> Email Template </li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
+            
 
             <div class="card">
                 <div class="card-body">

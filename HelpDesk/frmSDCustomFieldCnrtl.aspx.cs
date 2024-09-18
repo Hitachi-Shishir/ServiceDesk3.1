@@ -102,7 +102,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
             ddlOrg.DataBind();
-            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select----", "0"));
 
 
         }
@@ -279,7 +279,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
             ddlRequestType.DataTextField = "ReqTypeRef";
             ddlRequestType.DataValueField = "ReqTypeRef";
             ddlRequestType.DataBind();
-            ddlRequestType.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlRequestType.Items.Insert(0, new ListItem("----Select----", "0"));
 
 
         }
@@ -664,9 +664,9 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
     protected void ShowAddSDCustomFieldsPanel()
     {
         pnlAddSDCustomFields.Visible = true;
-        btnAddSDCustomFields.CssClass = "btn btn-sm btnEnabled";
+        btnAddSDCustomFields.CssClass = "btn btn-sm btn-secondary";
         pnlShowSDCustomFields.Visible = false;
-        btnViewSDCustomFields.CssClass = "btn btn-sm btnDisabled";
+        btnViewSDCustomFields.CssClass = "btn btn-sm btn-outline-secondary";
         btnAddSDCustomFields.Enabled = false;
         btnViewSDCustomFields.Enabled = true;
     }
@@ -680,9 +680,9 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
     {
 
         pnlAddSDCustomFields.Visible = false;
-        btnAddSDCustomFields.CssClass = "btn btn-sm btnDisabled";
+        btnAddSDCustomFields.CssClass = "btn btn-sm btn-outline-secondary";
         pnlShowSDCustomFields.Visible = true;
-        btnViewSDCustomFields.CssClass = "btn btn-sm btnEnabled";
+        btnViewSDCustomFields.CssClass = "btn btn-sm btn-secondary";
         btnAddSDCustomFields.Enabled = true;
         btnViewSDCustomFields.Enabled = false;
         FillSDCustomFieldsDetails();

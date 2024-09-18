@@ -3,32 +3,42 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <style>
-        .badage-sucess > span{
-           color:white !important;
-           background-image: linear-gradient(310deg, #17ad37, #98ec2d) !important;
-           padding:2px 5px;
-           border-radius:5px
-        } 
-        .badage-yellow > span{
-           color:white !important;
-               background: linear-gradient(310deg, #f7971e, #ffd200) !important;
-           padding:2px 5px;
-           border-radius:5px
-        }
-        .badage-red > span{
-           color:white !important;
-             background: linear-gradient(310deg, #ee0979, #ff6a00) !important;
-           padding:2px 5px;
-           border-radius:5px
-        }
-        .badage-info > span{
-           color:white !important;
-           background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
-           padding:2px 5px;
-           border-radius:5px
-        }
-    </style>
+               <style>
+    .badage-sucess > span {
+        
+  color: #02c27a;
+  background-color: rgb(2 194 122 / 10%) !important;
+   border-color: rgb(2 194 122 / 0%) !important;
+         
+   padding: 2px 5px;
+        border-radius: 5px
+    }
+
+    .badage-yellow > span {
+        color: white !important;
+        background: linear-gradient(310deg, #f7971e, #ffd200) !important;
+        padding: 2px 5px;
+        border-radius: 5px
+    }
+
+    .badage-red > span {
+  color: #fc185a !important;
+   background-color: rgb(252 24 90 / 10%) !important;
+   border-color: rgb(252 24 90 / 0%) !important;
+        padding: 2px 5px;
+        border-radius: 5px
+    }
+
+    .badage-info > span {
+        color: white !important;
+        background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
+        padding: 2px 5px;
+        border-radius: 5px
+    }
+    a {
+    color: var(--bs-heading-color) !important;
+}
+</style>
       <style>
       /*.dataTables_filter {
           margin-top: -29px !important;
@@ -86,18 +96,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3 small">Tickets</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                           
-                            <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-ticket"></i> All Tickets </li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
+          
 
                     <div class="card ">
 
@@ -228,7 +227,7 @@
                                 <div class="col-md-12">
                                     <div class="table-responsive table-container">
                                         <!-- Removed the div with table classes -->
-                                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table1 table-striped table-sm table table-head-fixed text-nowrap " DataKeyNames="ID"
+                                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table1 table-striped table-sm table table-head-fixed text-nowrap border " DataKeyNames="ID"
                                             AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" HeaderStyle-Height="25px"
                                             OnRowDataBound="gvAllTickets_RowDataBound" OnRowEditing="gvAllTickets_RowEditing">
                                             <%--AllowCustomPaging="True"  OnSorting="gvAllTickets_Sorting"   AllowSorting="True"--%>

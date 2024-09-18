@@ -539,9 +539,9 @@ public partial class frmAddHolidays : System.Web.UI.Page
             pnlImportUser.Visible = true;
             pnlAddHoliday.Visible = false;
             pnlShowUsers.Visible = false;
-            btnAddHoliday.CssClass = "btn btn-sm btnDisabled";
-            btnViewUsers.CssClass = "btn btn-sm btnDisabled";
-            btnimportUser.CssClass = "btn btn-sm btnEnabled";
+            btnAddHoliday.CssClass = "btn btn-sm btn-outline-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
+            btnimportUser.CssClass = "btn btn-sm btn-secondary";
             btnimportUser.Enabled = false;
             btnAddHoliday.Enabled = true;
             btnViewUsers.Enabled = true;
@@ -621,9 +621,9 @@ public partial class frmAddHolidays : System.Web.UI.Page
             pnlAddHoliday.Visible = false;
             pnlImportUser.Visible = false;
             pnlShowUsers.Visible = true;
-            btnAddHoliday.CssClass = "btn btn-sm btnDisabled ";
-            btnimportUser.CssClass = "btn btn-sm btnDisabled";
-            btnViewUsers.CssClass = "btn btn-sm btnEnabled";
+            btnAddHoliday.CssClass = "btn btn-sm btn-outline-secondary ";
+            btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-secondary";
             btnViewUsers.Enabled = false;
             btnAddHoliday.Enabled = true;
             btnimportUser.Enabled = true;
@@ -653,9 +653,9 @@ public partial class frmAddHolidays : System.Web.UI.Page
         {
 
             pnlAddHoliday.Visible = true;
-            btnAddHoliday.CssClass = "btn btn-sm btnEnabled";
-            btnViewUsers.CssClass = "btn btn-sm btnDisabled";
-            btnimportUser.CssClass = "btn btn-sm btnDisabled";
+            btnAddHoliday.CssClass = "btn btn-sm btn-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
+            btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
             btnAddHoliday.Enabled = false;
             btnViewUsers.Enabled = true;
             btnimportUser.Enabled = true;
