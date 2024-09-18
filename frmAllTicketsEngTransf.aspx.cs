@@ -397,7 +397,7 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
         string body = "Welcome to ASPSnippets.com";
         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
     }
-    protected void imgcolumnfilter_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+    protected void imgcolumnfilter_Click(object sender, EventArgs e)
     {
         FillAllChecklist();
         this.Modal();
@@ -960,23 +960,23 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
                     {
                         //e.Row.Cells[2].BackColor = Color.Green;
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
-                        e.Row.Cells[2].CssClass = "badge bg-success";
+                        e.Row.Cells[2].CssClass = "badage-sucess";
                     }
                     if (label.Text.ToLower() == "yellow")
                     {
-                        e.Row.Cells[2].CssClass = "badge bg-warning";
+                        e.Row.Cells[2].CssClass = "badage-yellow";
                     }
                     if (label.Text.ToLower() == "red")
                     {
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
 
-                        e.Row.Cells[2].CssClass = "badge bg-danger";
+                        e.Row.Cells[2].CssClass = "badage-red";
                     }
                     if (label.Text.ToLower() == "orange")
                     {
                         e.Row.Cells[2].ForeColor = System.Drawing.Color.Black;
 
-                        e.Row.Cells[2].CssClass = "badge bg-info";
+                        e.Row.Cells[2].CssClass = "badage-info";
                     }
                 }
             }
@@ -1065,7 +1065,7 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void imgRowFilter_Click(object sender, ImageClickEventArgs e)
+    protected void imgRowFilter_Click(object sender, EventArgs e)
     {
         pnlRowFilter.Visible = true;
     }
@@ -1126,7 +1126,7 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
         gvAllTickets.DataBind();
 
     }
-    protected void imgRemoveFilter_Click(object sender, ImageClickEventArgs e)
+    protected void imgRemoveFilter_Click(object sender, EventArgs e)
     {
 
         Response.Redirect(Request.Url.AbsoluteUri);
