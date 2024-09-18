@@ -1,6 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddKnowledgeBase.aspx.cs" Inherits="frmAddKnowledgeBase" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddKnowledgeBase.aspx.cs" Inherits="frmAddKnowledgeBase"  ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script src="assets/plugins/summernote/jquery.js"></script>
+    <link href="assets/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
@@ -139,13 +143,17 @@
         </ContentTemplate>
 
         <Triggers>
-
-            <asp:PostBackTrigger ControlID="rptOddControl" />
-
-            <asp:PostBackTrigger ControlID="btnSearch" />
-
+               <asp:PostBackTrigger ControlID="btnAddPriority" />
+               <asp:PostBackTrigger ControlID="btnViewPriority" />
+               <asp:PostBackTrigger ControlID="gvResolution" />
         </Triggers>
 
     </asp:UpdatePanel>
+    <script src="assets/plugins/summernote/summernote-bs4.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#<%= txtDescription.ClientID %>').summernote();
+    });
+</script>
 </asp:Content>
 
