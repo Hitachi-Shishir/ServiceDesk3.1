@@ -20,21 +20,30 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
     {
         try
         {
-            if (!Page.IsPostBack)
-            {
 
-                if (Session["LoginName"] != null && Session["UserScope"] != null)
+            if (Session["LoginName"] != null && Session["UserScope"] != null)
+            {
+                if (!Page.IsPostBack)
                 {
 
                     FillAssetDetails();
 
                     FillImage();
                 }
-                else
-                {
-                    Response.Redirect("../Default.aspx");
-                }
-
+            }
+            else
+            {
+                Response.Redirect("../Default.aspx");
+            }
+            try
+            {
+                //if (!string.IsNullOrEmpty(FileUpload1.PostedFile.FileName))
+                //{
+                //    btnUpload_Click(null, null);
+                //}
+            }
+            catch
+            {
             }
         }
         catch (ThreadAbortException e2)
@@ -136,9 +145,17 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
                         sda.Fill(dt);
                         if (dt.Rows.Count > 0)
                         {
+                            lblEmpId.Text = Convert.ToString(dt.Rows[0]["EmpID"]);
+                            lblUserName.Text = Convert.ToString(dt.Rows[0]["UserName"]);
+                            lblEmailID.Text = Convert.ToString(dt.Rows[0]["EmailID"]);
+                            lblLoginID.Text = Convert.ToString(dt.Rows[0]["LoginName"]);
+                            lblUserRole.Text = Convert.ToString(dt.Rows[0]["UserRole"]);
+                            lblContactNo.Text = Convert.ToString(dt.Rows[0]["ContactNo"]);
+                            lblDesignation.Text = Convert.ToString(dt.Rows[0]["Designation"]);
+                            lblDomainType.Text = Convert.ToString(dt.Rows[0][""]);
 
-                            DetailsCheckInAsset.DataSource = dt;
-                            DetailsCheckInAsset.DataBind();
+                            //DetailsCheckInAsset.DataSource = dt;
+                            //DetailsCheckInAsset.DataBind();
                         }
                         else
                         {

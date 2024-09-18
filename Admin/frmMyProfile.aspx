@@ -6,75 +6,120 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-        
+
             <div class="row mt-4">
-            <div class="col-md-8">   <div class="card rounded-4">
-       <div class="card-body p-4">
-           <div class="position-relative mb-5">
-               <img src="assets/images/gallery/profile-cover.png" class="img-fluid rounded-4 shadow" alt="">
+                <div class="col-md-8">
+                    <div class="card rounded-4">
+                        <div class="card-body p-4">
+                            <div class="position-relative mb-5">
+                                <img src="assets/images/gallery/profile-cover.png" class="img-fluid rounded-4 shadow" alt="">
 
-               <div class="profile-avatar position-absolute top-100 start-50 translate-middle">
-                   <asp:Image ID="img" runat="server" class="img-fluid rounded-circle p-1 bg-grd-danger shadow" Width="170" Height="170" alt="" />
+                                <div class="profile-avatar position-absolute top-100 start-50 translate-middle">
+                                    <asp:Image ID="img" runat="server" class="img-fluid rounded-circle p-1 bg-grd-danger shadow" Width="170" Height="170" alt="" />
 
-               </div>
-           </div>
-         
-           <div class="profile-info pt-5 d-flex align-items-center justify-content-between">
-               <div class="">
-                   <h3>Jhon Deo</h3>
-                   <p class="mb-0">
-                       Engineer at BB Agency Industry<br>
-                       New York, United States
-                   </p>
-               </div>
-               <div class="">
-                   <a href="javascript:;" class="btn btn-grd-primary rounded-5 px-4"><i class="bi bi-chat me-2"></i>Send Message</a>
-               </div>
-           </div>
-           <div class="kewords d-flex align-items-center gap-3 mt-4 overflow-x-auto">
-               <button type="button" class="btn btn-sm btn-light rounded-5 px-4">UX Research</button>
-               <button type="button" class="btn btn-sm btn-light rounded-5 px-4">CX Strategy</button>
-               <button type="button" class="btn btn-sm btn-light rounded-5 px-4">Management</button>
-           </div>
-       </div>
-   </div></div>
-         
-            <div class="col-md-4">
-                <div class="card rounded-4 border-top border-4 border-primary border-gradient-1">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-start justify-content-between mb-3">
-                                                    <asp:DetailsView ID="DetailsCheckInAsset" runat="server" CssClass="table" Style="border-collapse: collapse; border: 0px solid #ffffff00;"
-                            AllowPaging="True"
-                            AutoGenerateRows="False"
-                            GridLines="None" OnPageIndexChanging="DetailsCheckInAsset_PageIndexChanging">
-                            <%--<AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                </div>
+                            </div>
+
+                            <div class="profile-info pt-5 d-flex align-items-center justify-content-between">
+                                <div class="">
+                                    <h3>Jhon Deo</h3>
+                                    <p class="mb-0">
+                                        Engineer at BB Agency Industry<br>
+                                        New York, United States
+                                    </p>
+                                </div>
+                                <div class="">
+                                    <a href="javascript:;" class="btn btn-grd-primary rounded-5 px-4"><i class="bi bi-chat me-2"></i>Send Message</a>
+                                </div>
+                            </div>
+                            <div class="kewords d-flex align-items-center gap-3 mt-4 overflow-x-auto">
+                                <button type="button" class="btn btn-sm btn-light rounded-5 px-4">UX Research</button>
+                                <button type="button" class="btn btn-sm btn-light rounded-5 px-4">CX Strategy</button>
+                                <button type="button" class="btn btn-sm btn-light rounded-5 px-4">Management</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card rounded-4 border-top border-4 border-primary border-gradient-1">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>EmpID</label>
+                                        <asp:Label ID="lblEmpId" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>UserName</label>
+                                        <asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>EmailID</label>
+                                        <asp:Label ID="lblEmailID" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Login ID</label>
+                                        <asp:Label ID="lblLoginID" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>User Role</label>
+                                        <asp:Label ID="lblUserRole" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>ContactNo</label>
+                                        <asp:Label ID="lblContactNo" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Designation</label>
+                                        <asp:Label ID="lblDesignation" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Domain Type</label>
+                                        <asp:Label ID="lblDomainType" runat="server" Text="Label"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" visible="false" runat="server" id="abc">
+                    <div class="card rounded-4 border-top border-4 border-primary border-gradient-1">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <asp:DetailsView ID="DetailsCheckInAsset" runat="server" CssClass="table" Style="border-collapse: collapse; border: 0px solid #ffffff00;"
+                                    AllowPaging="True"
+                                    AutoGenerateRows="False"
+                                    GridLines="None" OnPageIndexChanging="DetailsCheckInAsset_PageIndexChanging">
+                                    <%--<AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
 <EditRowStyle BackColor="#999999" />
 <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />--%>
-                            <Fields>
-                                <asp:BoundField DataField="EmpID" HeaderText="EmpID" />
-                                <asp:BoundField DataField="UserName" HeaderText="UserName" />
-                                <asp:BoundField DataField="EmailID" HeaderText="EmailID" />
-                                <asp:BoundField DataField="LoginName" HeaderText="Login ID" />
-                                <asp:BoundField DataField="UserRole" HeaderText="User Role" />
-                                <asp:BoundField DataField="ContactNo" HeaderText="ContactNo" />
-                                <asp:BoundField DataField="Designation" HeaderText="Designation" />
-                                <asp:BoundField DataField="DomainType" HeaderText="Domain Type" />
+                                    <Fields>
+                                        <asp:BoundField DataField="EmpID" HeaderText="EmpID" />
+                                        <asp:BoundField DataField="UserName" HeaderText="UserName" />
+                                        <asp:BoundField DataField="EmailID" HeaderText="EmailID" />
+                                        <asp:BoundField DataField="LoginName" HeaderText="Login ID" />
+                                        <asp:BoundField DataField="UserRole" HeaderText="User Role" />
+                                        <asp:BoundField DataField="ContactNo" HeaderText="ContactNo" />
+                                        <asp:BoundField DataField="Designation" HeaderText="Designation" />
+                                        <asp:BoundField DataField="DomainType" HeaderText="Domain Type" />
 
-                            </Fields>
-                            <%--<RowStyle BackColor="#fafafa" BorderColor="#e3e4e6" BorderWidth="1px" CssClass="font_label" Font-Size="Medium" />
+                                    </Fields>
+                                    <%--<RowStyle BackColor="#fafafa" BorderColor="#e3e4e6" BorderWidth="1px" CssClass="font_label" Font-Size="Medium" />
 <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" CssClass="font_label" />
 <PagerStyle BackColor="#EDEDED" ForeColor="#000000" HorizontalAlign="Center" />
 <HeaderStyle BackColor="#e3e4e6" Font-Bold="True" ForeColor="#000000" Height="30px" CssClass="font_label" Font-Size="Medium" />
 <EditRowStyle BackColor="#EDEDED" BorderColor="#e3e4e6" BorderStyle="Solid" CssClass="font_label" BorderWidth="1px" Font-Size="Medium" />
 <AlternatingRowStyle BackColor="White" BorderColor="#e3e4e6" BorderStyle="Solid" CssClass="font_label" BorderWidth="1px" />--%>
-                        </asp:DetailsView>
+                                </asp:DetailsView>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div><div class="row">
-               
+            <div class="row">
+
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
