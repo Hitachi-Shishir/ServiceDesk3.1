@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -21,7 +22,13 @@ public partial class Site : System.Web.UI.MasterPage
     {
         try
         {
-            
+            string sql = "select Theme from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+            string theme = Convert.ToString(database.GetScalarValue(sql));
+            if (theme != null)
+            {
+                string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTheme", script, true);
+            }
 
             if (Session["UserName"] == null)
             {
@@ -73,13 +80,10 @@ public partial class Site : System.Web.UI.MasterPage
         {
             theme = "bodered-theme";
         }
-
-        // Inject a script to update the data-bs-theme attribute on the <html> element
-        string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTheme", script, true);
+        string sql = "update SD_User_Master set Theme='" + theme + "' where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+        database.ExecuteNonQuery(sql);
+        Response.Redirect(Request.Url.AbsoluteUri);
     }
-
-
     private void ValidateLoginSession()
     {
         string loginSessionId = Convert.ToString(Session["Login_Session_Id"]);
