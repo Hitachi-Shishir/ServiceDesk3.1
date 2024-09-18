@@ -25,19 +25,10 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
         try
         {
 
-
-            //this.IsUserControl = true;
-
-            ////  this.IsCategoryControl = false;
-
-            //if (IsUserControl)
-            //	LoadControl();
             if (Session["OrgID"] != null)
             {
                 if (!IsPostBack)
                 {
-
-
                     btnUpdate.Visible = false;
                     pnlShowPriority.Visible = false;
 
@@ -64,7 +55,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -110,7 +101,8 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                     string ticketnumber = cmd.Parameters["@Ticketref"].Value.ToString();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Saved Successfully.');window.location ='frmAddKnowledgeBase.aspx';", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddKnowledgeBase.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
 
                 }
@@ -136,7 +128,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -165,7 +157,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
         try
         {
 
-            DataTable SD_Priority = new FillSDFields().FillKnowledgeResolution(); ;
+            DataTable SD_Priority = new FillSDFields().FillKnowledgeResolution();
 
             if (SD_Priority.Rows.Count > 0)
             {
@@ -196,7 +188,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString()
 , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void gvResolution_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -225,14 +217,14 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                             int res = cmd.ExecuteNonQuery();
                             if (res > 0)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Deleted Successfully.');window.location ='frmAddKnowledgeBase.aspx';", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"if (window.location.pathname.endsWith('/frmAddKnowledgeBase.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                             }
                             con.Close();
                             FillShowResolution();
 
                         }
                     }
-                    //
                 }
                 catch (ThreadAbortException e2)
                 {
@@ -254,7 +246,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                         var line = frame.GetFileLineNumber();
                         inEr.InsertErrorLogsF(Session["UserName"].ToString()
             , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
                     }
                 }
 
@@ -307,7 +299,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -360,7 +352,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
@@ -408,11 +400,8 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 con.Open();
                 int res = cmd.ExecuteNonQuery();
                 string ticketnumber = cmd.Parameters["@Ticketref"].Value.ToString();
-                if (res > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Updated Successfully.');window.location ='frmAddKnowledgeBase.aspx';", true);
-                }
-
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"if (window.location.pathname.endsWith('/frmAddKnowledgeBase.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
             }
         }
 
@@ -475,7 +464,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
             }
         }
     }
