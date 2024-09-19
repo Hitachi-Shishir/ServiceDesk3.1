@@ -984,11 +984,9 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/select2/js/select2-custom.js"></script>
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/main.js"></script>
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apex-custom-chart.js"></script>
+   
     <%--DATATABLE START--%>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
@@ -1033,7 +1031,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <script>
         $(".data-attributes span").peity("donut")
     </script>
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/dashboard2.js"></script>
+    <%--<script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/dashboard2.js"></script>--%>
     <script>
         $(".datepicker").flatpickr({
             dateFormat: "d-m-Y"
