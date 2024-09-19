@@ -271,13 +271,14 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
 
     protected void chkTheme_CheckedChanged(object sender, EventArgs e)
     {
+        string sql = "";
         if (chkTheme.Checked == true)
         {
-            string sql = "update SD_User_Master set ThemeModify=1 where Org_ID='" + Convert.ToString(Session["OrgID"]) +"'";
+            sql = "update SD_User_Master set ThemeModify=1 where Org_ID='" + Convert.ToString(Session["OrgID"]) +"'";
         }
         else
         {
-            string sql = "update SD_User_Master set ThemeModify=0 where Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+             sql = "update SD_User_Master set ThemeModify=0 where Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
         }
         database.ExecuteNonQuery(sql);
     }
