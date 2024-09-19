@@ -235,9 +235,50 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
     {
         return false;
     }
+    protected void Theme_CheckedChanged(object sender, EventArgs e)
+    {
+        string theme = string.Empty;
 
+        // Determine which theme is selected
+        if (rbdBlueTheme.Checked)
+        {
+            theme = "blue-theme";
+        }
+        else if (rbdLightTheme.Checked)
+        {
+            theme = "light";
+        }
+        else if (rbdDarkTheme.Checked)
+        {
+            theme = "dark";
+        }
+        else if (rbdSemiDarkTheme.Checked)
+        {
+            theme = "semi-dark";
+        }
+        else if (rbdBoderedTheme.Checked)
+        {
+            theme = "bodered-theme";
+        }
+        string sql = "update SD_User_Master set Theme='" + theme + "' where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+        database.ExecuteNonQuery(sql);
+        Response.Redirect(Request.Url.AbsoluteUri);
+    }
     protected void DetailsCheckInAsset_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
     {
 
+    }
+
+    protected void chkTheme_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkTheme.Checked == true)
+        {
+            string sql = "update SD_User_Master set ThemeModify=1 where Org_ID='" + Convert.ToString(Session["OrgID"]) +"'";
+        }
+        else
+        {
+            string sql = "update SD_User_Master set ThemeModify=0 where Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+        }
+        database.ExecuteNonQuery(sql);
     }
 }

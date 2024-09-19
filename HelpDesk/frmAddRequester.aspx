@@ -336,14 +336,14 @@ at least 1 Uppercase Alphabet, 1 Lowercase Alphabet,
                                                     <%--<asp:ButtonField ButtonType="Image" CommandName="SelectTech" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />--%>
                                                     <asp:TemplateField HeaderText="Edit">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectTech" Text="" CssClass="fa-solid fa-edit" />
+                                                            <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectTech" Text="" CssClass="fa-solid fa-edit" CommandArgument="<%# Container.DataItemIndex %>"/>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 
                                                     <%--                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
                                                     <asp:TemplateField HeaderText="Delete">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CssClass="delete-link-button">
+                                                            <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CssClass="delete-link-button" CommandArgument="<%# Container.DataItemIndex %>">
                                                                <i class="fa-solid fa-xmark text-danger"></i>
                                                             </asp:LinkButton>
                                                         </ItemTemplate>
