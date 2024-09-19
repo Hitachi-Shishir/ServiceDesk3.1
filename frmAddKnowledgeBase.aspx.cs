@@ -24,7 +24,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
     {
         try
         {
-
+            chkViewToUser.InputAttributes["class"] = "form-check-input";
             if (Session["OrgID"] != null)
             {
                 if (!IsPostBack)
@@ -257,7 +257,7 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvResolution.Rows[rowIndex];
                 //Get the value of column from the DataKeys using the RowIndex.
-                string PriorityRef = gvResolution.DataKeys[rowIndex].Values["ID"].ToString();
+                ViewState["PriorityRef"] = gvResolution.DataKeys[rowIndex].Values["ID"].ToString();
                 Label OrgID = (row.FindControl("lblOrgFk") as Label);
 
 
@@ -380,23 +380,15 @@ public partial class frmAddKnowledgeBase : System.Web.UI.Page
             using (SqlCommand cmd = new SqlCommand("SD_spAddKnowledgeBase", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-
-
-                //cmd.Parameters.AddWithValue("@closedDateTime","");
                 cmd.Parameters.AddWithValue("@Issue", txtSummary.Text);
-                //cmd.Parameters.AddWithValue("@TicketDesc", System.Web.HttpUtility.HtmlEncode(txtDescription.Text).ToString());
                 cmd.Parameters.AddWithValue("@ResolutionDetail", System.Web.HttpUtility.HtmlEncode(txtDescription.Text).ToString());
                 cmd.Parameters.AddWithValue("@ViewToUser", chkViewToUser.Checked);
-
                 cmd.Parameters.AddWithValue("@ViewToTech", "");
-
-
                 cmd.Parameters.AddWithValue("@UpdateBy", Session["UserName"].ToString());
-
                 cmd.Parameters.AddWithValue("@OrgDeskRef", Session["OrgID"].ToString());
-
-                cmd.Parameters.Add("@Ticketref", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@ID", Convert.ToInt64(ViewState["PriorityRef"]));
                 cmd.Parameters.AddWithValue("@Option", "UpdateKB");
+                cmd.Parameters.Add("@Ticketref", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                 con.Open();
                 int res = cmd.ExecuteNonQuery();
                 string ticketnumber = cmd.Parameters["@Ticketref"].Value.ToString();

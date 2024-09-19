@@ -293,8 +293,7 @@
                                                 <label for="staticEmail" class="form-label">
                                                     <asp:Label ID="lblCategory4" runat="server" Text="Category4 "></asp:Label>
                                                     <asp:RequiredFieldValidator ID="rfvddlCategory4" runat="server" InitialValue="0" ControlToValidate="ddlCategory4" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
-                                                </label>
-                                                s                               
+                                                </label>              
                                 <asp:DropDownList ID="ddlCategory4" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlCategory4_SelectedIndexChanged"></asp:DropDownList>
                                             </div>
                                             <div id="divCategory5" class="col-12" runat="server">

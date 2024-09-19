@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-check">
- <asp:CheckBox ID="chkViewToUser" runat="server" CssClass="form-check-input"></asp:CheckBox>                                            <label class="form-check-label" for="staticEmail">
+ <asp:CheckBox ID="chkViewToUser" runat="server" ></asp:CheckBox>                                            <label class="form-check-label" for="staticEmail">
                                                 View To User						
                                             </label>
                                         </div>
