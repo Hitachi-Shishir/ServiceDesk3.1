@@ -383,6 +383,8 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 ID = Convert.ToInt64(gvSDCustomFields.DataKeys[rowIndex].Values["ID"]);
 
                 string Deskref = gvSDCustomFields.Rows[rowIndex].Cells[1].Text;
+                GridViewRow row = gvSDCustomFields.Rows[rowIndex];
+                Label OrgID = (row.FindControl("lblOrgFk") as Label);
 
 
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
@@ -393,6 +395,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", ID);
                         cmd.Parameters.AddWithValue("@DeskRef", Deskref);
+                        cmd.Parameters.AddWithValue("@OrgRef", OrgID.Text);
                         cmd.Parameters.AddWithValue("@Option", "DeleteCustomField");
                         cmd.CommandTimeout = 180;
                         int res = cmd.ExecuteNonQuery();

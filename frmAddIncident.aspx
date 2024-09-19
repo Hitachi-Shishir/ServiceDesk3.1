@@ -705,6 +705,7 @@
             <asp:PostBackTrigger ControlID="ddlCategory3" />
             <asp:PostBackTrigger ControlID="ddlCategory4" />
             <asp:PostBackTrigger ControlID="ddlCategory5" />
+            <asp:PostBackTrigger ControlID="btnSearch" />
         </Triggers>
     </asp:UpdatePanel>
 

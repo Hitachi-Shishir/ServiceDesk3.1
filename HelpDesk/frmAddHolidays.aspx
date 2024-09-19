@@ -1,44 +1,45 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAddHolidays.aspx.cs" Inherits="frmAddHolidays" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-              <style>
-      .dataTables_filter {
-          margin-top: -29px !important;
-      }
-      .dt-buttons > .btn-outline-secondary{
-          padding:0.25rem 0.5rem!important;
-          font-size: 0.875rem!important;
-	
-}
-      .pagination{
-	--bs-pagination-padding-x: 0.5rem;
-	--bs-pagination-padding-y: 0.25rem;
-	--bs-pagination-font-size: 0.875rem;
-	--bs-pagination-border-radius: var(--bs-border-radius-sm);
-    /*margin-top: -1.7rem!important;*/
-}
-  </style>
+    <style>
+        .dataTables_filter {
+            margin-top: -29px !important;
+        }
+
+        .dt-buttons > .btn-outline-secondary {
+            padding: 0.25rem 0.5rem !important;
+            font-size: 0.875rem !important;
+        }
+
+        .pagination {
+            --bs-pagination-padding-x: 0.5rem;
+            --bs-pagination-padding-y: 0.25rem;
+            --bs-pagination-font-size: 0.875rem;
+            --bs-pagination-border-radius: var(--bs-border-radius-sm);
+            /*margin-top: -1.7rem!important;*/
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-           
+
 
             <div class="card">
 
-              
-                <div class="card-body">
-                      <div class="row mb-2 ">
-      <div class="col-md-12">
-          <div class="btn-group">
-          <asp:Button ID="btnAddHoliday" runat="server" Text="Add Holiday" CausesValidation="false" OnClick="btnAddHoliday_Click" />
-          <asp:Button ID="btnimportUser" runat="server" Text="Import Holidays" CausesValidation="false" OnClick="btnimportUser_Click" />
-          <asp:Button ID="btnViewUsers" runat="server" Text="View Holiday" CausesValidation="false" OnClick="btnViewUsers_Click" />
-      </div>
-      </div>
 
-  </div>
+                <div class="card-body">
+                    <div class="row mb-2 ">
+                        <div class="col-md-12">
+                            <div class="btn-group">
+                                <asp:Button ID="btnAddHoliday" runat="server" Text="Add Holiday" CausesValidation="false" OnClick="btnAddHoliday_Click" />
+                                <asp:Button ID="btnimportUser" runat="server" Text="Import Holidays" CausesValidation="false" OnClick="btnimportUser_Click" />
+                                <asp:Button ID="btnViewUsers" runat="server" Text="View Holiday" CausesValidation="false" OnClick="btnViewUsers_Click" />
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="card border bg-transparent shadow-none">
                         <div class="card-body">
                             <asp:Panel ID="pnlAddHoliday" Visible="false" runat="server">
@@ -105,22 +106,22 @@
                                             <asp:GridView GridLines="None" ID="gvHoliday" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm text-nowrap table-hover"
                                                 Width="100%" OnRowCommand="gvHoliday_RowCommand" OnRowDataBound="gvHoliday_RowDataBound">
                                                 <Columns>
-<%--                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
-                                                   
-                                                       <asp:TemplateField HeaderText="Edit">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectTech" CommandArgument="<%# Container.DataItemIndex %>">
+                                                    <%--                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+
+                                                    <asp:TemplateField HeaderText="Edit">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectTech" CommandArgument="<%# Container.DataItemIndex %>">
                                                   <i class="fa-solid fa-edit"></i> 
-                                                </asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Delete">
-    <ItemTemplate>
-        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>">
            <i class="fa-solid fa-xmark text-danger"></i>
-        </asp:LinkButton>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
 
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
                                                         <ItemTemplate>
@@ -135,16 +136,7 @@
                                                             <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-
-
                                                 </Columns>
-                                                <%-- <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="10px" />
-                                                                <FooterStyle BackColor="#EDEDED" Font-Bold="True" ForeColor="White" />
-                                                                <PagerStyle BackColor="#EDEDED" ForeColor="#000000" HorizontalAlign="Center" />
-                                                                <SelectedRowStyle BackColor="#fff" Font-Bold="True" ForeColor="#000000" />
-                                                                <HeaderStyle BackColor="#EEEEEE" Font-Bold="True" ForeColor="#414141" Height="30px" CssClass="header" Font-Size="Small" />
-                                                                <EditRowStyle BackColor="#e9edf2" BorderColor="#e3e4e6" BorderStyle="Solid" BorderWidth="1px" />
-                                                                <AlternatingRowStyle BackColor="#EAEEFF" BorderColor="#e3e4e6" BorderStyle="Solid" BorderWidth="1px" />--%>
                                             </asp:GridView>
                                         </div>
 

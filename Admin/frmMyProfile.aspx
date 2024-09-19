@@ -133,13 +133,13 @@
                                         Choose Photo
 			      <asp:RequiredFieldValidator ID="rfvFileUpload1" runat="server" ControlToValidate="FileUpload1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="ImgUpload"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:FileUpload ID="FileUpload1" CssClass="form-control-sm" runat="server" />
+                                    <asp:FileUpload ID="FileUpload1" CssClass="form-control-sm" runat="server" onchange="this.form.submit();" />
                                     <asp:RegularExpressionValidator ID="regFileUpload1" runat="server" ForeColor="Red" ErrorMessage="Only .jpeg or .JPEG or .gif or .GIF or .png or .PNG" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.jpg|.jpeg|.JPEG|.gif|.GIF|.png|.PNG)$" ControlToValidate="FileUpload1" ValidationGroup="ImgUpload">
                                     </asp:RegularExpressionValidator>
                                 </div>
-                                <div class="col-md-2 mt-4 ">
+                                <%--<div class="col-md-2 mt-4 ">
                                     <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" ValidationGroup="ImgUpload" CssClass="btn btn-sm" Style="background: linear-gradient(to right,#4A68DF,#A1C4FF)" />
-                                </div>
+                                </div>--%>
                             </div>
                             <div class="row">
 
@@ -155,7 +155,7 @@
             </div>
         </ContentTemplate>
         <Triggers>
-            <asp:PostBackTrigger ControlID="btnUpload" />
+            <%--<asp:PostBackTrigger ControlID="btnUpload" />--%>
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
