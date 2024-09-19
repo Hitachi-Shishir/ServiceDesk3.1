@@ -16,16 +16,14 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
 {
     InsertErrorLogs inEr = new InsertErrorLogs();
     errorMessage msg = new errorMessage();
+    Util obj = new Util();
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
-            string sql = "select Theme from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
-            string theme = Convert.ToString(database.GetScalarValue(sql));
-            if (theme != null)
+            if (!IsPostBack)
             {
-                string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTheme", script, true);
+                getPrevThemeData();
             }
             if (Session["LoginName"] != null && Session["UserScope"] != null)
             {
@@ -65,6 +63,31 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
     $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
+        }
+    }
+    public void getPrevThemeData()
+    {
+        if (Convert.ToString(Session["UserRole"]).ToUpper() == "ADMIN")
+        {
+            toggle.Visible = true;
+            chkTheme.Visible = true;
+            DataTable dt = obj.getdata(Convert.ToString(Session["OrgID"]), Convert.ToString(Session["UserID"]));
+            string ThemeModify = Convert.ToString(dt.Rows[0]["ThemeModify"]);
+            if (ThemeModify.ToUpper() == "TRUE")
+            {
+                chkTheme.Checked = true;
+            }
+            else
+            {
+                chkTheme.Checked = false;
+            }
+            string sql = "select Theme from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+            string theme = Convert.ToString(database.GetScalarValue(sql));
+            if (theme != null)
+            {
+                string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTheme", script, true);
+            }
         }
     }
     protected void FillImage()
@@ -260,8 +283,7 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
         {
             theme = "bodered-theme";
         }
-        string sql = "update SD_User_Master set Theme='" + theme + "' where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
-        database.ExecuteNonQuery(sql);
+        ThemeChangeCommon(theme, Convert.ToString(Session["UserID"]));
         Response.Redirect(Request.Url.AbsoluteUri);
     }
     protected void DetailsCheckInAsset_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
@@ -272,14 +294,32 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
     protected void chkTheme_CheckedChanged(object sender, EventArgs e)
     {
         string sql = "";
+        DataTable dt = obj.getdata(Convert.ToString(Session["OrgID"]), Convert.ToString(Session["UserID"]));
+        string theme = Convert.ToString(dt.Rows[0]["theme"]);
+        if (string.IsNullOrEmpty(theme))
+        {
+            theme = "blue-theme";
+        }
         if (chkTheme.Checked == true)
         {
             sql = "update SD_User_Master set ThemeModify=1 where Org_ID='" + Convert.ToString(Session["OrgID"]) +"'";
+            ThemeChangeCommon(theme, "");
         }
         else
         {
              sql = "update SD_User_Master set ThemeModify=0 where Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
         }
         database.ExecuteNonQuery(sql);
+        Response.Redirect(Request.Url.AbsoluteUri);
     }
+    public void ThemeChangeCommon(string theme, string user)
+    {
+        string sql = "update SD_User_Master set Theme='" + theme + "' where Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+        if (user != "")
+        {
+            sql = sql + " and UserID = '" + user + "'";
+        }
+        database.ExecuteNonQuery(sql);
+    }
+   
 }

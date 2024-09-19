@@ -22,8 +22,14 @@ public partial class Site : System.Web.UI.MasterPage
     {
         try
         {
-            string sql = "select Theme from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
-            string theme = Convert.ToString(database.GetScalarValue(sql));
+            string sql = "select theme,ThemeModify from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+            DataTable dt = database.GetDataTable(sql);
+            string theme = Convert.ToString(dt.Rows[0]["theme"]);
+            string ThemeModify = Convert.ToString(dt.Rows[0]["ThemeModify"]);
+            if (ThemeModify.ToUpper() == "TRUE")
+            {
+                divtoggletheme.Visible = false;
+            }
             if (theme != null)
             {
                 string script = $"document.documentElement.setAttribute('data-bs-theme', '{theme}');";
@@ -129,7 +135,7 @@ public partial class Site : System.Web.UI.MasterPage
 
                 bool isParentActive = IsCurrentPage(parentMenuLocation);
                 //lblpnl.Text = parentMenuName;
-                
+
 
                 DataRow[] rows = allCategories.Select($"ParentID = {id}", "MenuName");
                 if (rows.Length > 0)
@@ -174,7 +180,7 @@ public partial class Site : System.Web.UI.MasterPage
                             parentMenu.Attributes["href"] = "javascript:void(0);";
                             parentMenu.Attributes["class"] = (parentMenu.Attributes["class"] ?? "") + (isParentActive ? " menu-open" : "");
                         }
-                        
+
                     }
 
                     var parentLi = e.Item.FindControl("parentLi") as HtmlGenericControl;
