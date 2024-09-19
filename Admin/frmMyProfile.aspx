@@ -46,8 +46,8 @@
                             <div class="d-flex align-items-start justify-content-between mb-3">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <asp:CheckBox ID="chkTheme" runat="server" ToolTip="The theme cannot be modified by anyone except you." Text="Make the theme consistent for everyone." OnCheckedChanged="chkTheme_CheckedChanged"/>
-                                        </div>
+                                        <asp:CheckBox Visible="false" ID="chkTheme" AutoPostBack="true" runat="server" ToolTip="The theme cannot be modified by anyone except you." Text="Make the theme consistent for everyone." OnCheckedChanged="chkTheme_CheckedChanged" />
+                                    </div>
                                     <div class="col-md-12">
                                         <label>EmpID</label>
                                         <asp:Label ID="lblEmpId" runat="server" Text="Label"></asp:Label>
@@ -156,58 +156,60 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
-                <i class="material-icons-outlined">tune</i>Customize
-            </button>
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
-                <div class="offcanvas-header border-bottom h-70">
-                    <div class="">
-                        <h5 class="mb-0">Theme Customizer</h5>
-                        <p class="mb-0">Customize your theme</p>
+            <div id="toggle" runat="server" visible="false">
+                <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+                    <i class="material-icons-outlined">tune</i>Customize
+                </button>
+                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
+                    <div class="offcanvas-header border-bottom h-70">
+                        <div class="">
+                            <h5 class="mb-0">Theme Customizer</h5>
+                            <p class="mb-0">Customize your theme</p>
+                        </div>
+                        <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+                            <i class="material-icons-outlined">close</i>
+                        </a>
                     </div>
-                    <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-                        <i class="material-icons-outlined">close</i>
-                    </a>
-                </div>
-                <div class="offcanvas-body">
-                    <div>
-                        <p>Theme variation</p>
+                    <div class="offcanvas-body">
+                        <div>
+                            <p>Theme variation</p>
 
-                        <div class="row g-3">
-                            <div class="col-12 col-xl-6">
-                                <asp:RadioButton ID="rbdBlueTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
-                                <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBlueTheme">
-                                    <span class="material-icons-outlined">contactless</span>
-                                    <span>Blue</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-xl-6">
-                                <asp:RadioButton ID="rbdLightTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
-                                <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdLightTheme">
-                                    <span class="material-icons-outlined">light_mode</span>
-                                    <span>Light</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-xl-6">
-                                <asp:RadioButton ID="rbdDarkTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
-                                <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdDarkTheme">
-                                    <span class="material-icons-outlined">dark_mode</span>
-                                    <span>Dark</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-xl-6">
-                                <asp:RadioButton ID="rbdSemiDarkTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
-                                <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdSemiDarkTheme">
-                                    <span class="material-icons-outlined">contrast</span>
-                                    <span>Semi Dark</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-xl-6">
-                                <asp:RadioButton ID="rbdBoderedTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
-                                <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBoderedTheme">
-                                    <span class="material-icons-outlined">border_style</span>
-                                    <span>Bordered</span>
-                                </label>
+                            <div class="row g-3">
+                                <div class="col-12 col-xl-6">
+                                    <asp:RadioButton ID="rbdBlueTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                                    <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBlueTheme">
+                                        <span class="material-icons-outlined">contactless</span>
+                                        <span>Blue</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <asp:RadioButton ID="rbdLightTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                                    <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdLightTheme">
+                                        <span class="material-icons-outlined">light_mode</span>
+                                        <span>Light</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <asp:RadioButton ID="rbdDarkTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                                    <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdDarkTheme">
+                                        <span class="material-icons-outlined">dark_mode</span>
+                                        <span>Dark</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <asp:RadioButton ID="rbdSemiDarkTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                                    <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdSemiDarkTheme">
+                                        <span class="material-icons-outlined">contrast</span>
+                                        <span>Semi Dark</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <asp:RadioButton ID="rbdBoderedTheme" class="btn-check" runat="server" GroupName="theme" AutoPostBack="true" OnCheckedChanged="Theme_CheckedChanged" />
+                                    <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="rbdBoderedTheme">
+                                        <span class="material-icons-outlined">border_style</span>
+                                        <span>Bordered</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <!--end row-->

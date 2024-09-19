@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Drawing.Imaging;
 using Nest;
+using Microsoft.Exchange.WebServices.Data;
 public class Util
 {
     InsertErrorLogs inEr = new InsertErrorLogs();
@@ -411,5 +412,11 @@ public class Util
         {
             throw;
         }
+    }
+    public DataTable getdata(string orgid, string UserID)
+    {
+        string sql2 = "select * from SD_User_Master where Org_ID='" + orgid + "' and UserID = '" + UserID + "'";
+        DataTable dt = database.GetDataTable(sql2);
+        return dt;
     }
 }
