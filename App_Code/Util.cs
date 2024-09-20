@@ -7,9 +7,43 @@ using System.Web;
 using System.Drawing.Imaging;
 using Nest;
 using Microsoft.Exchange.WebServices.Data;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.VariantTypes;
 public class Util
 {
     InsertErrorLogs inEr = new InsertErrorLogs();
+    public DataSet getDashboardData(string ReqType, string Category, DateTime frmDate, DateTime toDate,
+        string UserID, string Orgid)
+    {
+        DataSet ds = new DataSet();
+        try
+        {
+            using (SqlConnection con = new SqlConnection(database.GetConnectstring()))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandTimeout = 3600;
+                SqlDataAdapter sd = new SqlDataAdapter();
+                sd.SelectCommand = cmd;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SP_GetDeliveredCount";
+                cmd.Parameters.AddWithValue("@ReqType", ReqType);
+                cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@frmDate", frmDate);
+                cmd.Parameters.AddWithValue("@toDate", toDate);
+                cmd.Parameters.AddWithValue("@UserID", UserID);
+                cmd.Parameters.AddWithValue("@Orgid", Orgid);
+                sd.Fill(ds);
+                con.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        return ds;
+    }
     public string InsertInsertTechLeave(string TechId, string TechName, DateTime LeaveFromdate,
         DateTime LeaveTodate, string AppliedbyUserid)
     {

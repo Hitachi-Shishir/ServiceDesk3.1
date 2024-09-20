@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmDashboard.aspx.cs" Inherits="frmDashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
@@ -27,26 +27,28 @@
                                 </div>
                                 <div class="">
                                     <select id="input7" class="form-select form-select-sm  rounded-5">
-											<option selected="">Service Desk</option>
-											<option>One</option>
-											<option>Two</option>
-											<option>Three</option>
-										</select>
-    
-                                </div><div class="">
-                                     <select id="input2" class="form-select form-select-sm  rounded-5">
-									<option selected="">Category</option>
-									<option>One</option>
-									<option>Two</option>
-									<option>Three</option>
-					</select>
-                                </div><div class="">
-                                     <select id="input4" class="form-select form-select-sm  rounded-5">
-									<option selected="">Date</option>
-									<option>One</option>
-									<option>Two</option>
-									<option>Three</option>
-					</select>
+                                        <option selected="">Service Desk</option>
+                                        <option>One</option>
+                                        <option>Two</option>
+                                        <option>Three</option>
+                                    </select>
+
+                                </div>
+                                <div class="">
+                                    <select id="input2" class="form-select form-select-sm  rounded-5">
+                                        <option selected="">Category</option>
+                                        <option>One</option>
+                                        <option>Two</option>
+                                        <option>Three</option>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <select id="input4" class="form-select form-select-sm  rounded-5">
+                                        <option selected="">Date</option>
+                                        <option>One</option>
+                                        <option>Two</option>
+                                        <option>Three</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center gap-5">
@@ -179,12 +181,12 @@
         <div class="col-md-6 mt-0">
             <div class="card rounded-4">
 
-                
+
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
-    <h6 class="mb-0">Design by Assignee</h6>
+                        <h6 class="mb-0">Tickets by Assignee</h6>
 
-</div>
+                    </div>
                     <div id="chart3"></div>
                 </div>
             </div>
@@ -192,15 +194,15 @@
         <div class="col-md-6 mt-0">
             <div class="card rounded-4">
 
-              
-            <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-between">
-      <h6 class="mb-0">Ticket by Category</h6>
+
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="mb-0">Ticket by Category</h6>
 
 
-  </div>
-                <div id="chart3a"></div>
-            </div>
+                    </div>
+                    <div id="chart3a"></div>
+                </div>
             </div>
         </div>
 
