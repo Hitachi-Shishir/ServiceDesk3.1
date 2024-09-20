@@ -56,7 +56,7 @@
                         </div>
                         <div class="row gx-2 gy-3">
                             <div class="col-md-1 col-4">
-                                <label class="form-label">Column</label>
+                                <label class="form-label">Filters</label>
                                 <br>
                                 <div class="btn-group btn-group-sm">
                                     <asp:LinkButton ID="imgcolumnfilter" runat="server" CssClass="btn btn-sm btn-outline-secondary" AlternateText="Column Chooser" ToolTip="Filter" ImageAlign="left" OnClick="imgcolumnfilter_Click"><i class="fa-solid fa-filter"></i></asp:LinkButton>

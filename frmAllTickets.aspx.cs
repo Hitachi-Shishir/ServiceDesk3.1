@@ -302,48 +302,90 @@ public partial class frmAllTickets : System.Web.UI.Page
             Thread.ResetAbort();
         }
     }
+    //protected void btnPickupTicket_Click(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        foreach (GridViewRow gvrow in gvAllTickets.Rows)
+    //        {
+    //            System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
+    //            if (chk != null & chk.Checked)
+    //            {
+    //                System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
+    //                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+    //                {
+    //                    using (SqlCommand cmd = new SqlCommand("SD_spSDIncident", con))
+    //                    {
+    //                        cmd.CommandType = CommandType.StoredProcedure;
+    //                        cmd.Parameters.AddWithValue("@Ticketref", label.Text);
+    //                        cmd.Parameters.AddWithValue("@AssigneName", Session["LoginName"].ToString());
+    //                        cmd.Parameters.AddWithValue("@organizationFK", Session["OrgID"].ToString());
+    //                        cmd.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
+    //                        cmd.Parameters.AddWithValue("@Option", "AssignTechnician");
+    //                        con.Open();
+    //                        int res = cmd.ExecuteNonQuery();
+    //                        if (res > 0)
+    //                        {
+    //                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    //    $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Ticket has been Assigned !")}'); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
+    //                        }
+    //                        else
+    //                        {
+    //                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    //       $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ error_noti(); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
+    //                        }
+    //                    }
+    //                }
+
+    //            }
+    //        }
+    //    }
+    //    catch (ThreadAbortException e2)
+    //    {
+    //        Console.WriteLine("Exception message: {0}", e2.Message);
+    //        Thread.ResetAbort();
+    //    }
+    //}
     protected void btnPickupTicket_Click(object sender, EventArgs e)
     {
-        try
+        string sql2 = "select top 1 OrgName from SD_OrgMaster where Org_ID='" + Session["OrgID"].ToString() + "'";
+        string OrgName = Convert.ToString(database.GetScalarValue(sql2));
+        foreach (GridViewRow gvrow in gvAllTickets.Rows)
         {
-            foreach (GridViewRow gvrow in gvAllTickets.Rows)
+            System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
+            if (chk != null & chk.Checked)
             {
-                System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
-                if (chk != null & chk.Checked)
+                System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
                 {
-                    System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("SD_spSDIncident", con))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SD_spSDIncident", con))
+                        cmd.CommandTimeout = 3600;
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TicketNumber", label.Text);
+                        cmd.Parameters.AddWithValue("@AssigneName", Session["LoginName"].ToString());
+                        cmd.Parameters.AddWithValue("@organizationFK", Session["OrgId"].ToString());
+                        cmd.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
+                        cmd.Parameters.AddWithValue("@Option", "AssignTechnician");
+                        cmd.Parameters.AddWithValue("@OrgName", OrgName);
+                        int res = cmd.ExecuteNonQuery();
+                        con.Close();
+                        if (res > 0)
                         {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@Ticketref", label.Text);
-                            cmd.Parameters.AddWithValue("@AssigneName", Session["LoginName"].ToString());
-                            cmd.Parameters.AddWithValue("@organizationFK", Session["OrgID"].ToString());
-                            cmd.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
-                            cmd.Parameters.AddWithValue("@Option", "AssignTechnician");
-                            con.Open();
-                            int res = cmd.ExecuteNonQuery();
-                            if (res > 0)
-                            {
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-        $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Ticket has been Assigned !")}'); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
-           $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ error_noti(); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
-                            }
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Ticket has been Assigned !")}'); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+       $"if (window.location.pathname.endsWith('/frmAllTickets.aspx')) {{ error_noti(); setTimeout(function() {{ window.location.reload(); }}, 1000); }}", true);
                         }
                     }
-
                 }
+
             }
-        }
-        catch (ThreadAbortException e2)
-        {
-            Console.WriteLine("Exception message: {0}", e2.Message);
-            Thread.ResetAbort();
         }
     }
     private void Modal()

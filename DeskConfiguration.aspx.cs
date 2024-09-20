@@ -286,7 +286,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport_Click(object sender, EventArgs e)
+
     {
         try
         {
@@ -469,7 +470,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
-                        FillOrgDetails();
+                        //FillOrgDetails();
                         cleardata();
                     }
                 }
@@ -963,7 +964,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExportReq_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExportReq_Click(object sender, EventArgs e)
     {
         try
         {
@@ -1425,7 +1426,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport2_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport2_Click(object sender, EventArgs e)
     {
         try
         {
@@ -1988,7 +1989,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport3_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport3_Click(object sender, EventArgs e)
     {
         try
         {
@@ -2569,7 +2570,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport4_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport4_Click(object sender, EventArgs e)
     {
         try
         {
@@ -5217,7 +5218,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport9_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport9_Click(object sender, EventArgs e)
     {
         try
         {
@@ -5675,7 +5676,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport10_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport10_Click(object sender, EventArgs e)
     {
         try
         {
