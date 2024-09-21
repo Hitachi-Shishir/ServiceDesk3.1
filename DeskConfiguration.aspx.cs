@@ -7431,7 +7431,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport12_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport12_Click(object sender, EventArgs e)
     {
         try
         {
@@ -8193,7 +8193,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void ImgBtnExport8_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnExport8_Click(object sender, EventArgs e)
     {
         try
         {

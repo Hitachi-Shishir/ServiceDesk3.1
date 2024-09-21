@@ -1164,163 +1164,161 @@
             <asp:UpdatePanel ID="updatepanel8" runat="server">
                 <ContentTemplate>
 
-                    <div class="card">
+                    <div class="card mb-1">
                         <div class="card-body">
-                            <h6 class="fw-bold mb-3">Add Resolution</h6>
-                            <div class="form-group row mt-3">
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Host Name : <span title="*"></span>
+                            <h6 class="fw-bold mb-3">Email Configuration</h6>
+                            <div class="row gx-2 gy-3">
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Host Name
                                     <asp:RequiredFieldValidator ID="rfvtxtHostName" runat="server" ControlToValidate="txtHostName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtHostName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Port: <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Port
                                     <asp:RequiredFieldValidator ID="rfvtxtPort" runat="server" ControlToValidate="txtPort" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtPort" runat="server" TextMode="Number" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                            </div>
-                            <div class="form-group row mt-3">
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    User Name: <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        User Name
                                     <asp:RequiredFieldValidator ID="rfvtxtUserName" runat="server" ControlToValidate="txtUserName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Password : <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Password 
                                     <asp:RequiredFieldValidator ID="rfvtxtPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                            </div>
-                            <div class="form-group row mt-3">
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Sender Email: <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Sender Email
                                     <asp:RequiredFieldValidator ID="rfvtxtEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    RetryInterval : <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Retry Interval 
                                     <asp:RequiredFieldValidator ID="rfvtxtRetry" runat="server" ControlToValidate="txtRetry" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtRetry" runat="server" TextMode="Number" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                            </div>
-                            <div class="form-group row mt-3">
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Client ID: <span title="*"></span>
+
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Client ID
                                     <asp:RequiredFieldValidator ID="rfvtxtClientID" runat="server" ControlToValidate="txtClientID" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtClientID" runat="server" TextMode="MultiLine" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Client Secret Key : <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Client Secret Key 
                                     <asp:RequiredFieldValidator ID="rfvtxtClientSecretKey" runat="server" ControlToValidate="txtClientSecretKey" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtClientSecretKey" runat="server" TextMode="MultiLine" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                            </div>
-                            <div class="form-group row mt-3">
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Tenant ID: <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Tenant ID
                                     <asp:RequiredFieldValidator ID="rfvtxtTenantID" runat="server" ControlToValidate="txtTenantID" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:TextBox ID="txtTenantID" runat="server" TextMode="MultiLine" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-
-                                <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                    Organization: <span title="*"></span>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Organization
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="ddlOrgEmailConfig" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
-                                </label>
+                                    </label>
 
-                                <div class="col-sm-4 pr-5">
-                                    <asp:DropDownList ID="ddlOrgEmailConfig" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field">
+
+                                    <asp:DropDownList ID="ddlOrgEmailConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field">
                                     </asp:DropDownList>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-3 offset-5 ">
-                                    <asp:Button ID="btnInsertEmailConfig" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsertEmailConfig_Click" ValidationGroup="EmailConfig" />
-                                    <asp:Button ID="btnUpdateEmailConfig" runat="server" Text="Update" Visible="false" class="btn btn-sm savebtn" OnClick="btnUpdateEmailConfig_Click" ValidationGroup="EmailConfig" />
-                                    <asp:Button ID="btnCancel8" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel8_Click" CausesValidation="false" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-8 col-sm-6 graphs">
-                                    <div class="xs">
-                                        <div class="well1 white">
-                                            <div class="card card-default">
-                                                <div class="card-body">
-                                                    <div class="row ">
-                                                        <div class="col-md-4">
-                                                            <asp:Label ID="Label18" runat="server" Text="EmailConfig Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
-                                                        </div>
-                                                        <div class="col-md-2 ">
-                                                            <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
-                                                                <label class="mr-2 ml-1 mb-0">Export</label>
-                                                                <asp:ImageButton ID="ImgBtnExport8" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport8_Click" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="d-flex align-items-center gap-3">
-                                                                <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousCategory" runat="server" OnClick="lnkPreviousCategory_Click">Previous</asp:LinkButton>
-                                                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextResolution" runat="server" OnClick="lnkNextResolution_Click">Next</asp:LinkButton>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-responsive p-0" style="height: 400px; width: 100%">
-                                                        <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm"
-                                                            Width="100%" OnRowCommand="gvEmailConfig_RowCommand" OnRowDataBound="gvEmailConfig_RowDataBound">
-                                                            <Columns>
-                                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                                                                    <ItemTemplate>
-                                                                        <%#Container.DataItemIndex+1 %>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
-                                                                <asp:BoundField DataField="Hostname" HeaderText="Host Name" NullDisplayText="NA" />
-                                                                <asp:BoundField DataField="Port" HeaderText="Port" NullDisplayText="NA" />
-                                                                <asp:BoundField DataField="UserName" HeaderText="UserName" NullDisplayText="NA" />
-                                                                <asp:BoundField DataField="Email" HeaderText="Email" NullDisplayText="NA" />
-                                                                <asp:TemplateField HeaderText="Password" ItemStyle-Width="20">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="lbl" runat="server" Text="*********"></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
-                                                                <asp:BoundField DataField="Retry" HeaderText="Retry" NullDisplayText="NA" />
-                                                                <asp:BoundField DataField="ClientID" HeaderText="ClientID" NullDisplayText="NA" />
-                                                                <asp:BoundField DataField="ClientSecretKey" HeaderText="ClientSecretKey" NullDisplayText="NA" />
-                                                                <asp:BoundField DataField="TenantID" HeaderText="TenantID" NullDisplayText="NA" />
-                                                                <asp:TemplateField HeaderText=" Organization">
-                                                                    <ItemTemplate>
-                                                                        <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
-                                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
-                                                                    </ItemTemplate>
-                                                                </asp:TemplateField>
-                                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateEmailConfig" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEmailConfig" ItemStyle-Width="20px" ItemStyle-Height="5px" />
-                                                            </Columns>
-                                                        </asp:GridView>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-8 text-end">
+                                    <label class="form-label"></label>
+                                    <br />
+                                    <asp:Button ID="btnInsertEmailConfig" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertEmailConfig_Click" ValidationGroup="EmailConfig" />
+                                    <asp:Button ID="btnUpdateEmailConfig" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateEmailConfig_Click" ValidationGroup="EmailConfig" />
+                                    <asp:Button ID="btnCancel8" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel8_Click" CausesValidation="false" />
+                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousCategory" runat="server" OnClick="lnkPreviousCategory_Click">Previous</asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextResolution" runat="server" OnClick="lnkNextResolution_Click">Next</asp:LinkButton>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="">
+                                    <h6 class="mb-0">
+                                        <asp:Label ID="Label18" runat="server" Text="EmailConfig Details"></asp:Label>
+                                    </h6>
+                                </div>
+
+                                <asp:LinkButton ID="ImgBtnExport8" runat="server" CssClass="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport8_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="table-responsive table-container">
+                                        <asp:GridView GridLines="None" ID="gvEmailConfig" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm text-nowrap"
+                                            Width="100%" OnRowCommand="gvEmailConfig_RowCommand" OnRowDataBound="gvEmailConfig_RowDataBound">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="Hostname" HeaderText="Host Name" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="Port" HeaderText="Port" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="UserName" HeaderText="UserName" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="Email" HeaderText="Email" NullDisplayText="NA" />
+                                                <asp:TemplateField HeaderText="Password" ItemStyle-Width="20">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lbl" runat="server" Text="*********"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="Retry" HeaderText="Retry" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="ClientID" HeaderText="ClientID" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="ClientSecretKey" HeaderText="ClientSecretKey" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="TenantID" HeaderText="TenantID" NullDisplayText="NA" />
+                                                <asp:TemplateField HeaderText=" Organization">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateEmailConfig" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEmailConfig" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
 
                 </ContentTemplate>
                 <Triggers>
@@ -1564,247 +1562,246 @@
                             <asp:Literal ID="ltlRemoved" runat="server" Visible="false" />
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Organization
+                                    <label for="staticEmail" class="form-label">
+                                        Organization
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddlOrg" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                                
+                                    </label>
+
                                     <asp:DropDownList ID="ddlOrgDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrgDeskConfig_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
-                                  <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Request Type
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Request Type
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="ddlRequestType" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
-                                </label>
-                            
+                                    </label>
+
                                     <asp:DropDownList ID="ddlRequestTypeDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestTypeDeskConfig_SelectedIndexChanged">
                                     </asp:DropDownList>
-                                </div>    <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Service PreFix 
-                                    <asp:RequiredFieldValidator ID="rfvtxtSDPrefix" runat="server" ControlToValidate="txtSDPrefix" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
-                                </label>
-                               
-                                    <asp:TextBox ID="txtSDPrefix" runat="server" MaxLength="4" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Service Desk Description 
+                                    <label for="staticEmail" class="form-label">
+                                        Service PreFix 
+                                    <asp:RequiredFieldValidator ID="rfvtxtSDPrefix" runat="server" ControlToValidate="txtSDPrefix" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                    </label>
+
+                                    <asp:TextBox ID="txtSDPrefix" runat="server" MaxLength="4" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="staticEmail" class="form-label">
+                                        Service Desk Description 
                                     <asp:RequiredFieldValidator ID="rfvtxtSDDescription" runat="server" ControlToValidate="txtSDDescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
-                                </label>
-                              
+                                    </label>
+
                                     <asp:TextBox ID="txtSDDescription" runat="server" TextMode="MultiLine" Rows="1" CssClass="form-control  form-control-sm"></asp:TextBox>
-                                </div>    <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Archive Time(in Days)
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Archive Time(in Days)
                                     <asp:RequiredFieldValidator ID="rfvtxtArchiveTime" runat="server" ControlToValidate="txtArchiveTime" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
-                                </label>
-                             
+                                    </label>
+
                                     <asp:TextBox ID="txtArchiveTime" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                              <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Severity 
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Severity 
                                                 <asp:RequiredFieldValidator ID="RfvddlSeverity" runat="server" ControlToValidate="ddlSeverity" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" Enabled="false"></asp:RequiredFieldValidator>
-                                    &nbsp;</label>
-                               
+                                        &nbsp;</label>
+
                                     <asp:DropDownList ID="ddlSeverity" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
-                                </div>    <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    <asp:Label ID="lblSolution" runat="server" Text="Solution Type :"></asp:Label>
-                                    <asp:RequiredFieldValidator ID="RfvddlSolutionType" runat="server" ControlToValidate="ddlSolutionType" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                              
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        <asp:Label ID="lblSolution" runat="server" Text="Solution Type :"></asp:Label>
+                                        <asp:RequiredFieldValidator ID="RfvddlSolutionType" runat="server" ControlToValidate="ddlSolutionType" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                    </label>
+
                                     <asp:DropDownList ID="ddlSolutionType" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Priority 
+                                    <label for="staticEmail" class="form-label">
+                                        Priority 
                                                 <asp:RequiredFieldValidator ID="rfvddlPriority" runat="server" ControlToValidate="ddlPriority" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                             
+                                    </label>
+
                                     <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
-                                </div>    <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Coverage Schedule
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Coverage Schedule
 								<asp:RequiredFieldValidator ID="rfvddlCoverageSch" runat="server" ControlToValidate="ddlCoverageSch" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                                
+                                    </label>
+
                                     <asp:DropDownList ID="ddlCoverageSch" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Stage 
+                                    <label for="staticEmail" class="form-label">
+                                        Stage 
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="ddlStage" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                              
+                                    </label>
+
                                     <asp:DropDownList ID="ddlStageDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlStageDeskConfig_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
-                                    <div class="col-md-4">
-                                <label for="staticEmail" class="form-label">
-                                    Status
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Status
                                                 <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                               
+                                    </label>
+
                                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                            </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        <asp:Label ID="lblCategory1" runat="server" Text="Category 1"></asp:Label>
+                                        <asp:RequiredFieldValidator ID="RfvddlCategory1" runat="server" ControlToValidate="ddlCategory1" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
+                                    </label>
 
-                            <div class="form-group row">
-                                <label for="staticEmail" class="form-label">
-                                    <asp:Label ID="lblCategory1" runat="server" Text="Category1 :"></asp:Label>
-                                    <asp:RequiredFieldValidator ID="RfvddlCategory1" runat="server" ControlToValidate="ddlCategory1" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
                                     <asp:DropDownList ID="ddlCategory1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory1_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                                <label for="staticEmail" class="form-label">
-                                    SLA 
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        SLA 
 					   <asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                    </label>
+
                                     <asp:DropDownList ID="ddlSlA" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label for="staticEmail" class="form-label">
-                                    <asp:Label ID="lblCategory2" runat="server" Text="Category2 :"></asp:Label>
-                                    <asp:RequiredFieldValidator ID="RfvddlCategory2" runat="server" InitialValue="0" ControlToValidate="ddlCategory2" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        <asp:Label ID="lblCategory2" runat="server" Text="Category 2 "></asp:Label>
+                                        <asp:RequiredFieldValidator ID="RfvddlCategory2" runat="server" InitialValue="0" ControlToValidate="ddlCategory2" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
+                                    </label>
+
                                     <asp:DropDownList ID="ddlCategory2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory2_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label for="staticEmail" class="form-label">
-                                    <asp:Label ID="lblCategory3" runat="server" Text="Category3 :"></asp:Label>
-                                    <asp:RequiredFieldValidator ID="RfvddlCategory3" runat="server" InitialValue="0" ControlToValidate="ddlCategory3" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
-                                </label>
-                                <div class="col-sm-4 pr-5">
-                                    <asp:DropDownList ID="ddlCategory3" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory3_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        <asp:Label ID="lblCategory3" runat="server" Text="Category 3"></asp:Label>
+                                        <asp:RequiredFieldValidator ID="RfvddlCategory3" runat="server" InitialValue="0" ControlToValidate="ddlCategory3" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
+                                    </label>
+
+                                    <asp:DropDownList ID="ddlCategory3" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory3_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label for="staticEmail" class="form-label">
-                                    <asp:Label ID="lblCategory4" runat="server" Text="Category4 :"></asp:Label>
-                                </label>
-                                <div class="col-sm-4 pr-5">
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        <asp:Label ID="lblCategory4" runat="server" Text="Category 4"></asp:Label>
+                                    </label>
+
                                     <asp:DropDownList ID="ddlCategory4" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlCategory4_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
-                            </div>
-                            <div class="form-group row ">
-                                <label for="staticEmail" class="form-label">
-                                    <asp:Label ID="lblCategory5" runat="server" Text="Category5 :"></asp:Label>
-                                </label>
-                                <div class="col-sm-4 pr-5">
-                                    <asp:DropDownList ID="ddlCategory5" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field" AutoPostBack="true"></asp:DropDownList>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        <asp:Label ID="lblCategory5" runat="server" Text="Category 5"></asp:Label>
+                                    </label>
+
+                                    <asp:DropDownList ID="ddlCategory5" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true"></asp:DropDownList>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-3  offset-5">
-                                    <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsert_Click" ValidationGroup="www" />
-                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-sm savebtn" OnClick="btnUpdate_Click" ValidationGroup="wwww" Visible="False" />
-                                    <asp:Button ID="btnCancel11" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel11_Click" CausesValidation="false" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousSLA" runat="server" OnClick="lnkPreviousSLA_Click">Previous</asp:LinkButton>
-                                <asp:LinkButton class="btn btn-grd-primary px-4" ID="lnkNextCustomFields" runat="server" OnClick="lnkNextCustomFields_Click">Next</asp:LinkButton>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 graphs">
-                                    <div class="card card-default">
-                                        <div class="card-body">
-                                            <div class="row ">
-                                                <div class="col-md-4">
-                                                    <asp:Label ID="Label19" runat="server" Text="Desk Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
-                                                </div>
-                                                <div class="col-md-2 ">
-                                                    <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
-                                                        <label class="mr-2 ml-1 mb-0">Export</label>
-                                                        <asp:ImageButton ID="ImgBtnExport12" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport12_Click" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="overflow-x: scroll">
-                                                <asp:GridView GridLines="None" ID="gvDesk" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-bordered"
-                                                    Width="100%" OnRowCommand="gvDesk_RowCommand" OnRowDataBound="gvDesk_RowDataBound">
-                                                    <Columns>
-                                                        <asp:ButtonField ButtonType="Image" CommandName="EditDesk" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                        <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
-                                                        <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                                                            <ItemTemplate>
-                                                                <%#Container.DataItemIndex+1 %>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:BoundField DataField="TemplateName" HeaderText="Template Name" NullDisplayText="NA" />
-                                                        <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
-                                                        <asp:BoundField DataField="DeskPrefix" HeaderText="SD Prefix" NullDisplayText="NA" />
-                                                        <asp:BoundField DataField="DeskDesc" HeaderText="Desk Desc" NullDisplayText="NA" />
-                                                        <asp:TemplateField HeaderText="SD Category">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSDCategoryFk" runat="server" Text='<%# Eval("sdCategoryFK") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSDCategoryName" runat="server" Text='<%# Eval("Category") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Stage">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSDStageFk" runat="server" Text='<%# Eval("sdStageFK") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSDStageName" runat="server" Text='<%# Eval("StageCodeRef") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Status">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSDStatusFk" runat="server" Text='<%# Eval("sdStatusFK") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSDStatusName" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Priority">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSDPriorityFk" runat="server" Text='<%# Eval("sdPriorityFK") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSDPriorityName" runat="server" Text='<%# Eval("Priority") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Severity">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSDSeverityFk" runat="server" Text='<%# Eval("sdSeverityFK") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSDSeverityName" runat="server" Text='<%# Eval("Severity") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Resolution">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblsdSolutionTypeFK" runat="server" Text='<%# Eval("sdSolutionTypeFK") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSDResolutionName" runat="server" Text='<%# Eval("Resolution") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:BoundField DataField="autoArchiveTime" HeaderText="Archive Time" NullDisplayText="0" />
-                                                        <asp:TemplateField HeaderText=" SLA">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSLAid" runat="server" Text='<%# Eval("SLAID") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblSLAName" runat="server" Text='<%# Eval("SLAName") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Coverage Sch">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblCvrgID" runat="server" Text='<%# Eval("CoverageID") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblCvrgName" runat="server" Text='<%# Eval("CoverageName") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText=" Organization">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("OrgFk") %>' Visible="false"></asp:Label>
-                                                                <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                    </Columns>
-                                                </asp:GridView>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-8 text-end">
+                                    <label class="form-label"></label>
+                                    <br />
+                                    <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsert_Click" ValidationGroup="www" />
+                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-sm btn-grd-info" OnClick="btnUpdate_Click" ValidationGroup="wwww" Visible="False" />
+                                    <asp:Button ID="btnCancel11" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel11_Click" CausesValidation="false" />
+                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousSLA" runat="server" OnClick="lnkPreviousSLA_Click">Previous</asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextCustomFields" runat="server" OnClick="lnkNextCustomFields_Click">Next</asp:LinkButton>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="">
+                                    <h6 class="mb-0">
+                                        <asp:Label ID="Label19" runat="server" Text="Desk Details"></asp:Label>
+                                    </h6>
+                                </div>
+                                <asp:LinkButton ID="ImgBtnExport12" runat="server" CssClass="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport12_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
+
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="table-responsive table-container">
+                                        <asp:GridView GridLines="None" ID="gvDesk" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-sm table-striped text-nowrap"
+                                            Width="100%" OnRowCommand="gvDesk_RowCommand" OnRowDataBound="gvDesk_RowDataBound">
+                                            <Columns>
+                                                <asp:ButtonField ButtonType="Image" CommandName="EditDesk" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="TemplateName" HeaderText="Template Name" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="DeskPrefix" HeaderText="SD Prefix" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="DeskDesc" HeaderText="Desk Desc" NullDisplayText="NA" />
+                                                <asp:TemplateField HeaderText="SD Category">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSDCategoryFk" runat="server" Text='<%# Eval("sdCategoryFK") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSDCategoryName" runat="server" Text='<%# Eval("Category") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Stage">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSDStageFk" runat="server" Text='<%# Eval("sdStageFK") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSDStageName" runat="server" Text='<%# Eval("StageCodeRef") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Status">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSDStatusFk" runat="server" Text='<%# Eval("sdStatusFK") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSDStatusName" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Priority">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSDPriorityFk" runat="server" Text='<%# Eval("sdPriorityFK") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSDPriorityName" runat="server" Text='<%# Eval("Priority") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Severity">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSDSeverityFk" runat="server" Text='<%# Eval("sdSeverityFK") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSDSeverityName" runat="server" Text='<%# Eval("Severity") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Resolution">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblsdSolutionTypeFK" runat="server" Text='<%# Eval("sdSolutionTypeFK") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSDResolutionName" runat="server" Text='<%# Eval("Resolution") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="autoArchiveTime" HeaderText="Archive Time" NullDisplayText="0" />
+                                                <asp:TemplateField HeaderText=" SLA">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSLAid" runat="server" Text='<%# Eval("SLAID") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblSLAName" runat="server" Text='<%# Eval("SLAName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Coverage Sch">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblCvrgID" runat="server" Text='<%# Eval("CoverageID") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblCvrgName" runat="server" Text='<%# Eval("CoverageName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" Organization">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("OrgFk") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
 
                     <asp:HiddenField ID="hdnCategoryID" runat="server" />
                     <asp:HiddenField ID="HiddenField1" runat="server" />
@@ -1833,7 +1830,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="form-group row mt-3">
-                                            <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
+                                            <label for="staticEmail" class="form-label">
                                                 Organization: <span title="*"></span>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
                                             </label>
@@ -2031,147 +2028,138 @@
         <asp:Panel ID="pnlExclation" runat="server" Visible="false">
             <asp:UpdatePanel ID="updatepanel13" runat="server">
                 <ContentTemplate>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="form-group row mt-3">
-                                        <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                            Esclation Level : <span title="*"></span>
+
+                    <div class="card">
+                        <div class="card-body mb-1">
+                            <div class="row gx-2 gy-3">
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Esclation Level 
                                             <asp:RequiredFieldValidator ID="rfvddlEsclationLevel" runat="server" ControlToValidate="ddlEsclationLevel" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
-                                        </label>
-                                        <div class="col-sm-4 pr-5">
-                                            <asp:DropDownList ID="ddlEsclationLevel" runat="server" CssClass="form-control  form-control-sm">
-                                                <asp:ListItem Text="L1" Value="L1"></asp:ListItem>
-                                                <asp:ListItem Text="L2" Value="L2"></asp:ListItem>
-                                                <asp:ListItem Text="L3" Value="L3"></asp:ListItem>
-                                                <asp:ListItem Text="L4" Value="L4"></asp:ListItem>
-                                                <asp:ListItem Text="L5" Value="L5"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                        <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                            User Name: <span title="*"></span>
+                                    </label>
+
+                                    <asp:DropDownList ID="ddlEsclationLevel" runat="server" CssClass="form-control  form-control-sm">
+                                        <asp:ListItem Text="L1" Value="L1"></asp:ListItem>
+                                        <asp:ListItem Text="L2" Value="L2"></asp:ListItem>
+                                        <asp:ListItem Text="L3" Value="L3"></asp:ListItem>
+                                        <asp:ListItem Text="L4" Value="L4"></asp:ListItem>
+                                        <asp:ListItem Text="L5" Value="L5"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        User Name
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtUserNameEsc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
-                                        </label>
-                                        <div class="col-sm-4 pr-5">
-                                            <asp:TextBox ID="txtUserNameEsc" runat="server" CssClass="form-control  form-control-sm ">
-                                            </asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mt-3">
-                                        <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                            Email : <span title="*"></span>
+                                    </label>
+
+                                    <asp:TextBox ID="txtUserNameEsc" runat="server" CssClass="form-control  form-control-sm ">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Email
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
                                                 ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                                                 Display="Dynamic" ErrorMessage="Invalid Email" ValidationGroup="UserEcslevel" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtEmailEsc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
-                                        </label>
-                                        <div class="col-sm-4 pr-5">
-                                            <asp:TextBox ID="txtEmailEsc" runat="server" CssClass="form-control  form-control-sm ">
-                                            </asp:TextBox>
-                                        </div>
-                                        <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                            Mobile: <span title="*"></span>
-                                            <asp:RegularExpressionValidator ID="rvPhoneNumber" runat="server"
-                                                ControlToValidate="txtMobile"
-                                                ValidationExpression="^(?:(?:\+?\d{1,3}[-.\s]?)?\(?(?:\d{3})?\)?[-.\s]?\d{3}[-.\s]?\d{4})|(?:(?:\+?\d{1,3}[-.\s]?)?\(?(?:\d{2,4})?\)?[-.\s]?\d{6,8})$"
-                                                ErrorMessage="Invalid Number" ForeColor="Red"
-                                                Display="Dynamic" ValidationGroup="UserEcslevel">
-                                            </asp:RegularExpressionValidator>
-                                            <asp:RequiredFieldValidator ID="rfvtxtMobile" runat="server" ControlToValidate="txtMobile" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
-                                        </label>
-                                        <div class="col-sm-4 pr-5">
-                                            <asp:TextBox ID="txtMobile" TextMode="Phone" runat="server" CssClass="form-control  form-control-sm ">
-                                            </asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mt-3">
-                                        <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                            Esclation Time(in Min): <span title="*"></span>
-                                            <asp:RequiredFieldValidator ID="rfvtxttimeforEsclation" runat="server" ControlToValidate="txttimeforEsclation" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
-                                        </label>
-                                        <div class="col-sm-4 pr-5">
-                                            <asp:TextBox ID="txttimeforEsclation" runat="server" TextMode="Number" CssClass="form-control  form-control-sm ">
-                                            </asp:TextBox>
-                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtEmailEsc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
+                                    </label>
 
-                                        <label for="staticEmail" class="col-sm-2 labelcolorl1 pl-5">
-                                            Organization: <span title="*"></span>
+                                    <asp:TextBox ID="txtEmailEsc" runat="server" CssClass="form-control  form-control-sm ">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Mobile
+                                        <asp:RegularExpressionValidator ID="rvPhoneNumber" runat="server"
+                                            ControlToValidate="txtMobile"
+                                            ValidationExpression="^(?:(?:\+?\d{1,3}[-.\s]?)?\(?(?:\d{3})?\)?[-.\s]?\d{3}[-.\s]?\d{4})|(?:(?:\+?\d{1,3}[-.\s]?)?\(?(?:\d{2,4})?\)?[-.\s]?\d{6,8})$"
+                                            ErrorMessage="Invalid Number" ForeColor="Red"
+                                            Display="Dynamic" ValidationGroup="UserEcslevel">
+                                        </asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator ID="rfvtxtMobile" runat="server" ControlToValidate="txtMobile" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
+                                    </label>
+
+                                    <asp:TextBox ID="txtMobile" TextMode="Phone" runat="server" CssClass="form-control  form-control-sm ">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Esclation Time(in Min)
+                                            <asp:RequiredFieldValidator ID="rfvtxttimeforEsclation" runat="server" ControlToValidate="txttimeforEsclation" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
+                                    </label>
+
+                                    <asp:TextBox ID="txttimeforEsclation" runat="server" TextMode="Number" CssClass="form-control  form-control-sm ">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        Organization
 
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
-                                        </label>
+                                    </label>
 
-                                        <div class="col-sm-4 pr-5">
-                                            <asp:DropDownList ID="ddlOrgEcs" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field">
-                                            </asp:DropDownList>
-                                        </div>
+                                    <asp:DropDownList ID="ddlOrgEcs" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field">
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="col-md-12 text-end">
+                                    <asp:Button ID="btnInsertEcslevel" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertEcslevel_Click" ValidationGroup="UserEcslevel" />
+                                    <asp:Button ID="btnUpdateEcslevel" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateEcslevel_Click" ValidationGroup="UserEcslevel" />
+                                    <asp:Button ID="btnCancel14" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel14_Click" CausesValidation="false" />
+                                                               <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click">Previous</asp:LinkButton>
+
                                     </div>
-                                    <div class="form-row">
-                                        <div class="col-md-3 offset-5 ">
-                                            <asp:Button ID="btnInsertEcslevel" runat="server" Text="Save" class="btn btn-sm savebtn" OnClick="btnInsertEcslevel_Click" ValidationGroup="UserEcslevel" />
-                                            <asp:Button ID="btnUpdateEcslevel" runat="server" Text="Update" Visible="false" class="btn btn-sm savebtn" OnClick="btnUpdateEcslevel_Click" ValidationGroup="UserEcslevel" />
-                                            <asp:Button ID="btnCancel14" runat="server" Text="Cancel" class="btn btn-sm cancelbtn" OnClick="btnCancel14_Click" CausesValidation="false" />
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <asp:LinkButton class="btn btn-grd-info px-4" ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click">Previous</asp:LinkButton>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-8 col-sm-6 graphs">
-                                            <div class="xs">
-                                                <div class="well1 white">
-                                                    <div class="card card-default">
-                                                        <div class="card-body">
-                                                            <div class="row ">
-                                                                <div class="col-md-4">
-                                                                    <asp:Label ID="Label26" runat="server" Text="Ecslevel Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <asp:Label ID="Label27" runat="server"></asp:Label>
-                                                                    <asp:Label ID="Label28" runat="server"></asp:Label>
-                                                                </div>
-                                                                <div class="col-md-2 ">
-                                                                    <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
-                                                                        <label class="mr-2 ml-1 mb-0">Export</label>
-                                                                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" OnClick="ImgBtnExport_Click" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="table-responsive p-0" style="height: 400px; width: 100%">
-                                                                <asp:GridView GridLines="None" ID="gvEcslevel" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap"
-                                                                    Width="100%" OnRowCommand="gvEcslevel_RowCommand" OnRowDataBound="gvEcslevel_RowDataBound">
-                                                                    <Columns>
-                                                                        <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                                                                            <ItemTemplate>
-                                                                                <%#Container.DataItemIndex+1 %>
-                                                                            </ItemTemplate>
-                                                                        </asp:TemplateField>
-                                                                        <asp:BoundField DataField="EsclationLevel" HeaderText="Escltion Level" NullDisplayText="NA" />
-                                                                        <asp:BoundField DataField="UserName" HeaderText="UserName" NullDisplayText="NA" />
-                                                                        <asp:BoundField DataField="UserEmail" HeaderText="User Email" NullDisplayText="NA" />
-                                                                        <asp:BoundField DataField="Mobile" HeaderText="Mobile" NullDisplayText="NA" />
-                                                                        <asp:BoundField DataField="TimeForEsclatn" HeaderText="Esclation Time" NullDisplayText="NA" />
-                                                                        <asp:TemplateField HeaderText=" Organization">
-                                                                            <ItemTemplate>
-                                                                                <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
-                                                                                <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
-                                                                            </ItemTemplate>
-                                                                        </asp:TemplateField>
-                                                                        <asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                                        <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEcslevel" ItemStyle-Width="20px" ItemStyle-Height="5px" />
-                                                                    </Columns>
-                                                                </asp:GridView>
-                                                            </div>
+                            </div>
+                                </div>
+</div>
+                        
+                      
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-start justify-content-between mb-3">
+                <div class="">
+                  <h6 class="mb-0">                                                            <asp:Label ID="Label26" runat="server" Text="Ecslevel Details" ></asp:Label>
+</h6>
+                </div>
+                                                        <asp:linkButton ID="ImageButton1" runat="server" class="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport_Click" >Export <i class="fa-solid fa-download"></i></asp:linkButton>
+
+                             </div>
+                                                    <div class="row ">
+                                                        <div class="col-md-12">
+                                                             <div class="table-responsive table-container" >
+     <asp:GridView GridLines="None" ID="gvEcslevel" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap table-sm border"
+         Width="100%" OnRowCommand="gvEcslevel_RowCommand" OnRowDataBound="gvEcslevel_RowDataBound">
+         <Columns>
+             <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                 <ItemTemplate>
+                     <%#Container.DataItemIndex+1 %>
+                 </ItemTemplate>
+             </asp:TemplateField>
+             <asp:BoundField DataField="EsclationLevel" HeaderText="Escltion Level" NullDisplayText="NA" />
+             <asp:BoundField DataField="UserName" HeaderText="UserName" NullDisplayText="NA" />
+             <asp:BoundField DataField="UserEmail" HeaderText="User Email" NullDisplayText="NA" />
+             <asp:BoundField DataField="Mobile" HeaderText="Mobile" NullDisplayText="NA" />
+             <asp:BoundField DataField="TimeForEsclatn" HeaderText="Esclation Time" NullDisplayText="NA" />
+             <asp:TemplateField HeaderText=" Organization">
+                 <ItemTemplate>
+                     <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                     <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                 </ItemTemplate>
+             </asp:TemplateField>
+             <asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+             <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEcslevel" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+         </Columns>
+     </asp:GridView>
+ </div>
                                                         </div>
+                                                     
+                                                      
                                                     </div>
+                                                   
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                     
+                    
+
                 </ContentTemplate>
                 <Triggers>
                     <asp:PostBackTrigger ControlID="ImgBtnExport" />
