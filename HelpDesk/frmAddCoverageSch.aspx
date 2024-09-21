@@ -137,14 +137,14 @@
                                                     <asp:BoundField DataField="EndHour" HeaderText="End Hour" NullDisplayText="NA" />
                                                     <asp:TemplateField HeaderText="Edit">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lnkUpdateSLA" runat="server" CommandName="UpdateSLA">
+                                                            <asp:LinkButton ID="lnkUpdateSLA" runat="server" CommandName="UpdateSLA" CommandArgument="<%# Container.DataItemIndex %>">
             <i class="fa-solid fa-edit"></i>
                                                             </asp:LinkButton>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Delete">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lnkDeleteSLA" runat="server" CommandName="DeleteSLA">
+                                                            <asp:LinkButton ID="lnkDeleteSLA" runat="server" CommandName="DeleteSLA" CommandArgument="<%# Container.DataItemIndex %>">
            <i class="fa-solid fa-xmark text-danger"></i>
                                                             </asp:LinkButton>
                                                         </ItemTemplate>

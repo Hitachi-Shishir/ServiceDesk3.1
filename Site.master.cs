@@ -280,6 +280,7 @@ public partial class Site : System.Web.UI.MasterPage
                         {
                             string imageUrl = "data:image/jpg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["FileData"]);
                             img.ImageUrl = imageUrl;
+                            Session["ProfilePic"]= imageUrl;
                         }
                         else
                         {

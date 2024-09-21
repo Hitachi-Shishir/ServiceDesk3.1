@@ -1115,22 +1115,26 @@ public partial class frmAllTickets : System.Web.UI.Page
             string filterExpression = "";
             string FromDate = "";
             string ToDate = "";
-            string todate ="";
-            string inputFormat = "MM-dd-yyyy";
+            
+            
+            
+
             if (txtFrmdate.Text != "")
             {
-                //FromDate = Convert.ToDateTime(txtFrmdate.Text).ToString("yyyy-MM-dd");
-                FromDate = DateTime.ParseExact(txtFrmdate.Text, inputFormat, CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                string fromd = txtFrmdate.Text;
+                DateTime frmdate = DateTime.ParseExact(fromd, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                FromDate = frmdate.ToString("yyyy-MM-dd");
 
             }
             if (txtTodate.Text != "")
             {
-                ToDate = DateTime.ParseExact(txtTodate.Text, inputFormat, CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
-                todate = DateTime.ParseExact(ToDate, "yyyy-MM-dd", CultureInfo.InvariantCulture).AddHours(23).ToString("yyyy-MM-dd HH:mm:ss");
+                string toda = txtTodate.Text;
+                DateTime todate = DateTime.ParseExact(toda, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                ToDate = todate.ToString("yyyy-MM-dd");
             }
             if (txtFrmdate.Text!="" && txtTodate.Text != "")
             {
-                filterExpression += @"CreationDate >= '" + FromDate + "' AND CreationDate <= '" + todate + "' AND ";
+                filterExpression += @"CreationDate >= '" + FromDate + "' AND CreationDate <= '" + ToDate + "' AND ";
             }
             if (ddlStatus.SelectedValue!="0")
             {
@@ -1435,4 +1439,44 @@ public partial class frmAllTickets : System.Web.UI.Page
     //        }
     //    }
     //}
+    protected void btnMerge_Click(object sender, EventArgs e)
+    {
+        string Tickets = null;
+        foreach (GridViewRow gvrow in gvAllTickets.Rows)
+        {
+            System.Web.UI.WebControls.CheckBox chk = (System.Web.UI.WebControls.CheckBox)gvrow.FindControl("chkRow");
+            if (chk != null & chk.Checked)
+            {
+                System.Web.UI.WebControls.Label label = (gvrow.Cells[2].FindControl("lblTicketNumber") as System.Web.UI.WebControls.Label);
+                Tickets += label.Text + ",";
+
+            }
+        }
+        string[] Ticketarr = null;
+        if (string.IsNullOrEmpty(Tickets))
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"warning_noti('{HttpUtility.JavaScriptStringEncode("Please select tickets!!!!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+        }
+        else
+        {
+            Tickets = Tickets.TrimEnd(',');
+            Ticketarr = Tickets.Split(',');
+
+
+            if (Ticketarr.Length >= 2)
+            {
+                Response.Write("<script type='text/javascript'>");
+                Response.Write("window.open('/frmMergeNGroupUpdt.aspx?Tickets=" + Tickets + "&redirected=true&ActionType=Merge&Desk=" + ddlRequestType.SelectedItem.ToString() + "','_blank');");
+                Response.Write("</script>");
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"warning_noti('{HttpUtility.JavaScriptStringEncode("Please Select more than two tickets!!!!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+
+            }
+        }
+    }
 }

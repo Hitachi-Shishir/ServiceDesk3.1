@@ -244,7 +244,41 @@ public class SDTemplateFileds
 
 
 	}
-	public DataTable FillCategory(string SDName)
+    public DataTable FillCategoryAll(string OrgId, string ReqType)
+    {
+
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(@"select  max(ID) ID,CategoryCodeRef from SD_Category where OrgDeskRef='" + OrgId + "' and DeskRef='"+ReqType+"' group by CategoryCodeRef", con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        using (DataSet ds = new DataSet())
+                        {
+                            sda.Fill(ds);
+                            DataTable dt = new DataTable();
+                            dt = ds.Tables[0];
+
+                            return dt;
+                        }
+                    }
+                }
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+
+    }
+    public DataTable FillCategory(string SDName)
 	{
 
 		try
