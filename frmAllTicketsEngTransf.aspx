@@ -1,42 +1,41 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmAllTicketsEngTransf.aspx.cs" Inherits="frmAllTicketsEngTransf" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-     <style>
-     .badage-sucess > span {
-         
-   color: #02c27a;
-   background-color: rgb(2 194 122 / 10%) !important;
-    border-color: rgb(2 194 122 / 0%) !important;
-          
-    padding: 2px 5px;
-         border-radius: 5px
-     }
+    <style>
+        .badage-sucess > span {
+            color: #02c27a;
+            background-color: rgb(2 194 122 / 10%) !important;
+            border-color: rgb(2 194 122 / 0%) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
 
-     .badage-yellow > span {
-         color: white !important;
-         background: linear-gradient(310deg, #f7971e, #ffd200) !important;
-         padding: 2px 5px;
-         border-radius: 5px
-     }
+        .badage-yellow > span {
+            color: white !important;
+            background: linear-gradient(310deg, #f7971e, #ffd200) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
 
-     .badage-red > span {
-   color: #fc185a !important;
-    background-color: rgb(252 24 90 / 10%) !important;
-    border-color: rgb(252 24 90 / 0%) !important;
-         padding: 2px 5px;
-         border-radius: 5px
-     }
+        .badage-red > span {
+            color: #fc185a !important;
+            background-color: rgb(252 24 90 / 10%) !important;
+            border-color: rgb(252 24 90 / 0%) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
 
-     .badage-info > span {
-         color: white !important;
-         background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
-         padding: 2px 5px;
-         border-radius: 5px
-     }
-         a {
-    color: var(--bs-heading-color) !important;
-}
- </style>
+        .badage-info > span {
+            color: white !important;
+            background-image: linear-gradient(310deg, #7928ca, #ff0080) !important;
+            padding: 2px 5px;
+            border-radius: 5px
+        }
+
+        a {
+            color: var(--bs-heading-color) !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -186,7 +185,7 @@
                                             <HeaderStyle HorizontalAlign="Center" />
                                             <ItemStyle HorizontalAlign="Center" Width="30px" />
                                         </asp:TemplateField>
-                                      
+
                                         <asp:TemplateField HeaderText="Edit">
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditTicket" CommandArgument="<%# Container.DataItemIndex %>">
@@ -310,5 +309,34 @@
             <asp:PostBackTrigger ControlID="btnTicketEsclated" />
         </Triggers>
     </asp:UpdatePanel>
+    <script type="text/javascript">
+        function togglePanel() {
+            var panel = document.getElementById('<%= pnlRowFilter.ClientID %>');
+            if (panel.style.display === 'none') {
+                panel.style.display = 'block';
+            }
+            else {
+                panel.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function grdHeaderCheckBox(objRef) {
+            var grd = objRef.parentNode.parentNode.parentNode;
+            var inputList = grd.getElementsByTagName("input");
+            for (var i = 0; i < inputList.length; i++) {
+                var row = inputList[i].parentNode.parentNode;
+                if (inputList[i].type == "checkbox" && objRef != inputList[i]) {
+                    if (objRef.checked) {
+                        inputList[i].checked = true;
+                    }
+                    else {
+                        inputList[i].checked = false;
+                    }
+                }
+            }
+        }
+    </script>
 </asp:Content>
 

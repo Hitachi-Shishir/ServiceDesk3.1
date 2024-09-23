@@ -48,7 +48,7 @@ public partial class Reports_frmOrgWiseTickets : System.Web.UI.Page
                         DropDesks.DataTextField = "Desk";
                         DropDesks.DataValueField = "Desk";
                         DropDesks.DataBind();
-                        DropDesks.Items.Insert(0, new ListItem("-----Select Service Desk-----", "0"));
+                        DropDesks.Items.Insert(0, new ListItem("----Select----", "0"));
                     }
                 }
             }
@@ -108,7 +108,7 @@ public partial class Reports_frmOrgWiseTickets : System.Web.UI.Page
         }
 
     }
-    protected void ImageBtnExport_Click(object sender, ImageClickEventArgs e)
+    protected void ImageBtnExport_Click(object sender, EventArgs e)
     {
 
         try

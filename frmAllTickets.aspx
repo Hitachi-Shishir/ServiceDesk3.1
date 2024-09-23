@@ -140,8 +140,9 @@
                                         <br />
                                         <div class="btn-group">
                                             <asp:Button ID="btnGridFilter" runat="server" Text="Go" ToolTip="Click Button to Get Ticket As Per Filter" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnGridFilter_Click" />
-                                            <asp:Button ID="btnDelteBulkTicket" runat="server" Text="Delete" ToolTip="Delete Ticket" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnDelteBulkTicket_Click" />
+                                            <asp:Button ID="btnDelteBulkTicket" Visible="false" runat="server" Text="Delete" ToolTip="Delete Ticket" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnDelteBulkTicket_Click" />
                                             <asp:Button ID="btnPickupTicket" runat="server" Text="PickUp" ToolTip="Assign Ticket To Self" class="btn  btn-outline-secondary d-flex btn-sm" OnClick="btnPickupTicket_Click" />
+                                            <asp:LinkButton ID="btnMerge" runat="server" ToolTip="Merge Ticket" OnClick="btnMerge_Click" visible="false">Merge</asp:LinkButton>
                                         </div>
 
                                     </div>

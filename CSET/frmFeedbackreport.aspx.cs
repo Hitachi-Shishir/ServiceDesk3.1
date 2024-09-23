@@ -30,7 +30,7 @@ public partial class CSET_frmFeedbackreport : System.Web.UI.Page
         }
     }
     public override void VerifyRenderingInServerForm(Control control) { }
-    protected void btnExport_Click(object sender, ImageClickEventArgs e)
+    protected void btnExport_Click(object sender, EventArgs e)
     {
 
 

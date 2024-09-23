@@ -85,14 +85,9 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
             {
                 pnlgridrow.Visible = true;
             }
-
+            //LoadDynamicButtons();
             if (!IsPostBack)
-            {
-
-                //if (querystring == "")
-                //{
-                //	FillAllRequests(querystring);
-                //}
+            {   
                 open = 0;
                 wip = 0;
                 assigned = 0;
@@ -122,14 +117,80 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
         }
 
     }
+    #region Dynamic Buttons Start
+    private void LoadDynamicButtons()
+    {
+        // Fetch the button data from the database
+        DataTable dtButtons = GetTicketDataFromDatabase();
+
+        foreach (DataRow row in dtButtons.Rows)
+        {
+            Button dynamicButton = new Button
+            {
+                ID = "btn" + row["TicketType"].ToString(),  // Generate a unique ID based on TicketType
+                Text = row["ButtonText"].ToString() + " (" + row["TicketCount"].ToString() + ")", // Set button text and count
+                ToolTip = row["Tooltip"].ToString(),
+                CssClass = row["CssClass"].ToString(),
+                CommandArgument = row["TicketType"].ToString(), // Store the ticket type for reference
+                CausesValidation = false // Optionally disable validation on click
+            };
+
+            // Assign a common click event for all buttons
+            dynamicButton.Click += new EventHandler(DynamicButton_Click);
+
+            // Add the button to the panel
+            pnltickcount.Controls.Add(dynamicButton);
+        }
+    }
+    private DataTable GetTicketDataFromDatabase()
+    {
+        // Sample code to retrieve data from the database
+        DataTable dt = new DataTable();
+        dt.Columns.Add("TicketType", typeof(string));
+        dt.Columns.Add("Tooltip", typeof(string));
+        dt.Columns.Add("ButtonText", typeof(string));
+        dt.Columns.Add("CssClass", typeof(string));
+        dt.Columns.Add("TicketCount", typeof(int));
+
+        // Dummy data for testing, replace with actual database query
+        dt.Rows.Add("Open", "Tickets with Open status", "Open", "btn btn-sm btn-inverse-success", 10);
+        dt.Rows.Add("WIP", "Tickets that are not resolved and open", "WIP", "btn btn-sm btn-inverse-warning", 5);
+        dt.Rows.Add("Assigned", "Tickets assigned to me", "Assigned", "btn btn-sm btn-inverse-info", 3);
+        dt.Rows.Add("Unassigned", "Unassigned tickets", "UnAssigned-Open", "btn btn-sm btn-inverse-primary", 8);
+        dt.Rows.Add("DueSoon", "Tickets going to escalate", "Due Soon", "btn btn-sm btn-inverse-secondary", 2);
+        dt.Rows.Add("Overdue", "Overdue tickets", "Overdue", "btn btn-sm btn-inverse-danger", 4);
+
+        return dt;
+    }
+    protected void DynamicButton_Click(object sender, EventArgs e)
+    {
+        Button clickedButton = (Button)sender;
+        string ticketType = clickedButton.CommandArgument;
+        Response.Write("You clicked on " + ticketType + " tickets.");
+        switch (ticketType)
+        {
+            case "Open":
+                break;
+            case "WIP":
+                break;
+            case "Assigned":
+                break;
+            case "Unassigned":
+                break;
+            case "DueSoon":
+                break;
+            case "Overdue":
+                break;
+        }
+    }
+    #endregion Dynamic Buttons End
+
     private void FillOrganization()
     {
 
         try
         {
-
-            DataTable SD_Org = new FillSDFields().FillOrganization(); ;
-
+            DataTable SD_Org = new FillSDFields().FillOrganization(); 
             ddlOrg.DataSource = SD_Org;
             ddlOrg.DataTextField = "OrgName";
             ddlOrg.DataValueField = "Org_ID";
@@ -921,16 +982,23 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
     protected void gvAllTickets_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
     {
         try
-
         {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //	// Assuming you want to enable text wrapping for the first column
-            //	e.Row.Cells[4].Style["white-space"] = "normal";
-            //	// or "pre-wrap"
-            //	e.Row.Cells[4].Width=500;
-
-            //}
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                CheckBox chkRow = (CheckBox)e.Row.FindControl("chkRow");
+                if (chkRow != null)
+                {
+                    chkRow.InputAttributes["class"] = "form-check-input";
+                }
+            }
+            else if (e.Row.RowType == DataControlRowType.Header)
+            {
+                CheckBox chkAll = (CheckBox)e.Row.FindControl("chkAll");
+                if (chkAll != null)
+                {
+                    chkAll.InputAttributes["class"] = "form-check-input";
+                }
+            }
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
@@ -1163,7 +1231,6 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
                             if (dt.Rows.Count > 0)
                             {
                                 btnOpenTicket.Text = "Open  ( " + dt.Rows[0]["Open"].ToString() + " )";
-
                                 btnWipTicket.Text = "WIP  ( " + dt.Rows[0]["WIP"].ToString() + " )";
                                 btnTicketAssigntoME.Text = "Assigned ( " + dt.Rows[0]["Assigned"].ToString() + " )";
                                 btnAssignToOther.Text = "UnAssigned ( " + dt.Rows[0]["AssignedOther"].ToString() + " )";

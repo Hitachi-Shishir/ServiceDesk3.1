@@ -22,68 +22,17 @@
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-         <%--   <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">User and Permissions</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            
-                            <li class="breadcrumb-item active" aria-current="page">Requesters</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>--%>
+
             <div class="card">
-                	<div class="card-header py-3">
-						<div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
-							<div class="step" data-target="#test-l-1">
-							  <div class="step-trigger d-flex" role="tab" id="stepper1trigger1" aria-controls="test-l-1">
-								<div class="bs-stepper-circle ">1</div>
-								<div class="ps-3">
-									<h5 class="mb-0 steper-title">Add Requestor</h5>
-									<p class="mb-0 steper-sub-title">Enter Your Details</p>
-								</div>
-							  </div>
-							</div>
-							<div class="bs-stepper-line"></div>
-							<div class="step" data-target="#test-l-2">
-								<div class="step-trigger d-flex" role="tab" id="stepper1trigger2" aria-controls="test-l-2">
-								  <div class="bs-stepper-circle">2</div>
-								  <div class="ps-3">
-									  <h5 class="mb-0 steper-title">Import User</h5>
-									  <p class="mb-0 steper-sub-title">Setup Account Details</p>
-								  </div>
-								</div>
-							  </div>
-							<div class="bs-stepper-line"></div>
-							<div class="step" data-target="#test-l-3">
-								<div class="step-trigger d-flex" role="tab" id="stepper1trigger3" aria-controls="test-l-3">
-								  <div class="bs-stepper-circle">3</div>
-								  <div class="ps-3">
-									  <h5 class="mb-0 steper-title">View User</h5>
-									  <p class="mb-0 steper-sub-title">Education Details</p>
-								  </div>
-								</div>
-							  </div>	
-                            <div class="bs-stepper-line"></div>
-							<div class="step" data-target="#test-l-3">
-								<div class="step-trigger d-flex" role="tab" id="stepper1trigger4" aria-controls="test-l-3">
-								  <div class="bs-stepper-circle">3</div>
-								  <div class="ps-3">
-									  <h5 class="mb-0 steper-title">View User</h5>
-									  <p class="mb-0 steper-sub-title">Education Details</p>
-								  </div>
-								</div>
-							  </div>
-						
-						  </div>
-					 </div>
+                	
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 mb-2">
+                            <div class="btn-group">
                             <asp:Button ID="btnAddRequester" runat="server" Text="Add Requester" CausesValidation="false" OnClick="btnAddRequester_Click" CssClass="btn btn-sm btn-outline-secondary" />
                             <asp:Button ID="btnimportUser" runat="server" Text="Import Users" CausesValidation="false" OnClick="btnimportUser_Click" CssClass="btn btn-sm btn-outline-secondary" />
                             <asp:Button ID="btnViewUsers" runat="server" Text="View Users" CausesValidation="false" OnClick="btnViewUsers_Click" CssClass="btn btn-sm btn-outline-secondary" />
+                        </div>
                         </div>
                     </div>
                     <div class="card border bg-transparent shadow-none mb-3">
@@ -330,7 +279,7 @@ at least 1 Uppercase Alphabet, 1 Lowercase Alphabet,
                                 <div class="row px-3 my-2">
                                     <div class="col-md-12">
                                         <div class="table-responsive table-container">
-                                            <asp:GridView GridLines="None" ID="gvTechnician" runat="server" DataKeyNames="UserID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm text-nowrap"
+                                            <asp:GridView GridLines="None" ID="gvTechnician" runat="server" DataKeyNames="UserID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm text-nowrap"
                                                 Width="100%" OnRowCommand="gvTechnician_RowCommand" OnRowDataBound="gvTechnician_RowDataBound">
                                                 <Columns>
                                                     <%--<asp:ButtonField ButtonType="Image" CommandName="SelectTech" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />--%>

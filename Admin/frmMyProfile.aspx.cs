@@ -67,12 +67,13 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
     }
     public void getPrevThemeData()
     {
-        if (Convert.ToString(Session["UserRole"]).ToUpper() == "ADMIN")
+        if (Convert.ToString(Session["UserRole"]).ToUpper() == "ADMIN" || Convert.ToString(Session["UserRole"]).ToUpper() == "MASTER")
         {
             toggle.Visible = true;
             chkTheme.Visible = true;
             DataTable dt = obj.getdata(Convert.ToString(Session["OrgID"]), Convert.ToString(Session["UserID"]));
             string ThemeModify = Convert.ToString(dt.Rows[0]["ThemeModify"]);
+            string Theme = Convert.ToString(dt.Rows[0]["Theme"]);
             if (ThemeModify.ToUpper() == "TRUE")
             {
                 chkTheme.Checked = true;
@@ -80,6 +81,26 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
             else
             {
                 chkTheme.Checked = false;
+            }
+            if(Theme== "blue-theme")
+            {
+                rbdBlueTheme.Checked = true;
+            }
+            else if (Theme == "light")
+            {
+                rbdLightTheme.Checked = true;
+            }
+            else if (Theme == "dark")
+            {
+                rbdDarkTheme.Checked = true;
+            }
+            else if (Theme == "semi-dark")
+            {
+                rbdSemiDarkTheme.Checked = true;
+            }
+            else
+            {
+                rbdBoderedTheme.Checked = true;
             }
             string sql = "select Theme from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
             string theme = Convert.ToString(database.GetScalarValue(sql));
@@ -283,7 +304,14 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
         {
             theme = "bodered-theme";
         }
-        ThemeChangeCommon(theme, Convert.ToString(Session["UserID"]));
+        if (chkTheme.Checked == true)
+        {
+            ThemeChangeCommon(theme, "");
+        }
+        else
+        {
+            ThemeChangeCommon(theme, Convert.ToString(Session["UserID"]));
+        }
         Response.Redirect(Request.Url.AbsoluteUri);
     }
     protected void DetailsCheckInAsset_PageIndexChanging(object sender, DetailsViewPageEventArgs e)

@@ -5,17 +5,7 @@
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Users and Premissions</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                          
-                            <li class="breadcrumb-item active" aria-current="page">Roles</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+           
             <div class="card">
           <%--      <div class="card-header">
                     <div class="card-title mb-0">
@@ -62,7 +52,7 @@
 
                                         <div class="col-md-12">
                                             <div class="table-responsive table-container  white-space-nowrap" style="height: 230px">
-                                                <asp:GridView ID="gvMasterRoles" DataKeyNames="MenuID" AutoGenerateColumns="false" runat="server" CssClass="table table-head-fixed text-nowrap table-sm ">
+                                                <asp:GridView ID="gvMasterRoles" DataKeyNames="MenuID" AutoGenerateColumns="false" runat="server" CssClass="table table-head-fixed text-nowrap table-sm border ">
                                                     <Columns>
                                                         <asp:TemplateField>
                                                             <ItemTemplate>
@@ -87,7 +77,7 @@
                                     <div class="row mt-4    ">
                                         <div class="col-md-12">
                                             <div class="table-responsive table-container" style="height: 230px">
-                                                <asp:GridView ID="gvAllRoles" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap table-sm" runat="server" OnRowCommand="gvAllRoles_RowCommand">
+                                                <asp:GridView ID="gvAllRoles" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap table-sm border" runat="server" OnRowCommand="gvAllRoles_RowCommand">
                                                     <Columns>
                                                         <asp:TemplateField>
                                                             <ItemTemplate>

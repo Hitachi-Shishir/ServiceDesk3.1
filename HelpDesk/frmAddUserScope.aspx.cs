@@ -473,9 +473,9 @@ public partial class HelpDesk_frmAddUserScope : System.Web.UI.Page
         try
         {
             pnlAddscope.Visible = true;
-            btnAddUserScope.CssClass = "btn btn-sm btnEnabled";
+            btnAddUserScope.CssClass = "btn btn-sm btn-secondary";
             pnlViewScope.Visible = false;
-            btnViewScope.CssClass = "btn btn-sm btnDisabled";
+            btnViewScope.CssClass = "btn btn-sm btn-outline-secondary";
             btnAddUserScope.Enabled = false;
             btnViewScope.Enabled = true;
 
@@ -513,9 +513,9 @@ public partial class HelpDesk_frmAddUserScope : System.Web.UI.Page
         {
             FillScopeDetails();
             pnlAddscope.Visible = false;
-            btnAddUserScope.CssClass = "btn btn-sm btnDisabled";
+            btnAddUserScope.CssClass = "btn btn-sm btn-outline-secondary";
             pnlViewScope.Visible = true;
-            btnViewScope.CssClass = "btn btn-sm btnEnabled";
+            btnViewScope.CssClass = "btn btn-sm btn-secondary";
             btnViewScope.Enabled = false;
             btnAddUserScope.Enabled = true;
         }

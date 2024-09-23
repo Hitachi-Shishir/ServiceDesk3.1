@@ -67,6 +67,11 @@
             margin-left: 15px;
             margin-right: 15px;
         }
+
+        .vr {
+            rotate: 90deg;
+            margin: 5px 1px;
+        }
     </style>
 
 </asp:Content>
@@ -77,92 +82,92 @@
         <%--Stepper Start--%>
         <asp:UpdatePanel ID="updtcardbtn" runat="server">
             <ContentTemplate>
-                <div class="card mb-0">
-                    <div class="card-header">
+                <div class="card mb-0" style="border-radius: 0.375rem 0.375rem 0 0">
+                    <div class="card-header ">
                         <div class="row">
                             <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between " role="tablist">
 
                                 <!-- Step 1 -->
-                                <asp:LinkButton ID="stepper1trigger1" runat="server" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' OnClick="StepButton_Click1">
+                                <asp:LinkButton ID="stepper1trigger1" runat="server" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' OnClick="StepButton_Click1">
                          <div class="bs-stepper-circle">1</div>
-                        
+                      
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
 
 
 
                                 <!-- Step 2 -->
-                                <asp:LinkButton ID="stepper1trigger2" runat="server" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
+                                <asp:LinkButton ID="stepper1trigger2" runat="server" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
                         <div class="bs-stepper-circle">2</div>
                       
                                 </asp:LinkButton>
 
-
+                                <div class="vr"></div>
 
                                 <!-- Step 3 -->
-                                <asp:LinkButton ID="stepper1trigger3" runat="server" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
+                                <asp:LinkButton ID="stepper1trigger3" runat="server" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
                          <div class="bs-stepper-circle">3</div>
                         
                                 </asp:LinkButton>
 
-
+                                <div class="vr"></div>
                                 <!-- Step 4 -->
-                                <asp:LinkButton ID="stepper1trigger4" runat="server" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
+                                <asp:LinkButton ID="stepper1trigger4" runat="server" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
                             <div class="bs-stepper-circle">4</div>
                            
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 5 -->
-                                <asp:LinkButton ID="stepper1trigger5" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
+                                <asp:LinkButton ID="stepper1trigger5" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
 <div class="bs-stepper-circle">5</div>
                        
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 6 -->
-                                <asp:LinkButton ID="stepper1trigger6" runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
+                                <asp:LinkButton ID="stepper1trigger6" runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
 <div class="bs-stepper-circle">6</div>
                        
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 7 -->
-                                <asp:LinkButton ID="stepper1trigger7" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
+                                <asp:LinkButton ID="stepper1trigger7" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
 <div class="bs-stepper-circle">7</div>
                      
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 8 -->
-                                <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
+                                <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
         <div class="bs-stepper-circle">8</div>
       
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 9 -->
-                                <asp:LinkButton ID="stepper1trigger9" runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
+                                <asp:LinkButton ID="stepper1trigger9" runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
 <div class="bs-stepper-circle">9</div>
                        
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 10 -->
-                                <asp:LinkButton ID="stepper1trigger10" runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
+                                <asp:LinkButton ID="stepper1trigger10" runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
         <div class="bs-stepper-circle">10</div>
        
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 11 -->
-                                <asp:LinkButton ID="stepper1trigger11" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
+                                <asp:LinkButton ID="stepper1trigger11" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
         <div class="bs-stepper-circle">11</div>
        
                                 </asp:LinkButton>
-
+                                <div class="vr"></div>
                                 <!-- Step 12 -->
-                                <asp:LinkButton ID="stepper1trigger12" runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
+                                <asp:LinkButton ID="stepper1trigger12" runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
         <div class="bs-stepper-circle">12</div>
        
                                 </asp:LinkButton>
 
                                 <div class="col-md-3" hidden>
                                     <!-- Step 13 -->
-                                    <asp:LinkButton ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary px-4" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 13 %>' OnClick="StepButton_Click13">
+                                    <asp:LinkButton ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 13 %>' OnClick="StepButton_Click13">
         <div class="bs-stepper-circle">13</div>
         <div class="">
             <h5 class="mb-0 steper-title">Exclation Matrix</h5>
@@ -183,9 +188,16 @@
         <asp:Panel ID="pnlShowOrg" runat="server">
             <asp:UpdatePanel ID="updatepanel1" runat="server">
                 <ContentTemplate>
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="mb-4">Organisation</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-4">Organisation</h6>
+                                <div class="">
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkNextAddReq" runat="server" OnClick="lnkNextAddReq_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+
+                                </div>
+                            </div>
+
                             <div class=" row gy-3 gx-2">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -251,8 +263,6 @@
                                     <asp:TextBox ID="txtCntctPrnsEmailII" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
                                 <div class="col-6">
-                                    <asp:LinkButton class="btn btn-sm btn-grd-primary" ID="lnkNextAddReq" runat="server" OnClick="lnkNextAddReq_Click">Next</asp:LinkButton>
-
                                 </div>
                                 <div class="col-6 text-end">
                                     <asp:Button ID="btnInsertOrg" runat="server" Text="Save" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnInsertOrg_Click" ValidationGroup="Priority" />
@@ -339,10 +349,16 @@
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
 
                         <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between">
                             <h6 class="mb-3 fw-bold">Add Request Type</h6>
+                                <div class="d-flex">
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkPrevOrg" runat="server" OnClick="lnkPrevOrg_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton> &nbsp;
+<asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkNextStage" runat="server" OnClick="lnkNextStage_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                </div>
+                            </div>
                             <div class=" row gx-2 gy-3">
                                 <div class="col-md-6">
                                     <label for="staticEmail" class="form-label">
@@ -376,8 +392,7 @@
                                     <asp:Button ID="btnCancel1" runat="server" Text="Cancel" CssClass="btn btn-sm btn-grd btn-grd-danger" OnClick="btnCancel1_Click" />
                                 </div>
                                 <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPrevOrg" runat="server" OnClick="lnkPrevOrg_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextStage" runat="server" OnClick="lnkNextStage_Click">Next</asp:LinkButton>
+                                    
                                 </div>
                             </div>
 
@@ -454,7 +469,7 @@
             <asp:UpdatePanel ID="updatepanel3" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="mb-3 fw-bold">Add Stage</h6>
                             <div class="row gx-2 gy-3">
@@ -578,7 +593,7 @@
             <asp:UpdatePanel ID="updatepanel4" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="mb-3 fw-bold">Add Status</h6>
                             <div class="row gx-2 gy-3">
@@ -733,7 +748,7 @@
             <asp:UpdatePanel ID="updatepanel5" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="mb-3 fw-bold">Add Severtiy</h6>
                             <div class="row gx-2 gy-3">
@@ -876,7 +891,7 @@
             <asp:UpdatePanel ID="updatepanel6" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="mb-3 fw-bold">Add Priority</h6>
                             <div class="row gx-2 gy-3 ">
@@ -1164,7 +1179,7 @@
             <asp:UpdatePanel ID="updatepanel8" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="fw-bold mb-3">Email Configuration</h6>
                             <div class="row gx-2 gy-3">
@@ -1336,7 +1351,7 @@
             <asp:UpdatePanel ID="updatepanel9" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="fw-bold mb-3">Add Resolution</h6>
                             <div class="row gx-2 gy-3">
@@ -1451,7 +1466,7 @@
             <asp:UpdatePanel ID="updatepanel10" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6
                                 class="mb-0 fw-bold">Add SLA</h6>
@@ -1555,7 +1570,7 @@
             <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-1">
+                    <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
                             <h6 class="mb-3 fw-bold">Desk Template</h6>
                             <asp:Literal ID="ltlCount" runat="server" Text="0" Visible="false" />
@@ -1577,7 +1592,9 @@
 
                                     <asp:DropDownList ID="ddlRequestTypeDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestTypeDeskConfig_SelectedIndexChanged">
                                     </asp:DropDownList>
+                                    <<<<<<< HEAD
                                 </div>
+
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Service PreFix 
@@ -1586,8 +1603,9 @@
 
                                     <asp:TextBox ID="txtSDPrefix" runat="server" MaxLength="4" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
+                                        >>>>>>> 2888424127c7ec2101582c6ef19fa5f69a037c9c
                                         Service Desk Description 
                                     <asp:RequiredFieldValidator ID="rfvtxtSDDescription" runat="server" ControlToValidate="txtSDDescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
                                     </label>
@@ -2105,60 +2123,61 @@
                                     <asp:Button ID="btnInsertEcslevel" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertEcslevel_Click" ValidationGroup="UserEcslevel" />
                                     <asp:Button ID="btnUpdateEcslevel" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateEcslevel_Click" ValidationGroup="UserEcslevel" />
                                     <asp:Button ID="btnCancel14" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel14_Click" CausesValidation="false" />
-                                                               <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click">Previous</asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click">Previous</asp:LinkButton>
 
-                                    </div>
-                            </div>
                                 </div>
-</div>
-                        
-                      
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-start justify-content-between mb-3">
-                <div class="">
-                  <h6 class="mb-0">                                                            <asp:Label ID="Label26" runat="server" Text="Ecslevel Details" ></asp:Label>
-</h6>
-                </div>
-                                                        <asp:linkButton ID="ImageButton1" runat="server" class="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport_Click" >Export <i class="fa-solid fa-download"></i></asp:linkButton>
+                            </div>
+                        </div>
+                    </div>
 
-                             </div>
-                                                    <div class="row ">
-                                                        <div class="col-md-12">
-                                                             <div class="table-responsive table-container" >
-     <asp:GridView GridLines="None" ID="gvEcslevel" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap table-sm border"
-         Width="100%" OnRowCommand="gvEcslevel_RowCommand" OnRowDataBound="gvEcslevel_RowDataBound">
-         <Columns>
-             <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                 <ItemTemplate>
-                     <%#Container.DataItemIndex+1 %>
-                 </ItemTemplate>
-             </asp:TemplateField>
-             <asp:BoundField DataField="EsclationLevel" HeaderText="Escltion Level" NullDisplayText="NA" />
-             <asp:BoundField DataField="UserName" HeaderText="UserName" NullDisplayText="NA" />
-             <asp:BoundField DataField="UserEmail" HeaderText="User Email" NullDisplayText="NA" />
-             <asp:BoundField DataField="Mobile" HeaderText="Mobile" NullDisplayText="NA" />
-             <asp:BoundField DataField="TimeForEsclatn" HeaderText="Esclation Time" NullDisplayText="NA" />
-             <asp:TemplateField HeaderText=" Organization">
-                 <ItemTemplate>
-                     <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
-                     <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
-                 </ItemTemplate>
-             </asp:TemplateField>
-             <asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-             <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEcslevel" ItemStyle-Width="20px" ItemStyle-Height="5px" />
-         </Columns>
-     </asp:GridView>
- </div>
-                                                        </div>
-                                                     
-                                                      
-                                                    </div>
-                                                   
-                                                </div>
-                                            </div>
-                                     
-                    
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="">
+                                    <h6 class="mb-0">
+                                        <asp:Label ID="Label26" runat="server" Text="Ecslevel Details"></asp:Label>
+                                    </h6>
+                                </div>
+                                <asp:LinkButton ID="ImageButton1" runat="server" class="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
+
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="table-responsive table-container">
+                                        <asp:GridView GridLines="None" ID="gvEcslevel" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-head-fixed text-nowrap table-sm border"
+                                            Width="100%" OnRowCommand="gvEcslevel_RowCommand" OnRowDataBound="gvEcslevel_RowDataBound">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="EsclationLevel" HeaderText="Escltion Level" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="UserName" HeaderText="UserName" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="UserEmail" HeaderText="User Email" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="Mobile" HeaderText="Mobile" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="TimeForEsclatn" HeaderText="Esclation Time" NullDisplayText="NA" />
+                                                <asp:TemplateField HeaderText=" Organization">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEcslevel" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
 
                 </ContentTemplate>
                 <Triggers>

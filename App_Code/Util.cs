@@ -12,7 +12,7 @@ using DocumentFormat.OpenXml.VariantTypes;
 public class Util
 {
     InsertErrorLogs inEr = new InsertErrorLogs();
-    public DataSet getDashboardData(string ReqType, string Category, DateTime frmDate, DateTime toDate,
+    public DataSet getDashboardData(string ReqType, string Category, string frmDate, string toDate,
         string UserID, string Orgid)
     {
         DataSet ds = new DataSet();
@@ -27,7 +27,7 @@ public class Util
                 SqlDataAdapter sd = new SqlDataAdapter();
                 sd.SelectCommand = cmd;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "SP_GetDeliveredCount";
+                cmd.CommandText = "SP_getDashboardData";
                 cmd.Parameters.AddWithValue("@ReqType", ReqType);
                 cmd.Parameters.AddWithValue("@Category", Category);
                 cmd.Parameters.AddWithValue("@frmDate", frmDate);
