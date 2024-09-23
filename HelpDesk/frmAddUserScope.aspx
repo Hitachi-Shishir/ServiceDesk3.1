@@ -16,7 +16,7 @@
             --bs-pagination-padding-y: 0.25rem;
             --bs-pagination-font-size: 0.875rem;
             --bs-pagination-border-radius: var(--bs-border-radius-sm);
-            /*margin-top: -1.7rem!important;*/
+            margin-top: -1.7rem!important;
         }
     </style>
 
@@ -27,26 +27,15 @@
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
 
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">User and Permissions</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-
-                            <li class="breadcrumb-item active" aria-current="page">User Scope </li>
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
+          
 
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <div class="btn-group">
-                                <asp:Button ID="btnAddUserScope" Text="Add Scope" runat="server" CssClass="btn btn-sm btn-outline-secondary btnDisabled" OnClick="btnAddUserScope_Click" />
-                                <asp:Button ID="btnViewScope" runat="server" Text-="View Details" CssClass="btn btn-sm btn-outline-secondary btnEnabled" OnClick="btnViewScope_Click" />
+                                <asp:Button ID="btnAddUserScope" Text="Add Scope" runat="server" CssClass="btn btn-sm btn-outline-secondary " OnClick="btnAddUserScope_Click" />
+                                <asp:Button ID="btnViewScope" runat="server" Text-="View Details" CssClass="btn btn-sm btn-outline-secondary " OnClick="btnViewScope_Click" />
                             </div>
                         </div>
                     </div>
@@ -113,7 +102,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="table-responsive table-container">
-                                            <asp:GridView GridLines="None" ID="gvScope" runat="server" DataKeyNames="ScopeID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm"
+                                            <asp:GridView GridLines="None" ID="gvScope" runat="server" DataKeyNames="ScopeID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm text-nowrap"
                                                 Width="100%" OnRowCommand="gvScope_RowCommand" OnRowDataBound="gvScope_RowDataBound">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">

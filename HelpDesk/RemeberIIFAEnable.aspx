@@ -20,17 +20,7 @@
   </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
-                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">User and Permissions</div>
-    <div class="ps-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0">
                 
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-reply"></i> II FA Reset</li>
-            </ol>
-        </nav>
-    </div>
-    </div>
             <div class="card ">
                 <div class="card-body">
                     <div class="row gy-3 gx-2">
@@ -67,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="table-responsive table-container">
                                 <asp:GridView ID="grd" HeaderStyle-Height="25px" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                    runat="server" Width="100%" Class="data-table table table-striped table-bordered table-sm text-nowrap">
+                                    runat="server" Width="100%" Class="data-table table table-striped border table-sm text-nowrap">
                                     <Columns>
                                         <asp:TemplateField HeaderStyle-Width="10%" HeaderText="Sr No">
                                             <ItemTemplate>

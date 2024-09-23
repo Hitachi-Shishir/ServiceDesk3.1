@@ -39,10 +39,10 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
                     FillScopeDetails();
                     FillUserRole();
                     //	FillLocation();
-                    btnViewUsers.CssClass = "btn btn-sm btnEnabled";
+                    btnViewUsers.CssClass = "btn btn-sm btn-secondary";
                     btnViewUsers.Enabled = false;
-                    btnAddRequester.CssClass = "btn btn-sm btnDisabled";
-                    btnimportUser.CssClass = "btn btn-sm btnDisabled";
+                    btnAddRequester.CssClass = "btn btn-sm btn-outline-secondary";
+                    btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
                     pnlShowUsers.Visible = true;
                     if (Session["UserScope"].ToString() == "Admin")
                     {
@@ -1070,9 +1070,9 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             pnlImportUser.Visible = true;
             pnlAddRequester.Visible = false;
             pnlShowUsers.Visible = false;
-            btnAddRequester.CssClass = "btn btn-sm btnDisabled";
-            btnViewUsers.CssClass = "btn btn-sm btnDisabled";
-            btnimportUser.CssClass = "btn btn-sm btnEnabled";
+            btnAddRequester.CssClass = "btn btn-sm btn-outline-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
+            btnimportUser.CssClass = "btn btn-sm btn-secondary";
             btnimportUser.Enabled = false;
             btnAddRequester.Enabled = true;
             btnViewUsers.Enabled = true;
@@ -1146,9 +1146,9 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
             pnlAddRequester.Visible = false;
             pnlImportUser.Visible = false;
             pnlShowUsers.Visible = true;
-            btnAddRequester.CssClass = "btn btn-sm btnDisabled ";
-            btnimportUser.CssClass = "btn btn-sm btnDisabled";
-            btnViewUsers.CssClass = "btn btn-sm btnEnabled";
+            btnAddRequester.CssClass = "btn btn-sm btn-outline-secondary ";
+            btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-secondary";
             btnViewUsers.Enabled = false;
             btnAddRequester.Enabled = true;
             btnimportUser.Enabled = true;
@@ -1171,9 +1171,9 @@ public partial class HelpDesk_frmAddRequester : System.Web.UI.Page
         try
         {
             pnlAddRequester.Visible = true;
-            btnAddRequester.CssClass = "btn btn-sm btnEnabled";
-            btnViewUsers.CssClass = "btn btn-sm btnDisabled";
-            btnimportUser.CssClass = "btn btn-sm btnDisabled";
+            btnAddRequester.CssClass = "btn btn-sm btn-secondary";
+            btnViewUsers.CssClass = "btn btn-sm btn-outline-secondary";
+            btnimportUser.CssClass = "btn btn-sm btn-outline-secondary";
             btnAddRequester.Enabled = false;
             btnViewUsers.Enabled = true;
             btnimportUser.Enabled = true;

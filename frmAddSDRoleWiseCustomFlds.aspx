@@ -4,19 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
    
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">User and Permissions</div>
-    <div class="ps-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0">
-              
-                <li class="breadcrumb-item active" aria-current="page"> SD Custom Role</li>
-            </ol>
-        </nav>
-    </div>
-
-</div>
-
+            
             <div class="card">
                 <div class="card-body">
                     
@@ -64,7 +52,7 @@
                 </div>
               </div>
                                         <div class="col-md-12 mt-1">  <div class="table-responsive table-container" style="height: 230px; ">
-      <asp:GridView ID="gvMasterRoles" DataKeyNames="MenuID" AutoGenerateColumns="false" runat="server" CssClass="table table-head-fixed text-nowrap table-sm table-striped">
+      <asp:GridView ID="gvMasterRoles" DataKeyNames="MenuID" AutoGenerateColumns="false" runat="server" CssClass="table table-head-fixed text-nowrap table-sm table-striped border">
           <Columns>
               <asp:TemplateField>
                   <ItemTemplate>
@@ -96,7 +84,7 @@
                                    <div class="row">
                                        <div class="col-md-12">
                                     <div class="table-responsive table-container " style="height: 240px;">
-                                        <asp:GridView ID="gvAllRoles" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-sm table-head-fixed text-nowrap table-striped" runat="server" OnRowCommand="gvAllRoles_RowCommand">
+                                        <asp:GridView ID="gvAllRoles" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-sm table-head-fixed text-nowrap table-striped border" runat="server" OnRowCommand="gvAllRoles_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField>
                                                     <ItemTemplate>

@@ -39,9 +39,9 @@ public partial class frmEsclationMaster : System.Web.UI.Page
                     if (Request.QueryString["pnlAddEcslevel"] == "true")
                     {
                         pnlAddEcslevel.Visible = true;
-                        btnAddUserEcslevel.CssClass = "btn btn-sm btnEnabled";
+                        btnAddUserEcslevel.CssClass = "btn btn-sm btn-outline-secondary";
                         pnlViewEcslevel.Visible = false;
-                        btnViewEcslevel.CssClass = "btn btn-sm btnDisabled";
+                        btnViewEcslevel.CssClass = "btn btn-sm btn-secondary";
                         btnAddUserEcslevel.Enabled = false;
                         btnViewEcslevel.Enabled = true;
                     }
@@ -522,18 +522,18 @@ $"if (window.location.pathname.endsWith('/frmEsclationMaster.aspx')) {{ success_
     protected void AddEcslevelPanel()
     {
         pnlAddEcslevel.Visible = true;
-        btnAddUserEcslevel.CssClass = "btn btn-sm btnEnabled";
+        btnAddUserEcslevel.CssClass = "btn btn-sm btn-secondary";
         pnlViewEcslevel.Visible = false;
-        btnViewEcslevel.CssClass = "btn btn-sm btnDisabled";
+        btnViewEcslevel.CssClass = "btn btn-sm btn-outline-secondary";
         btnAddUserEcslevel.Enabled = false;
         btnViewEcslevel.Enabled = true;
     }
     protected void btnViewEcslevel_Click(object sender, EventArgs e)
     {
         pnlAddEcslevel.Visible = false;
-        btnAddUserEcslevel.CssClass = "btn btn-sm btnDisabled";
+        btnAddUserEcslevel.CssClass = "btn btn-sm btn-outline-secondary";
         pnlViewEcslevel.Visible = true;
-        btnViewEcslevel.CssClass = "btn btn-sm btnEnabled";
+        btnViewEcslevel.CssClass = "btn btn-sm btn-secondary";
         btnViewEcslevel.Enabled = false;
         btnAddUserEcslevel.Enabled = true;
         FillEcslevelDetails();

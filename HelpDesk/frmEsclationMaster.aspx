@@ -26,8 +26,10 @@
             <div class="card-body">
                <div class="row">
                   <div class="col-md-12 mb-2">
-                     <asp:Button ID="btnAddUserEcslevel" Text="Add Ecslevel" runat="server" CssClass="btn btn-sm btnDisabled btn-outline-secondary" OnClick="btnAddUserEcslevel_Click" />
-                     <asp:Button ID="btnViewEcslevel" runat="server" Text-="View Details" CssClass="btn btn-sm btnEnabled btn-outline-secondary" OnClick="btnViewEcslevel_Click" />
+                      <div class="btn-group">
+                     <asp:Button ID="btnAddUserEcslevel" Text="Add Ecslevel" runat="server" CssClass="btn btn-sm  btn-outline-secondary" OnClick="btnAddUserEcslevel_Click" />
+                     <asp:Button ID="btnViewEcslevel" runat="server" Text-="View Details" CssClass="btn btn-sm  btn-outline-secondary" OnClick="btnViewEcslevel_Click" />
+                  </div>
                   </div>
                </div>
                <div class="card border bg-transparent shadow-none mb-3">
@@ -116,7 +118,7 @@
                      </div>
                      <div class="col-md-12">
                      <div class="table-responsive table-container" style=width: 100%">
-                     <asp:GridView GridLines="None" ID="gvEcslevel" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-sm text-nowrap"
+                     <asp:GridView GridLines="None" ID="gvEcslevel" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-sm text-nowrap border"
                         Width="100%" OnRowCommand="gvEcslevel_RowCommand" OnRowDataBound="gvEcslevel_RowDataBound">
                      <Columns>
                      <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">

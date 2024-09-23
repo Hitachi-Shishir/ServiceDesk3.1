@@ -15,7 +15,7 @@
 	--bs-pagination-padding-y: 0.25rem;
 	--bs-pagination-font-size: 0.875rem;
 	--bs-pagination-border-radius: var(--bs-border-radius-sm);
-    /*margin-top: -1.7rem!important;*/
+    margin-top: -1.7rem!important;
 }
   </style>
 
@@ -24,24 +24,12 @@
     <asp:ScriptManager ID="scriptmanager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
-            
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">User and Permissions</div>
-    <div class="ps-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0">
-              
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-file-invoice"></i> SD Account </li>
-            </ol>
-        </nav>
-    </div>
-
-</div>
+        
 
                        <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 mb-2">
                                     <div class="btn-group">
                                 <asp:Repeater ID="rptAccount" runat="server" OnItemDataBound="rptAccount_ItemDataBound" OnItemCommand="rptAccount_ItemCommand">
                                     <ItemTemplate>
@@ -52,9 +40,11 @@
                                 </asp:Repeater>
                             </div>
                             </div>
-                            </div>
+                            </div> 
+                                    <div class="card shadow-none border  ">
+            <div class="card-body ">
                             <div class="row ">
-                                <div class="col-md-4">
+                                <div class="col-md-4 d-none">
                                     <asp:Label ID="lblsofname" runat="server" Text="User Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
                                 </div>
                                 <div class="col-md-6">
@@ -70,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive table-container">
-                                <asp:GridView GridLines="None" ID="gvSDAccount" runat="server" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm"
+                                <asp:GridView GridLines="None" ID="gvSDAccount" runat="server" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm"
                                     Width="100%">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
@@ -93,6 +83,8 @@
                                 </asp:GridView>
                             </div>
                         </div>
+                    </div>
+                    </div>
                     </div>
            
         </ContentTemplate>

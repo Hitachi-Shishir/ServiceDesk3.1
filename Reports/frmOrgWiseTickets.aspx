@@ -22,79 +22,78 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <section class="content">
-        <div class="container-fluid">
-            <div class="row ">
-                <div class="col-md-12 graphs">
-                    <div class="card card-default">
-                        <div class="card-body">
-                            <div class="row mb-2">
-                                <div class="col-md-3 grid_box1">
-                                    <label class="control-label ">
-                                        Select Desk : 
+
+        <div class="card mb-1">
+            <div class="card-body">
+                <div class="row gx-2 gy-3">
+                    <div class="col-md-3 grid_box1">
+                        <label class="form-label ">
+                            Select Desk 
                     <asp:RequiredFieldValidator ID="RequiredSDDrop" runat="server" ControlToValidate="DropDesks" InitialValue="0" ErrorMessage="Required" ForeColor="Red" ValidationGroup="searchbtn"></asp:RequiredFieldValidator>
-                                    </label>
-                                    <asp:DropDownList ID="DropDesks" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field">
-                                    </asp:DropDownList>
-                                </div>
-                                <div class="col-md-2 grid_box1">
-                                    <label class="control-label ">
-                                        From : 
+                        </label>
+                        <asp:DropDownList ID="DropDesks" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field">
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-md-2 grid_box1">
+                        <label class="form-label ">
+                            From
                                 <asp:RequiredFieldValidator ID="RequiredtxtFrom" runat="server" ControlToValidate="txtFrom" ErrorMessage="Required" ForeColor="Red" ValidationGroup="searchbtn"></asp:RequiredFieldValidator>
-                                    </label>
-                                    <div class="input-group mb-3">
-                                        <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control form-control-sm datepicker" autocomplete="off" ClientIDMode="static"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 grid_box1">
-                                    <label class="control-label ">
-                                        Before : 
+                        </label>
+                        <div class="input-group mb-3">
+                            <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control form-control-sm datepicker" autocomplete="off" ClientIDMode="static"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-md-2 grid_box1">
+                        <label class="form-label ">
+                            Before
                                 <asp:RequiredFieldValidator ID="RequiredSDtxtTo" runat="server" ControlToValidate="txtTo" ErrorMessage="Required" ForeColor="Red" ValidationGroup="searchbtn"></asp:RequiredFieldValidator>
-                                    </label>
-                                    <div class="input-group mb-3">
-                                        <asp:TextBox ID="txtTo" runat="server" CssClass="form-control form-control-sm datepicker" autocomplete="off" ClientIDMode="static"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-md-2  mt-4 pt-2">
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" ValidationGroup="searchbtn" CssClass="btn btn-sm savebtn" />
-                                </div>
-
-                                <div class="clearfix"></div>
-                            </div>
+                        </label>
+                        <div class="input-group mb-3">
+                            <asp:TextBox ID="txtTo" runat="server" CssClass="form-control form-control-sm datepicker" autocomplete="off" ClientIDMode="static"></asp:TextBox>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="col-md-2">
+                        <label class="form-label opacity-0 ">..</label><br />
+                        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" ValidationGroup="searchbtn" CssClass="btn btn-sm btn-outline-secondary" />
+                    </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row mt-2">
-                                <div class="col-md-3">
-                                    <asp:Label ID="Label1" runat="server" Text="All Ticket Details" Font-Size="Larger" ForeColor="Black"></asp:Label>
-                                </div>
-                                <div class="col-md-6">
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="btn btn-sm elevation-1 ml-2" style="padding: 0px; margin-bottom: 10px; padding-top: 0px">
-                                        <label class="mr-1 ml-1 mb-0">Export</label>
-                                        <asp:ImageButton ID="ImageBtnExport" runat="server" ImageUrl="~/Images/New folder/excelnew.png" OnClick="ImageBtnExport_Click" CssClass="pull-right ml-2 mt-0 btn-outline-success control-label" class="fa fa-download" />
-                                    </div>
-                                    <asp:Label ID="Label4" runat="server" CssClass="ml-1  " Font-Size="Medium" Text="Total: "></asp:Label>
-                                    <asp:Label ID="lblTotalCount" runat="server" CssClass="" Font-Size="Medium" Text="0"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="table-responsive p-0" style="height: 300px;">
-                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped table-bordered table-sm text-nowrap" OnPageIndexChanging="gvAllTickets_PageIndexChanging" PageSize="100" AllowPaging="True">
-                                </asp:GridView>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix">
-                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
+
+
+
+
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                    <div class="">
+                        <h6 class="mb-0">
+                            <asp:Label ID="Label1" runat="server" Text="All Ticket Details"></asp:Label>
+                        </h6>
+                    </div>
+                    <div class="d-flex  align-items-start justify-content-between">
+                 <div class=" ">
+    
+    <asp:Label ID="Label4" runat="server" CssClass=" " Font-Size="Medium" Text="Total: "></asp:Label>
+    <asp:Label ID="lblTotalCount" runat="server" CssClass="" Font-Size="Medium" Text="0"></asp:Label> &nbsp;
+<asp:LinkButton ID="ImageBtnExport" runat="server" CssClass="btn btn-sm btn-outline-secondary" OnClick="ImageBtnExport_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
+</div>        
+</div>        
+                    </div>
+               
+               <div class="col-md-12">
+                <div class="table-responsive table-container" >
+                    <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped border table-sm text-nowrap" OnPageIndexChanging="gvAllTickets_PageIndexChanging" PageSize="100" AllowPaging="True">
+                    </asp:GridView>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+
     </section>
 </asp:Content>
 

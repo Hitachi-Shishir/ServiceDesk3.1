@@ -22,20 +22,20 @@
 
                             <div class="profile-info pt-5 d-flex align-items-center justify-content-between">
                                 <div class="">
-                                    <h3>Jhon Deo</h3>
-                                    <p class="mb-0">
-                                        Engineer at BB Agency Industry<br>
-                                        New York, United States
-                                    </p>
+                                    <asp:Label ID="lblUserName" runat="server" CssClass="h3" Text="Label"></asp:Label> <asp:Label ID="lblEmpId" runat="server" CssClass="h5 opacity-75" Text="Label"></asp:Label>
+                                  <br />
+                                     <asp:Label ID="lblEmailID" runat="server" Text="Label" class="mb-0"></asp:Label>
                                 </div>
                                 <div class="">
                                     <a href="javascript:;" class="btn btn-grd-primary rounded-5 px-4"><i class="bi bi-chat me-2"></i>Send Message</a>
                                 </div>
                             </div>
                             <div class="kewords d-flex align-items-center gap-3 mt-4 overflow-x-auto">
-                                <button type="button" class="btn btn-sm btn-light rounded-5 px-4">UX Research</button>
-                                <button type="button" class="btn btn-sm btn-light rounded-5 px-4">CX Strategy</button>
-                                <button type="button" class="btn btn-sm btn-light rounded-5 px-4">Management</button>
+                              <asp:Label ID="lblDesignation" class="btn btn-sm btn-light rounded-5 px-4" runat="server" Text="Label"></asp:Label>
+                                                                 <asp:Label ID="lblDomainType" runat="server" class="btn btn-sm btn-light rounded-5 px-4" Text="Label"></asp:Label>
+
+                                                            <asp:Label ID="lblContactNo" runat="server"  class="btn btn-sm btn-light rounded-5 px-4" Text="Label"></asp:Label>
+
                             </div>
                         </div>
                     </div>
@@ -50,15 +50,15 @@
                                     </div>
                                     <div class="col-md-12">
                                         <label>EmpID</label>
-                                        <asp:Label ID="lblEmpId" runat="server" Text="Label"></asp:Label>
+                                       
                                     </div>
                                     <div class="col-md-12">
                                         <label>UserName</label>
-                                        <asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label>
+                                     
                                     </div>
                                     <div class="col-md-12">
                                         <label>EmailID</label>
-                                        <asp:Label ID="lblEmailID" runat="server" Text="Label"></asp:Label>
+                                       
                                     </div>
                                     <div class="col-md-12">
                                         <label>Login ID</label>
@@ -70,15 +70,13 @@
                                     </div>
                                     <div class="col-md-12">
                                         <label>ContactNo</label>
-                                        <asp:Label ID="lblContactNo" runat="server" Text="Label"></asp:Label>
                                     </div>
                                     <div class="col-md-12">
                                         <label>Designation</label>
-                                        <asp:Label ID="lblDesignation" runat="server" Text="Label"></asp:Label>
+                                      
                                     </div>
                                     <div class="col-md-12">
                                         <label>Domain Type</label>
-                                        <asp:Label ID="lblDomainType" runat="server" Text="Label"></asp:Label>
                                     </div>
                                 </div>
                             </div>

@@ -30,8 +30,8 @@
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <div class="btn-group">
-                                <asp:Button ID="btnAddReqType" Text="Add Reason Type" runat="server" CssClass="btn btn-sm " OnClick="btnAddReqType_Click" />
-                                <asp:Button ID="btnViewReqType" runat="server" Text-="View Details" CssClass="btn btn-sm " OnClick="btnViewReqType_Click" />
+                                <asp:Button ID="btnAddReqType" Text="Add Reason Type" runat="server" CssClass="btn btn-sm btn-outline-secondary" OnClick="btnAddReqType_Click" />
+                                <asp:Button ID="btnViewReqType" runat="server" Text-="View Details" CssClass="btn btn-sm btn-outline-secondary" OnClick="btnViewReqType_Click" />
                             </div>
                         </div>
                     </div>
