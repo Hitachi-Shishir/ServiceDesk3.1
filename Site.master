@@ -692,7 +692,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                 <i class="material-icons-outlined">person_outline</i>Profile
                             </a>
 
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="frmChgPass.aspx"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href='<%= ResolveUrl("~/frmChgPass.aspx")%>'><i
                                 class="material-icons-outlined">local_bar</i>Change Password</a>
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
                                 class="material-icons-outlined">dashboard</i>Dashboard</a>

@@ -120,6 +120,48 @@ public partial class DeskConfiguration : System.Web.UI.Page
         txtStatusName.Text = "";
         txtStatusDesc.Text = "";
         txtColorForStatus.Text = "";
+        ddlOrg4.ClearSelection();
+        ddlRequestTypeSeverity.ClearSelection();
+        txtSeverityName.Text = "";
+        txtResponseTime.Text = "";
+        txtResolutionTime.Text = "";
+        txtSeverityDescription.Text = "";
+        ddlOrg5.ClearSelection();
+        ddlRequestTypePriority.ClearSelection();
+        txtpriority.Text = "";
+        txtPriorityDescription.Text = "";
+        ddlOrgResolution.ClearSelection();
+        ddlRequestTypeResolution.ClearSelection();
+        txtResolution.Text = "";
+        txtResolutnDesc.Text = "";
+        ddlOrgSLA.ClearSelection();
+        txtSLAName.Text = "";
+        txtSLADescription.Text = "";
+        ddlOrgDeskConfig.ClearSelection();
+        ddlRequestTypeDeskConfig.ClearSelection();
+        txtSDPrefix.Text = "";
+        txtSDDescription.Text = "";
+        ddlPriority.ClearSelection();
+        ddlCoverageSch.ClearSelection();
+        ddlStageDeskConfig.ClearSelection();
+        ddlStatus.ClearSelection();
+        ddlSlA.ClearSelection();
+        ddlCategory1.ClearSelection();
+        ddlCategory2.ClearSelection();
+        ddlCategory3.ClearSelection();
+        ddlCategory4.ClearSelection();
+        ddlCategory5.ClearSelection();
+        txtArchiveTime.Text = "";
+        ddlSeverity.ClearSelection();
+        txtHostName.Text = "";
+        txtPort.Text = "";
+        txtUserName.Text = "";
+        txtEmail.Text = "";
+        txtRetry.Text = "";
+        txtClientID.Text = "";
+        txtClientSecretKey.Text = "";
+        txtTenantID.Text = "";
+        ddlOrgEmailConfig.ClearSelection();
     }
     protected int CurrentStep
     {
@@ -368,8 +410,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             con.Close();
                             if (res > 0)
                             {
-                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully !")}');", true);
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully !")}');", true);
+                                //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
                                 FillOrgDetails();
                             }
                         }
@@ -468,8 +510,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         //FillOrgDetails();
                         cleardata();
                     }
@@ -574,8 +616,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         FillOrgDetails();
                         cleardata();
                     }
@@ -936,6 +978,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         FillRequestTypeDetails();
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         cleardata();
+                        btnSave.Visible = true;
+                        btnUpdateReqType.Visible = false;
                     }
                 }
             }
@@ -1548,6 +1592,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         FillStageDetails();
                         cleardata();
+                        btnInsertStage.Visible = true;
+                        btnUpdateStage.Visible = false;
                     }
                 }
             }
@@ -1617,7 +1663,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
         CurrentStep = 2;
         ViewState["CurrentStep"] = CurrentStep;
         DataBind();
-        cleardata(); pnlReqType.Visible = true;
+        cleardata(); 
+        pnlReqType.Visible = true;
         pnlAddStage.Visible = false;
         lnkNextAddReq_Click(null, null);
     }
@@ -2121,9 +2168,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        DataTableScript();
-                        lnkbtnNextStatus_Click(null, null);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        FillStatusDetails();
+                        btnUpdateStatus.Visible = false;
+                        btnInsertStatus.Visible = true;
                     }
                 }
             }
@@ -2428,6 +2476,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         cleardata();
                         FillSeverityDetails();
+                        btnInsertSeverity.Visible = true;
+                        btnUpdateSeverity.Visible = false;
                     }
                 }
             }
@@ -2700,6 +2750,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         cleardata();
                         FillSeverityDetails();
+                        btnInsertSeverity.Visible = true;
+                        btnUpdateSeverity.Visible = false;
                     }
                 }
             }
@@ -2830,7 +2882,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 this.gvPriority.DataBind();
             }
             if (SD_Priority.Rows.Count > 0) { }
-                //GridFormat6(SD_Priority);
+            //GridFormat6(SD_Priority);
         }
         catch (ThreadAbortException e2)
         {
@@ -3141,7 +3193,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         lnkNextPriority_Click(null, null);
                         cleardata();
                     }
@@ -3212,9 +3264,12 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         lnkNextPriority_Click(null, null);
                         cleardata();
+                        btnInsertPriority.Visible = true;
+                        btnUpdatePriority.Visible = false;
                     }
                 }
             }
@@ -3310,7 +3365,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrg6.DataTextField = "OrgName";
             ddlOrg6.DataValueField = "Org_ID";
             ddlOrg6.DataBind();
-            ddlOrg6.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg6.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select Organization----", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -3403,6 +3458,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         ddlParentCategory.Enabled = true;
                         ddlParentCategory.Visible = true;
                         FillParentCategory();
+                        //Response.Redirect(Request.Url.AbsoluteUri);
                     }
                 }
             }
@@ -3430,6 +3486,18 @@ public partial class DeskConfiguration : System.Web.UI.Page
 
         }
     }
+    public string checkparentcategduplicate(string parentcat, string childcat)
+    {
+        string sql2 = "Select ID  from SD_Category where Categoryref='" + parentcat + "'";
+        string ParentCatID = Convert.ToString(database.GetScalarValue(sql2));
+        string Categoryref = parentcat + "||" + childcat;
+        string sql = "if exists(select * from SD_Category where Categoryref='" + Categoryref + "' " +
+            "and CategoryCodeRef='" + childcat + "' and rowDesc='' and " +
+            " partitionid='1' and inUse='1' and OrgDeskRef='" + ddlOrg6.SelectedValue + "' and sdCategoryFK='" + ParentCatID + "') " +
+            "begin select 'True'  end";
+
+        return Convert.ToString(database.GetScalarValue(sql));
+    }
     int res;
     protected int SaveChildCategory(string CategoryRef, string CategoryCodeRef, int CategoryLevel)
     {
@@ -3451,6 +3519,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@Option", "AddChildCategory");
                     con.Open();
                     res = cmd.ExecuteNonQuery();
+                    //Response.Redirect(Request.Url.AbsoluteUri);
                 }
             }
             return res;
@@ -3544,8 +3613,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand(@"	select Categoryref,categorycoderef from 
-					(select a.Categoryref as sdCategoryFK,b.Categoryref,b.categorycoderef from dbo.fnGetCategoryFullPathForPartition(1,'" + ddlOrg6.SelectedValue + "') a  left join  dbo.fnGetCategoryFullPathForPartition(1,'" + ddlOrg.SelectedValue + "') b on a.id=b.sdCategoryFK) c where c.sdCategoryFK='" + category + "' and c.Categoryref!='' order by categorycoderef asc", con))
+                string sql = "select Categoryref,categorycoderef from " +
+                    "(select a.Categoryref as sdCategoryFK,b.Categoryref,b.categorycoderef from dbo.fnGetCategoryFullPathForPartition(1,'" + ddlOrg6.SelectedValue + "') a  left join  dbo.fnGetCategoryFullPathForPartition(1,'" + ddlOrg6.SelectedValue + "') b on a.id=b.sdCategoryFK) c where c.sdCategoryFK='" + category + "' and c.Categoryref!='' order by categorycoderef asc";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
@@ -3692,6 +3762,28 @@ public partial class DeskConfiguration : System.Web.UI.Page
         {
             rfvtxtParentCategory.Enabled = true;
             txtParentCategory.Visible = true;
+            if (txtParentCategory.Visible == true)
+            {
+                if (txtParentCategory.Text == "")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("Category Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    return;
+                }
+                else
+                {
+                    string Categoryref = Session["SDRef"].ToString().Trim() + "||" + txtParentCategory.Text.Trim();
+                    string sql = "if exists(select * from SD_Category where Categoryref='" + Categoryref + "' " +
+                        "and CategoryCodeRef='" + txtParentCategory.Text.Trim() + "' and rowDesc='' and " +
+                        " partitionid='1' and inUse='1' and OrgDeskRef='" + ddlOrg6.SelectedValue + "') begin select 'True'  end";
+                    if (Convert.ToString(database.GetScalarValue(sql)) != "")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("Category Allredy Exists for this Organization!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        return;
+                    }
+                }
+            }
             SaveParentCategory();
             FillParentCategory();
             txtParentCategory.Visible = false;
@@ -3782,6 +3874,25 @@ public partial class DeskConfiguration : System.Web.UI.Page
             //Disable Textbox and enable dropdown 
             // Make sure Category level 1 value is selected 
             rfvtxtCatII.Enabled = true;
+            if (txtCatII.Visible == true)
+            {
+                if (txtCatII.Text == "")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryII Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    return;
+                }
+                else
+                {
+                    string chkduplicate = checkparentcategduplicate(ddlParentCategory.SelectedValue.ToString(), txtCatII.Text.Trim());
+                    if (chkduplicate != "")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryII Allredy Exists for this Organization!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        return;
+                    }
+                }
+            }
             res = SaveChildCategory(ddlParentCategory.SelectedValue.ToString(), txtCatII.Text, 2);
             ddlCatII.Enabled = true;
             ddlCatII.Visible = true;
@@ -4106,6 +4217,25 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
+            if (txtCatLevelIII.Visible == true)
+            {
+                if (txtCatLevelIII.Text == "")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryIII Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    return;
+                }
+                else
+                {
+                    string chkduplicate = checkparentcategduplicate(ddlCatII.SelectedValue.ToString(), txtCatLevelIII.Text.Trim());
+                    if (chkduplicate != "")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryIII Allredy Exists for this Organization!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        return;
+                    }
+                }
+            }
             rfvtxtCatLevelIII.Enabled = true;
             FillParentCategory();
             ddlParentCategory.SelectedValue = hdnVarCategoryI.Value;
@@ -4235,6 +4365,25 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
+            if (txtCateLevelIV.Visible == true)
+            {
+                if (txtCateLevelIV.Text == "")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryIV Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    return;
+                }
+                else
+                {
+                    string chkduplicate = checkparentcategduplicate(ddlCateLevelIII.SelectedValue.ToString(), txtCateLevelIV.Text.Trim());
+                    if (chkduplicate != "")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryIV Allredy Exists for this Organization!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        return;
+                    }
+                }
+            }
             rfvtxtCateLevelIV.Enabled = true;
             //FillParentCategory();
             //ddlParentCategory.SelectedValue = hdnVarCategoryI.Value;
@@ -4363,6 +4512,26 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
+            if (txtCatV.Visible == true)
+            {
+                if (txtCatV.Text == "")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryV Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    return;
+                }
+                else
+                {
+                    string chkduplicate = checkparentcategduplicate(ddlCateLevelIV.SelectedValue.ToString(), txtCatV.Text.Trim());
+                    if (chkduplicate != "")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+            $"warning_noti('{HttpUtility.JavaScriptStringEncode("CategoryV Allredy Exists for this Organization!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                        return;
+
+                    }
+                }
+            }
             rfvtxtCatV.Enabled = true;
             //FillParentCategory();
             //ddlParentCategory.SelectedValue = hdnVarCategoryI.Value;
@@ -4842,6 +5011,25 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         if (txtParentCategory.Text != null)
         {
+            if (txtParentCategory.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"warning_noti('{HttpUtility.JavaScriptStringEncode("Category Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                return;
+            }
+            else
+            {
+                string Categoryref = Session["SDRef"].ToString().Trim() + "||" + txtParentCategory.Text.Trim();
+                string sql = "if exists(select * from SD_Category where Categoryref='" + Categoryref + "' " +
+                    "and CategoryCodeRef='" + txtParentCategory.Text.Trim() + "' and rowDesc='' and " +
+                    " partitionid='1' and inUse='1' and OrgDeskRef='" + ddlOrg6.SelectedValue + "') begin select 'True'  end";
+                if (Convert.ToString(database.GetScalarValue(sql)) != "")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+        $"warning_noti('{HttpUtility.JavaScriptStringEncode("Category Allredy Exists for this Organization!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                    return;
+                }
+            }
             int result = UpdateCategory(parentcategoryValue, txtParentCategory.Text.Trim());
             if (result > 0)
             {
@@ -5009,6 +5197,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlCategory.Visible = false;
         CurrentStep = 8;
         DataBind();
+        cleardata();
         ViewState["CurrentStep"] = CurrentStep;
         if (Session["UserScope"] != null)
         {
@@ -5309,11 +5498,11 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             if (res > 0)
                             {
                                 //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}');", true);
-                                lnkNextResolution_Click(null, null);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
+                                FillResolutionDetails();
                             }
                             con.Close();
-                            FillResolutionDetails();
+                            cleardata();
                         }
                     }
                 }
@@ -5411,7 +5600,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
-                        lnkNextResolution_Click(null,null);
+                        lnkNextEmailConfig_Click(null, null);
+                        cleardata();
                     }
                 }
             }
@@ -5481,9 +5671,12 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
+                        btnInsertResolution.Visible = true;
+                        btnUpdateResolution.Visible = false;
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
-                        lnkNextResolution_Click(null, null);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
+                        lnkNextEmailConfig_Click(null, null);
+                        cleardata();
                     }
                 }
             }
@@ -5573,12 +5766,14 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         pnlAddResolution.Visible = false;
         lnkNextCategory_Click(null, null);
+        cleardata();
     }
     protected void lnkNextSLA_Click(object sender, EventArgs e)
     {
         CurrentStep = 9;
         ViewState["CurrentStep"] = CurrentStep;
         DataBind();
+        cleardata();
         pnlAddSLA.Visible = true;
         pnlAddResolution.Visible = false;
         if (Session["UserScope"] != null)
@@ -5763,14 +5958,13 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             cmd.Parameters.AddWithValue("@Option", "DeleteDeskSLA");
                             cmd.CommandTimeout = 180;
                             int res = cmd.ExecuteNonQuery();
+                            con.Close();
+                            FillSLADetails();
                             if (res > 0)
                             {
                                 ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Deleted Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-                                lnkNextResolution_Click(null, null);
+                                cleardata();
                             }
-                            con.Close();
-                            FillSLADetails();
-
                         }
                     }
                 }
@@ -5860,6 +6054,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         lnkNextSLA_Click(null, null);
+                        cleardata();
                     }
                 }
             }
@@ -5956,7 +6151,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
-                        lnkNextResolution_Click(null, null);
+                        lnkNextSLA_Click(null, null);
+                        cleardata();
+                        btnInsertSLA.Visible = true;
+                        btnUpdateSLA.Visible = false;
                     }
                 }
             }
@@ -5994,6 +6192,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         pnlAddSLA.Visible = false;
         lnkNextEmailConfig_Click(null, null);
+        cleardata();
     }
     protected void lnkNextDeskConfig_Click(object sender, EventArgs e)
     {
@@ -6001,6 +6200,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddSLA.Visible = false;
         CurrentStep = 10;
         DataBind();
+        cleardata();
         pnlAddEmailConfig.Visible = false;
         pnlAdddeskConfig.Visible = true;
         if (Session["UserScope"] != null)
@@ -6109,7 +6309,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         try
         {
 
-            DataTable SD_Severity = new SDTemplateFileds().FillSeverity(Session["SDRef"].ToString(), ddlOrgDeskConfig.SelectedValue.ToString()); ;
+            DataTable SD_Severity = new SDTemplateFileds().FillSeverity(Session["SDRef"].ToString(), ddlOrgDeskConfig.SelectedValue.ToString());
 
             ddlSeverity.DataSource = SD_Severity;
             ddlSeverity.DataTextField = "Serveritycoderef";
@@ -7033,6 +7233,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         lnkNextDeskConfig_Click(null, null);
+                        btnInsert.Visible = true;
+                        btnUpdate.Visible = false;
                     }
 
                 }
@@ -7435,7 +7637,6 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         try
         {
-
             DataTable dt = new DataTable("GridView_Data");
             foreach (System.Web.UI.WebControls.TableCell cell in gvDesk.HeaderRow.Cells)
             {
@@ -7568,6 +7769,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddEmailConfig.Visible = true;
         pnlAdddeskConfig.Visible = false;
         CurrentStep = 11;
+        cleardata();
         DataBind();
         ViewState["CurrentStep"] = CurrentStep;
         if (Session["UserScope"] != null)
@@ -7579,13 +7781,14 @@ public partial class DeskConfiguration : System.Web.UI.Page
         {
             Response.Redirect("/Default.aspx");
         }
-        
+
     }
     protected void lnkPreviousSLA_Click(object sender, EventArgs e)
     {
         pnlAddSLA.Visible = true;
         pnlAdddeskConfig.Visible = false;
         lnkNextSLA_Click(null, null);
+        cleardata();
     }
     #endregion Add Desk Config End
 
@@ -8274,7 +8477,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                             }
                             con.Close();
                             FillEmailConfigDetails();
-                            
+
                         }
                     }
                 }
@@ -8382,7 +8585,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
-                        FillOrganizationEmailConfig();
+                        FillEmailConfigDetails();
                     }
                 }
             }
@@ -8502,7 +8705,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
-                        FillOrganizationEmailConfig();
+                        FillEmailConfigDetails();
+                        btnInsertEmailConfig.Visible = true;
+                        btnUpdateEmailConfig.Visible = false;
                     }
                 }
             }
@@ -8540,6 +8745,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         pnlAddEmailConfig.Visible = false;
         lnkNextDeskConfig_Click(null, null);
+        cleardata();
     }
     protected void lnkNextResolution_Click(object sender, EventArgs e)
     {
@@ -8953,6 +9159,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         //$"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 4000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         FillEcslevelDetails();
+                        btnInsertEcslevel.Visible = true;
+                        btnUpdateEcslevel.Visible = false;
                     }
                 }
             }
@@ -9017,7 +9225,61 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void lnkPreviousCustomField_Click(object sender, EventArgs e)
     {
         pnlExclation.Visible = false;
+        cleardata();
         lnkNextCustomFields_Click(null, null);
+    }
+    protected void ImgBtnExport14_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+            DataTable dt = new DataTable("GridView_Data");
+            foreach (System.Web.UI.WebControls.TableCell cell in gvEcslevel.HeaderRow.Cells)
+            {
+                dt.Columns.Add(cell.Text);
+            }
+            foreach (GridViewRow row in gvEcslevel.Rows)
+            {
+                dt.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dt.Rows[dt.Rows.Count - 1][i] = row.Cells[i].Text;
+                }
+            }
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename=EsclationData.xlsx");
+                using (MemoryStream MyMemoryStream = new MemoryStream())
+                {
+                    wb.SaveAs(MyMemoryStream);
+                    MyMemoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+        }
+        catch (ThreadAbortException e2)
+        {
+            Console.WriteLine("Exception message: {0}", e2.Message);
+            Thread.ResetAbort();
+        }
+        catch (Exception ex)
+        {
+            var st = new StackTrace(ex, true);
+            // Get the top stack frame
+            var frame = st.GetFrame(0);
+            // Get the line number from the stack frame
+            var line = frame.GetFileLineNumber();
+            inEr.InsertErrorLogsF(Session["UserName"].ToString()
+, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+        }
     }
     #endregion Esclation Matrin End
 }

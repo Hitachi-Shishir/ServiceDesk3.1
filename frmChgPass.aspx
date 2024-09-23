@@ -19,7 +19,8 @@
                         <asp:RequiredFieldValidator ID="rfvchagpass" runat="server" ControlToValidate="txtpassword" Font-Size="Medium" ErrorMessage="Enter Password!!" Font-Bold="True" ForeColor="Red" ValidationGroup="chgpass"></asp:RequiredFieldValidator>
                     </label>
                     <div class="input-group" id="show_hide_password">
-                        <asp:TextBox ID="txtpassword" runat="server" CssClass=" form-control form-control-sm" MaxLength="50" ValidationGroup="chgpass" TextMode="Password" placeholder="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtpassword" runat="server" CssClass="form-control form-control-sm" MaxLength="50" ValidationGroup="chgpass" TextMode="Password" placeholder="Password" autocomplete="new-password"></asp:TextBox>
+
 
                         <%--<input type="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password">--%>
                         <a href="javascript:;" class="input-group-text bg-transparent"><i class="bi bi-eye-slash-fill"></i></a>
