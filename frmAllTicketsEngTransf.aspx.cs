@@ -1209,7 +1209,6 @@ public partial class frmAllTicketsEngTransf : System.Web.UI.Page
     {
         try
         {
-
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
