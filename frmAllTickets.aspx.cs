@@ -1157,6 +1157,8 @@ public partial class frmAllTickets : System.Web.UI.Page
         }
         catch (Exception ex)
         {
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+   $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
     protected void imgRemoveFilter_Click(object sender, EventArgs e)

@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using DocumentFormat.OpenXml.Office.Word;
 
 public partial class DeskConfiguration : System.Web.UI.Page
 {
@@ -505,15 +506,21 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@CntctPrsnNameII", txtCntctPrsnNameII.Text);
                     cmd.Parameters.AddWithValue("@CntctPrsnMobII", txtCntctPrsnMobII.Text);
                     cmd.Parameters.AddWithValue("@CntctPrsnEmailII", txtCntctPrnsEmailII.Text);
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddOrg");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         //FillOrgDetails();
                         cleardata();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
                 }
             }
@@ -805,15 +812,21 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@ReqTypeRef ", txtRequestType.Text);
                     cmd.Parameters.AddWithValue("@ReqTypeDef", txtReqDescription.Text);
                     cmd.Parameters.AddWithValue("@OrgRef", ddlOrg.SelectedValue.ToString());
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddRequestType");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         FillRequestTypeDetails();
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         cleardata();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
                     }
 
                 }
@@ -980,6 +993,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         cleardata();
                         btnSave.Visible = true;
                         btnUpdateReqType.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -1323,15 +1340,26 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@StageCodeRef", txtStageName.Text.Trim());
                     cmd.Parameters.AddWithValue("@StageDesc", txtStageDesc.Text);
                     cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg2.SelectedValue.ToString());
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddStage");
                     con.Open();
                     cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
+                    if (res > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
+                        cleardata();
+                        FillStageDetails();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
+                    }
                 }
             }
             //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
-            cleardata();
-            FillStageDetails();
+
+
         }
         catch (ThreadAbortException e2)
         {
@@ -1595,6 +1623,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         btnInsertStage.Visible = true;
                         btnUpdateStage.Visible = false;
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
+                    }
                 }
             }
         }
@@ -1663,7 +1695,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         CurrentStep = 2;
         ViewState["CurrentStep"] = CurrentStep;
         DataBind();
-        cleardata(); 
+        cleardata();
         pnlReqType.Visible = true;
         pnlAddStage.Visible = false;
         lnkNextAddReq_Click(null, null);
@@ -1882,14 +1914,24 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@StatusColorCode", txtColorForStatus.Text);
                     cmd.Parameters.AddWithValue("@sd_stageFK", ddlStage.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg3.SelectedValue.ToString());
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddStatus");
                     con.Open();
                     cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
+                    if (res > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        cleardata();
+                        FillStatusDetails();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                    }
                 }
             }
-            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
-            cleardata();
-            FillStatusDetails();
+
         }
         catch (ThreadAbortException e2)
         {
@@ -2172,6 +2214,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         FillStatusDetails();
                         btnUpdateStatus.Visible = false;
                         btnInsertStatus.Visible = true;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -2467,9 +2513,11 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg4.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@ResponseTime", Convert.ToInt32(txtResponseTime.Text));
                     cmd.Parameters.AddWithValue("@ResolutionTime", Convert.ToInt32(txtResolutionTime.Text));
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddSeverity");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
@@ -2478,6 +2526,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         FillSeverityDetails();
                         btnInsertSeverity.Visible = true;
                         btnUpdateSeverity.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
                     }
                 }
             }
@@ -2752,6 +2804,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         FillSeverityDetails();
                         btnInsertSeverity.Visible = true;
                         btnUpdateSeverity.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -3188,14 +3244,20 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@PriorityCodeRef", txtpriority.Text.Trim());
                     cmd.Parameters.AddWithValue("@PriorityDesc", txtPriorityDescription.Text);
                     cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrg5.SelectedValue.ToString());
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddPriority");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         lnkNextPriority_Click(null, null);
                         cleardata();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
                     }
                 }
             }
@@ -3270,6 +3332,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         cleardata();
                         btnInsertPriority.Visible = true;
                         btnUpdatePriority.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -5593,15 +5659,22 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@ResolutionCodeRef", txtResolution.Text.Trim());
                     cmd.Parameters.AddWithValue("@ResolutionDesc", txtResolutnDesc.Text);
                     cmd.Parameters.AddWithValue("@OrgDeskRef", ddlOrgResolution.SelectedValue.ToString());
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddResolution");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         lnkNextEmailConfig_Click(null, null);
                         cleardata();
+                    }
+                    else
+                    {
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
                     }
                 }
             }
@@ -5677,6 +5750,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Updated Successfully!")}');", true);
                         lnkNextEmailConfig_Click(null, null);
                         cleardata();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -6047,14 +6124,20 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@SlaName", txtSLAName.Text.Trim());
                     cmd.Parameters.AddWithValue("@SLADesc", txtSLADescription.Text);
                     cmd.Parameters.AddWithValue("@OrgID", ddlOrgSLA.SelectedValue);
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddDeskSLA");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         lnkNextSLA_Click(null, null);
                         cleardata();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                     }
                 }
             }
@@ -6155,6 +6238,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         cleardata();
                         btnInsertSLA.Visible = true;
                         btnUpdateSLA.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -7236,7 +7323,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         btnInsert.Visible = true;
                         btnUpdate.Visible = false;
                     }
-
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
+                    }
                 }
             }
         }
@@ -7292,16 +7382,21 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@SLA", ddlSlA.SelectedValue);
                     cmd.Parameters.AddWithValue("@CoverageSch", ddlCoverageSch.SelectedValue);
                     cmd.Parameters.AddWithValue("@OrgFk", ddlOrgDeskConfig.SelectedValue);
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddServDeskDefn");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         lnkNextDeskConfig_Click(null, null);
                     }
-
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
+                    }
                 }
             }
         }
@@ -8578,14 +8673,20 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     cmd.Parameters.AddWithValue("@ClientSecretKey", txtClientSecretKey.Text);
                     cmd.Parameters.AddWithValue("@TenantID", txtTenantID.Text);
                     cmd.Parameters.AddWithValue("@OrgRef", ddlOrgEmailConfig.SelectedValue.ToString());
+                    cmd.Parameters.Add("@Error", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@Option", "AddEmailConfig");
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
+                    string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
                     if (res > 0)
                     {
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         FillEmailConfigDetails();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + ErrorChk + "")}');", true);
                     }
                 }
             }
@@ -8708,6 +8809,10 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         FillEmailConfigDetails();
                         btnInsertEmailConfig.Visible = true;
                         btnUpdateEmailConfig.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
                     }
                 }
             }
@@ -9161,6 +9266,11 @@ public partial class DeskConfiguration : System.Web.UI.Page
                         FillEcslevelDetails();
                         btnInsertEcslevel.Visible = true;
                         btnUpdateEcslevel.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"warning_noti('{HttpUtility.JavaScriptStringEncode("Already Exists !")}');", true);
+
                     }
                 }
             }
