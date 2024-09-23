@@ -1214,7 +1214,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrg2.DataTextField = "OrgName";
             ddlOrg2.DataValueField = "Org_ID";
             ddlOrg2.DataBind();
-            ddlOrg2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Organization-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -1297,7 +1297,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestType.DataTextField = "ReqTypeRef";
             ddlRequestType.DataValueField = "ReqTypeRef";
             ddlRequestType.DataBind();
-            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+            ddlRequestType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select RequestType-", "0"));
 
         }
         catch (ThreadAbortException e2)
@@ -1748,7 +1748,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrg3.DataTextField = "OrgName";
             ddlOrg3.DataValueField = "Org_ID";
             ddlOrg3.DataBind();
-            ddlOrg3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg3.Items.Insert(0, new System.Web.UI.WebControls.ListItem(" -Select Organization-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -1833,7 +1833,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlStage.DataTextField = "StageCodeRef";
             ddlStage.DataValueField = "id";
             ddlStage.DataBind();
-            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Stage----------", "0"));
+            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select Stage---", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -1870,7 +1870,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypeStatus.DataTextField = "ReqTypeRef";
             ddlRequestTypeStatus.DataValueField = "ReqTypeRef";
             ddlRequestTypeStatus.DataBind();
-            ddlRequestTypeStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+            ddlRequestTypeStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select RequestType---", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -2385,7 +2385,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrg4.DataTextField = "OrgName";
             ddlOrg4.DataValueField = "Org_ID";
             ddlOrg4.DataBind();
-            ddlOrg4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Organization-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -2469,7 +2469,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypeSeverity.DataTextField = "ReqTypeRef";
             ddlRequestTypeSeverity.DataValueField = "ReqTypeRef";
             ddlRequestTypeSeverity.DataBind();
-            ddlRequestTypeSeverity.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+            ddlRequestTypeSeverity.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select RequestType-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -2966,7 +2966,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrg5.DataTextField = "OrgName";
             ddlOrg5.DataValueField = "Org_ID";
             ddlOrg5.DataBind();
-            ddlOrg5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrg5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Organization-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -3039,7 +3039,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypePriority.DataTextField = "ReqTypeRef";
             ddlRequestTypePriority.DataValueField = "ReqTypeRef";
             ddlRequestTypePriority.DataBind();
-            ddlRequestTypePriority.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlRequestTypePriority.Items.Insert(0, new ListItem("   -Select RequestType-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -3431,7 +3431,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrg6.DataTextField = "OrgName";
             ddlOrg6.DataValueField = "Org_ID";
             ddlOrg6.DataBind();
-            ddlOrg6.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----Select Organization----", "0"));
+            ddlOrg6.Items.Insert(0, new System.Web.UI.WebControls.ListItem(" -Select Organization-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -3466,7 +3466,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypeCategory.DataTextField = "ReqTypeRef";
             ddlRequestTypeCategory.DataValueField = "ReqTypeRef";
             ddlRequestTypeCategory.DataBind();
-            ddlRequestTypeCategory.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlRequestTypeCategory.Items.Insert(0, new ListItem("   -Select RequestType-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -3642,7 +3642,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                                 ddlParentCategory.DataTextField = "CategoryCodeRef";
                                 ddlParentCategory.DataValueField = "Categoryref";
                                 ddlParentCategory.DataBind();
-                                ddlParentCategory.Items.Insert(0, new ListItem("----------Select Category----------", "0"));
+                                ddlParentCategory.Items.Insert(0, new ListItem("   -Select Category-", "0"));
                             }
 
                         }
@@ -4057,7 +4057,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCatII.DataTextField = "CategoryCodeRef";
                 ddlCatII.DataValueField = "Categoryref";
                 ddlCatII.DataBind();
-                ddlCatII.Items.Insert(0, new ListItem("----------Select Category Level 2----------", "0"));
+                ddlCatII.Items.Insert(0, new ListItem("   -Select Category Level 2-", "0"));
             }
             else
             {
@@ -4104,7 +4104,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCateLevelIII.DataTextField = "CategoryCodeRef";
                 ddlCateLevelIII.DataValueField = "Categoryref";
                 ddlCateLevelIII.DataBind();
-                ddlCateLevelIII.Items.Insert(0, new ListItem("----------Select Category Level 3----------", "0"));
+                ddlCateLevelIII.Items.Insert(0, new ListItem("   -Select Category Level 3-", "0"));
             }
             else
             {
@@ -4149,7 +4149,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCateLevelIV.DataTextField = "CategoryCodeRef";
                 ddlCateLevelIV.DataValueField = "Categoryref";
                 ddlCateLevelIV.DataBind();
-                ddlCateLevelIV.Items.Insert(0, new ListItem("----------Select Category Level 4----------", "0"));
+                ddlCateLevelIV.Items.Insert(0, new ListItem("   -Select Category Level 4 -", "0"));
             }
             else
             {
@@ -4195,7 +4195,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCatV.DataTextField = "CategoryCodeRef";
                 ddlCatV.DataValueField = "Categoryref";
                 ddlCatV.DataBind();
-                ddlCatV.Items.Insert(0, new ListItem("----------Select Category Level 5----------", "0"));
+                ddlCatV.Items.Insert(0, new ListItem("   -Select Category Level 5-", "0"));
             }
             else
             {
@@ -5360,7 +5360,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrgResolution.DataTextField = "OrgName";
             ddlOrgResolution.DataValueField = "Org_ID";
             ddlOrgResolution.DataBind();
-            ddlOrgResolution.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrgResolution.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Organization-", "0"));
 
 
         }
@@ -5446,7 +5446,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypeResolution.DataTextField = "ReqTypeRef";
             ddlRequestTypeResolution.DataValueField = "ReqTypeRef";
             ddlRequestTypeResolution.DataBind();
-            ddlRequestTypeResolution.Items.Insert(0, new ListItem("----------Select RequestType----------", "0"));
+            ddlRequestTypeResolution.Items.Insert(0, new ListItem("   -Select RequestType-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -5875,7 +5875,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrgSLA.DataTextField = "OrgName";
             ddlOrgSLA.DataValueField = "Org_ID";
             ddlOrgSLA.DataBind();
-            ddlOrgSLA.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrgSLA.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Organization-", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -6361,7 +6361,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypeDeskConfig.DataTextField = "ReqTypeRef";
             ddlRequestTypeDeskConfig.DataValueField = "ReqTypeRef";
             ddlRequestTypeDeskConfig.DataBind();
-            ddlRequestTypeDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select RequestType----------", "0"));
+            ddlRequestTypeDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select RequestType-", "0"));
 
 
         }
@@ -6402,7 +6402,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlSeverity.DataTextField = "Serveritycoderef";
             ddlSeverity.DataValueField = "id";
             ddlSeverity.DataBind();
-            ddlSeverity.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Severity----------", "0"));
+            ddlSeverity.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Severity-", "0"));
 
 
         }
@@ -6443,7 +6443,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlSlA.DataTextField = "SlaName";
             ddlSlA.DataValueField = "ID";
             ddlSlA.DataBind();
-            ddlSlA.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select SLA----------", "0"));
+            ddlSlA.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select SLA-", "0"));
 
 
         }
@@ -6484,7 +6484,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlCoverageSch.DataTextField = "ScdhuleName";
             ddlCoverageSch.DataValueField = "ID";
             ddlCoverageSch.DataBind();
-            ddlCoverageSch.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Coverage----------", "0"));
+            ddlCoverageSch.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Coverage-", "0"));
 
         }
         catch (ThreadAbortException e2)
@@ -6523,7 +6523,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrgDeskConfig.DataTextField = "OrgName";
             ddlOrgDeskConfig.DataValueField = "Org_ID";
             ddlOrgDeskConfig.DataBind();
-            ddlOrgDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrgDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Organization-", "0"));
 
 
         }
@@ -6564,7 +6564,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlSolutionType.DataTextField = "ResolutionCodeRef";
             ddlSolutionType.DataValueField = "id";
             ddlSolutionType.DataBind();
-            ddlSolutionType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Solution----------", "0"));
+            ddlSolutionType.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Solution-", "0"));
 
 
         }
@@ -6605,7 +6605,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlPriority.DataTextField = "PriorityCodeRef";
             ddlPriority.DataValueField = "id";
             ddlPriority.DataBind();
-            ddlPriority.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Priority----------", "0"));
+            ddlPriority.Items.Insert(0, new System.Web.UI.WebControls.ListItem("   -Select Priority--", "0"));
 
         }
         catch (ThreadAbortException e2)
