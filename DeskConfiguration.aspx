@@ -353,10 +353,11 @@
 
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between">
-                            <h6 class="mb-3 fw-bold">Add Request Type</h6>
+                                <h6 class="mb-3 fw-bold">Add Request Type</h6>
                                 <div class="d-flex">
-                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkPrevOrg" runat="server" OnClick="lnkPrevOrg_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton> &nbsp;
-<asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkNextStage" runat="server" OnClick="lnkNextStage_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkPrevOrg" runat="server" OnClick="lnkPrevOrg_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkNextStage" runat="server" OnClick="lnkNextStage_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
                                 </div>
                             </div>
                             <div class=" row gx-2 gy-3">
@@ -392,7 +393,6 @@
                                     <asp:Button ID="btnCancel1" runat="server" Text="Cancel" CssClass="btn btn-sm btn-grd btn-grd-danger" OnClick="btnCancel1_Click" />
                                 </div>
                                 <div class="col-6 text-end">
-                                    
                                 </div>
                             </div>
 
@@ -1358,7 +1358,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Organization
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlOrgResolution" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrgResolution_SelectedIndexChanged">
@@ -1368,7 +1368,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Request Type
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddlRequestType" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddlRequestTypeResolution" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlRequestTypeResolution" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
@@ -1579,7 +1579,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Organization
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddlOrg" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddlOrgDeskConfig" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlOrgDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrgDeskConfig_SelectedIndexChanged"></asp:DropDownList>
@@ -1587,27 +1587,25 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Request Type
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="ddlRequestType" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="ddlRequestTypeDeskConfig" InitialValue="0" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlRequestTypeDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestTypeDeskConfig_SelectedIndexChanged">
                                     </asp:DropDownList>
-                                    <<<<<<< HEAD
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Service PreFix 
-                                    <asp:RequiredFieldValidator ID="rfvtxtSDPrefix" runat="server" ControlToValidate="txtSDPrefix" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvtxtSDPrefix" runat="server" ControlToValidate="txtSDPrefix" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:TextBox ID="txtSDPrefix" runat="server" MaxLength="4" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
-                                        >>>>>>> 2888424127c7ec2101582c6ef19fa5f69a037c9c
-                                        Service Desk Description 
-                                    <asp:RequiredFieldValidator ID="rfvtxtSDDescription" runat="server" ControlToValidate="txtSDDescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                        Service Desk Description :
+                                        <asp:RequiredFieldValidator ID="rfvtxtSDDescription" runat="server" ControlToValidate="txtSDDescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:TextBox ID="txtSDDescription" runat="server" TextMode="MultiLine" Rows="1" CssClass="form-control  form-control-sm"></asp:TextBox>
@@ -1615,7 +1613,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Archive Time(in Days)
-                                    <asp:RequiredFieldValidator ID="rfvtxtArchiveTime" runat="server" ControlToValidate="txtArchiveTime" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="btnSave"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvtxtArchiveTime" runat="server" ControlToValidate="txtArchiveTime" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:TextBox ID="txtArchiveTime" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
@@ -1623,7 +1621,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Severity 
-                                                <asp:RequiredFieldValidator ID="RfvddlSeverity" runat="server" ControlToValidate="ddlSeverity" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" Enabled="false"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RfvddlSeverity" runat="server" ControlToValidate="ddlSeverity" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www" Enabled="false"></asp:RequiredFieldValidator>
                                         &nbsp;</label>
 
                                     <asp:DropDownList ID="ddlSeverity" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1631,7 +1629,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblSolution" runat="server" Text="Solution Type :"></asp:Label>
-                                        <asp:RequiredFieldValidator ID="RfvddlSolutionType" runat="server" ControlToValidate="ddlSolutionType" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RfvddlSolutionType" runat="server" ControlToValidate="ddlSolutionType" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlSolutionType" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1639,7 +1637,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Priority 
-                                                <asp:RequiredFieldValidator ID="rfvddlPriority" runat="server" ControlToValidate="ddlPriority" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="rfvddlPriority" runat="server" ControlToValidate="ddlPriority" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1647,7 +1645,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Coverage Schedule
-								<asp:RequiredFieldValidator ID="rfvddlCoverageSch" runat="server" ControlToValidate="ddlCoverageSch" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+								<asp:RequiredFieldValidator ID="rfvddlCoverageSch" runat="server" ControlToValidate="ddlCoverageSch" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlCoverageSch" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1655,7 +1653,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Stage 
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="ddlStage" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="ddlStageDeskConfig" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlStageDeskConfig" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlStageDeskConfig_SelectedIndexChanged"></asp:DropDownList>
@@ -1663,7 +1661,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Status
-                                                <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="rfvStatus" runat="server" ControlToValidate="ddlStatus" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1671,7 +1669,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory1" runat="server" Text="Category 1"></asp:Label>
-                                        <asp:RequiredFieldValidator ID="RfvddlCategory1" runat="server" ControlToValidate="ddlCategory1" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RfvddlCategory1" runat="server" ControlToValidate="ddlCategory1" ValidationGroup="www" ForeColor="Red" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlCategory1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory1_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1679,7 +1677,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         SLA 
-					   <asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+					   <asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlSlA" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1687,7 +1685,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory2" runat="server" Text="Category 2 "></asp:Label>
-                                        <asp:RequiredFieldValidator ID="RfvddlCategory2" runat="server" InitialValue="0" ControlToValidate="ddlCategory2" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RfvddlCategory2" runat="server" InitialValue="0" ControlToValidate="ddlCategory2" ValidationGroup="www" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlCategory2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory2_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
@@ -1695,7 +1693,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory3" runat="server" Text="Category 3"></asp:Label>
-                                        <asp:RequiredFieldValidator ID="RfvddlCategory3" runat="server" InitialValue="0" ControlToValidate="ddlCategory3" ValidationGroup="Addticket" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RfvddlCategory3" runat="server" InitialValue="0" ControlToValidate="ddlCategory3" ValidationGroup="www" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlCategory3" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory3_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
