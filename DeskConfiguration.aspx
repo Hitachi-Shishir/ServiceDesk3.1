@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
+
         .dataTables_filter {
             margin-top: -29px !important;
         }
@@ -72,6 +73,9 @@
             rotate: 90deg;
             margin: 5px 1px;
         }
+           h6 > span{
+           font-size: 0.8rem;
+   }
     </style>
 
 </asp:Content>

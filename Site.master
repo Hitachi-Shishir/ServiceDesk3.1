@@ -55,6 +55,17 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
+     .top-header .navbar{
+         height: 58px !important;
+     }
+        .dropdown-item{
+            font-size: 12px !important;
+            padding: 0.5rem 1rem !important;
+        }
+      body .page-breadcrumb .breadcrumb-item.active {
+    color: var(--bs-heading-color);
+    font-size: 10px !important;
+}
         .sidebar-wrapper .sidebar-nav .metismenu a {
             font-size: 13.5px !important;
         }
@@ -151,6 +162,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
         table td {
             color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color))) !important;
+                font-size: 11.5px !important;
         }
 
         th {
@@ -166,6 +178,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             top: 0;
             z-index: 1; /* Ensure header stays on top of other content */
             padding: 10px;
+                font-size: 11px;
         }
 
         .fa-edit {
@@ -302,8 +315,8 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <div class="search-bar flex-grow-1">
                     <div class="position-relative">
-                        <input id="searchInput" class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search menu items">
-                        <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+                        <input id="searchInput" class="form-control rounded-5 px-5 search-control d-lg-block d-none form-control-sm py-2" type="text" placeholder="Search menu items">
+                        <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50 opacity-50">search</span>
                         <span id="searchClose" class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
                         <div id="searchPopup" class="search-popup p-3" style="display: none;">
                             <div class="card rounded-4 overflow-hidden">
@@ -332,7 +345,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <li class="nav-item dropdown position-static  d-md-flex d-none">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-auto-close="outside"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">done_all</i></a>
-                        <div class="dropdown-menu dropdown-menu-end mega-menu shadow-lg p-4 p-lg-5">
+                        <div class="dropdown-menu dropdown-menu-end mega-menu shadow-lg p-4 p-lg-5 d-none">
                             <div class="mega-menu-widgets">
                                 <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4 g-lg-5">
                                     <div class="col">
@@ -765,7 +778,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <asp:Image ID="imgOrg" runat="server" CssClass="logo-img" />
                 </div>
                 <div class="logo-name flex-grow-1">
-                    <h6 class="mb-0">Company Name</h6>
+                    <p class="mb-0">Company Name</p>
                 </div>
                 <div class="sidebar-close">
                     <span class="material-icons-outlined">close</span>
