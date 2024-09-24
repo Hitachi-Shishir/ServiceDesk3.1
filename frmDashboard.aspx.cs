@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
@@ -23,7 +24,14 @@ public partial class frmDashboard : System.Web.UI.Page
         {
             getFilterData("0", "0", Convert.ToString("1900-01-01"), Convert.ToString("1900-01-01"), "", "");
             lblUserName.Text = Convert.ToString(Session["UserName"]).ToUpper() + " " + "!";
-            img.ImageUrl = Convert.ToString(Session["ProfilePic"]);
+            string sql = "SELECT FileData FROM SD_User_Master WHERE FileData IS NOT NULL AND LoginName = '" + Convert.ToString(Session["LoginName"]) + "'";
+            byte[] fileData = (byte[])database.GetScalarValue(sql);
+            string imageUrl = "";
+            if (fileData != null && fileData.Length > 0)
+            {
+                imageUrl = "data:image/jpg;base64," + Convert.ToBase64String(fileData);
+            }
+            img.ImageUrl = imageUrl;
             FillRequestType(Convert.ToInt64(Session["OrgID"]));
         }
     }
