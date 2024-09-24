@@ -13,7 +13,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="row g-2">
-                <div class="col-xxl-8 d-flex align-items-stretch">
+                <div class="col-md-12 d-flex align-items-stretch">
                     <div class="card w-100 overflow-hidden rounded-4 mb-3">
                         <div class="card-body position-relative p-4">
                             <div class="row g-2">
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 mt-0">
+                <div class="col-md-6 mt-0">
                     <div class="card rounded-4">
 
 
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 mt-0">
+                <div class="col-md-6 mt-0">
                     <div class="card rounded-4">
 
 
@@ -221,7 +221,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 mt-0" id="divlocation" runat="server">
+                <div class="col-md-6 mt-0" id="divlocation" runat="server">
                     <div class="card rounded-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 mt-0" id="divAssigne" runat="server">
+                <div class="col-md-6 mt-0" id="divAssigne" runat="server">
                     <div class="card rounded-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">

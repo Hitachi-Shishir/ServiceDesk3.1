@@ -246,7 +246,7 @@ var options = {{
             borderRadius: 4,
             borderRadiusApplication: 'around',
             borderRadiusWhenStacked: 'last',
-            columnWidth: '35%',
+            columnWidth: '12%',
         }}
     }},
     dataLabels: {{
@@ -326,7 +326,7 @@ chart.render();
                     borderRadius: 4,
                     borderRadiusApplication: 'around',
                     borderRadiusWhenStacked: 'last',
-                    columnWidth: '35%',
+                    columnWidth: '12%',
                 }}
             }},
             dataLabels: {{
@@ -406,7 +406,7 @@ chart.render();
                     borderRadius: 4,
                     borderRadiusApplication: 'around',
                     borderRadiusWhenStacked: 'last',
-                    columnWidth: '35%',
+                    columnWidth: '12%',
                 }}
             }},
             dataLabels: {{
@@ -486,7 +486,7 @@ chart.render();
                     borderRadius: 4,
                     borderRadiusApplication: 'around',
                     borderRadiusWhenStacked: 'last',
-                    columnWidth: '35%',
+                    columnWidth: '12%',
                 }}
             }},
             dataLabels: {{

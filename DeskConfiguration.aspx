@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
-
         .dataTables_filter {
             margin-top: -29px !important;
         }
@@ -45,6 +44,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            font-size:0.8rem;
         }
 
         .step-trigger:enabled .bs-stepper-circle {
@@ -73,9 +73,15 @@
             rotate: 90deg;
             margin: 5px 1px;
         }
-           h6 > span{
-           font-size: 0.8rem;
-   }
+
+        h6, h6 > span {
+            font-size: 0.8rem;
+        }
+        .table-container{
+            height:300px;
+        }
+  
+
     </style>
 
 </asp:Content>
@@ -92,7 +98,7 @@
                             <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between " role="tablist">
 
                                 <!-- Step 1 -->
-                                <asp:LinkButton ID="stepper1trigger1" runat="server" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' OnClick="StepButton_Click1">
+                                <asp:LinkButton ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1">
                          <div class="bs-stepper-circle">1</div>
                       
                                 </asp:LinkButton>
@@ -101,7 +107,7 @@
 
 
                                 <!-- Step 2 -->
-                                <asp:LinkButton ID="stepper1trigger2" runat="server" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
+                                <asp:LinkButton ID="stepper1trigger2" runat="server" ToolTip="Request Type" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
                         <div class="bs-stepper-circle">2</div>
                       
                                 </asp:LinkButton>
@@ -109,62 +115,62 @@
                                 <div class="vr"></div>
 
                                 <!-- Step 3 -->
-                                <asp:LinkButton ID="stepper1trigger3" runat="server" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
+                                <asp:LinkButton ID="stepper1trigger3" runat="server" ToolTip="Add Stage" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
                          <div class="bs-stepper-circle">3</div>
                         
                                 </asp:LinkButton>
 
                                 <div class="vr"></div>
                                 <!-- Step 4 -->
-                                <asp:LinkButton ID="stepper1trigger4" runat="server" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
+                                <asp:LinkButton ID="stepper1trigger4" runat="server" ToolTip="Status" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
                             <div class="bs-stepper-circle">4</div>
                            
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 5 -->
-                                <asp:LinkButton ID="stepper1trigger5" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
+                                <asp:LinkButton ID="stepper1trigger5" ToolTip="Add Severtiy" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
 <div class="bs-stepper-circle">5</div>
                        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 6 -->
-                                <asp:LinkButton ID="stepper1trigger6" runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
+                                <asp:LinkButton ID="stepper1trigger6" ToolTip="Add Priority"  runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
 <div class="bs-stepper-circle">6</div>
                        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 7 -->
-                                <asp:LinkButton ID="stepper1trigger7" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
+                                <asp:LinkButton ID="stepper1trigger7"  ToolTip="Add Categroy" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
 <div class="bs-stepper-circle">7</div>
                      
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 8 -->
-                                <asp:LinkButton ID="stepper1trigger8" runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
+                                <asp:LinkButton ID="stepper1trigger8"  ToolTip="Add Resolution"  runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
         <div class="bs-stepper-circle">8</div>
       
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 9 -->
-                                <asp:LinkButton ID="stepper1trigger9" runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
+                                <asp:LinkButton ID="stepper1trigger9" ToolTip="Add SLA"  runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
 <div class="bs-stepper-circle">9</div>
                        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 10 -->
-                                <asp:LinkButton ID="stepper1trigger10" runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
+                                <asp:LinkButton ID="stepper1trigger10" ToolTip="Desk Template"  runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
         <div class="bs-stepper-circle">10</div>
        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 11 -->
-                                <asp:LinkButton ID="stepper1trigger11" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
+                                <asp:LinkButton ID="stepper1trigger11" ToolTip="Email Configuration" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
         <div class="bs-stepper-circle">11</div>
        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 12 -->
-                                <asp:LinkButton ID="stepper1trigger12" runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
+                                <asp:LinkButton ID="stepper1trigger12"  ToolTip="Esclation Matrix"  runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
         <div class="bs-stepper-circle">12</div>
        
                                 </asp:LinkButton>
@@ -197,7 +203,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <h6 class="mb-4">Organisation</h6>
                                 <div class="">
-                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkNextAddReq" runat="server" OnClick="lnkNextAddReq_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextAddReq" runat="server" OnClick="lnkNextAddReq_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
 
                                 </div>
                             </div>
@@ -266,9 +272,7 @@
 
                                     <asp:TextBox ID="txtCntctPrnsEmailII" runat="server" CssClass="form-control  form-control-sm" MaxLength="100"></asp:TextBox>
                                 </div>
-                                <div class="col-6">
-                                </div>
-                                <div class="col-6 text-end">
+                                                             <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertOrg" runat="server" Text="Save" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnInsertOrg_Click" ValidationGroup="Priority" />
                                     <asp:Button ID="btnUpdateOrg" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnUpdateOrg_Click" ValidationGroup="Priority" />
                                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-sm btn-grd btn-grd-danger " OnClick="btnCancel_Click" CausesValidation="false" />
@@ -325,14 +329,14 @@
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                 <i class="fa-solid fa-edit"></i>
-                                                </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Delete">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                                 <i class="fa-solid fa-xmark text-danger"></i> 
-                                                </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -362,9 +366,9 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <h6 class="mb-3 fw-bold">Add Request Type</h6>
                                 <div class="d-flex">
-                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkPrevOrg" runat="server" OnClick="lnkPrevOrg_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkPrevOrg" runat="server" OnClick="lnkPrevOrg_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
                                     &nbsp;
-                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-secondary" ID="lnkNextStage" runat="server" OnClick="lnkNextStage_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Next" ID="lnkNextStage" runat="server" OnClick="lnkNextStage_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
                                 </div>
                             </div>
                             <div class=" row gx-2 gy-3">
@@ -394,13 +398,12 @@
                                     <asp:TextBox ID="txtReqDescription" runat="server" TextMode="MultiLine" Rows="2" Columns="3" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
 
-                                <div class="col-6 ">
+                                <div class="col-12 text-end ">
                                     <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSaveReqType_Click" class="btn btn-sm btn-grd btn-grd-info" ValidationGroup="ReqType"></asp:Button>
                                     <asp:Button ID="btnUpdateReqType" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info" OnClick="btnUpdateReqType_Click" ValidationGroup="ReqType" />
                                     <asp:Button ID="btnCancel1" runat="server" Text="Cancel" CssClass="btn btn-sm btn-grd btn-grd-danger" OnClick="btnCancel1_Click" />
                                 </div>
-                                <div class="col-6 text-end">
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -445,14 +448,14 @@
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEdit1" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                     <i class="fa-solid fa-edit"></i>
-                                                    </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Delete">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkDelete1" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                                     <i class="fa-solid fa-xmark text-danger"></i> 
-                                                    </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -485,7 +488,18 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="mb-3 fw-bold">Add Stage</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+
+                                <h6 class="mb-3 fw-bold">Add Stage</h6>
+                                <div class="d-flex align-items-start justify-content-between">
+                                    <div class="d-flex">
+                                        <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkbtnPrevAddReq" runat="server" OnClick="lnkbtnPrevAddReq_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                        &nbsp;
+                                        <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Next" ID="lnkbtnNextStatus" runat="server" OnClick="lnkbtnNextStatus_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                    </div>
+                                </div>
+
+                            </div>
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-6">
                                     <label for="staticEmail" class="form-label">
@@ -523,15 +537,12 @@
                                     <asp:TextBox ID="txtStageDesc" runat="server" TextMode="MultiLine" Rows="1" CssClass="form-control  form-control-sm"></asp:TextBox>
 
                                 </div>
-                                <div class="col-6 ">
+                                <div class="col-12 text-end ">
                                     <asp:Button ID="btnInsertStage" runat="server" Text="Save" class="btn btn-sm btn-grd btn-grd-info" OnClick="btnInsertStage_Click" ValidationGroup="Stage" />
                                     <asp:Button ID="btnUpdateStage" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info" OnClick="btnUpdateStage_Click" ValidationGroup="Severity" />
                                     <asp:Button ID="btnCancel2" runat="server" Text="Cancel" class="btn btn-sm btn-grd btn-grd-danger" OnClick="btnCancel2_Click" CausesValidation="false" />
                                 </div>
-                                <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkbtnPrevAddReq" runat="server" OnClick="lnkbtnPrevAddReq_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkbtnNextStatus" runat="server" OnClick="lnkbtnNextStatus_Click">Next</asp:LinkButton>
-                                </div>
+
 
 
                             </div>
@@ -583,14 +594,14 @@
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkEdit2" runat="server" CommandName="SelectStage" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                 <i class="fa-solid fa-edit"></i>
-                                </asp:LinkButton>
+                                            </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Delete">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkDelete2" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                 <i class="fa-solid fa-xmark text-danger"></i> 
-                                </asp:LinkButton>
+                                            </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -623,7 +634,15 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="mb-3 fw-bold">Add Status</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-3 fw-bold">Add Status</h6>
+                                <div class="d-flex">
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkPrevStage" runat="server" OnClick="lnkPrevStage_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>&nbsp;
+ <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextSeverity" runat="server" ToolTip="Next" OnClick="lnkNextSeverity_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+
+                                </div>
+
+                            </div>
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -674,15 +693,12 @@
                                     <asp:TextBox ID="txtColorForStatus" TextMode="Color" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
 
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertStatus" runat="server" Text="Save" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnInsertStatus_Click" ValidationGroup="Status" />
                                     <asp:Button ID="btnUpdateStatus" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnUpdateStatus_Click" ValidationGroup="Status" />
                                     <asp:Button ID="btnCancel3" runat="server" Text="Cancel" class="btn btn-sm btn-grd btn-grd-danger " OnClick="btnCancel3_Click" CausesValidation="false" />
                                 </div>
-                                <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPrevStage" runat="server" OnClick="lnkPrevStage_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextSeverity" runat="server" OnClick="lnkNextSeverity_Click">Next</asp:LinkButton>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -748,14 +764,14 @@
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEdit3" runat="server" CommandName="SelectStatus" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                 <i class="fa-solid fa-edit"></i>
-                                                </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Delete">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkDelete3" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                                 <i class="fa-solid fa-xmark text-danger"></i> 
-                                                </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -792,7 +808,16 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="mb-3 fw-bold">Add Severtiy</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-3 fw-bold">Add Severtiy</h6>
+                                <div class="d-flex">
+
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPrevStatus" ToolTip="Previous" runat="server" OnClick="lnkPrevStatus_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextPriority" runat="server" ToolTip="Next" OnClick="lnkNextPriority_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                </div>
+                            </div>
+
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-3">
                                     <label for="staticEmail" class="form-label">
@@ -846,15 +871,12 @@
 
                                     <asp:TextBox ID="txtSeverityDescription" runat="server" TextMode="MultiLine" Rows="3" Columns="3" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertSeverity" runat="server" Text="Save" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnInsertSeverity_Click" ValidationGroup="Severity" />
                                     <asp:Button ID="btnUpdateSeverity" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnUpdateSeverity_Click" ValidationGroup="Severity" />
                                     <asp:Button ID="btnCancel5" runat="server" Text="Cancel" class="btn btn-sm btn-grd btn-grd-danger " OnClick="btnCancel5_Click" CausesValidation="false" />
                                 </div>
-                                <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPrevStatus" runat="server" OnClick="lnkPrevStatus_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextPriority" runat="server" OnClick="lnkNextPriority_Click">Next</asp:LinkButton>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -905,14 +927,14 @@
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEdit4" runat="server" CommandName="SelectSeverity" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                      <i class="fa-solid fa-edit"></i>
-                                                     </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Delete">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkDelete4" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                                      <i class="fa-solid fa-xmark text-danger"></i> 
-                                                     </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -950,7 +972,16 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="mb-3 fw-bold">Add Priority</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-3 fw-bold">Add Priority</h6>
+                                <div class="d-flex">
+
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPreviousSeverity" ToolTip="Previous" runat="server" OnClick="lnkPreviousSeverity_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextCategory" runat="server" ToolTip="Next" OnClick="lnkNextCategory_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                </div>
+                            </div>
+
                             <div class="row gx-2 gy-3 ">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -986,15 +1017,12 @@
 
                                     <asp:TextBox ID="txtPriorityDescription" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm" MaxLength="1000"></asp:TextBox>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertPriority" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertPriority_Click" ValidationGroup="Priority" />
                                     <asp:Button ID="btnUpdatePriority" runat="server" Text="Update" Visible="false" class="btn btn-sm  btn-grd-info" OnClick="btnUpdatePriority_Click" ValidationGroup="Priority" />
                                     <asp:Button ID="btnCancel6" runat="server" Text="Cancel" class="btn btn-sm  btn-grd-danger" OnClick="btnCancel6_Click" CausesValidation="false" />
                                 </div>
-                                <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousSeverity" runat="server" OnClick="lnkPreviousSeverity_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextCategory" runat="server" OnClick="lnkNextCategory_Click">Next</asp:LinkButton>
-                                </div>
+
                             </div>
 
                         </div>
@@ -1038,14 +1066,14 @@
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="lnkEdit5" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                  <i class="fa-solid fa-edit"></i>
-                                                 </asp:LinkButton>
+                                                    </asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Delete">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="lnkDelete5" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                              <i class="fa-solid fa-xmark text-danger"></i> 
-                                             </asp:LinkButton>
+                                                    </asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -1080,7 +1108,16 @@
 
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h6 class="mb-3 fw-bold">Add Categroy</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-3 fw-bold">Add Categroy</h6>
+                                <div class="d-flex">
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPreviousPriority" ToolTip="Previous" runat="server" OnClick="lnkPreviousPriority_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextEmailConfig" runat="server" ToolTip="Next" OnClick="lnkNextEmailConfig_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+
+                                </div>
+                            </div>
+
 
                             <div class="row gy-3 gx-2">
                                 <div class="col-md-4 ">
@@ -1180,11 +1217,7 @@
                                     <asp:DropDownList ID="ddlCatV" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" Enabled="false">
                                     </asp:DropDownList>
                                 </div>
-                                <div class="col-md-4 text-end">
-                                    <label class="form-label" style="color: transparent">.</label><br />
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousPriority" runat="server" OnClick="lnkPreviousPriority_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextEmailConfig" runat="server" OnClick="lnkNextEmailConfig_Click">Next</asp:LinkButton>
-                                </div>
+
                             </div>
 
                             <div class="form-row d-none">
@@ -1251,7 +1284,16 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
+                             <div class="d-flex align-items-start justify-content-between">
+
                             <h6 class="fw-bold mb-3">Email Configuration</h6>
+ <div class="d-flex">
+     
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPreviousCategory" runat="server" ToolTip="Previous" OnClick="lnkPreviousCategory_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+     &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextResolution" runat="server" ToolTip="Next" OnClick="lnkNextResolution_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+ </div>
+ </div>
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1342,8 +1384,7 @@
                                     <asp:Button ID="btnInsertEmailConfig" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertEmailConfig_Click" ValidationGroup="EmailConfig" />
                                     <asp:Button ID="btnUpdateEmailConfig" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateEmailConfig_Click" ValidationGroup="EmailConfig" />
                                     <asp:Button ID="btnCancel8" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel8_Click" CausesValidation="false" />
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousCategory" runat="server" OnClick="lnkPreviousCategory_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextResolution" runat="server" OnClick="lnkNextResolution_Click">Next</asp:LinkButton>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -1438,7 +1479,16 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="fw-bold mb-3">Add Resolution</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="fw-bold mb-3">Add Resolution</h6>
+                                <div class="d-flex">
+
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkPreviousEmailConfig" runat="server" OnClick="lnkPreviousEmailConfig_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextSLA" runat="server" ToolTip="Next" OnClick="lnkNextSLA_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                </div>
+                            </div>
+
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1476,15 +1526,12 @@
 
                                     <asp:TextBox ID="txtResolutnDesc" MaxLength="1000" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertResolution" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertResolution_Click" ValidationGroup="Resol" />
                                     <asp:Button ID="btnUpdateResolution" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateResolution_Click" ValidationGroup="Resol" />
                                     <asp:Button ID="btnCancel9" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel9_Click" CausesValidation="false" />
                                 </div>
-                                <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousEmailConfig" runat="server" OnClick="lnkPreviousEmailConfig_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextSLA" runat="server" OnClick="lnkNextSLA_Click">Next</asp:LinkButton>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1568,8 +1615,17 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6
-                                class="mb-0 fw-bold">Add SLA</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6
+                                    class="mb-0 fw-bold">Add SLA</h6>
+                                <div class="d-flex">
+
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkPreviousResolution" runat="server" OnClick="lnkPreviousResolution_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextDeskConfig" ToolTip="Next" runat="server" OnClick="lnkNextDeskConfig_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                </div>
+                            </div>
+
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1595,15 +1651,12 @@
 
                                     <asp:TextBox ID="txtSLADescription" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertSLA" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertSLA_Click" ValidationGroup="SLA" />
                                     <asp:Button ID="btnUpdateSLA" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateSLA_Click" ValidationGroup="SLA" />
                                     <asp:Button ID="btnCancel10" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel10_Click" CausesValidation="false" />
                                 </div>
-                                <div class="col-6 text-end">
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousResolution" runat="server" OnClick="lnkPreviousResolution_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextDeskConfig" runat="server" OnClick="lnkNextDeskConfig_Click">Next</asp:LinkButton>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1645,14 +1698,14 @@
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEdit8" runat="server" CommandName="UpdateSLA" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                     <i class="fa-solid fa-edit"></i>
-                                                    </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Delete">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkDelete9" runat="server" CommandName="DeleteSLA" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                                   <i class="fa-solid fa-xmark text-danger"></i> 
-                                                  </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -1686,7 +1739,16 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <h6 class="mb-3 fw-bold">Desk Template</h6>
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-3 fw-bold">Desk Template</h6>
+                                <div class="d-flex">
+                              
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkPreviousSLA" runat="server" OnClick="lnkPreviousSLA_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextCustomFields" ToolTip="Next" runat="server" OnClick="lnkNextCustomFields_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
+                                </div>
+                            </div>
+
                             <asp:Literal ID="ltlCount" runat="server" Text="0" Visible="false" />
                             <asp:Literal ID="ltlRemoved" runat="server" Visible="false" />
                             <div class="row gx-2 gy-3">
@@ -1780,29 +1842,30 @@
 
                                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
+                                         <div class="col-md-4">
+             <label for="staticEmail" class="form-label">
+                 SLA 
+<asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
+             </label>
+
+             <asp:DropDownList ID="ddlSlA" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
+         </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory1" runat="server" Text="Category 1"></asp:Label>
                                         <asp:RequiredFieldValidator ID="RfvddlCategory1" runat="server" ControlToValidate="ddlCategory1" ValidationGroup="www" ForeColor="Red" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:DropDownList ID="ddlCategory1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory1_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCategory1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory1_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="staticEmail" class="form-label">
-                                        SLA 
-					   <asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
-                                    </label>
-
-                                    <asp:DropDownList ID="ddlSlA" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
-                                </div>
+                               
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory2" runat="server" Text="Category 2 "></asp:Label>
                                         <asp:RequiredFieldValidator ID="RfvddlCategory2" runat="server" InitialValue="0" ControlToValidate="ddlCategory2" ValidationGroup="www" ForeColor="Red" ErrorMessage="*" Enabled="False"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:DropDownList ID="ddlCategory2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory2_SelectedIndexChanged" CssClass="form-control form-control-sm single-select-optgroup-field"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCategory2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory2_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1826,14 +1889,12 @@
 
                                     <asp:DropDownList ID="ddlCategory5" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true"></asp:DropDownList>
                                 </div>
-                                <div class="col-md-8 text-end">
-                                    <label class="form-label"></label>
-                                    <br />
+                                <div class="col-md-4 text-end">
+                                  <div class="form-label opacity-0">..</div>
                                     <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsert_Click" ValidationGroup="www" />
                                     <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-sm btn-grd-info" OnClick="btnUpdate_Click" ValidationGroup="wwww" Visible="False" />
                                     <asp:Button ID="btnCancel11" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel11_Click" CausesValidation="false" />
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousSLA" runat="server" OnClick="lnkPreviousSLA_Click">Previous</asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-grd-primary btn-sm" ID="lnkNextCustomFields" runat="server" OnClick="lnkNextCustomFields_Click">Next</asp:LinkButton>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -2176,6 +2237,13 @@
 
                     <div class="card">
                         <div class="card-body mb-1">
+                             <div class="d-flex align-items-start justify-content-between">
+  <h6 class="mb-3 fw-bold">Esclation Matrix</h6>
+ <div class="d-flex">
+
+     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary " ToolTip="Previous"  ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+ </div>
+ </div>
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -2243,14 +2311,13 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:DropDownList ID="ddlOrgEcs" runat="server" CssClass="form-control form-control-sm single-select-optgroup-field">
+                                    <asp:DropDownList ID="ddlOrgEcs" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field">
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-md-12 text-end">
                                     <asp:Button ID="btnInsertEcslevel" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertEcslevel_Click" ValidationGroup="UserEcslevel" />
                                     <asp:Button ID="btnUpdateEcslevel" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateEcslevel_Click" ValidationGroup="UserEcslevel" />
                                     <asp:Button ID="btnCancel14" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel14_Click" CausesValidation="false" />
-                                    <asp:LinkButton class="btn btn-grd-info btn-sm" ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click">Previous</asp:LinkButton>
 
                                 </div>
                             </div>
@@ -2297,14 +2364,14 @@
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEdit11" runat="server" CommandName="UpdateEcslevel" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
                                                 <i class="fa-solid fa-edit"></i>
-                                                    </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Delete">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkDelete11" runat="server" CommandName="DeleteEcslevel" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
                                                 <i class="fa-solid fa-xmark text-danger"></i> 
-                                                </asp:LinkButton>
+                                                        </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>

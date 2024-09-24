@@ -1833,7 +1833,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlStage.DataTextField = "StageCodeRef";
             ddlStage.DataValueField = "id";
             ddlStage.DataBind();
-            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select Stage---", "0"));
+            ddlStage.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -1870,7 +1870,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlRequestTypeStatus.DataTextField = "ReqTypeRef";
             ddlRequestTypeStatus.DataValueField = "ReqTypeRef";
             ddlRequestTypeStatus.DataBind();
-            ddlRequestTypeStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select RequestType---", "0"));
+            ddlRequestTypeStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
         }
         catch (ThreadAbortException e2)
         {
@@ -6645,7 +6645,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlStatus.DataTextField = "StatusCodeRef";
             ddlStatus.DataValueField = "id";
             ddlStatus.DataBind();
-            ddlStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Status----------", "0"));
+            ddlStatus.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
@@ -6685,7 +6685,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlStageDeskConfig.DataTextField = "StageCodeRef";
             ddlStageDeskConfig.DataValueField = "id";
             ddlStageDeskConfig.DataBind();
-            ddlStageDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Stage----------", "0"));
+            ddlStageDeskConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
 
 
         }
@@ -6740,7 +6740,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                                 ddlCategory1.DataTextField = "CategoryCodeRef";
                                 ddlCategory1.DataValueField = "Categoryref";
                                 ddlCategory1.DataBind();
-                                ddlCategory1.Items.Insert(0, new ListItem("----------Select Category----------", "0"));
+                                ddlCategory1.Items.Insert(0, new ListItem("---Select---", "0"));
                             }
 
                         }
@@ -6823,7 +6823,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory2.DataTextField = "CategoryCodeRef";
                 ddlCategory2.DataValueField = "Categoryref";
                 ddlCategory2.DataBind();
-                ddlCategory2.Items.Insert(0, new ListItem("----------Select Category Level 2----------", "0"));
+                ddlCategory2.Items.Insert(0, new ListItem("---Select---", "0"));
 
                 lblCategory2.Visible = true;
                 ddlCategory2.Visible = true;
@@ -6882,7 +6882,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory3.DataTextField = "CategoryCodeRef";
                 ddlCategory3.DataValueField = "Categoryref";
                 ddlCategory3.DataBind();
-                ddlCategory3.Items.Insert(0, new ListItem("----------Select Category Level 3----------", "0"));
+                ddlCategory3.Items.Insert(0, new ListItem("---Select---", "0"));
 
             }
             else
@@ -6940,7 +6940,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory4.DataTextField = "CategoryCodeRef";
                 ddlCategory4.DataValueField = "Categoryref";
                 ddlCategory4.DataBind();
-                ddlCategory4.Items.Insert(0, new ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory4.Items.Insert(0, new ListItem("---Select---", "0"));
                 ddlCategory4.Enabled = true;
                 ddlCategory4.Visible = true;
                 lblCategory4.Visible = true;
@@ -6998,7 +6998,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory5.DataTextField = "CategoryCodeRef";
                 ddlCategory5.DataValueField = "Categoryref";
                 ddlCategory5.DataBind();
-                ddlCategory5.Items.Insert(0, new ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory5.Items.Insert(0, new ListItem("---Select---", "0"));
                 ddlCategory5.Enabled = true;
             }
             else
@@ -7048,7 +7048,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory2.DataTextField = "CategoryCodeRef";
                 ddlCategory2.DataValueField = "Categoryref";
                 ddlCategory2.DataBind();
-                ddlCategory2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 2----------", "0"));
+                ddlCategory2.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
             }
             else
             {
@@ -7098,7 +7098,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory3.DataTextField = "CategoryCodeRef";
                 ddlCategory3.DataValueField = "Categoryref";
                 ddlCategory3.DataBind();
-                ddlCategory3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 3----------", "0"));
+                ddlCategory3.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
             }
             else
             {
@@ -7150,7 +7150,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory4.DataTextField = "CategoryCodeRef";
                 ddlCategory4.DataValueField = "Categoryref";
                 ddlCategory4.DataBind();
-                ddlCategory4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 4----------", "0"));
+                ddlCategory4.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
             }
             else
             {
@@ -7202,7 +7202,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 ddlCategory5.DataTextField = "CategoryCodeRef";
                 ddlCategory5.DataValueField = "Categoryref";
                 ddlCategory5.DataBind();
-                ddlCategory5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Category Level 5----------", "0"));
+                ddlCategory5.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
             }
             else
             {
@@ -8422,7 +8422,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             ddlOrgEmailConfig.DataTextField = "OrgName";
             ddlOrgEmailConfig.DataValueField = "Org_ID";
             ddlOrgEmailConfig.DataBind();
-            ddlOrgEmailConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("----------Select Organization----------", "0"));
+            ddlOrgEmailConfig.Items.Insert(0, new System.Web.UI.WebControls.ListItem("---Select---", "0"));
         }
         catch (ThreadAbortException e2)
         {
