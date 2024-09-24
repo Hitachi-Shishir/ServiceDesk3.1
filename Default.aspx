@@ -27,6 +27,12 @@
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020//dark-theme.css" rel="stylesheet">
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/blue-theme.css" rel="stylesheet">
     <link href="https://pcv-demo.hitachi-systems-mc.com:2020/sass/responsive.css" rel="stylesheet">
+    <style>
+        #lnkFrgtPass:hover {
+            text-decoration: underline;
+            color: #808080
+        }
+    </style>
 </head>
 
 <body>
@@ -41,7 +47,7 @@
 
                     <div class="card rounded-0 mb-0 border-0 shadow-none bg-transparent bg-none">
                         <div class="card-body">
-                            <img src="assets/images/auth/login1.png" class="img-fluid auth-img-cover-login" width="650" alt="">
+                            <img src="assets/images/auth/login1.png" class="img-fluid auth-img-cover-login" width="600" alt="">
                         </div>
                     </div>
 
@@ -52,17 +58,17 @@
                         <div class="card-body p-sm-5">
                             <%--<img src="assets/images/logo1.png" class="mb-4" width="145" alt="">--%>
                             <%--<img src="assets/images/Hitachi-Logo-White.png" class="mb-4" width="145" alt="logo here"/>--%>
-                            <h4 class="fw-bold">Get Started Now</h4>
-                            <p class="mb-0">Enter your credentials to login your account</p>
 
 
 
-                            <div class="form-body mt-4">
+
+                            <div class="form-body mt-0">
                                 <form id="frm" runat="server">
                                     <asp:Panel ID="pnlLogin" runat="server">
                                         <%--	<p>Don't have an account? <a href="#">Create Your Account</a> </p>it takes less than a minute</p>--%>
+                                        <h4 class="fw-bold">Get Started Now</h4>
+                                        <p class="mb-4">Enter your credentials to login your account</p>
                                         <div class="row g-3">
-
                                             <div class="col-12">
                                                 <label for="email" class="form-label">
                                                     User ID
@@ -83,8 +89,8 @@
 
                                             <div class="col-md-6">
                                                 <%--<div class="form-check">--%>
-                                                    <asp:CheckBox ID="chk"  runat="server" name="item" />
-                                                    <label class="form-check-label" for="checkbox">Remember Me</label>
+                                                <asp:CheckBox ID="chk" runat="server" name="item" />
+                                                <label class="form-check-label" for="checkbox">Remember Me</label>
                                                 <%--</div>--%>
                                             </div>
                                             <div class="col-md-6 text-end">
@@ -93,18 +99,12 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-
                                                     <asp:Button ID="btnSubmit" class="btn btn-grd-primary" runat="server" Text="Sign In" OnClick="btnSubmit_Click" ValidationGroup="Login" />
 
                                                 </div>
                                             </div>
 
                                         </div>
-
-
-
-
-
 
                                     </asp:Panel>
                                     <asp:Panel ID="pnl2FA" runat="server" Visible="false">
@@ -155,21 +155,28 @@
 
                                     </asp:Panel>
                                     <asp:Panel ID="pnlEnterEmail" runat="server" Visible="false">
-                                        <br />
+                                        <h4 class="fw-bold">Forget Password !</h4>
+                                        <p class="mb-4">
+                                            No worries, we’ve got you covered!
 
-                                        <div class="field padding-bottom--24">
+                                        </p>
+                                        <div class="row g-3">
+                                            <div class="col-md-12">
+                                                <label class="form-label">Enter Login ID</label>
+                                                <asp:TextBox ID="txtLoginName" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="form-label">Enter Registered Email</label>
+                                                <asp:TextBox ID="txtRegisEmail" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <asp:Button ID="btnVerifyUser" runat="server" Text="Set Password" class="btn btn-grd-primary w-100" OnClick="btnVerifyUser_Click" ValidationGroup="ResetPass" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="d-none">
                                             <asp:Label ID="lblGetMail" ForeColor="Red" runat="server" Style="font-size: 14px !important"></asp:Label>
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Enter LoginID</label>
-                                            <asp:TextBox ID="txtLoginName" runat="server" placeholder="Enter Login ID" TextMode="SingleLine"></asp:TextBox>
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Enter Registered Email</label>
-                                            <asp:TextBox ID="txtRegisEmail" runat="server" placeholder="Enter Registered Email" TextMode="SingleLine"></asp:TextBox>
-                                        </div>
-                                        <div class="field ">
-                                            <asp:Button ID="btnVerifyUser" runat="server" Text="Set Password" OnClick="btnVerifyUser_Click" ValidationGroup="ResetPass" />
                                         </div>
 
 
@@ -201,9 +208,6 @@
                                         <asp:TextBox ID="txtConfResetPass" runat="server" placeholder="Enter Confirm Pass" TextMode="Password"></asp:TextBox>
                                         <asp:Button ID="btnResetPass" runat="server" Text="Verfiy" class="button  btn btn-success" OnClick="btnResetPass_Click" ValidationGroup="ResetPass" />
                                     </asp:Panel>
-                                    <footer class="footer text-center">
-                                        <p class="text-muted mb-0" style="font-size: 0.675em;">©<a href="https://hitachi-systems.co.in/" class="text-muted" target="_blank">Hitachi Systems India</a>  2022. All rights reserved.</p>
-                                    </footer>
 
 
 
@@ -239,20 +243,20 @@
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery.min.js"></script>
 
     <script>
-    $(document).ready(function () {
-      $("#show_hide_password a").on('click', function (event) {
-        event.preventDefault();
-        if ($('#show_hide_password input').attr("type") == "text") {
-          $('#show_hide_password input').attr('type', 'password');
-          $('#show_hide_password i').addClass("bi-eye-slash-fill");
-          $('#show_hide_password i').removeClass("bi-eye-fill");
-        } else if ($('#show_hide_password input').attr("type") == "password") {
-          $('#show_hide_password input').attr('type', 'text');
-          $('#show_hide_password i').removeClass("bi-eye-slash-fill");
-          $('#show_hide_password i').addClass("bi-eye-fill");
-        }
-      });
-    });
+        $(document).ready(function () {
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bi-eye-slash-fill");
+                    $('#show_hide_password i').removeClass("bi-eye-fill");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bi-eye-slash-fill");
+                    $('#show_hide_password i').addClass("bi-eye-fill");
+                }
+            });
+        });
     </script>
 
 </body>

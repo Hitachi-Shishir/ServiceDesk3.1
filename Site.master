@@ -55,6 +55,51 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
+        .sidebar-wrapper .sidebar-nav .metismenu a {
+            font-size: 13.5px !important;
+        }
+
+        .main-wrapper .main-content {
+            padding: 0.3rem 1rem;
+        }
+
+        .form-label {
+            margin-bottom: .3rem;
+            font-size: 0.75rem;
+        }
+
+        .material-icons-outlined {
+  
+            font-size: 19px !important;
+        }
+        .input-group-sm>.btn, .input-group-sm>.form-control, .input-group-sm>.form-select, .input-group-sm>.input-group-text {
+    padding: .25rem .5rem;
+    font-size: .675rem !important;
+
+}
+        .form-select-sm~.select2-container--bootstrap-5 .select2-selection {
+  
+    padding: .25rem .5rem;
+    font-size: .675rem;
+   
+}
+        .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
+    /* padding: .25rem .5rem !important; */
+    font-size: 0.675rem !important;
+ 
+}
+
+        .form-control-sm {
+    min-height: calc(1.5em + .5rem + calc(var(--bs-border-width)* 2));
+    padding: .25rem .5rem;
+    font-size: .675rem !important;
+    border-radius: var(--bs-border-radius-sm);
+}
+        .btn-group-sm>.btn, .btn-sm {
+
+    --bs-btn-font-size: 0.705rem;
+  
+}
         /* Add any additional styles here */
         .search-results {
             display: none;
@@ -82,19 +127,20 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             font-size: 13px;
         }
 
-        [data-bs-theme=blue-theme] body .page-breadcrumb .breadcrumb-title {
-            font-size: 14px;
+        body .page-breadcrumb .breadcrumb-title {
+            font-size: 11px !important;
+        }  
+        body .page-breadcrumb .breadcrumb-title > span {
+            font-size: 10px !important;
         }
 
         .select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field {
             color: #0f1535 !important;
-            font-size: 0.875rem !important;
             padding: .175rem .75rem;
         }
 
         .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
             /*padding: .25rem .5rem !important;*/
-            font-size: 0.875rem !important;
             font-weight: 400;
             line-height: 1.2 !important;
         }
@@ -666,7 +712,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             </div>
                         </div>
                     </li>
-                    
+
                     <li class="nav-item d-md-flex d-none" id="divtoggletheme" runat="server">
                         <a class="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasCart"><i
                             class="material-icons-outlined">tune</i>
@@ -986,7 +1032,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/select2/js/select2-custom.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/bs-stepper/js/main.js"></script>
-   
+
     <%--DATATABLE START--%>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
@@ -1009,22 +1055,22 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     <%--DATATABLE END--%>
 
-   <script>
-       $(document).ready(function () {
-           $('.data-table').each(function () {
-               if ($.fn.DataTable.isDataTable(this)) {
-                   $(this).DataTable().clear().destroy();
-               }
-               $(this).DataTable({
-                   lengthChange: false,
-                   dom: 'Bfrtip',
-                   buttons: [
-                       'csv', 'excel', 'pdf', 'print' // Replaced 'copy' with 'csv'
-                   ]
-               });
-           });
-       });
-   </script>
+    <script>
+        $(document).ready(function () {
+            $('.data-table').each(function () {
+                if ($.fn.DataTable.isDataTable(this)) {
+                    $(this).DataTable().clear().destroy();
+                }
+                $(this).DataTable({
+                    lengthChange: false,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'csv', 'excel', 'pdf', 'print' // Replaced 'copy' with 'csv'
+                    ]
+                });
+            });
+        });
+    </script>
 
 
 
