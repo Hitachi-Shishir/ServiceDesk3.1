@@ -231,11 +231,7 @@ public partial class Site : System.Web.UI.MasterPage
 
     private DataTable GetAllCategoriesNonAdmin()
     {
-        string sql = @"SELECT DISTINCT MR.MenuID, MR.MenuName, MR.MenuLocation, MR.ParentID, R.UserName, R.MenuStatus, ParentIDOrder, ChildIDOrder, MenuIcon, IconName
-                       FROM SD_Navigation AS MR
-                       JOIN SD_roles AS R ON MR.MenuID = R.MenuID AND MR.MenuName = R.MenuName
-                       WHERE R.UserRole = @UserRole AND R.MenuStatus = 'Active'
-                       ORDER BY ChildIDOrder ASC";
+        string sql = @"";
         return ExecuteQuery(sql, new SqlParameter("@UserRole", Session["UserRole"].ToString()));
     }
 
