@@ -126,7 +126,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -177,7 +177,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -256,7 +256,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -303,7 +303,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -365,7 +365,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -489,7 +489,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -565,7 +565,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
         //			var line = frame.GetFileLineNumber();
         //			inEr.InsertErrorLogsF(Session["UserName"].ToString()
         //, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-        //			Response.Redirect("~/Error/Error.html");
+        //			ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
         //		}
         //	}
@@ -658,7 +658,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }
@@ -725,7 +725,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
         //	var line = frame.GetFileLineNumber();
         //	inEr.InsertErrorLogsF(Session["UserName"].ToString()
         //	, " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-        //	Response.Redirect("~/Error/Error.html");
+        //	ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         //}
 
 
@@ -782,7 +782,7 @@ public partial class HelpDesk_frmSDCustomFieldCnrtl : System.Web.UI.Page
                 var line = frame.GetFileLineNumber();
                 inEr.InsertErrorLogsF(Session["UserName"].ToString()
     , " " + Request.Url.ToString() + "Got Exception" + "Line Number :" + line.ToString() + ex.ToString());
-                Response.Redirect("~/Error/Error.html");
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",$"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
 
             }
         }

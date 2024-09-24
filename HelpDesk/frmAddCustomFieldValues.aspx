@@ -53,7 +53,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtCustomFieldValue" runat="server" ControlToValidate="txtCustomFieldValue" ErrorMessage="*" ForeColor="Red" ValidationGroup="SearchUser"></asp:RequiredFieldValidator>
                                         </label>
 
-                                        <asp:TextBox ID="txtCustomFieldValue" class="form-control form-control-sm" runat="server" />
+                                        <asp:TextBox ID="txtCustomFieldValue" class="form-control form-control-sm" runat="server" onkeypress="return /^[a-zA-Z0-9]*$/.test(event.key) && this.value.length < 30;" MaxLength="30"/>
                                     </div>
                                     <div class="col-md-12 text-end">
 

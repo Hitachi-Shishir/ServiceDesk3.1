@@ -157,7 +157,7 @@ public partial class _Default : System.Web.UI.Page
                                 Session["MFAStatus"] = dt.Rows[0]["MFAStatus"].ToString();
                                 if (Session["MFAStatus"].ToString() == "False" || Session["MFAStatus"].ToString() == "0")
                                 {
-                                    Response.Redirect("/frmAllTickets.aspx");
+                                    Response.Redirect("/frmDashboard.aspx");
                                 }
                                 else
                                 {
@@ -176,7 +176,7 @@ public partial class _Default : System.Web.UI.Page
                                         }
                                         else
                                         {
-                                            Response.Redirect("/frmAllTickets.aspx");
+                                            Response.Redirect("/frmDashboard.aspx");
                                         }
                                     }
                                     else
@@ -264,7 +264,7 @@ public partial class _Default : System.Web.UI.Page
                 string sql1 = "UPDATE SD_User_Master set RememberISMfa=1, RememberISMfaTime=GETDATE(), Serialno='" + systemserialno + "' where LoginName='" + txtUserName.Text.Trim() + "'";
                 database.ExecuteNonQuery(sql1);
             }
-            Response.Redirect("/frmAllTickets.aspx");
+            Response.Redirect("/frmDashboard.aspx");
         }
         else
         {

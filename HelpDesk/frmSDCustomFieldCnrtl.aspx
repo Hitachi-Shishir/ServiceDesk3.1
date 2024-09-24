@@ -111,7 +111,7 @@
                                         </label>
 
 
-                                        <asp:TextBox ID="txtFieldName" runat="server" TextMode="SingleLine" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                        <asp:TextBox ID="txtFieldName" onkeypress="return /^[a-zA-Z0-9 ]*$/.test(event.key) && this.value.length < 50;" runat="server" TextMode="SingleLine" CssClass="form-control  form-control-sm"></asp:TextBox>
 
                                     </div>
                                     <div class="col-md-4">

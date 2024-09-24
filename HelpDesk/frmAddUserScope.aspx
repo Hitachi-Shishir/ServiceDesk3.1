@@ -49,7 +49,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtScopeName" runat="server" ControlToValidate="txtScopeName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserScope"></asp:RequiredFieldValidator>
                                         </label>
 
-                                        <asp:TextBox ID="txtScopeName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                        <asp:TextBox onkeypress="return /^[a-zA-Z-_ ]*$/.test(event.key) && this.value.length < 50;" ID="txtScopeName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="staticEmail" class="form-label">

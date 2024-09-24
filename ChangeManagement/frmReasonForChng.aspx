@@ -61,7 +61,7 @@
 
 
 
-                                        <asp:TextBox ID="txtReasonType" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                        <asp:TextBox ID="txtReasonType" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z-_ ]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
 
                                     </div>
                                     <div class="col-md-12">
