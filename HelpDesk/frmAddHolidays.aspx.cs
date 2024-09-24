@@ -320,13 +320,14 @@ public partial class frmAddHolidays : System.Web.UI.Page
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
-
+                string dateString = txtholidayDate.Text; // "18-01-2024"
+                DateTime holidayDate = DateTime.ParseExact(dateString, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 using (SqlCommand cmd = new SqlCommand("SD_spAddHoliday", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", UserID);
                     cmd.Parameters.AddWithValue("@HolidayName", txtHolidayName.Text);
-                    cmd.Parameters.AddWithValue("@HolidayDate", txtholidayDate.Text);
+                    cmd.Parameters.AddWithValue("@HolidayDate", holidayDate);
                     cmd.Parameters.AddWithValue("@OrgID", ddlOrg.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@Option", "UpdateHoliday");
                     con.Open();

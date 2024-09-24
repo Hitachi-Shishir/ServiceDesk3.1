@@ -103,17 +103,17 @@
                                                     <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>">
                                                       <i class="fa-solid fa-edit"></i> 
                                                         <!-- FontAwesome icon -->
-                                                           </asp:LinkButton>
+                                                    </asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                         
-<asp:TemplateField HeaderText="Edit">
-<ItemTemplate>
-<asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>">
+
+                                            <asp:TemplateField HeaderText="Edit">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>">
 <i class="fa-solid fa-xmark text-danger"></i> <!-- FontAwesome icon -->
-</asp:LinkButton>
-</ItemTemplate>
-</asp:TemplateField>
+                                                    </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
                                 </div>
@@ -126,6 +126,9 @@
             </div>
 
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnViewDep" />
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 

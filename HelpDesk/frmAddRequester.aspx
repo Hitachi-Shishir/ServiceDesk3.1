@@ -49,7 +49,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtTechLoginName" runat="server" ControlToValidate="txtTechLoginName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Tech">
                                     </asp:RequiredFieldValidator>
                                             </label>
-                                            <asp:TextBox ID="txtTechLoginName" class="form-control form-control-sm" runat="server" />
+                                            <asp:TextBox ID="txtTechLoginName" class="form-control form-control-sm" runat="server" onkeypress="return /^[a-zA-Z_.\-\s]*$/.test(event.key) && this.value.length < 30;" MaxLength="30"/>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="staticEmail" class="form-label">
@@ -57,7 +57,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtEmployeeID" runat="server" ControlToValidate="txtEmployeeID" ErrorMessage="*" ForeColor="Red" ValidationGroup="SearchUser"></asp:RequiredFieldValidator>
                                             </label>
                                             <div class="input-group input-group-sm">
-                                                <asp:TextBox ID="txtEmployeeID" runat="server" class="form-control form-control-sm" />
+                                                <asp:TextBox ID="txtEmployeeID" runat="server" class="form-control form-control-sm" onkeypress="return /^[a-zA-Z0-9]*$/.test(event.key) && this.value.length < 50;"/>
                                                 <asp:LinkButton ID="btnSearch" runat="server" OnClick="btnSearch_Click" ValidationGroup="SearchUser" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></asp:LinkButton>
                                             </div>
 
@@ -68,7 +68,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtFirstName" runat="server" ControlToValidate="txtFirstName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Tech">
                                     </asp:RequiredFieldValidator>
                                             </label>
-                                            <asp:TextBox ID="txtFirstName" runat="server" class="form-control form-control-sm" />
+                                            <asp:TextBox ID="txtFirstName" runat="server" class="form-control form-control-sm" onkeypress="return /^[a-zA-Z-_ ]*$/.test(event.key) && this.value.length < 30;" MaxLength="30" />
                                         </div>
                                         <div class="col-md-4">
                                             <label for="staticEmail" class="form-label">
@@ -92,7 +92,7 @@ at least 1 Uppercase Alphabet, 1 Lowercase Alphabet,
                                                 <asp:RequiredFieldValidator ID="rfvtxtPassword" Display="Dynamic" runat="server" ControlToValidate="txtPassword" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Tech">
                                                 </asp:RequiredFieldValidator>
                                             </label>
-                                            <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-sm" TextMode="Password" />
+                                            <asp:TextBox ID="txtPassword" autocomplete="new-password" runat="server" class="form-control form-control-sm" TextMode="Password" />
                                             <div>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@ at least 1 Uppercase Alphabet, 1 Lowercase Alphabet,
                                                     ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" Display="Dynamic"
                                                     ErrorMessage="Invalid Password" ForeColor="Red" />
                                             </label>
-                                            <asp:TextBox ID="txtConfirmPassword" runat="server" class="form-control form-control-sm" TextMode="Password">
+                                            <asp:TextBox ID="txtConfirmPassword" autocomplete="new-password" runat="server" class="form-control form-control-sm" TextMode="Password">
                                             </asp:TextBox>
 
                                         </div>
@@ -142,7 +142,7 @@ at least 1 Uppercase Alphabet, 1 Lowercase Alphabet,
                                                 <asp:RequiredFieldValidator ID="rfvtxtPhone" runat="server" ControlToValidate="txtPhone" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Tech">
                                                 </asp:RequiredFieldValidator>
                                             </label>
-                                            <asp:TextBox ID="txtPhone" class="form-control form-control-sm" runat="server" TextMode="Phone" MaxLength="10" />
+                                            <asp:TextBox ID="txtPhone" class="form-control form-control-sm" runat="server" TextMode="Phone" MaxLength="10" onkeypress="return /^[0-9]*$/.test(event.key) && this.value.length < 12;"/>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@ at least 1 Uppercase Alphabet, 1 Lowercase Alphabet,
                                     <asp:RequiredFieldValidator ID="rfvtxtJobTitle" runat="server" ControlToValidate="txtJobTitle" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Tech">
                                     </asp:RequiredFieldValidator>
                                             </label>
-                                            <asp:TextBox ID="txtJobTitle" runat="server" class="form-control form-control-sm" />
+                                            <asp:TextBox ID="txtJobTitle" runat="server" class="form-control form-control-sm" onkeypress="return /^[a-zA-Z-_ ]*$/.test(event.key) && this.value.length < 50;" />
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-check">

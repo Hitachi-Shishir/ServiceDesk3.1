@@ -58,7 +58,7 @@
                                 <label class="form-label">Filters</label>
                                 <br>
                                 <div class="btn-group btn-group-sm">
-                                    <asp:LinkButton ID="imgcolumnfilter" runat="server" CssClass="btn btn-sm btn-outline-secondary" AlternateText="Column Chooser" ToolTip="Filter" ImageAlign="left" OnClick="imgcolumnfilter_Click"><i class="fa-solid fa-filter"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="imgcolumnfilter" runat="server" CssClass="btn btn-sm btn-outline-secondary" AlternateText="Column Chooser" Visible="false" ToolTip="Filter" ImageAlign="left" OnClick="imgcolumnfilter_Click"><i class="fa-solid fa-filter"></i></asp:LinkButton>
                                     <asp:LinkButton ID="imgRowFilter" runat="server" CssClass="btn btn-sm btn-outline-secondary" AlternateText="Column Chooser" ToolTip="Select Column" ImageAlign="left" OnClick="imgRowFilter_Click" OnClientClick="togglePanel(); return false;"><i class="fa-solid fa-plus"></i></asp:LinkButton>
                                 </div>
                             </div>

@@ -22,10 +22,12 @@ public partial class Site : System.Web.UI.MasterPage
     {
         try
         {
-            string sql = "select theme,ThemeModify from SD_User_Master where UserID='" + Convert.ToString(Session["UserID"]) + "'  and Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
+            string sql = "select theme,ThemeModify,OrgName from SD_User_Master a " +
+                "INNER JOIN SD_OrgMaster o ON a.Org_ID=o.Org_ID where UserID='" + Convert.ToString(Session["UserID"]) + "'  and o.Org_ID='" + Convert.ToString(Session["OrgID"]) + "'";
             DataTable dt = database.GetDataTable(sql);
             string theme = Convert.ToString(dt.Rows[0]["theme"]);
             string ThemeModify = Convert.ToString(dt.Rows[0]["ThemeModify"]);
+            lblOrg.Text = Convert.ToString(dt.Rows[0]["OrgName"]);
             if (ThemeModify.ToUpper() == "TRUE")
             {
                 divtoggletheme.Visible = false;
@@ -280,7 +282,7 @@ public partial class Site : System.Web.UI.MasterPage
                         {
                             string imageUrl = "data:image/jpg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["FileData"]);
                             img.ImageUrl = imageUrl;
-                            Session["ProfilePic"]= imageUrl;
+                            Session["ProfilePic"] = imageUrl;
                         }
                         else
                         {

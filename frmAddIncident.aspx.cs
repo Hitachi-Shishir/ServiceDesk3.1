@@ -1463,7 +1463,7 @@ public partial class frmAddIncident : System.Web.UI.Page
                                 MakeTicketSR();
                             }
                             ADDMailinDB(ticketnumber);
-                            AutoAssign(ticketnumber);
+                            //AutoAssign(ticketnumber);
                             msg = "Ticket has been Created, Your Ticket Number is '" + TicketRef + "'.";
                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + HttpUtility.JavaScriptStringEncode(msg) + "');window.location ='frmAddIncident.aspx';", true);
                             ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
@@ -1480,7 +1480,9 @@ public partial class frmAddIncident : System.Web.UI.Page
                                 msg = "Ticket With same Summary already Exists!";
                             }
                             obj.Log("Error", "'" + OrgName + "'_Error_Log '" + msg + "'");
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + msg + "');window.location ='frmAddIncident.aspx';", true);
+                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + msg + "');window.location ='frmAddIncident.aspx';", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"warning_noti('{HttpUtility.JavaScriptStringEncode("" + msg + "")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
                         }
                     }
                 }

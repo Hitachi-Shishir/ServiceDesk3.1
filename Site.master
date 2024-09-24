@@ -778,7 +778,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <asp:Image ID="imgOrg" runat="server" CssClass="logo-img" />
                 </div>
                 <div class="logo-name flex-grow-1">
-                    <p class="mb-0">Company Name</p>
+                    <p class="mb-0"><asp:Label runat="server" ID="lblOrg"></asp:Label></p>
                 </div>
                 <div class="sidebar-close">
                     <span class="material-icons-outlined">close</span>
