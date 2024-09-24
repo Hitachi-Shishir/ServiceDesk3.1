@@ -98,7 +98,7 @@
                             <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between " role="tablist">
 
                                 <!-- Step 1 -->
-                                <asp:LinkButton ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1">
                          <div class="bs-stepper-circle">1</div>
                       
                                 </asp:LinkButton>
@@ -107,7 +107,7 @@
 
 
                                 <!-- Step 2 -->
-                                <asp:LinkButton ID="stepper1trigger2" runat="server" ToolTip="Request Type" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
+                                <asp:LinkButton style="pointer-events: none;" ID="stepper1trigger2" runat="server" ToolTip="Request Type" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
                         <div class="bs-stepper-circle">2</div>
                       
                                 </asp:LinkButton>
@@ -115,69 +115,69 @@
                                 <div class="vr"></div>
 
                                 <!-- Step 3 -->
-                                <asp:LinkButton ID="stepper1trigger3" runat="server" ToolTip="Add Stage" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger3"  runat="server" ToolTip="Add Stage" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
                          <div class="bs-stepper-circle">3</div>
                         
                                 </asp:LinkButton>
 
                                 <div class="vr"></div>
                                 <!-- Step 4 -->
-                                <asp:LinkButton ID="stepper1trigger4" runat="server" ToolTip="Status" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger4"   runat="server" ToolTip="Status" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
                             <div class="bs-stepper-circle">4</div>
                            
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 5 -->
-                                <asp:LinkButton ID="stepper1trigger5" ToolTip="Add Severtiy" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger5" ToolTip="Add Severtiy" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
 <div class="bs-stepper-circle">5</div>
                        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 6 -->
-                                <asp:LinkButton ID="stepper1trigger6" ToolTip="Add Priority"  runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger6" ToolTip="Add Priority"  runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
 <div class="bs-stepper-circle">6</div>
                        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 7 -->
-                                <asp:LinkButton ID="stepper1trigger7"  ToolTip="Add Categroy" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger7"  ToolTip="Add Categroy" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
 <div class="bs-stepper-circle">7</div>
                      
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 8 -->
-                                <asp:LinkButton ID="stepper1trigger8"  ToolTip="Add Resolution"  runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger8"  ToolTip="Add Resolution"  runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
         <div class="bs-stepper-circle">8</div>
       
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 9 -->
-                                <asp:LinkButton ID="stepper1trigger9" ToolTip="Add SLA"  runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger9" ToolTip="Add SLA"  runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
 <div class="bs-stepper-circle">9</div>
                        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 10 -->
-                                <asp:LinkButton ID="stepper1trigger10" ToolTip="Desk Template"  runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger10" ToolTip="Desk Template"  runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
         <div class="bs-stepper-circle">10</div>
        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 11 -->
-                                <asp:LinkButton ID="stepper1trigger11" ToolTip="Email Configuration" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger11" ToolTip="Email Configuration" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
         <div class="bs-stepper-circle">11</div>
        
                                 </asp:LinkButton>
                                 <div class="vr"></div>
                                 <!-- Step 12 -->
-                                <asp:LinkButton ID="stepper1trigger12"  ToolTip="Esclation Matrix"  runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
+                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger12"  ToolTip="Esclation Matrix"  runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
         <div class="bs-stepper-circle">12</div>
        
                                 </asp:LinkButton>
 
                                 <div class="col-md-3" hidden>
                                     <!-- Step 13 -->
-                                    <asp:LinkButton ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 13 %>' OnClick="StepButton_Click13">
+                                    <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 13 %>' OnClick="StepButton_Click13">
         <div class="bs-stepper-circle">13</div>
         <div class="">
             <h5 class="mb-0 steper-title">Exclation Matrix</h5>
