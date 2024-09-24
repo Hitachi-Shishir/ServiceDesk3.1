@@ -55,17 +55,20 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-     .top-header .navbar{
-         height: 58px !important;
-     }
-        .dropdown-item{
+        .top-header .navbar {
+            height: 58px !important;
+        }
+
+        .dropdown-item {
             font-size: 12px !important;
             padding: 0.5rem 1rem !important;
         }
-      body .page-breadcrumb .breadcrumb-item.active {
-    color: var(--bs-heading-color);
-    font-size: 10px !important;
-}
+
+        body .page-breadcrumb .breadcrumb-item.active {
+            color: var(--bs-heading-color);
+            font-size: 10px !important;
+        }
+
         .sidebar-wrapper .sidebar-nav .metismenu a {
             font-size: 13.5px !important;
         }
@@ -80,37 +83,34 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         }
 
         .material-icons-outlined {
-  
             font-size: 19px !important;
         }
-        .input-group-sm>.btn, .input-group-sm>.form-control, .input-group-sm>.form-select, .input-group-sm>.input-group-text {
-    padding: .25rem .5rem;
-    font-size: .675rem !important;
 
-}
-        .form-select-sm~.select2-container--bootstrap-5 .select2-selection {
-  
-    padding: .25rem .5rem;
-    font-size: .675rem;
-   
-}
+        .input-group-sm > .btn, .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text {
+            padding: .25rem .5rem;
+            font-size: .675rem !important;
+        }
+
+        .form-select-sm ~ .select2-container--bootstrap-5 .select2-selection {
+            padding: .25rem .5rem;
+            font-size: .675rem;
+        }
+
         .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
-    /* padding: .25rem .5rem !important; */
-    font-size: 0.675rem !important;
- 
-}
+            /* padding: .25rem .5rem !important; */
+            font-size: 0.675rem !important;
+        }
 
         .form-control-sm {
-    min-height: calc(1.5em + .5rem + calc(var(--bs-border-width)* 2));
-    padding: .25rem .5rem;
-    font-size: .675rem !important;
-    border-radius: var(--bs-border-radius-sm);
-}
-        .btn-group-sm>.btn, .btn-sm {
+            min-height: calc(1.5em + .5rem + calc(var(--bs-border-width)* 2));
+            padding: .25rem .5rem;
+            font-size: .675rem !important;
+            border-radius: var(--bs-border-radius-sm);
+        }
 
-    --bs-btn-font-size: 0.705rem;
-  
-}
+        .btn-group-sm > .btn, .btn-sm {
+            --bs-btn-font-size: 0.705rem;
+        }
         /* Add any additional styles here */
         .search-results {
             display: none;
@@ -140,10 +140,11 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
         body .page-breadcrumb .breadcrumb-title {
             font-size: 11px !important;
-        }  
-        body .page-breadcrumb .breadcrumb-title > span {
-            font-size: 10px !important;
         }
+
+            body .page-breadcrumb .breadcrumb-title > span {
+                font-size: 10px !important;
+            }
 
         .select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field {
             color: #0f1535 !important;
@@ -162,7 +163,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
         table td {
             color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color))) !important;
-                font-size: 11.5px !important;
+            font-size: 11.5px !important;
         }
 
         th {
@@ -178,7 +179,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             top: 0;
             z-index: 1; /* Ensure header stays on top of other content */
             padding: 10px;
-                font-size: 11px;
+            font-size: 11px;
         }
 
         .fa-edit {
@@ -509,38 +510,45 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                                 <div class="row row-cols-3 g-0 border-bottom">
                                     <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/04.png" width="36" alt="">
+                                        <a href="https://www.youtube.com/@hitachisystemsindiapvtltd9106" target="_blank">
+                                            <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                                <div class="app-icon">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/04.png" width="36" alt="">
+                                                </div>
+                                                <div class="app-name">
+                                                    <p class="mb-0">YouTube</p>
+                                                </div>
                                             </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">YouTube</p>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col border-end">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/05.png" width="36" alt="">
+                                        <a href="https://hitachi-systems.co.in/" target="_blank">
+                                            <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                                <div class="app-icon">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/Hitachi.png"
+                                                        width="36" alt="">
+                                                </div>
+                                                <div class="app-name">
+                                                    <p class="mb-0">Google</p>
+                                                </div>
                                             </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Google</p>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col">
-                                        <div class="app-wrapper d-flex flex-column gap-2 text-center">
-                                            <div class="app-icon">
-                                                <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/06.png" width="36" alt="">
+                                        <a href="https://www.instagram.com/hitachisystemsindia?igsh=MXB6aHR3YzQ1OW01Ng==" target="_blank">
+                                            <div class="app-wrapper d-flex flex-column gap-2 text-center">
+                                                <div class="app-icon">
+                                                    <img src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/images/apps/06.png" width="36" alt="">
+                                                </div>
+                                                <div class="app-name">
+                                                    <p class="mb-0">Instagram</p>
+                                                </div>
                                             </div>
-                                            <div class="app-name">
-                                                <p class="mb-0">Instagram</p>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
 
-                                <div class="row row-cols-3 g-0 border-bottom">
+                                <div class="row row-cols-3 g-0 border-bottom" hidden>
                                     <div class="col border-end">
                                         <div class="app-wrapper d-flex flex-column gap-2 text-center">
                                             <div class="app-icon">
@@ -578,7 +586,7 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" tooltip="Coming Soon">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
                             data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
                             <span class="badge-notify">5</span>
@@ -753,11 +761,11 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href='<%= ResolveUrl("~/frmChgPass.aspx")%>'><i
                                 class="material-icons-outlined">local_bar</i>Change Password</a>
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href='<%= ResolveUrl("~/frmDashboard.aspx")%>'><i
                                 class="material-icons-outlined">dashboard</i>Dashboard</a>
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"  Visible="false" runat="server"><i
                                 class="material-icons-outlined">account_balance</i>Earning</a>
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;" Visible="false" runat="server" ><i
                                 class="material-icons-outlined">cloud_download</i>Downloads</a>
                             <hr class="dropdown-divider">
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="<%= ResolveUrl("~/Logout.aspx") %>"><i
@@ -778,7 +786,9 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <asp:Image ID="imgOrg" runat="server" CssClass="logo-img" />
                 </div>
                 <div class="logo-name flex-grow-1">
-                    <p class="mb-0"><asp:Label runat="server" ID="lblOrg"></asp:Label></p>
+                    <p class="mb-0">
+                        <asp:Label runat="server" ID="lblOrg"></asp:Label>
+                    </p>
                 </div>
                 <div class="sidebar-close">
                     <span class="material-icons-outlined">close</span>

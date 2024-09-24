@@ -344,7 +344,8 @@ public partial class Site : System.Web.UI.MasterPage
             var line = frame.GetFileLineNumber();
             inEr.InsertErrorLogsF(Session["UserName"].ToString(),
                 $"{Request.Url} Got Exception Line Number: {line} {ex}");
-            Response.Redirect("~/Error/Error.html");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"error_noti(); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
         }
     }
 }
