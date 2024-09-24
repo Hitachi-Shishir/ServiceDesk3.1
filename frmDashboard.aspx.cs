@@ -233,7 +233,7 @@ var options = {{
         type: 'gradient',
         gradient: {{
             shade: 'dark',
-            gradientToColors: ['#ffd200', '#00c6fb', '#7928ca'],
+            gradientToColors: ['#00c6fb'],
             shadeIntensity: 1,
             type: 'vertical',
             stops: [0, 100, 100, 100]
@@ -246,7 +246,7 @@ var options = {{
             borderRadius: 4,
             borderRadiusApplication: 'around',
             borderRadiusWhenStacked: 'last',
-            columnWidth: '12%',
+            columnWidth: '35%',
         }}
     }},
     dataLabels: {{
@@ -267,6 +267,9 @@ var options = {{
     }},
     xaxis: {{
         categories: {daywise},
+ labels: {{
+                    show: false  // Hide the x-axis labels
+                }}
     }}
 }};
 
@@ -311,7 +314,7 @@ chart.render();
                 type: 'gradient',
                 gradient: {{
                     shade: 'dark',
-                    gradientToColors: ['#7928ca'],
+                    gradientToColors: ['#009efd'],
                     shadeIntensity: 1,
                     type: 'vertical',
                     //opacityFrom: 0.8,
@@ -319,14 +322,14 @@ chart.render();
                     stops: [0, 100, 100, 100]
                 }},
             }},
-            colors: ['#ff0080'],
+            colors: ['#2af598'],
             plotOptions: {{
                 bar: {{
                     horizontal: false,
                     borderRadius: 4,
                     borderRadiusApplication: 'around',
                     borderRadiusWhenStacked: 'last',
-                    columnWidth: '12%',
+                    columnWidth: '35%',
                 }}
             }},
             dataLabels: {{
@@ -347,6 +350,9 @@ chart.render();
             }},
             xaxis: {{
                 categories: {categoriesJson},
+ labels: {{
+                    show: false  // Hide the x-axis labels
+                }}
             }}
         }};
 
@@ -406,7 +412,7 @@ chart.render();
                     borderRadius: 4,
                     borderRadiusApplication: 'around',
                     borderRadiusWhenStacked: 'last',
-                    columnWidth: '12%',
+                    columnWidth: '35%',
                 }}
             }},
             dataLabels: {{
@@ -427,6 +433,9 @@ chart.render();
             }},
             xaxis: {{
                 categories: {loactionJson},
+                labels: {{
+                    show: false  // Hide the x-axis labels
+                }}
             }}
         }};
 
@@ -471,7 +480,7 @@ chart.render();
                 type: 'gradient',
                 gradient: {{
                     shade: 'dark',
-                    gradientToColors: ['#7928ca'],
+                    gradientToColors: ['#ffd200'],
                     shadeIntensity: 1,
                     type: 'vertical',
                     //opacityFrom: 0.8,
@@ -479,14 +488,14 @@ chart.render();
                     stops: [0, 100, 100, 100]
                 }},
             }},
-            colors: ['#ff0080'],
+            colors: ['#ff6a00'],
             plotOptions: {{
                 bar: {{
                     horizontal: false,
                     borderRadius: 4,
                     borderRadiusApplication: 'around',
                     borderRadiusWhenStacked: 'last',
-                    columnWidth: '12%',
+                    columnWidth: '35%',
                 }}
             }},
             dataLabels: {{
@@ -507,6 +516,10 @@ chart.render();
             }},
             xaxis: {{
                 categories: {AssigneJson},
+ labels: {{
+                    show: false  // Hide the x-axis labels
+                }}
+
             }}
         }};
 

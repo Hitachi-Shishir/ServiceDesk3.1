@@ -17,7 +17,7 @@
                     <div class="card w-100 overflow-hidden rounded-4 mb-3">
                         <div class="card-body position-relative p-4">
                             <div class="row g-2">
-                                <div class="d-flex align-items-center gap-3 mb-5">
+                                <div class="d-flex align-items-center gap-3 mb-4">
                                     <%--<asp:Image ID="img" runat="server" class="rounded-circle bg-grd-info p-1" width="60" height="60" alt="user"/>--%>
                                     <asp:Image ID="img" runat="server" class="rounded-circle p-1 border" Width="45" Height="45" alt="" />
                                     <div class="col-3">
@@ -27,9 +27,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row " style="margin-bottom: 81px;">
+                            <div class="row mb-5" >
                                 <div class="col-3">
-                                    <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
+                                    <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field " AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-3">
@@ -51,7 +51,7 @@
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
                                         <asp:Label ID="lbltot" runat="server"></asp:Label><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
                                     </h4>
-                                    <p class="mb-3">Total Tickets</p>
+                                    <p class="mb-3 small">Total Tickets</p>
 
                                 </div>
                                 <div class="vr"></div>
@@ -59,7 +59,7 @@
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
                                         <asp:Label ID="lblOpen" runat="server"></asp:Label><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
                                     </h4>
-                                    <p class="mb-3">Open Tickets</p>
+                                    <p class="mb-3 small">Open Tickets</p>
 
                                 </div>
                                 <div class="vr"></div>
@@ -67,7 +67,7 @@
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
                                         <asp:Label ID="lblHold" runat="server"></asp:Label><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
                                     </h4>
-                                    <p class="mb-3">Hold Tickets</p>
+                                    <p class="mb-3 small">Hold Tickets</p>
 
                                 </div>
                                 <div class="vr"></div>
@@ -75,7 +75,7 @@
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
                                         <asp:Label ID="lblWip" runat="server"></asp:Label><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
                                     </h4>
-                                    <p class="mb-3">WIP Tickets</p>
+                                    <p class="mb-3 small">WIP Tickets</p>
 
                                 </div>
                                 <div class="vr"></div>
@@ -83,7 +83,7 @@
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
                                         <asp:Label ID="lblClosed" runat="server"></asp:Label><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
                                     </h4>
-                                    <p class="mb-3">Closed Tickets</p>
+                                    <p class="mb-3 small">Closed Tickets</p>
 
                                 </div>
                                 <div class="vr"></div>
@@ -91,15 +91,15 @@
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
                                         <asp:Label ID="lblResolved" runat="server"></asp:Label><i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
                                     </h4>
-                                    <p class="mb-3">Resolved</p>
+                                    <p class="mb-3 small">Resolved</p>
 
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-2">
+                           <%-- <div class="col-12 col-sm-2">
                                 <div class="welcome-back-img pt-4">
                                     <img src="assets/images/gallery/welcome-back-3.png" height="160" alt="">
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                         <!--end row-->
                     </div>
@@ -417,7 +417,7 @@
                     type: 'gradient',
                     gradient: {
                         shade: 'dark',
-                        gradientToColors: ['#ee0979', '#17ad37', '#ec6ead', '#fc185a', ' #009efd'],
+                        gradientToColors: ['red', 'yellow', 'green', 'orange', ' #009efd'],
                         shadeIntensity: 1,
                         type: 'vertical',
                         opacityFrom: 1,
@@ -425,7 +425,7 @@
                         //stops: [0, 100, 100, 100]
                     },
                 },
-                colors: ["#ff6a00", "#98ec2d", "#3494e6", "#ffc107", "#2af598"],
+                colors: ["red", "yellow", "green", "orange", "#2af598"],
                 dataLabels: {
                     enabled: !1
                 },
