@@ -5,6 +5,10 @@
         .gap-5 {
             gap: 2.6rem !important;
         }
+        .form-control-sm {
+            padding: .39rem .5rem  !important;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
@@ -28,22 +32,24 @@
                                 </div>
                             </div>
                             <div class="row mb-5" >
-                                <div class="col-3">
+                                <div class="col-3">      <label class="form-label opacity-0">..</label>  
                                     <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field " AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-3">
-                                    <asp:DropDownList ID="ddlCategory" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" >
+                                    <label class="form-label opacity-0">..</label>                                    <asp:DropDownList ID="ddlCategory" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" >
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-2">
+                                    <asp:RequiredFieldValidator ID="rfvtxtCntnctPrnsName" runat="server" CssClass="form-label"  ControlToValidate="txtfrmDate" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="GO"></asp:RequiredFieldValidator><br />
                                     <asp:TextBox runat="server" Placeholder="From Date" ID="txtfrmDate" class="form-control form-control-sm datepicker"></asp:TextBox>
                                 </div>
                                 <div class="col-2">
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="form-label" ControlToValidate="txttoDate" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="GO"></asp:RequiredFieldValidator><br />
                                     <asp:TextBox runat="server" Placeholder="To Date" ID="txttoDate" class="form-control form-control-sm datepicker"></asp:TextBox>
                                 </div>
-                                <div class="col-1">
-                                    <asp:Button ID="btnGo" runat="server" Text="GO" CssClass="btn btn-sm  btn-grd btn-grd-info " OnClick="btnGo_Click" />
+                                <div class="col-1">      <label class="form-label opacity-0">.....</label>  <br />
+                                    <asp:Button ID="btnGo" runat="server" Text="GO" CssClass="btn btn-sm  btn-grd btn-grd-info " OnClick="btnGo_Click" ValidationGroup="GO" />
                                 </div>
                             </div>
                             <div class="d-flex align-items-center gap-5">
