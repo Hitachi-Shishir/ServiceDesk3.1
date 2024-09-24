@@ -204,14 +204,14 @@
                                         Organization Name  
                                         <asp:RequiredFieldValidator ID="rfvtxtprioritye" runat="server" ControlToValidate="txtOrgName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtOrgName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtOrgName" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 20;"></asp:TextBox>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="staticEmail" class="form-label">
                                         Organization Description 
                                         <asp:RequiredFieldValidator ID="rfvPriority" runat="server" ControlToValidate="txtOrgDesc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtOrgDesc" runat="server" TextMode="MultiLine" Rows="2" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtOrgDesc" runat="server" TextMode="MultiLine" Rows="2" Columns="5" CssClass="form-control  form-control-sm" MaxLength="1000"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -219,7 +219,7 @@
                                               <asp:RequiredFieldValidator ID="rfvtxtCntnctPrnsName" runat="server" ControlToValidate="txtCntnctPrnsName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtCntnctPrnsName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtCntnctPrnsName" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 20;" MaxLength="20"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -227,7 +227,7 @@
                                              <asp:RequiredFieldValidator ID="rfvtxtCntctPrnsMob" runat="server" ControlToValidate="txtCntctPrnsMob" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtCntctPrnsMob" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtCntctPrnsMob" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[0-9]*$/.test(event.key) && this.value.length < 12;" MaxLength="12"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -236,7 +236,7 @@
                                     </label>
 
 
-                                    <asp:TextBox ID="txtCntctPrsnEmail" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtCntctPrsnEmail" runat="server" CssClass="form-control  form-control-sm" MaxLength="100"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -244,7 +244,7 @@
                                     </label>
 
 
-                                    <asp:TextBox ID="txtCntctPrsnNameII" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtCntctPrsnNameII" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 20;" MaxLength="20"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -252,7 +252,7 @@
                                     </label>
 
 
-                                    <asp:TextBox ID="txtCntctPrsnMobII" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtCntctPrsnMobII" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[0-9]*$/.test(event.key) && this.value.length < 12;" MaxLength="12"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -260,7 +260,7 @@
                                     </label>
 
 
-                                    <asp:TextBox ID="txtCntctPrnsEmailII" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtCntctPrnsEmailII" runat="server" CssClass="form-control  form-control-sm" MaxLength="100"></asp:TextBox>
                                 </div>
                                 <div class="col-6">
                                 </div>
@@ -275,64 +275,68 @@
                         </div>
 
                     </div>
-                    </div>
-                               
-                                      </div>
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-start justify-content-between">
+                                <div class="">
+                                    <h6 class="mb-0">
+                                        <asp:Label ID="lblsofname" runat="server" Text="Organization Details"></asp:Label></h6>
                                 </div>
-                                
-                    
-                      
-                                        <div class="card">
-                                            <div class="card-body">
+                                <asp:LinkButton ID="ImgBtnExport" CssClass="btn btn-sm btn-outline-secondary " runat="server" OnClick="ImgBtnExport_Click"> Excel <i class="fa-solid fa-download"></i></asp:LinkButton>
 
-                                                <div class="d-flex align-items-start justify-content-between">
-                                                    <div class="">
-                                                        <h6 class="mb-0">
-                                                            <asp:Label ID="lblsofname" runat="server" Text="Organization Details"></asp:Label></h6>
-                                                    </div>
-                                                    <asp:LinkButton ID="ImgBtnExport" CssClass="btn btn-sm btn-outline-secondary " runat="server" OnClick="ImgBtnExport_Click"> Excel <i class="fa-solid fa-download"></i></asp:LinkButton>
+                            </div>
+                            <div class="row ">
 
-                                                </div>
-                                                <div class="row ">
-
-                                                    <div class="col-md-6">
-                                                        <asp:Label ID="Label1" runat="server"></asp:Label>
-                                                        <asp:Label ID="Label3" runat="server"></asp:Label>
-                                                    </div>
-                                                    <div class="col-md-12 text-end">
-                                                        <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
-                                                            <%--  <asp:ImageButton ID="" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" />--%>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="table-responsive table-container">
-                                                            <asp:GridView GridLines="None" ID="gvOrg" runat="server" DataKeyNames="Org_ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm text-nowrap"
-                                                                Width="100%" OnRowCommand="gvOrg_RowCommand" OnRowDataBound="gvOrg_RowDataBound">
-                                                                <Columns>
-                                                                    <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                                                                        <ItemTemplate>
-                                                                            <%#Container.DataItemIndex+1 %>
-                                                                        </ItemTemplate>
-                                                                    </asp:TemplateField>
-                                                                    <asp:BoundField DataField="OrgName" HeaderText="Organization Name" NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="OrgDesc" HeaderText="Organization Desc" NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="CntctPrsnName" HeaderText="Cont Person Name" NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="CntctPrsnMob" HeaderText="Cont Person Mob " NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="CntctPrsnEmail" HeaderText="Cont Person Email " NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="CntctPrsnNameII" HeaderText="Cont Person Name II" NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="CntctPrsnMobII" HeaderText="Cont Person Mob II" NullDisplayText="NA" />
-                                                                    <asp:BoundField DataField="CntctPrsnEmailII" HeaderText="Cont Person Email II " NullDisplayText="NA" />
-                                                                    <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
-                                                                </Columns>
-                                                            </asp:GridView>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                <div class="col-md-6">
+                                    <asp:Label ID="Label1" runat="server"></asp:Label>
+                                    <asp:Label ID="Label3" runat="server"></asp:Label>
+                                </div>
+                                <div class="col-md-12 text-end">
+                                    <div class="btn btn-sm elevation-1 ml-1 " style="padding: 0px; margin-bottom: 10px; padding-top: 1px">
+                                        <%--  <asp:ImageButton ID="" runat="server" ImageUrl="~/Images/New folder/excelnew.png" CssClass="fa-pull-right btn-outline-success mr-1" />--%>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive table-container">
+                                        <asp:GridView GridLines="None" ID="gvOrg" runat="server" DataKeyNames="Org_ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm text-nowrap"
+                                            Width="100%" OnRowCommand="gvOrg_RowCommand" OnRowDataBound="gvOrg_RowDataBound">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="OrgName" HeaderText="Organization Name" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="OrgDesc" HeaderText="Organization Desc" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="CntctPrsnName" HeaderText="Cont Person Name" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="CntctPrsnMob" HeaderText="Cont Person Mob " NullDisplayText="NA" />
+                                                <asp:BoundField DataField="CntctPrsnEmail" HeaderText="Cont Person Email " NullDisplayText="NA" />
+                                                <asp:BoundField DataField="CntctPrsnNameII" HeaderText="Cont Person Name II" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="CntctPrsnMobII" HeaderText="Cont Person Mob II" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="CntctPrsnEmailII" HeaderText="Cont Person Email II " NullDisplayText="NA" />
+                                                <%--<asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                <i class="fa-solid fa-edit"></i>
+                                                </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                <i class="fa-solid fa-xmark text-danger"></i> 
+                                                </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </ContentTemplate>
                 <Triggers>
@@ -350,7 +354,6 @@
                 <ContentTemplate>
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
-
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between">
                                 <h6 class="mb-3 fw-bold">Add Request Type</h6>
@@ -376,7 +379,7 @@
                                                 <asp:RequiredFieldValidator ID="rfvReqType" runat="server" ControlToValidate="txtRequestType" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="ReqType"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtRequestType" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtRequestType" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 20;"></asp:TextBox>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="staticEmail" class="form-label">
@@ -395,8 +398,6 @@
                                 <div class="col-6 text-end">
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                     <div class="card">
@@ -407,13 +408,8 @@
                                         <asp:Label ID="Label2" runat="server" Text="Request Type Details"></asp:Label>
                                     </h6>
                                 </div>
-
                                 <asp:LinkButton ID="ImgBtnExportReq" runat="server" CssClass="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExportReq_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
-
                             </div>
-
-
-
                             <div class="row ">
 
                                 <div class="col-md-6">
@@ -439,8 +435,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%-- <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit1" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                    <i class="fa-solid fa-edit"></i>
+                                                    </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete1" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                    <i class="fa-solid fa-xmark text-danger"></i> 
+                                                    </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -497,7 +507,7 @@
                                         Stage Name
                                         <asp:RequiredFieldValidator ID="rfvtxtStageName" runat="server" ControlToValidate="txtStageName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Stage"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtStageName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtStageName" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 20;"></asp:TextBox>
 
                                 </div>
                                 <div class="col-md-6">
@@ -563,8 +573,22 @@
                                             <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:ButtonField ButtonType="Image" CommandName="SelectStage" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                    <%--<asp:ButtonField ButtonType="Image" CommandName="SelectStage" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                    <asp:TemplateField HeaderText="Edit">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkEdit2" runat="server" CommandName="SelectStage" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                <i class="fa-solid fa-edit"></i>
+                                </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Delete">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkDelete2" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                <i class="fa-solid fa-xmark text-danger"></i> 
+                                </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -626,7 +650,7 @@
                                         Status Name
                                             <asp:RequiredFieldValidator ID="rfvtxtStatusName" runat="server" ControlToValidate="txtStatusName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Status"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtStatusName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtStatusName" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
 
                                 </div>
 
@@ -714,8 +738,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="SelectStatus" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%--<asp:ButtonField ButtonType="Image" CommandName="SelectStatus" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit3" runat="server" CommandName="SelectStatus" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                <i class="fa-solid fa-edit"></i>
+                                                </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete3" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                <i class="fa-solid fa-xmark text-danger"></i> 
+                                                </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
 
                                         </asp:GridView>
@@ -774,7 +812,7 @@
                                 <div class="col-md-2">
                                     <label for="staticEmail" class="form-label">
                                         Severity Name
-                                            <asp:RequiredFieldValidator ID="rfvtxtSeverityName" runat="server" ControlToValidate="txtSeverityName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="rfvtxtSeverityName" runat="server" ControlToValidate="txtSeverityName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 20;" MaxLength="20"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:TextBox ID="txtSeverityName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
@@ -857,8 +895,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="SelectSeverity" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%-- <asp:ButtonField ButtonType="Image" CommandName="SelectSeverity" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit4" runat="server" CommandName="SelectSeverity" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                     <i class="fa-solid fa-edit"></i>
+                                                     </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete4" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                     <i class="fa-solid fa-xmark text-danger"></i> 
+                                                     </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -880,6 +932,7 @@
                     <asp:PostBackTrigger ControlID="ddlOrg4" />
                     <asp:PostBackTrigger ControlID="lnkPrevStatus" />
                     <asp:PostBackTrigger ControlID="lnkNextPriority" />
+                    <asp:PostBackTrigger ControlID="ImgBtnExport4" />
                 </Triggers>
 
             </asp:UpdatePanel>
@@ -919,7 +972,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtpriority" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtpriority" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtpriority" runat="server" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 20;" MaxLength="20"></asp:TextBox>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="staticEmail" class="form-label">
@@ -927,7 +980,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPriorityDescription" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Priority"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtPriorityDescription" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtPriorityDescription" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm" MaxLength="1000"></asp:TextBox>
                                 </div>
                                 <div class="col-6">
                                     <asp:Button ID="btnInsertPriority" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertPriority_Click" ValidationGroup="Priority" />
@@ -975,8 +1028,22 @@
                                                     <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                            <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                            <%-- <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                            <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                            <asp:TemplateField HeaderText="Edit">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lnkEdit5" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                 <i class="fa-solid fa-edit"></i>
+                                                 </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Delete">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lnkDelete5" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                             <i class="fa-solid fa-xmark text-danger"></i> 
+                                             </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
                                 </div>
@@ -996,7 +1063,6 @@
                     <asp:PostBackTrigger ControlID="ddlOrg5" />
                     <asp:PostBackTrigger ControlID="lnkPreviousSeverity" />
                     <asp:PostBackTrigger ControlID="lnkNextCategory" />
-
                 </Triggers>
 
             </asp:UpdatePanel>
@@ -1018,7 +1084,7 @@
                                         Organization
 
                                     </label>
-                                    <asp:DropDownList ID="ddlOrg6" runat="server" CssClass="form-control form-control-sm" AutoPostBack="true" Enabled="false" OnSelectedIndexChanged="ddlOrg6_SelectedIndexChanged">
+                                    <asp:DropDownList ID="ddlOrg6" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" Enabled="false" OnSelectedIndexChanged="ddlOrg6_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
@@ -1042,7 +1108,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtParentCategory" runat="server" ControlToValidate="txtParentCategory" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatI"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlParentCategory" runat="server" ControlToValidate="ddlParentCategory" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatII"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtParentCategory" runat="server" CssClass="form-control  form-control-sm" ToolTip="Add Category" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="txtParentCategory" runat="server" CssClass="form-control  form-control-sm" ToolTip="Add Category" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
                                     <asp:DropDownList ID="ddlParentCategory" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlParentCategory_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
@@ -1058,7 +1124,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtCatII" runat="server" ControlToValidate="txtCatII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatII"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCatII" runat="server" ControlToValidate="ddlCatII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIII"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtCatII" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatII" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="txtCatII" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatII" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
                                     <asp:DropDownList ID="ddlCatII" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="ddlCatII_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
@@ -1074,7 +1140,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtCatLevelIII" runat="server" ControlToValidate="txtCatLevelIII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIII"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCateLevelIII" runat="server" ControlToValidate="ddlCateLevelIII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIV"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtCatLevelIII" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatIII" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="txtCatLevelIII" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatIII" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
                                     <asp:DropDownList ID="ddlCateLevelIII" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="ddlCateLevelIII_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
@@ -1090,7 +1156,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtCateLevelIV" runat="server" ControlToValidate="txtCateLevelIV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIV"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCateLevelIV" runat="server" ControlToValidate="ddlCateLevelIV" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatV"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtCateLevelIV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatIV" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="txtCateLevelIV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatIV" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
                                     <asp:DropDownList ID="ddlCateLevelIV" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" Enabled="false" AutoPostBack="true" OnSelectedIndexChanged="ddlCateLevelIV_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
@@ -1106,7 +1172,7 @@
                                         <asp:ImageButton ID="imgbtnCancelCatV" runat="server" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatV_Click" />
                                         <asp:RequiredFieldValidator ID="rfvtxtCatV" runat="server" ControlToValidate="txtCatV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatV"></asp:RequiredFieldValidator>
                                     </label>
-                                    <asp:TextBox ID="txtCatV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatV" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="txtCatV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatV" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
                                     <asp:DropDownList ID="ddlCatV" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" Enabled="false">
                                     </asp:DropDownList>
                                 </div>
@@ -1134,30 +1200,30 @@
                 </ContentTemplate>
 
                 <Triggers>
-                    <asp:PostBackTrigger ControlID="ddlRequestType" />
+                    <asp:PostBackTrigger ControlID="ddlOrg6" />
                     <%--Parent Controls  Category I Controls--%>
                     <asp:PostBackTrigger ControlID="ddlParentCategory" />
                     <asp:PostBackTrigger ControlID="imgbtnAddParentCategory" />
-                    <asp:PostBackTrigger ControlID="imgbtnSaveParentCategory" />
+                    <%--<asp:PostBackTrigger ControlID="imgbtnSaveParentCategory" />--%>
                     <asp:PostBackTrigger ControlID="imgbtnEditParentCategory" />
                     <asp:PostBackTrigger ControlID="imgbtnCancelParent" />
                     <%--Parent Controls  Category II Controls--%>
                     <asp:PostBackTrigger ControlID="ddlCatII" />
                     <asp:PostBackTrigger ControlID="imgbtnCatII" />
-                    <asp:PostBackTrigger ControlID="imgbtnSaveCatII" />
+                    <%--<asp:PostBackTrigger ControlID="imgbtnSaveCatII" />--%>
                     <asp:PostBackTrigger ControlID="imgbtnEditCatII" />
                     <asp:PostBackTrigger ControlID="imgbtnCancelCatII" />
                     <%--Parent Controls  Category III Controls--%>
                     <asp:PostBackTrigger ControlID="ddlCateLevelIII" />
                     <asp:PostBackTrigger ControlID="imgAddCatIII" />
-                    <asp:PostBackTrigger ControlID="imgSaveCatIII" />
+                    <%--<asp:PostBackTrigger ControlID="imgSaveCatIII" />--%>
                     <asp:PostBackTrigger ControlID="imgbtnEditCatIII" />
                     <asp:PostBackTrigger ControlID="imgbtnCancelCatIII" />
 
                     <%--Parent Controls  Category IV Controls--%>
                     <asp:PostBackTrigger ControlID="ddlCateLevelIV" />
                     <asp:PostBackTrigger ControlID="imgbtnCatelevelIV" />
-                    <asp:PostBackTrigger ControlID="imgbtnSaveCateLvlIV" />
+                    <%--<asp:PostBackTrigger ControlID="imgbtnSaveCateLvlIV" />--%>
                     <asp:PostBackTrigger ControlID="imgbtnEditCatLvIV" />
                     <asp:PostBackTrigger ControlID="imgbtnCancelCatIV" />
                     <%--Parent Controls  Category V Controls--%>
@@ -1189,7 +1255,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtHostName" runat="server" ControlToValidate="txtHostName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtHostName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtHostName" runat="server" CssClass="form-control  form-control-sm" MaxLength="200"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1205,7 +1271,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtUserName" runat="server" ControlToValidate="txtUserName" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control  form-control-sm" MaxLength="200"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1213,7 +1279,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="EmailConfig"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control  form-control-sm" autocomplete="new-password"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1321,8 +1387,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateEmailConfig" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEmailConfig" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%-- <asp:ButtonField ButtonType="Image" CommandName="UpdateEmailConfig" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEmailConfig" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit11" runat="server" CommandName="UpdateEmailConfig" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete11" runat="server" CommandName="DeleteEmailConfig" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                        <i class="fa-solid fa-xmark text-danger"></i> 
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -1341,6 +1421,7 @@
                     <asp:PostBackTrigger ControlID="gvEmailConfig" />
                     <asp:PostBackTrigger ControlID="lnkPreviousCategory" />
                     <asp:PostBackTrigger ControlID="lnkNextResolution" />
+                    <asp:PostBackTrigger ControlID="ImgBtnExport8" />
                 </Triggers>
             </asp:UpdatePanel>
         </asp:Panel>
@@ -1358,7 +1439,7 @@
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         Organization
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlOrg" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlOrgResolution" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
                                     </label>
 
                                     <asp:DropDownList ID="ddlOrgResolution" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlOrgResolution_SelectedIndexChanged">
@@ -1380,7 +1461,8 @@
                                             <asp:RequiredFieldValidator ID="rfvtxtResolution" runat="server" ControlToValidate="txtResolution" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtResolution" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 50;" MaxLength="50"
+                                        ID="txtResolution" runat="server" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="staticEmail" class="form-label">
@@ -1388,7 +1470,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtResolutnDesc" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Resol"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtResolutnDesc" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtResolutnDesc" MaxLength="1000" runat="server" TextMode="MultiLine" Rows="5" Columns="5" CssClass="form-control  form-control-sm"></asp:TextBox>
                                 </div>
                                 <div class="col-6">
                                     <asp:Button ID="btnInsertResolution" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertResolution_Click" ValidationGroup="Resol" />
@@ -1435,8 +1517,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%-- <asp:ButtonField ButtonType="Image" CommandName="SelectState" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit7" runat="server" CommandName="SelectState" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete8" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                        <i class="fa-solid fa-xmark text-danger"></i> 
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -1539,8 +1635,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateSLA" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteSLA" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%-- <asp:ButtonField ButtonType="Image" CommandName="UpdateSLA" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteSLA" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit8" runat="server" CommandName="UpdateSLA" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                    <i class="fa-solid fa-edit"></i>
+                                                    </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete9" runat="server" CommandName="DeleteSLA" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                  <i class="fa-solid fa-xmark text-danger"></i> 
+                                                  </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -1600,7 +1710,7 @@
                                     <asp:RequiredFieldValidator ID="rfvtxtSDPrefix" runat="server" ControlToValidate="txtSDPrefix" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="www"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtSDPrefix" runat="server" MaxLength="4" CssClass="form-control  form-control-sm"></asp:TextBox>
+                                    <asp:TextBox ID="txtSDPrefix" runat="server" MaxLength="4" CssClass="form-control  form-control-sm" onkeypress="return /^[a-zA-Z]*$/.test(event.key) && this.value.length < 4;"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1743,8 +1853,22 @@
                                         <asp:GridView GridLines="None" ID="gvDesk" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="table table-sm table-striped text-nowrap"
                                             Width="100%" OnRowCommand="gvDesk_RowCommand" OnRowDataBound="gvDesk_RowDataBound">
                                             <Columns>
-                                                <asp:ButtonField ButtonType="Image" CommandName="EditDesk" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%--<asp:ButtonField ButtonType="Image" CommandName="EditDesk" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit9" runat="server" CommandName="EditDesk" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                        <i class="fa-solid fa-edit"></i>
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete10" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                        <i class="fa-solid fa-xmark text-danger"></i> 
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
                                                     <ItemTemplate>
                                                         <%#Container.DataItemIndex+1 %>
@@ -1832,6 +1956,7 @@
                     <asp:PostBackTrigger ControlID="lnkPreviousSLA" />
                     <asp:PostBackTrigger ControlID="lnkNextCustomFields" />
                     <asp:PostBackTrigger ControlID="ddlStageDeskConfig" />
+                    <asp:PostBackTrigger ControlID="ImgBtnExport12" />
                 </Triggers>
             </asp:UpdatePanel>
         </asp:Panel>
@@ -2095,7 +2220,7 @@
                                         <asp:RequiredFieldValidator ID="rfvtxtMobile" runat="server" ControlToValidate="txtMobile" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="UserEcslevel"></asp:RequiredFieldValidator>
                                     </label>
 
-                                    <asp:TextBox ID="txtMobile" TextMode="Phone" runat="server" CssClass="form-control  form-control-sm ">
+                                    <asp:TextBox ID="txtMobile" TextMode="Phone" runat="server" CssClass="form-control  form-control-sm " onkeypress="return /^[0-9]*$/.test(event.key) && this.value.length < 12;">
                                     </asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
@@ -2137,7 +2262,7 @@
                                         <asp:Label ID="Label26" runat="server" Text="Ecslevel Details"></asp:Label>
                                     </h6>
                                 </div>
-                                <asp:LinkButton ID="ImageButton1" runat="server" class="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
+                                <asp:LinkButton ID="ImgBtnExport14" runat="server" class="btn btn-sm btn-outline-secondary" OnClick="ImgBtnExport14_Click">Export <i class="fa-solid fa-download"></i></asp:LinkButton>
 
                             </div>
                             <div class="row ">
@@ -2162,8 +2287,22 @@
                                                         <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEcslevel" ItemStyle-Width="20px" ItemStyle-Height="5px" />
+                                                <%--<asp:ButtonField ButtonType="Image" CommandName="UpdateEcslevel" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                                <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEcslevel" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit11" runat="server" CommandName="UpdateEcslevel" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                <i class="fa-solid fa-edit"></i>
+                                                    </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete11" runat="server" CommandName="DeleteEcslevel" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                <i class="fa-solid fa-xmark text-danger"></i> 
+                                                </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -2179,7 +2318,7 @@
 
                 </ContentTemplate>
                 <Triggers>
-                    <asp:PostBackTrigger ControlID="ImgBtnExport" />
+                    <asp:PostBackTrigger ControlID="ImgBtnExport14" />
                     <asp:PostBackTrigger ControlID="gvEcslevel" />
                     <asp:PostBackTrigger ControlID="lnkPreviousCustomField" />
                 </Triggers>

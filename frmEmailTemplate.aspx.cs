@@ -151,6 +151,15 @@ public partial class frmEmailTemplate : System.Web.UI.Page
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
+        if (txtEmailTemplate.Visible == true)
+        {
+            if (txtEmailTemplate.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showNotification",
+    $"warning_noti('{HttpUtility.JavaScriptStringEncode("Email Template Can Not be Empty !")}'); setTimeout(function() {{ window.location.reload(); }}, 2000);", true);
+                return;
+            }
+        }
         SaveEmailTemplate();
     }
 
@@ -259,7 +268,7 @@ public partial class frmEmailTemplate : System.Web.UI.Page
             }
         }
     }
-    protected void ImgAddEmailTemp_Click (object sender, EventArgs e)
+    protected void ImgAddEmailTemp_Click(object sender, EventArgs e)
     {
         txtEmailTemplate.Visible = true;
         ddlEmailTemplate.Visible = false;

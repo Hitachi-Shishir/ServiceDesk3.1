@@ -53,7 +53,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
 
 
 
-                            <asp:TextBox ID="txtEmailTemplate" runat="server" CssClass="form-control form-control-sm" />
+                            <asp:TextBox ID="txtEmailTemplate" runat="server" CssClass="form-control form-control-sm" MaxLength="50" onkeypress="return /^[a-zA-Z\s]*$/.test(event.key) && this.value.length < 50;"/>
                             <asp:DropDownList ID="ddlEmailTemplate" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEmailTemplate_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
 
 
@@ -70,7 +70,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
 
 
 
-                            <asp:TextBox ID="txtSummary" runat="server" CssClass="form-control  form-control-sm "></asp:TextBox>
+                            <asp:TextBox ID="txtSummary" runat="server" CssClass="form-control  form-control-sm " MaxLength="1000"></asp:TextBox>
 
 
                         </div>
