@@ -3776,7 +3776,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
 
     }
-    protected void imgbtnAddParentCategory_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnAddParentCategory_Click(object sender, EventArgs e)
     {
         try
         {
@@ -3822,7 +3822,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnSaveParentCategory_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnSaveParentCategory_Click(object sender, EventArgs e)
     {
         try
         {
@@ -3881,7 +3881,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     /// <summary>
     /// Add and Save Category Level 2
     /// </summary>
-    protected void imgbtnCatII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCatII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -3931,7 +3931,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnSaveCatII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnSaveCatII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4229,7 +4229,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgAddCatIII_Click(object sender, ImageClickEventArgs e)
+    protected void imgAddCatIII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4279,7 +4279,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void imgSaveCatIII_Click(object sender, ImageClickEventArgs e)
+    protected void imgSaveCatIII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4382,7 +4382,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
     }
     // Add and Save Category Level 4
-    protected void imgbtnCatelevelIV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCatelevelIV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4427,7 +4427,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnSaveCateLvlIV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnSaveCateLvlIV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4532,7 +4532,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
     }
     // Add and save Category Level 5
-    protected void imgbtnAddCatV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnAddCatV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4574,7 +4574,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
 
     }
-    protected void imgbtnSaveCatV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnSaveCatV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4645,7 +4645,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         Response.Redirect(Request.Url.AbsoluteUri);
     }
-    protected void imgbtnCancelParent_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCancelParent_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4681,7 +4681,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnCancelCatII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCancelCatII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4730,7 +4730,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
 
     }
-    protected void imgbtnCancelCatIII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCancelCatIII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4772,7 +4772,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnCancelCatIV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCancelCatIV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4811,7 +4811,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnCancelCatV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnCancelCatV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4850,7 +4850,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     public static string CategoryIIIValue;
     public static string CategoryIVValue;
     public static string CategoryVValue;
-    protected void imgbtnEditParentCategory_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnEditParentCategory_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4894,7 +4894,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnEditCatII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnEditCatII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4937,7 +4937,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnEditCatIII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnEditCatIII_Click(object sender, EventArgs e)
     {
         try
         {
@@ -4981,7 +4981,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnEditCatLvIV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnEditCatLvIV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -5025,7 +5025,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnEditCatV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnEditCatV_Click(object sender, EventArgs e)
     {
         try
         {
@@ -5073,7 +5073,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         FillRequestTypeCategory(Convert.ToInt64(ddlOrg6.SelectedValue));
     }
-    protected void imgbtnUpdateParentCategory_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnUpdateParentCategory_Click(object sender, EventArgs e)
     {
         if (txtParentCategory.Text != null)
         {
@@ -5159,7 +5159,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
 
     }
-    protected void imtbtnUpdateCatII_Click(object sender, ImageClickEventArgs e)
+    protected void imtbtnUpdateCatII_Click(object sender, EventArgs e)
     {
         if (txtCatII.Text != null)
         {
@@ -5185,7 +5185,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnUpdateCatIII_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnUpdateCatIII_Click(object sender, EventArgs e)
     {
         if (txtCatLevelIII.Text != null)
         {
@@ -5206,7 +5206,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnUpdateCateLvIV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnUpdateCateLvIV_Click(object sender, EventArgs e)
     {
         if (txtCateLevelIV.Text != null)
         {
@@ -5228,7 +5228,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
             }
         }
     }
-    protected void imgbtnUpdateCatV_Click(object sender, ImageClickEventArgs e)
+    protected void imgbtnUpdateCatV_Click(object sender, EventArgs e)
     {
         if (txtCatV.Text != null)
         {

@@ -569,43 +569,47 @@
                                     <asp:Label ID="Label7" runat="server"></asp:Label>
                                     <asp:Label ID="Label8" runat="server"></asp:Label>
                                 </div>
-
+                                <div class="col-md-12">
+                                    <div class="table-container table-responsive">
+                                         <asp:GridView GridLines="None" ID="gvStage" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm"
+     Width="100%" OnRowCommand="gvStage_RowCommand" OnRowDataBound="gvStage_RowDataBound">
+     <Columns>
+         <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+             <ItemTemplate>
+                 <%#Container.DataItemIndex+1 %>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
+         <asp:BoundField DataField="StageCodeRef" HeaderText="Stage Name" NullDisplayText="NA" />
+         <asp:BoundField DataField="StageDesc" HeaderText="Stage Description" NullDisplayText="NA" />
+         <asp:TemplateField HeaderText=" Organization">
+             <ItemTemplate>
+                 <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                 <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <%--<asp:ButtonField ButtonType="Image" CommandName="SelectStage" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+         <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
+         <asp:TemplateField HeaderText="Edit">
+             <ItemTemplate>
+                 <asp:LinkButton ID="lnkEdit2" runat="server" CommandName="SelectStage" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+     <i class="fa-solid fa-edit"></i>
+                 </asp:LinkButton>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:TemplateField HeaderText="Delete">
+             <ItemTemplate>
+                 <asp:LinkButton ID="lnkDelete2" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+     <i class="fa-solid fa-xmark text-danger"></i> 
+                 </asp:LinkButton>
+             </ItemTemplate>
+         </asp:TemplateField>
+     </Columns>
+ </asp:GridView>
+                                    </div>
+                                </div>
                             </div>
-                            <asp:GridView GridLines="None" ID="gvStage" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm"
-                                Width="100%" OnRowCommand="gvStage_RowCommand" OnRowDataBound="gvStage_RowDataBound">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-                                        <ItemTemplate>
-                                            <%#Container.DataItemIndex+1 %>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
-                                    <asp:BoundField DataField="StageCodeRef" HeaderText="Stage Name" NullDisplayText="NA" />
-                                    <asp:BoundField DataField="StageDesc" HeaderText="Stage Description" NullDisplayText="NA" />
-                                    <asp:TemplateField HeaderText=" Organization">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
-                                            <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <%--<asp:ButtonField ButtonType="Image" CommandName="SelectStage" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
-                                    <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
-                                    <asp:TemplateField HeaderText="Edit">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="lnkEdit2" runat="server" CommandName="SelectStage" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
-                                <i class="fa-solid fa-edit"></i>
-                                            </asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Delete">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="lnkDelete2" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
-                                <i class="fa-solid fa-xmark text-danger"></i> 
-                                            </asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
+                           
                         </div>
                     </div>
 
@@ -808,7 +812,7 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                            <div class="d-flex align-items-start justify-content-between">
+                            <div class="d-flex align-items-start justify-content-between mb-2">
                                 <h6 class="mb-3 fw-bold">Add Severtiy</h6>
                                 <div class="d-flex">
 
@@ -849,7 +853,7 @@
                                 <div class="col-md-2">
                                     <label for="staticEmail" class="form-label">
                                         Response Time(in Min)
-                                            <asp:RequiredFieldValidator ID="rfvtxtResponseTime" runat="server" ControlToValidate="txtResponseTime" ErrorMessage="Required" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="rfvtxtResponseTime" runat="server"  ControlToValidate="txtResponseTime" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity"></asp:RequiredFieldValidator>
                                     </label>
 
 
@@ -1106,10 +1110,10 @@
             <asp:UpdatePanel ID="updatepanel7" runat="server">
                 <ContentTemplate>
 
-                    <div class="card mb-3">
-                        <div class="card-body">
+                    <div class="card mb-5">
+                        <div class="card-body mb-5">
                             <div class="d-flex align-items-start justify-content-between">
-                                <h6 class="mb-3 fw-bold">Add Categroy</h6>
+                                <h6 class="mb-3 fw-bold">Add Category</h6>
                                 <div class="d-flex">
                                     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPreviousPriority" ToolTip="Previous" runat="server" OnClick="lnkPreviousPriority_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
                                     &nbsp;
@@ -1141,11 +1145,12 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category
-           <asp:ImageButton ID="imgbtnAddParentCategory" runat="server" ImageUrl="~/Images/plus.png" ToolTip="Add Category" OnClick="imgbtnAddParentCategory_Click" />
-                                        <asp:ImageButton ID="imgbtnSaveParentCategory" runat="server" ImageUrl="~/Images/save.png" ToolTip="Save Category" OnClick="imgbtnSaveParentCategory_Click" ValidationGroup="SaveCatI" Enabled="false" />
-                                        <asp:ImageButton ID="imgbtnUpdateParentCategory" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateParentCategory_Click" ValidationGroup="SaveCatI" Visible="false" />
-                                        <asp:ImageButton ID="imgbtnEditParentCategory" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditParentCategory_Click" />
-                                        <asp:ImageButton ID="imgbtnCancelParent" runat="server" Enabled="false" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelParent_Click" />
+                                        <asp:LinkButton runat="server" ID="imgbtnAddParentCategory"   ToolTip="Add Category" OnClick="imgbtnAddParentCategory_Click"  ><i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+       <asp:LinkButton  ID="imgbtnSaveParentCategory" runat="server"  ToolTip="Save Category" OnClick="imgbtnSaveParentCategory_Click" ValidationGroup="SaveCatI" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                       
+                                        <asp:LinkButton ID="imgbtnUpdateParentCategory" runat="server" ToolTip="Update Category" OnClick="imgbtnUpdateParentCategory_Click" ValidationGroup="SaveCatI" Visible="false" ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditParentCategory" runat="server"   ToolTip="Edit Category" OnClick="imgbtnEditParentCategory_Click" ><i class="fa-solid fa-edit p-1 rounded-circle border"></i></asp:LinkButton> 
+                                        <asp:LinkButton ID="imgbtnCancelParent" runat="server" Enabled="false"    ToolTip="Add Category" OnClick="imgbtnCancelParent_Click" ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtParentCategory" runat="server" ControlToValidate="txtParentCategory" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatI"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlParentCategory" runat="server" ControlToValidate="ddlParentCategory" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatII"></asp:RequiredFieldValidator>
                                     </label>
@@ -1157,11 +1162,11 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category II
-           <asp:ImageButton ID="imgbtnCatII" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnCatII_Click" ValidationGroup="AddCatII" />
-                                        <asp:ImageButton ID="imgbtnSaveCatII" runat="server" ImageUrl="~/Images/save.png" ToolTip="Save Category" OnClick="imgbtnSaveCatII_Click" ValidationGroup="SaveCatII" Enabled="false" />
-                                        <asp:ImageButton ID="imtbtnUpdateCatII" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imtbtnUpdateCatII_Click" ValidationGroup="SaveCatII" Visible="false" />
-                                        <asp:ImageButton ID="imgbtnEditCatII" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatII_Click" />
-                                        <asp:ImageButton ID="imgbtnCancelCatII" runat="server" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatII_Click" />
+           <asp:LinkButton ID="imgbtnCatII" runat="server"  OnClick="imgbtnCatII_Click" ValidationGroup="AddCatII" ><i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveCatII" runat="server" ToolTip="Save Category" OnClick="imgbtnSaveCatII_Click" ValidationGroup="SaveCatII" Enabled="false" ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imtbtnUpdateCatII" runat="server"  ToolTip="Update Category" OnClick="imtbtnUpdateCatII_Click" ValidationGroup="SaveCatII" Visible="false" ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatII" runat="server"    ToolTip="Edit Category" OnClick="imgbtnEditCatII_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelCatII" runat="server"    ToolTip="Add Category" OnClick="imgbtnCancelCatII_Click" ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCatII" runat="server" ControlToValidate="txtCatII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatII"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCatII" runat="server" ControlToValidate="ddlCatII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIII"></asp:RequiredFieldValidator>
                                     </label>
@@ -1173,11 +1178,11 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category III
-           <asp:ImageButton ID="imgAddCatIII" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgAddCatIII_Click" ValidationGroup="AddCatIII" />
-                                        <asp:ImageButton ID="imgSaveCatIII" runat="server" ImageUrl="~/Images/save.png" OnClick="imgSaveCatIII_Click" ValidationGroup="SaveCatIII" Enabled="false" />
-                                        <asp:ImageButton ID="imgbtnUpdateCatIII" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateCatIII_Click" ValidationGroup="SaveCatIII" Visible="false" />
-                                        <asp:ImageButton ID="imgbtnEditCatIII" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatIII_Click" />
-                                        <asp:ImageButton ID="imgbtnCancelCatIII" runat="server" Enabled="false" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatIII_Click" />
+           <asp:LinkButton ID="imgAddCatIII" runat="server"  OnClick="imgAddCatIII_Click" ValidationGroup="AddCatIII"> <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgSaveCatIII" runat="server"  OnClick="imgSaveCatIII_Click" ValidationGroup="SaveCatIII" Enabled="false" ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnUpdateCatIII" runat="server"  ToolTip="Update Category" OnClick="imgbtnUpdateCatIII_Click" ValidationGroup="SaveCatIII" Visible="false" ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatIII" runat="server"    ToolTip="Edit Category" OnClick="imgbtnEditCatIII_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton> 
+                                        <asp:LinkButton ID="imgbtnCancelCatIII" runat="server" Enabled="false"   ToolTip="Add Category" OnClick="imgbtnCancelCatIII_Click"  ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCatLevelIII" runat="server" ControlToValidate="txtCatLevelIII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIII"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCateLevelIII" runat="server" ControlToValidate="ddlCateLevelIII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIV"></asp:RequiredFieldValidator>
                                     </label>
@@ -1189,11 +1194,11 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category IV
-           <asp:ImageButton ID="imgbtnCatelevelIV" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnCatelevelIV_Click" ValidationGroup="AddCatIV" />
-                                        <asp:ImageButton ID="imgbtnSaveCateLvlIV" runat="server" ImageUrl="~/Images/save.png" OnClick="imgbtnSaveCateLvlIV_Click" ValidationGroup="SaveCatIV" Enabled="false" />
-                                        <asp:ImageButton ID="imgbtnUpdateCateLvIV" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateCateLvIV_Click" ValidationGroup="SaveCatIV" Visible="false" />
-                                        <asp:ImageButton ID="imgbtnEditCatLvIV" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatLvIV_Click" />
-                                        <asp:ImageButton ID="imgbtnCancelCatIV" runat="server" Enabled="false" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatIV_Click" />
+           <asp:LinkButton ID="imgbtnCatelevelIV" runat="server" OnClick="imgbtnCatelevelIV_Click" ValidationGroup="AddCatIV" > <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveCateLvlIV" runat="server"  OnClick="imgbtnSaveCateLvlIV_Click" ValidationGroup="SaveCatIV" Enabled="false"  ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnUpdateCateLvIV" runat="server"  ToolTip="Update Category" OnClick="imgbtnUpdateCateLvIV_Click" ValidationGroup="SaveCatIV" Visible="false"  ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatLvIV" runat="server"    ToolTip="Edit Category" OnClick="imgbtnEditCatLvIV_Click" ><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelCatIV" runat="server" Enabled="false"    ToolTip="Add Category" OnClick="imgbtnCancelCatIV_Click" ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCateLevelIV" runat="server" ControlToValidate="txtCateLevelIV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIV"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCateLevelIV" runat="server" ControlToValidate="ddlCateLevelIV" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatV"></asp:RequiredFieldValidator>
                                     </label>
@@ -1206,11 +1211,11 @@
 
                                     <label class="form-label">
                                         Category V
-           <asp:ImageButton ID="imgbtnAddCatV" runat="server" ImageUrl="~/Images/plus.png" OnClick="imgbtnAddCatV_Click" ValidationGroup="AddCatV" />
-                                        <asp:ImageButton ID="imgbtnSaveCatV" runat="server" ImageUrl="~/Images/save.png" OnClick="imgbtnSaveCatV_Click" ValidationGroup="SaveCatV" Enabled="false" />
-                                        <asp:ImageButton ID="imgbtnUpdateCatV" runat="server" ImageUrl="~/Images/update.png" ToolTip="Update Category" OnClick="imgbtnUpdateCatV_Click" ValidationGroup="SaveCatV" Visible="false" />
-                                        <asp:ImageButton ID="imgbtnEditCatV" runat="server" ImageUrl="~/Images/edit23.png" Width="16" Height="16" ToolTip="Edit Category" OnClick="imgbtnEditCatV_Click" />
-                                        <asp:ImageButton ID="imgbtnCancelCatV" runat="server" ImageUrl="~/Images/reset1.png" Width="16" Height="16" ToolTip="Add Category" OnClick="imgbtnCancelCatV_Click" />
+           <asp:LinkButton ID="imgbtnAddCatV" runat="server" OnClick="imgbtnAddCatV_Click" ValidationGroup="AddCatV" > <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveCatV" runat="server"  OnClick="imgbtnSaveCatV_Click" ValidationGroup="SaveCatV" Enabled="false" ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnUpdateCatV" runat="server"  ToolTip="Update Category" OnClick="imgbtnUpdateCatV_Click" ValidationGroup="SaveCatV" Visible="false"  ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatV" runat="server"  ToolTip="Edit Category" OnClick="imgbtnEditCatV_Click" ><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton> 
+                                        <asp:LinkButton ID="imgbtnCancelCatV" runat="server"    ToolTip="Add Category" OnClick="imgbtnCancelCatV_Click"  ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCatV" runat="server" ControlToValidate="txtCatV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatV"></asp:RequiredFieldValidator>
                                     </label>
                                     <asp:TextBox ID="txtCatV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatV" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
