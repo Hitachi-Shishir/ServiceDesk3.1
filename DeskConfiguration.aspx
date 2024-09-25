@@ -98,7 +98,7 @@
                             <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between " role="tablist">
 
                                 <!-- Step 1 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1">
+                                <asp:LinkButton ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1">
                          <div class="bs-stepper-circle">1</div>
                       
                                 </asp:LinkButton>
