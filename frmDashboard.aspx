@@ -467,7 +467,7 @@
 
     </script>
 
-    <script src="https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/apexchart/apexcharts.min.js"></script>
 
 </asp:Content>
 

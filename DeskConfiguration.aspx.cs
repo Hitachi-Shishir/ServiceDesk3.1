@@ -695,9 +695,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
     private void RegisterDataTableScripts()
     {
         string script = @"
-        <script src='https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/jquery.dataTables.min.js'></script>
-        <script src='https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/js/dataTables.bootstrap5.min.js'></script>
-        <script src='https://pcv-demo.hitachi-systems-mc.com:2020/assets/js/jquery-3.6.0.min.js'></script>
+        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/datatable/js/jquery.dataTables.min.js'></script>
+        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/datatable/js/dataTables.bootstrap5.min.js'></script>
+        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assets/js/jquery-3.6.0.min.js'></script>
         <script>
             $(document).ready(function () {
                 $('.data-table').each(function () {
@@ -714,7 +714,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 });
             });
         </script>
-        <link href='https://pcv-demo.hitachi-systems-mc.com:2020/assets/plugins/datatable/css/dataTables.bootstrap5.min.css' rel='stylesheet' />
+        <link href='https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/datatable/css/dataTables.bootstrap5.min.css' rel='stylesheet' />
     ";
 
         ClientScript.RegisterStartupScript(this.GetType(), "DataTableScript", script, false);
