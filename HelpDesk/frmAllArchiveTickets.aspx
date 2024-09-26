@@ -33,9 +33,7 @@
         padding: 2px 5px;
         border-radius: 5px
     }
-    a {
-    color: var(--bs-heading-color) !important;
-}
+  
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
@@ -179,7 +177,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="table-responsive table-container mt-3" style="max-height: 400px">
+                            <div class="table-responsive table-container mt-3" style="max-height: 380px">
                                 <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm data-table" DataKeyNames="ID" AllowCustomPaging="True"
                                     AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
                                     <Columns>
@@ -281,7 +279,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Default Modal</h4>
+                            <h4 class="modal-title position-fixed  ">Default Modal</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

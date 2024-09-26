@@ -44,10 +44,10 @@
                                     <div class="row">
                                         <div class="d-flex flex-lg-row flex-column align-items-start align-items-lg-center justify-content-between gap-3">
                  <div class="flex-grow-1">
-                    <h6 class=" fw-bold">Menu List</h6>
+                    <p class=" fw-bold">Menu List</p>
                  </div>
                  <div class="overflow-auto">
-                                    <asp:Button ID="btnMasterRoleApply" runat="server" Text="Apply" OnClick="btnMasterRoleApply_Click" CssClass="btn btn-sm btn-outline-info" ValidationGroup="RoleA" />
+                                    <asp:Button ID="btnMasterRoleApply" runat="server" Text="Apply" OnClick="btnMasterRoleApply_Click" CssClass="btn btn-sm btn-outline-secondary" ValidationGroup="RoleA" />
                 
                 </div>
               </div>
@@ -77,7 +77,7 @@
 
                                 <div class="card-body">
                                     <div class="row">
-                                       <h6 class=" fw-bold">Role Wise Menu List</h6>
+                                       <p class=" fw-bold">Role Wise Menu List</p>
 
 
                                     </div>

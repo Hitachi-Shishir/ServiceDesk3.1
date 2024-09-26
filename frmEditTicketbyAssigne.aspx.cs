@@ -2878,9 +2878,9 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             pnlTicket.Visible = true;
 
             pnlUpdateTicket.Visible = true;
-            btnUpdateTickView.CssClass = "btn btn-sm btnEnabled  btn-outline-secondary ";
+            btnUpdateTickView.CssClass = "btn btn-sm  btn-secondary ";
             pnlViewNotes.Visible = false;
-            btnViewNotes.CssClass = "btn btn-sm btnDisabled  btn-outline-secondary ";
+            btnViewNotes.CssClass = "btn btn-sm   btn-outline-secondary ";
 
 
         }
@@ -2922,7 +2922,7 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
             pnlUpdateTicket.Visible = false;
 
             pnlViewNotes.Visible = true;
-            btnViewNotes.CssClass = "btn btn-sm btnEnabled  btn-outline-secondary ";
+            btnViewNotes.CssClass = "btn btn-sm   btn-secondary ";
             btnUpdateTickView.Enabled = true;
 
             pnlTicket.Visible = false;
@@ -3156,11 +3156,11 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
         pnlShowRollOutDetails.Visible = false;
         pnlTaksAssociation.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnUpdateTickView.CssClass = "btn btn-sm  btn-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm  btn-outline-secondary ";
     }
 
     protected void btnImpactDetails_Click(object sender, EventArgs e)
@@ -3177,12 +3177,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
         pnlTaksAssociation.Visible = false;
         pnlViewNotes.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnImpactDetails.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnUpdateTickView.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm  btn-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm  btn-outline-secondary ";
     }
 
     protected void btnRolloutPlan_Click(object sender, EventArgs e)
@@ -3198,12 +3198,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
         pnlTaksAssociation.Visible = false;
         pnlViewNotes.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnRolloutPlan.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnUpdateTickView.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm  btn-secondary ";
+        btnDowntime.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm  btn-outline-secondary ";
 
     }
 
@@ -3345,12 +3345,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
 
         pnlTicket.Visible = true;
         pnlUpdateTicket.Visible = false;
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnDowntime.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
-        btnTaskAssociation.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnUpdateTickView.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm  btn-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm  btn-outline-secondary ";
 
 
     }
@@ -3370,12 +3370,12 @@ public partial class frmEditTicketbyAssigne : System.Web.UI.Page
 
         pnlViewNotes.Visible = false;
 
-        btnUpdateTickView.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnImpactDetails.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnRolloutPlan.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnDowntime.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
-        btnTaskAssociation.CssClass = "btn btn-sm btnEnabled btn-outline-secondary ";
-        btnViewNotes.CssClass = "btn btn-sm btnDisabled btn-outline-secondary ";
+        btnUpdateTickView.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnImpactDetails.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnRolloutPlan.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnDowntime.CssClass = "btn btn-sm  btn-outline-secondary ";
+        btnTaskAssociation.CssClass = "btn btn-sm  btn-secondary ";
+        btnViewNotes.CssClass = "btn btn-sm  btn-outline-secondary ";
 
     }
     protected void btnAddTaskAssociationData_Click(object sender, EventArgs e)

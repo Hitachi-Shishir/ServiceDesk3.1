@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmDashboard.aspx.cs" Inherits="frmDashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style>
+   <%-- <style>
         .gap-5 {
             gap: 2.6rem !important;
         }
@@ -9,7 +9,7 @@
             padding: .39rem .5rem  !important;
         }
 
-    </style>
+    </style>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="scrmg" runat="server" EnablePageMethods="true">
@@ -24,34 +24,35 @@
                                 <div class="d-flex align-items-center gap-3 mb-4">
                                     <%--<asp:Image ID="img" runat="server" class="rounded-circle bg-grd-info p-1" width="60" height="60" alt="user"/>--%>
                                     <asp:Image ID="img" runat="server" class="rounded-circle p-1 border" Width="45" Height="45" alt="" />
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <p class="mb-0 fw-semibold">Welcome back</p>
                                         <h4 class="fw-semibold mb-0 fs-4 mb-0">
                                             <asp:Label ID="lblUserName" runat="server"></asp:Label></h4>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-5" >
-                                <div class="col-3">      <label class="form-label opacity-0">..</label>  
-                                    <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field " AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                </div>
-                                <div class="col-3">
-                                    <label class="form-label opacity-0">..</label>                                    <asp:DropDownList ID="ddlCategory" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" >
-                                    </asp:DropDownList>
-                                </div>
-                                <div class="col-2">
-                                    <asp:RequiredFieldValidator ID="rfvtxtCntnctPrnsName" runat="server" CssClass="form-label"  ControlToValidate="txtfrmDate" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="GO"></asp:RequiredFieldValidator><br />
+                            <div class="row mb-5 gx-3 gy-1">
+                                <div class="col-md-2 col-6">
+                                    <label class="form-label opacity-0">kk</label>
+                               <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field " AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
+ </asp:DropDownList>
+                                </div> <div class="col-md-2 col-6">
+                                    <label class="form-label opacity-0">kk</label>
+                                  <asp:DropDownList ID="ddlCategory" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" >
+</asp:DropDownList>                                </div> <div class="col-md-2 col-5">
+                                    <label class="form-label">                                    <asp:RequiredFieldValidator ID="rfvtxtCntnctPrnsName" runat="server" CssClass="form-label "  ControlToValidate="txtfrmDate" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="GO"></asp:RequiredFieldValidator><br />
+</label>
                                     <asp:TextBox runat="server" Placeholder="From Date" ID="txtfrmDate" class="form-control form-control-sm datepicker"></asp:TextBox>
-                                </div>
-                                <div class="col-2">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="form-label" ControlToValidate="txttoDate" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="GO"></asp:RequiredFieldValidator><br />
+                                </div> <div class="col-md-2 col-5">
+                                    <label class="form-label">                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="form-label" ControlToValidate="txttoDate" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="GO"></asp:RequiredFieldValidator><br />
+</label>
                                     <asp:TextBox runat="server" Placeholder="To Date" ID="txttoDate" class="form-control form-control-sm datepicker"></asp:TextBox>
-                                </div>
-                                <div class="col-1">      <label class="form-label opacity-0">.....</label>  <br />
-                                    <asp:Button ID="btnGo" runat="server" Text="GO" CssClass="btn btn-sm  btn-grd btn-grd-info " OnClick="btnGo_Click" ValidationGroup="GO" />
+                                </div> <div class="col-md-2 col-2">
+                                    <label class="form-label opacity-0">kk</label> <br />
+                                    <asp:Button ID="btnGo" runat="server" Text="GO" CssClass="btn btn-sm  btn-grd btn-primary px-3" OnClick="btnGo_Click" ValidationGroup="GO" />
                                 </div>
                             </div>
+                          
                             <div class="d-flex align-items-center gap-5">
                                 <div class="">
                                     <h4 class="mb-1 fw-semibold d-flex align-content-center">
@@ -323,7 +324,7 @@
                     theme: "dark",
                 },
                 xaxis: {
-                    categories: ['Severity 1', 'Severity 1', 'Severity 1'],
+                    categories: ['Severity 1', 'Severity 2', 'Severity 3'],
                 },
                 markers: {
                     show: !1,

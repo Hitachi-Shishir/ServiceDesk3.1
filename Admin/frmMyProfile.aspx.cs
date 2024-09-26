@@ -205,7 +205,7 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
                             lblUserRole.Text = Convert.ToString(dt.Rows[0]["UserRole"]);
                             lblContactNo.Text = Convert.ToString(dt.Rows[0]["ContactNo"]);
                             lblDesignation.Text = Convert.ToString(dt.Rows[0]["Designation"]);
-                            lblDomainType.Text = Convert.ToString(dt.Rows[0][""]);
+                            lblDomainType.Text = Convert.ToString(dt.Rows[0]["DomainType"]);
 
                             //DetailsCheckInAsset.DataSource = dt;
                             //DetailsCheckInAsset.DataBind();

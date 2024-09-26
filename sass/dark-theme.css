@@ -279,4 +279,30 @@
 [data-bs-theme=dark] body .bootstrap-tagsinput {
   background-color: var(--bs-body-bg);
   border-color: var(--bs-border-color);
-}/*# sourceMappingURL=dark-theme.css.map */
+}
+[data-bs-theme=dark] .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--selected, .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true]:not(.select2-results__option--highlighted) {
+    color: #fff !important;
+    background-color: #777777 !important;
+}
+
+
+
+.select2-container--bootstrap-5 .select2-selection {
+    width: 100%;
+    min-height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: #212529;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/*# sourceMappingURL=dark-theme.css.map */

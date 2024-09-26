@@ -35,7 +35,7 @@
         padding: 2px 5px;
         border-radius: 5px
     }
-    a {
+  th >  a {
     color: var(--bs-heading-color) !important;
 }
 </style>
@@ -243,10 +243,19 @@
                                                     <HeaderStyle HorizontalAlign="Center" />
                                                     <ItemStyle HorizontalAlign="Center" Width="30px" />
                                                 </asp:TemplateField>
-                                                <asp:ButtonField ButtonType="Image" CommandName="EditTicket" HeaderText="Edit" ImageUrl="~/Images/editWHT.png" ItemStyle-Width="5px" ItemStyle-Height="2px" ItemStyle-Wrap="false" HeaderStyle-Wrap="false" Visible="true">
+                                           <%--     <asp:ButtonField ButtonType="Image" >
                                                     <HeaderStyle Wrap="False" />
                                                     <ItemStyle Width="10px" Height="10px" Wrap="False" />
-                                                </asp:ButtonField>
+                                                </asp:ButtonField>--%>
+                                                                            
+                                                 <asp:TemplateField HeaderText="Edit">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="EditTicket" CommandArgument="<%# Container.DataItemIndex %>">
+                                                  <i class="fa-solid fa-edit"></i> 
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
 
                                                 <asp:TemplateField HeaderText="TicketNumber" ItemStyle-Font-Size="Smaller" SortExpression="TicketNumber" Visible="true">
                                                     <ItemTemplate>

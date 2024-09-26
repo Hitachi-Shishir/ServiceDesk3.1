@@ -18,6 +18,9 @@
 	--bs-pagination-border-radius: var(--bs-border-radius-sm);
     margin-top: -1.7rem!important;
 }
+   
+
+
   </style>
   
 </asp:Content>
@@ -34,7 +37,7 @@
 
                     <div class="table-responsive table-container" >
 
-                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped table-bordered table-sm text-nowrap" DataKeyNames="TicketNumber" 
+                        <asp:GridView ID="gvAllTickets" runat="server" CssClass="data-table table table-striped border table-sm text-nowrap " DataKeyNames="TicketNumber" 
                             AutoGenerateColumns="true" OnPageIndexChanging="gvAllTickets_PageIndexChanging">
 
                             <%-- <RowStyle BackColor="White" BorderColor="#e3e4e6" BorderWidth="1px" Height="5px" />

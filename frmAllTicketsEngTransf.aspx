@@ -32,7 +32,7 @@
             border-radius: 5px
         }
 
-        a {
+      th >  a {
             color: var(--bs-heading-color) !important;
         }
     </style>
@@ -73,7 +73,7 @@
                                 <asp:DropDownList ID="ddlRequestType" runat="server" ToolTip="Select Desk Type" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-1 col-3">
                                 <label class="form-label ml-4">Action</label>
                                 <br />
                                 <asp:Button ID="btnDelteBulkTicket" runat="server" Text="Delete" ToolTip="Delete Ticket" CssClass="btn btn-sm cancelbtn" OnClick="btnDelteBulkTicket_Click" hidden />
@@ -81,7 +81,7 @@
                                 <asp:Button ID="btnPickupTicket" runat="server" Text="Transfer" ToolTip="Transfer" CssClass="btn btn-sm btn-outline-secondary" OnClick="btnPickupTicket_Click" ValidationGroup="Pickup" />
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-9">
                                 <label class="form-label">
                                     Reason For Change
 																								<asp:RequiredFieldValidator ID="rfvtxtReason" runat="server" ControlToValidate="txtReason" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Pickup"></asp:RequiredFieldValidator>
@@ -90,7 +90,7 @@
 
                                 <asp:TextBox ID="txtReason" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-9">
                                 <label class="form-label">Paging</label>
                                 <br />
                                 <asp:Repeater ID="rptpageindexing" runat="server">
@@ -99,7 +99,7 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-1 col-3">
                                 <label class="form-label">Size</label>
                                 <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" CssClass-="form-select form-select-sm single-select-optgroup-field" OnSelectedIndexChanged="PageSize_Changed">
 
@@ -155,13 +155,13 @@
                     <asp:Panel ID="pnltickcount" runat="server">
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <div class="btn-group btn-group-sm w-100">
-                                    <asp:Button ID="btnOpenTicket" ToolTip="Ticket With Open Status" runat="server" Text="Open  (0)" CssClass="btn btn-sm btn-inverse-success" OnClick="btnOpenTicket_Click" />
-                                    <asp:Button ID="btnWipTicket" ToolTip="Tickets that are not resolved and open" runat="server" Text="WIP  (0)" CssClass="btn btn-sm btn-inverse-warning" OnClick="btnWipTicket_Click" />
-                                    <asp:Button ID="btnTicketAssigntoME" ToolTip="Tickets Assgined to me" runat="server" Text="Assigned (0)" CssClass="btn btn-sm btn-inverse-info" OnClick="btnTicketAssigntoME_Click" />
-                                    <asp:Button ID="btnAssignToOther" ToolTip="Tickets that are not assign" runat="server" Text="UnAssiged-Open(0)" CssClass="btn btn-sm btn-inverse-primary" OnClick="btnAssignToOther_Click" />
-                                    <asp:Button ID="btnDueSoonTickets" ToolTip="Tickets that are goin to esclate  or Response goin to Missed" runat="server" Text="Due Soon  (0)" CssClass="btn btn-sm btn-inverse-secondary" OnClick="btnDueSoonTickets_Click" />
-                                    <asp:Button ID="btnTicketEsclated" runat="server" ToolTip="Tickets that esclated or response missed" Text="Overdue  (0)" CssClass="btn btn-sm btn-inverse-danger" OnClick="btnTicketEsclated_Click" />
+                                <div class="btn-group btn-group-sm  w-100 ">
+                                    <asp:Button ID="btnOpenTicket" ToolTip="Ticket With Open Status" runat="server" Text="Open  (0)" CssClass="btn btn-sm btn-inverse-success btn-block" OnClick="btnOpenTicket_Click" />
+                                    <asp:Button ID="btnWipTicket" ToolTip="Tickets that are not resolved and open" runat="server" Text="WIP  (0)" CssClass="btn btn-sm btn-inverse-warning btn-block" OnClick="btnWipTicket_Click" />
+                                    <asp:Button ID="btnTicketAssigntoME" ToolTip="Tickets Assgined to me" runat="server" Text="Assigned (0)" CssClass="btn btn-sm btn-inverse-info btn-block" OnClick="btnTicketAssigntoME_Click" />
+                                    <asp:Button ID="btnAssignToOther" ToolTip="Tickets that are not assign" runat="server" Text="UnAssiged-Open(0)" CssClass="btn btn-sm btn-inverse-primary btn-block" OnClick="btnAssignToOther_Click" />
+                                    <asp:Button ID="btnDueSoonTickets" ToolTip="Tickets that are goin to esclate  or Response goin to Missed" runat="server" Text="Due Soon  (0)" CssClass="btn btn-sm btn-inverse-secondary btn-block" OnClick="btnDueSoonTickets_Click" />
+                                    <asp:Button ID="btnTicketEsclated" runat="server" ToolTip="Tickets that esclated or response missed" Text="Overdue  (0)" CssClass="btn btn-sm btn-inverse-danger btn-block" OnClick="btnTicketEsclated_Click" />
 
                                 </div>
                             </div>
@@ -170,9 +170,9 @@
 
                     <div class="row mt-4">
                         <div class="col-md-12">
-                            <div class="table-responsive table-container" style="height: 400px;">
+                            <div class="table-responsive table-container" style="height: 320px;">
 
-                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table table-head-fixed text-nowrap  table-striped table-sm" DataKeyNames="ID" AllowCustomPaging="True"
+                                <asp:GridView ID="gvAllTickets" runat="server" CssClass="table  text-nowrap  table-striped table-sm border" DataKeyNames="ID" AllowCustomPaging="True"
                                     AutoGenerateColumns="False" OnRowCommand="gvAllTickets_RowCommand" OnRowCreated="gvAllTickets_RowCreated" OnSorting="gvAllTickets_Sorting" OnRowDataBound="gvAllTickets_RowDataBound" AllowSorting="True" OnRowEditing="gvAllTickets_RowEditing">
                                     <Columns>
                                         <asp:TemplateField HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30" ItemStyle-Height="5px">

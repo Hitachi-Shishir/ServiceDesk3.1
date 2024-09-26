@@ -17,6 +17,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
     <asp:ScriptManager ID="scr" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
+
             
 
             <div class="card">
@@ -55,7 +56,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                             <div class=" row mt-2">
                                 <div class="col-md-6">
                                     <label for="staticEmail" class="form-label ">
-                                        Service Desk 
+                                        Service Desk
                                             <asp:RequiredFieldValidator ID="RfvddlRequestType" runat="server" InitialValue="0" ControlToValidate="ddlRequestType" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="*"></asp:RequiredFieldValidator>
                                     </label>
                                     <asp:DropDownList ID="ddlRequestType" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
@@ -405,7 +406,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <asp:GridView ID="gridAddImpact" runat="server" CssClass="table table-head-fixed text-nowrap  "
+                                            <asp:GridView ID="gridAddImpact" runat="server" CssClass="table table-head-fixed text-nowrap table-sm border "
                                                 AutoGenerateColumns="false">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
@@ -449,7 +450,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                                         </div>
                                         <div class="table-responsive p-0" style="height: 400px">
 
-                                            <asp:GridView ID="gvImpactGrid" runat="server" CssClass="table table-head-fixed text-nowrap  " DataKeyNames="ID"
+                                            <asp:GridView ID="gvImpactGrid" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm border" DataKeyNames="ID"
                                                 AutoGenerateColumns="false" AllowSorting="True">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
@@ -503,7 +504,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <asp:GridView ID="gridAddRollOut" runat="server" CssClass="table table-head-fixed text-nowrap  "
+                                            <asp:GridView ID="gridAddRollOut" runat="server" CssClass="table table-head-fixed text-nowrap  table-sm border"
                                                 AutoGenerateColumns="false">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="5px">
@@ -722,7 +723,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                                         </div>
                                         <div class="table-responsive p-0" style="height: 400px">
 
-                                            <asp:GridView ID="gvTaskDetails" runat="server" CssClass="table table-head-fixed text-nowrap  " DataKeyNames="ID"
+                                            <asp:GridView ID="gvTaskDetails" runat="server" CssClass="table table-head-fixed text-nowrap table-sm border  " DataKeyNames="ID"
                                                 AutoGenerateColumns="false" AllowSorting="True">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
@@ -782,7 +783,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="table-responsive table-container">
-                                    <asp:GridView GridLines="None" ID="gvTicketNotes" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-sm data-table text-nowrap table-striped"
+                                    <asp:GridView GridLines="None" ID="gvTicketNotes" runat="server" AutoGenerateColumns="false" CssClass="table border table-sm data-table text-nowrap table-striped"
                                         Width="100%">
                                         <Columns>
                                             <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">

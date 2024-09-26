@@ -142,7 +142,8 @@ div.dataTables_scrollFoot > .dataTables_scrollFootInner {
 
     div.dataTables_scrollFoot > .dataTables_scrollFootInner > table {
         margin-top: 0 !important;
-        border-top: none
+        border-top: none;
+            overflow-x:scroll !important;
     }
 
 @media screen and (max-width: 767px) {
