@@ -170,9 +170,16 @@ public partial class frmAllTickets : System.Web.UI.Page
         unassigned = 0;
         due = 0;
         duesoon = 0;
-        FillRequestType(Convert.ToInt64(ddlOrg.SelectedValue));
-        ddlRequestType.Items.FindByText("Incident").Selected = true;
-        ddlRequestType_SelectedIndexChanged(sender, e);
+        try
+        {
+            FillRequestType(Convert.ToInt64(ddlOrg.SelectedValue));
+            ddlRequestType.SelectedValue = "Incident";
+            ddlRequestType_SelectedIndexChanged(sender, e);
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
     protected void ddlRequestType_SelectedIndexChanged(object sender, EventArgs e)
     {

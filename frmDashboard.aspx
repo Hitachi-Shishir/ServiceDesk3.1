@@ -459,16 +459,11 @@
 
             var chart = new ApexCharts(document.querySelector("#chart5"), options);
             chart.render();
-
-
-
-
-
         });
 
     </script>
 
-    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/apexchart/apexcharts.min.js"></script>
 
 </asp:Content>
 
