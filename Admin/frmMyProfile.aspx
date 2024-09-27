@@ -36,18 +36,17 @@
                                 <div class="">
                                     <button type="button" class="btn btn-grd-primary rounded-5 px-2 btn-sm"
                                         onclick="document.getElementById('<%= FileUpload1.ClientID %>').click();">
-                                        <i class="fa-solid fa-plus"></i> Update Profile
+                                        <i class="fa-solid fa-plus"></i>Update Profile
                                     </button>
 
                                 </div>
                             </div>
-                       <br />
+                            <br />
                             <div class="mt-5 mb-2">
-                                <div class="form-check form-switch form-check-primary">
-                                    <asp:CheckBox Visible="false" ID="chkTheme" class="form-check-input" role="checkbox" AutoPostBack="true" runat="server" OnCheckedChanged="chkTheme_CheckedChanged" />
-
-
-                                    <label class="form-check-label" for="chkTheme">Make the theme consistent for everyone.</label>
+                                <div class="form-check form-switch">
+                                   <asp:CheckBox Visible="false" ID="chkTheme" AutoPostBack="true" runat="server" ToolTip="The theme cannot be modified by anyone except you." Text=" Make the theme consistent for everyone." OnCheckedChanged="chkTheme_CheckedChanged" />
+                                    <!-- Adjust Checked as needed -->
+                                    
                                 </div>
                             </div>
 
@@ -66,7 +65,10 @@
                                 <div class="info-list d-flex flex-column gap-3">
                                     <div class="info-list-item d-flex align-items-center gap-3">
                                         <span class="material-icons-outlined">account_circle</span>
-                                        <p class="mb-0">Name : Jhon Deo</p>
+                                        <p class="mb-0">
+                                            Name : 
+                                            <asp:Label ID="lblProfile" runat="server"></asp:Label>
+                                        </p>
                                     </div>
                                     <div class="info-list-item d-flex align-items-center gap-3">
                                         <span class="material-icons-outlined">done</span>

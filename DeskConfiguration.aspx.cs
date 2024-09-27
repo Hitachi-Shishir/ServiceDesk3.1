@@ -1345,7 +1345,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     con.Open();
                     cmd.ExecuteNonQuery();
                     string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
-                    if (res > 0)
+                    if (ErrorChk=="")
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         cleardata();
@@ -1919,7 +1919,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     con.Open();
                     cmd.ExecuteNonQuery();
                     string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
-                    if (res > 0)
+                    if (ErrorChk=="")
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         cleardata();

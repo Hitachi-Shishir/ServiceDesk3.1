@@ -44,7 +44,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            font-size:0.8rem;
+            font-size: 0.8rem;
         }
 
         .step-trigger:enabled .bs-stepper-circle {
@@ -77,11 +77,37 @@
         h6, h6 > span {
             font-size: 0.8rem;
         }
-        .table-container{
-            height:300px;
-        }
-  
 
+        .table-container {
+            height: 300px;
+        }
+    </style>
+    <style>
+        .tooltip-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+            .tooltip-wrapper[data-bs-toggle="tooltip"]::after {
+                content: attr(title);
+                position: absolute;
+                top: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #333;
+                color: #fff!important;
+                padding: 5px 10px;
+                border-radius: 5px;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.2s ease, visibility 0.2s ease;
+                white-space: nowrap;
+            }
+
+            .tooltip-wrapper:hover::after {
+                opacity: 1;
+                visibility: visible;
+            }
     </style>
 
 </asp:Content>
@@ -93,102 +119,108 @@
         <asp:UpdatePanel ID="updtcardbtn" runat="server">
             <ContentTemplate>
                 <div class="card mb-0" style="border-radius: 0.375rem 0.375rem 0 0">
-                    <div class="card-header ">
+                    <div class="card-header">
                         <div class="row">
-                            <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between " role="tablist">
+                            <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
 
                                 <!-- Step 1 -->
-                                <asp:LinkButton ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1">
-                         <div class="bs-stepper-circle">1</div>
-                      
-                                </asp:LinkButton>
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Organisation">
+                                    <asp:LinkButton ID="stepper1trigger1" runat="server" ToolTip="Organisation" CssClass='<%# CurrentStep == 1 ? "btn step-trigger btn-grd-primary p-2 rounded-circle btn-disabled" : "btn step-trigger" %>' OnClick="StepButton_Click1" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">1</div>
+                                    </asp:LinkButton>
+                                </div>
                                 <div class="vr"></div>
 
-
-
                                 <!-- Step 2 -->
-                                <asp:LinkButton style="pointer-events: none;" ID="stepper1trigger2" runat="server" ToolTip="Request Type" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2">
-                        <div class="bs-stepper-circle">2</div>
-                      
-                                </asp:LinkButton>
-
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Request Type">
+                                    <asp:LinkButton ID="stepper1trigger2" runat="server" ToolTip="Request Type" CssClass='<%# CurrentStep == 2 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 2 %>' OnClick="StepButton_Click2" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">2</div>
+                                    </asp:LinkButton>
+                                </div>
                                 <div class="vr"></div>
 
                                 <!-- Step 3 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger3"  runat="server" ToolTip="Add Stage" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3">
-                         <div class="bs-stepper-circle">3</div>
-                        
-                                </asp:LinkButton>
-
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Stage">
+                                    <asp:LinkButton ID="stepper1trigger3" runat="server" ToolTip="Add Stage" CssClass='<%# CurrentStep == 3 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 3 %>' OnClick="StepButton_Click3" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">3</div>
+                                    </asp:LinkButton>
+                                </div>
                                 <div class="vr"></div>
+
                                 <!-- Step 4 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger4"   runat="server" ToolTip="Status" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4">
-                            <div class="bs-stepper-circle">4</div>
-                           
-                                </asp:LinkButton>
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Status">
+                                    <asp:LinkButton ID="stepper1trigger4" runat="server" ToolTip="Status" CssClass='<%# CurrentStep == 4 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 4 %>' OnClick="StepButton_Click4" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">4</div>
+                                    </asp:LinkButton>
+                                </div>
                                 <div class="vr"></div>
-                                <!-- Step 5 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger5" ToolTip="Add Severtiy" runat="server" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary  p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5">
-<div class="bs-stepper-circle">5</div>
-                       
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 6 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger6" ToolTip="Add Priority"  runat="server" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6">
-<div class="bs-stepper-circle">6</div>
-                       
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 7 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger7"  ToolTip="Add Categroy" runat="server" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7">
-<div class="bs-stepper-circle">7</div>
-                     
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 8 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger8"  ToolTip="Add Resolution"  runat="server" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8">
-        <div class="bs-stepper-circle">8</div>
-      
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 9 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger9" ToolTip="Add SLA"  runat="server" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9">
-<div class="bs-stepper-circle">9</div>
-                       
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 10 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger10" ToolTip="Desk Template"  runat="server" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10">
-        <div class="bs-stepper-circle">10</div>
-       
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 11 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger11" ToolTip="Email Configuration" runat="server" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11">
-        <div class="bs-stepper-circle">11</div>
-       
-                                </asp:LinkButton>
-                                <div class="vr"></div>
-                                <!-- Step 12 -->
-                                <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger12"  ToolTip="Esclation Matrix"  runat="server" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12">
-        <div class="bs-stepper-circle">12</div>
-       
-                                </asp:LinkButton>
 
-                                <div class="col-md-3" hidden>
-                                    <!-- Step 13 -->
-                                    <asp:LinkButton  style="pointer-events: none;" ID="stepper1trigger13" runat="server" CssClass='<%# CurrentStep == 13 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 13 %>' OnClick="StepButton_Click13">
-        <div class="bs-stepper-circle">13</div>
-        <div class="">
-            <h5 class="mb-0 steper-title">Exclation Matrix</h5>
-            <p class="mb-0 steper-sub-title">Exclation Matrix</p>
-        </div>
+                                <!-- Step 5 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Severity">
+                                    <asp:LinkButton ID="stepper1trigger5" runat="server" ToolTip="Add Severity" CssClass='<%# CurrentStep == 5 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 5 %>' OnClick="StepButton_Click5" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">5</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 6 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Priority">
+                                    <asp:LinkButton ID="stepper1trigger6" runat="server" ToolTip="Add Priority" CssClass='<%# CurrentStep == 6 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 6 %>' OnClick="StepButton_Click6" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">6</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 7 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Category">
+                                    <asp:LinkButton ID="stepper1trigger7" runat="server" ToolTip="Add Category" CssClass='<%# CurrentStep == 7 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 7 %>' OnClick="StepButton_Click7" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">7</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 8 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Resolution">
+                                    <asp:LinkButton ID="stepper1trigger8" runat="server" ToolTip="Add Resolution" CssClass='<%# CurrentStep == 8 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 8 %>' OnClick="StepButton_Click8" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">8</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 9 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Add SLA">
+                                    <asp:LinkButton ID="stepper1trigger9" runat="server" ToolTip="Add SLA" CssClass='<%# CurrentStep == 9 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 9 %>' OnClick="StepButton_Click9" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">9</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 10 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Desk Template">
+                                    <asp:LinkButton ID="stepper1trigger10" runat="server" ToolTip="Desk Template" CssClass='<%# CurrentStep == 10 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 10 %>' OnClick="StepButton_Click10" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">10</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 11 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Configuration">
+                                    <asp:LinkButton ID="stepper1trigger11" runat="server" ToolTip="Email Configuration" CssClass='<%# CurrentStep == 11 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 11 %>' OnClick="StepButton_Click11" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">11</div>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="vr"></div>
+
+                                <!-- Step 12 -->
+                                <div class="tooltip-wrapper" data-bs-toggle="tooltip" data-bs-placement="top" title="Escalation Matrix">
+                                    <asp:LinkButton ID="stepper1trigger12" runat="server" ToolTip="Escalation Matrix" CssClass='<%# CurrentStep == 12 ? "btn step-trigger btn-grd-primary p-2 rounded-circle" : "btn step-trigger" %>' Enabled='<%# CurrentStep >= 12 %>' OnClick="StepButton_Click12" Style="pointer-events: none;">
+                    <div class="bs-stepper-circle">12</div>
                                     </asp:LinkButton>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
@@ -272,7 +304,7 @@
 
                                     <asp:TextBox ID="txtCntctPrnsEmailII" runat="server" CssClass="form-control  form-control-sm" MaxLength="100"></asp:TextBox>
                                 </div>
-                                                             <div class="col-12 text-end">
+                                <div class="col-12 text-end">
                                     <asp:Button ID="btnInsertOrg" runat="server" Text="Save" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnInsertOrg_Click" ValidationGroup="Priority" />
                                     <asp:Button ID="btnUpdateOrg" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info " OnClick="btnUpdateOrg_Click" ValidationGroup="Priority" />
                                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-sm btn-grd btn-grd-danger " OnClick="btnCancel_Click" CausesValidation="false" />
@@ -403,7 +435,7 @@
                                     <asp:Button ID="btnUpdateReqType" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd btn-grd-info" OnClick="btnUpdateReqType_Click" ValidationGroup="ReqType" />
                                     <asp:Button ID="btnCancel1" runat="server" Text="Cancel" CssClass="btn btn-sm btn-grd btn-grd-danger" OnClick="btnCancel1_Click" />
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -571,45 +603,45 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="table-container table-responsive">
-                                         <asp:GridView GridLines="None" ID="gvStage" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm"
-     Width="100%" OnRowCommand="gvStage_RowCommand" OnRowDataBound="gvStage_RowDataBound">
-     <Columns>
-         <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
-             <ItemTemplate>
-                 <%#Container.DataItemIndex+1 %>
-             </ItemTemplate>
-         </asp:TemplateField>
-         <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
-         <asp:BoundField DataField="StageCodeRef" HeaderText="Stage Name" NullDisplayText="NA" />
-         <asp:BoundField DataField="StageDesc" HeaderText="Stage Description" NullDisplayText="NA" />
-         <asp:TemplateField HeaderText=" Organization">
-             <ItemTemplate>
-                 <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
-                 <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
-             </ItemTemplate>
-         </asp:TemplateField>
-         <%--<asp:ButtonField ButtonType="Image" CommandName="SelectStage" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
+                                        <asp:GridView GridLines="None" ID="gvStage" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped border table-sm"
+                                            Width="100%" OnRowCommand="gvStage_RowCommand" OnRowDataBound="gvStage_RowDataBound">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="DeskRef" HeaderText="Request Type" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="StageCodeRef" HeaderText="Stage Name" NullDisplayText="NA" />
+                                                <asp:BoundField DataField="StageDesc" HeaderText="Stage Description" NullDisplayText="NA" />
+                                                <asp:TemplateField HeaderText=" Organization">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblOrgFk" runat="server" Text='<%# Eval("Org_ID") %>' Visible="false"></asp:Label>
+                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%# Eval("OrgName") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <%--<asp:ButtonField ButtonType="Image" CommandName="SelectStage" HeaderText="Edit" ImageUrl="~/images/edit23.png" ItemStyle-Width="20px" />
          <asp:ButtonField HeaderText="Delete" ButtonType="Image" ImageUrl="~/Images/New folder/delnew.png" CommandName="DeleteEx" ItemStyle-Width="20px" ItemStyle-Height="5px" />--%>
-         <asp:TemplateField HeaderText="Edit">
-             <ItemTemplate>
-                 <asp:LinkButton ID="lnkEdit2" runat="server" CommandName="SelectStage" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
+                                                <asp:TemplateField HeaderText="Edit">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkEdit2" runat="server" CommandName="SelectStage" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Edit">
      <i class="fa-solid fa-edit"></i>
-                 </asp:LinkButton>
-             </ItemTemplate>
-         </asp:TemplateField>
-         <asp:TemplateField HeaderText="Delete">
-             <ItemTemplate>
-                 <asp:LinkButton ID="lnkDelete2" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDelete2" runat="server" CommandName="DeleteEx" CommandArgument="<%# Container.DataItemIndex %>" ToolTip="Delete" OnClientClick="return confirm('Are you sure you want to delete this record?');">
      <i class="fa-solid fa-xmark text-danger"></i> 
-                 </asp:LinkButton>
-             </ItemTemplate>
-         </asp:TemplateField>
-     </Columns>
- </asp:GridView>
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
 
@@ -853,7 +885,7 @@
                                 <div class="col-md-2">
                                     <label for="staticEmail" class="form-label">
                                         Response Time(in Min)
-                                            <asp:RequiredFieldValidator ID="rfvtxtResponseTime" runat="server"  ControlToValidate="txtResponseTime" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="rfvtxtResponseTime" runat="server" ControlToValidate="txtResponseTime" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="Severity"></asp:RequiredFieldValidator>
                                     </label>
 
 
@@ -1145,12 +1177,12 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category
-                                        <asp:LinkButton runat="server" ID="imgbtnAddParentCategory"   ToolTip="Add Category" OnClick="imgbtnAddParentCategory_Click"  ><i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
-       <asp:LinkButton  ID="imgbtnSaveParentCategory" runat="server"  ToolTip="Save Category" OnClick="imgbtnSaveParentCategory_Click" ValidationGroup="SaveCatI" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
-                                       
-                                        <asp:LinkButton ID="imgbtnUpdateParentCategory" runat="server" ToolTip="Update Category" OnClick="imgbtnUpdateParentCategory_Click" ValidationGroup="SaveCatI" Visible="false" ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnEditParentCategory" runat="server"   ToolTip="Edit Category" OnClick="imgbtnEditParentCategory_Click" ><i class="fa-solid fa-edit p-1 rounded-circle border"></i></asp:LinkButton> 
-                                        <asp:LinkButton ID="imgbtnCancelParent" runat="server" Enabled="false"    ToolTip="Add Category" OnClick="imgbtnCancelParent_Click" ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton runat="server" ID="imgbtnAddParentCategory" ToolTip="Add Category" OnClick="imgbtnAddParentCategory_Click"><i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveParentCategory" runat="server" ToolTip="Save Category" OnClick="imgbtnSaveParentCategory_Click" ValidationGroup="SaveCatI" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+
+                                        <asp:LinkButton ID="imgbtnUpdateParentCategory" runat="server" ToolTip="Update Category" OnClick="imgbtnUpdateParentCategory_Click" ValidationGroup="SaveCatI" Visible="false"><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditParentCategory" runat="server" ToolTip="Edit Category" OnClick="imgbtnEditParentCategory_Click"><i class="fa-solid fa-edit p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelParent" runat="server" Enabled="false" ToolTip="Add Category" OnClick="imgbtnCancelParent_Click"><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtParentCategory" runat="server" ControlToValidate="txtParentCategory" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatI"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlParentCategory" runat="server" ControlToValidate="ddlParentCategory" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatII"></asp:RequiredFieldValidator>
                                     </label>
@@ -1162,11 +1194,11 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category II
-           <asp:LinkButton ID="imgbtnCatII" runat="server"  OnClick="imgbtnCatII_Click" ValidationGroup="AddCatII" ><i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnSaveCatII" runat="server" ToolTip="Save Category" OnClick="imgbtnSaveCatII_Click" ValidationGroup="SaveCatII" Enabled="false" ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imtbtnUpdateCatII" runat="server"  ToolTip="Update Category" OnClick="imtbtnUpdateCatII_Click" ValidationGroup="SaveCatII" Visible="false" ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnEditCatII" runat="server"    ToolTip="Edit Category" OnClick="imgbtnEditCatII_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnCancelCatII" runat="server"    ToolTip="Add Category" OnClick="imgbtnCancelCatII_Click" ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
+           <asp:LinkButton ID="imgbtnCatII" runat="server" OnClick="imgbtnCatII_Click" ValidationGroup="AddCatII"><i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveCatII" runat="server" ToolTip="Save Category" OnClick="imgbtnSaveCatII_Click" ValidationGroup="SaveCatII" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imtbtnUpdateCatII" runat="server" ToolTip="Update Category" OnClick="imtbtnUpdateCatII_Click" ValidationGroup="SaveCatII" Visible="false"><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatII" runat="server" ToolTip="Edit Category" OnClick="imgbtnEditCatII_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelCatII" runat="server" ToolTip="Add Category" OnClick="imgbtnCancelCatII_Click"><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCatII" runat="server" ControlToValidate="txtCatII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatII"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCatII" runat="server" ControlToValidate="ddlCatII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIII"></asp:RequiredFieldValidator>
                                     </label>
@@ -1178,11 +1210,11 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category III
-           <asp:LinkButton ID="imgAddCatIII" runat="server"  OnClick="imgAddCatIII_Click" ValidationGroup="AddCatIII"> <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgSaveCatIII" runat="server"  OnClick="imgSaveCatIII_Click" ValidationGroup="SaveCatIII" Enabled="false" ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnUpdateCatIII" runat="server"  ToolTip="Update Category" OnClick="imgbtnUpdateCatIII_Click" ValidationGroup="SaveCatIII" Visible="false" ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnEditCatIII" runat="server"    ToolTip="Edit Category" OnClick="imgbtnEditCatIII_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton> 
-                                        <asp:LinkButton ID="imgbtnCancelCatIII" runat="server" Enabled="false"   ToolTip="Add Category" OnClick="imgbtnCancelCatIII_Click"  ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
+           <asp:LinkButton ID="imgAddCatIII" runat="server" OnClick="imgAddCatIII_Click" ValidationGroup="AddCatIII"> <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgSaveCatIII" runat="server" OnClick="imgSaveCatIII_Click" ValidationGroup="SaveCatIII" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnUpdateCatIII" runat="server" ToolTip="Update Category" OnClick="imgbtnUpdateCatIII_Click" ValidationGroup="SaveCatIII" Visible="false"><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatIII" runat="server" ToolTip="Edit Category" OnClick="imgbtnEditCatIII_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelCatIII" runat="server" Enabled="false" ToolTip="Add Category" OnClick="imgbtnCancelCatIII_Click"><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCatLevelIII" runat="server" ControlToValidate="txtCatLevelIII" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIII"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCateLevelIII" runat="server" ControlToValidate="ddlCateLevelIII" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatIV"></asp:RequiredFieldValidator>
                                     </label>
@@ -1194,11 +1226,11 @@
                                 <div class="col-md-4">
                                     <label class="form-label">
                                         Category IV
-           <asp:LinkButton ID="imgbtnCatelevelIV" runat="server" OnClick="imgbtnCatelevelIV_Click" ValidationGroup="AddCatIV" > <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnSaveCateLvlIV" runat="server"  OnClick="imgbtnSaveCateLvlIV_Click" ValidationGroup="SaveCatIV" Enabled="false"  ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnUpdateCateLvIV" runat="server"  ToolTip="Update Category" OnClick="imgbtnUpdateCateLvIV_Click" ValidationGroup="SaveCatIV" Visible="false"  ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnEditCatLvIV" runat="server"    ToolTip="Edit Category" OnClick="imgbtnEditCatLvIV_Click" ><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnCancelCatIV" runat="server" Enabled="false"    ToolTip="Add Category" OnClick="imgbtnCancelCatIV_Click" ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
+           <asp:LinkButton ID="imgbtnCatelevelIV" runat="server" OnClick="imgbtnCatelevelIV_Click" ValidationGroup="AddCatIV"> <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveCateLvlIV" runat="server" OnClick="imgbtnSaveCateLvlIV_Click" ValidationGroup="SaveCatIV" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnUpdateCateLvIV" runat="server" ToolTip="Update Category" OnClick="imgbtnUpdateCateLvIV_Click" ValidationGroup="SaveCatIV" Visible="false"><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatLvIV" runat="server" ToolTip="Edit Category" OnClick="imgbtnEditCatLvIV_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelCatIV" runat="server" Enabled="false" ToolTip="Add Category" OnClick="imgbtnCancelCatIV_Click"><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCateLevelIV" runat="server" ControlToValidate="txtCateLevelIV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatIV"></asp:RequiredFieldValidator>
                                         <asp:RequiredFieldValidator ID="rfvddlCateLevelIV" runat="server" ControlToValidate="ddlCateLevelIV" InitialValue="0" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="AddCatV"></asp:RequiredFieldValidator>
                                     </label>
@@ -1211,11 +1243,11 @@
 
                                     <label class="form-label">
                                         Category V
-           <asp:LinkButton ID="imgbtnAddCatV" runat="server" OnClick="imgbtnAddCatV_Click" ValidationGroup="AddCatV" > <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnSaveCatV" runat="server"  OnClick="imgbtnSaveCatV_Click" ValidationGroup="SaveCatV" Enabled="false" ><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnUpdateCatV" runat="server"  ToolTip="Update Category" OnClick="imgbtnUpdateCatV_Click" ValidationGroup="SaveCatV" Visible="false"  ><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="imgbtnEditCatV" runat="server"  ToolTip="Edit Category" OnClick="imgbtnEditCatV_Click" ><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton> 
-                                        <asp:LinkButton ID="imgbtnCancelCatV" runat="server"    ToolTip="Add Category" OnClick="imgbtnCancelCatV_Click"  ><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
+           <asp:LinkButton ID="imgbtnAddCatV" runat="server" OnClick="imgbtnAddCatV_Click" ValidationGroup="AddCatV"> <i class="fa-solid fa-plus p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnSaveCatV" runat="server" OnClick="imgbtnSaveCatV_Click" ValidationGroup="SaveCatV" Enabled="false"><i class="fa-solid fa-floppy-disk p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnUpdateCatV" runat="server" ToolTip="Update Category" OnClick="imgbtnUpdateCatV_Click" ValidationGroup="SaveCatV" Visible="false"><i class="fa-solid fa-pen p-1 rounded-circle border"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnEditCatV" runat="server" ToolTip="Edit Category" OnClick="imgbtnEditCatV_Click"><i class="fa-solid fa-edit p-1 rounded-circle border "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="imgbtnCancelCatV" runat="server" ToolTip="Add Category" OnClick="imgbtnCancelCatV_Click"><i class="fa-solid fa-rotate-right p-1 rounded-circle border "></i></asp:LinkButton>
                                         <asp:RequiredFieldValidator ID="rfvtxtCatV" runat="server" ControlToValidate="txtCatV" ErrorMessage="*" Font-Bold="true" ForeColor="Red" ValidationGroup="SaveCatV"></asp:RequiredFieldValidator>
                                     </label>
                                     <asp:TextBox ID="txtCatV" runat="server" CssClass="form-control  form-control-sm" ValidationGroup="SaveCatV" Visible="false" onkeypress="return /^[a-zA-Z0-9\s]*$/.test(event.key) && this.value.length < 50;"></asp:TextBox>
@@ -1289,16 +1321,16 @@
 
                     <div class="card mb-1" style="border-radius: 0 0 0.375rem 0.375rem">
                         <div class="card-body">
-                             <div class="d-flex align-items-start justify-content-between">
+                            <div class="d-flex align-items-start justify-content-between">
 
-                            <h6 class="fw-bold mb-3">Email Configuration</h6>
- <div class="d-flex">
-     
-     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPreviousCategory" runat="server" ToolTip="Previous" OnClick="lnkPreviousCategory_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
-     &nbsp;
+                                <h6 class="fw-bold mb-3">Email Configuration</h6>
+                                <div class="d-flex">
+
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkPreviousCategory" runat="server" ToolTip="Previous" OnClick="lnkPreviousCategory_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                    &nbsp;
      <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextResolution" runat="server" ToolTip="Next" OnClick="lnkNextResolution_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
- </div>
- </div>
+                                </div>
+                            </div>
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -1389,7 +1421,7 @@
                                     <asp:Button ID="btnInsertEmailConfig" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsertEmailConfig_Click" ValidationGroup="EmailConfig" />
                                     <asp:Button ID="btnUpdateEmailConfig" runat="server" Text="Update" Visible="false" class="btn btn-sm btn-grd-info" OnClick="btnUpdateEmailConfig_Click" ValidationGroup="EmailConfig" />
                                     <asp:Button ID="btnCancel8" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel8_Click" CausesValidation="false" />
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -1747,7 +1779,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <h6 class="mb-3 fw-bold">Desk Template</h6>
                                 <div class="d-flex">
-                              
+
                                     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ToolTip="Previous" ID="lnkPreviousSLA" runat="server" OnClick="lnkPreviousSLA_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
                                     &nbsp;
      <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary" ID="lnkNextCustomFields" ToolTip="Next" runat="server" OnClick="lnkNextCustomFields_Click"><i class="fa-solid fa-angle-right"></i></asp:LinkButton>
@@ -1847,14 +1879,14 @@
 
                                     <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                                         <div class="col-md-4">
-             <label for="staticEmail" class="form-label">
-                 SLA 
-<asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
-             </label>
+                                <div class="col-md-4">
+                                    <label for="staticEmail" class="form-label">
+                                        SLA 
+                                        <asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="ddlSlA" ErrorMessage="Required" ForeColor="Red" InitialValue="0" ValidationGroup="www"></asp:RequiredFieldValidator>
+                                    </label>
 
-             <asp:DropDownList ID="ddlSlA" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
-         </div>
+                                    <asp:DropDownList ID="ddlSlA" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
+                                </div>
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory1" runat="server" Text="Category 1"></asp:Label>
@@ -1863,7 +1895,7 @@
 
                                     <asp:DropDownList ID="ddlCategory1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory1_SelectedIndexChanged" CssClass="form-select form-select-sm single-select-optgroup-field"></asp:DropDownList>
                                 </div>
-                               
+
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
                                         <asp:Label ID="lblCategory2" runat="server" Text="Category 2 "></asp:Label>
@@ -1895,11 +1927,11 @@
                                     <asp:DropDownList ID="ddlCategory5" runat="server" CssClass="form-select form-select-sm single-select-optgroup-field" AutoPostBack="true"></asp:DropDownList>
                                 </div>
                                 <div class="col-md-4 text-end">
-                                  <div class="form-label opacity-0">..</div>
+                                    <div class="form-label opacity-0">..</div>
                                     <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-sm btn-grd-info" OnClick="btnInsert_Click" ValidationGroup="www" />
                                     <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-sm btn-grd-info" OnClick="btnUpdate_Click" ValidationGroup="wwww" Visible="False" />
                                     <asp:Button ID="btnCancel11" runat="server" Text="Cancel" class="btn btn-sm btn-grd-danger" OnClick="btnCancel11_Click" CausesValidation="false" />
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -2242,13 +2274,13 @@
 
                     <div class="card">
                         <div class="card-body mb-1">
-                             <div class="d-flex align-items-start justify-content-between">
-  <h6 class="mb-3 fw-bold">Esclation Matrix</h6>
- <div class="d-flex">
+                            <div class="d-flex align-items-start justify-content-between">
+                                <h6 class="mb-3 fw-bold">Esclation Matrix</h6>
+                                <div class="d-flex">
 
-     <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary " ToolTip="Previous"  ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
- </div>
- </div>
+                                    <asp:LinkButton class="btn btn-sm bs-stepper-circle rounded-circle btn-outline-secondary " ToolTip="Previous" ID="lnkPreviousCustomField" runat="server" OnClick="lnkPreviousCustomField_Click"><i class="fa-solid fa-angle-left"></i></asp:LinkButton>
+                                </div>
+                            </div>
                             <div class="row gx-2 gy-3">
                                 <div class="col-md-4">
                                     <label for="staticEmail" class="form-label">
@@ -2403,5 +2435,11 @@
         </asp:Panel>
         <%--Add Esclation Matrix End--%>
     </div>
+    <script>
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
+
+    </script>
 </asp:Content>
 

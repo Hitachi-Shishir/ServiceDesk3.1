@@ -21,6 +21,12 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
     {
         try
         {
+            chkTheme.InputAttributes["class"] = "form-check-input";
+            rbdLightTheme.InputAttributes["class"] = "form-check-input";
+            rbdBlueTheme.InputAttributes["class"] = "form-check-input";
+            rbdDarkTheme.InputAttributes["class"] = "form-check-input";
+            rbdSemiDarkTheme.InputAttributes["class"] = "form-check-input";
+            rbdBoderedTheme.InputAttributes["class"] = "form-check-input";
             if (!IsPostBack)
             {
                 getPrevThemeData();
@@ -200,6 +206,7 @@ public partial class Admin_frmMyProfile : System.Web.UI.Page
                         {
                             lblEmpId.Text = Convert.ToString(dt.Rows[0]["EmpID"]);
                             lblUserName.Text = Convert.ToString(dt.Rows[0]["UserName"]);
+                            lblProfile.Text = Convert.ToString(dt.Rows[0]["UserName"]);
                             lblEmailID.Text = Convert.ToString(dt.Rows[0]["EmailID"]);
                             lblLoginID.Text = Convert.ToString(dt.Rows[0]["LoginName"]);
                             lblUserRole.Text = Convert.ToString(dt.Rows[0]["UserRole"]);
