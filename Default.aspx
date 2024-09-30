@@ -47,7 +47,7 @@
 
                     <div class="card rounded-0 mb-0 border-0 shadow-none bg-transparent bg-none">
                         <div class="card-body">
-                            <img src="assets/images/auth/login1.png" class="img-fluid auth-img-cover-login" width="600" alt="">
+                            <img src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/images/auth/login1.png" class="img-fluid auth-img-cover-login" width="600" alt="">
                         </div>
                     </div>
 
