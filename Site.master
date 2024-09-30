@@ -1098,6 +1098,7 @@ overflow-x:scroll !important
                         'csv', 'excel', 'pdf', 'print' // Replaced 'copy' with 'csv'
                     ]
                 });
+
             });
         });
     </script>
