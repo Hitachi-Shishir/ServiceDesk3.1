@@ -36,15 +36,26 @@ public partial class DeskConfiguration : System.Web.UI.Page
             {
                 if (!IsPostBack)
                 {
-                    #region Add Orgainisation 
-                    getOrg();
+                    //Session["CurrentStep"] = null;
+
+                    #region Add Orgainisation
+                    if ((Session["CurrentStep"] == null) || (Convert.ToString(Session["CurrentStep"]) == "1"))
+                    {
+                        getOrg();
+                    }
+                    else
+                    {
+                        pnlShowOrg.Visible = false;
+                    }
                     #endregion Add Orgainisation 
+                    CheckStep();
                 }
             }
             else
             {
                 Response.Redirect("/Default.aspx");
             }
+            
         }
         catch (ThreadAbortException e2)
         {
@@ -62,6 +73,60 @@ public partial class DeskConfiguration : System.Web.UI.Page
         }
     }
     #region Common Start
+    public void CheckStep()
+    {
+        if (Session["CurrentStep"] != null)
+        {
+            if (Convert.ToString(Session["CurrentStep"]) == "1")
+            {
+                getOrg();
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "2")
+            {
+                lnkNextAddReq_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "3")
+            {
+                lnkNextStage_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "4")
+            {
+                lnkbtnNextStatus_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "5")
+            {
+                lnkNextSeverity_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "6")
+            {
+                lnkNextPriority_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "7")
+            {
+                lnkNextCategory_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "8")
+            {
+                lnkNextEmailConfig_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "9")
+            {
+                lnkNextSLA_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "10")
+            {
+                lnkNextDeskConfig_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "11")
+            {
+                lnkNextCustomFields_Click(null, null);
+            }
+            else if (Convert.ToString(Session["CurrentStep"]) == "11")
+            {
+                lnkNextCustomFields_Click(null, null);
+            }
+        }
+    }
     public void DataTableScript()
     {
         // Load jQuery first
@@ -662,6 +727,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         if (Session["UserScope"] != null)
         {
             CurrentStep = 2;
+            Session["CurrentStep"] = CurrentStep;
             ViewState["CurrentStep"] = CurrentStep;
             DataBind();
             cleardata();
@@ -695,9 +761,9 @@ public partial class DeskConfiguration : System.Web.UI.Page
     private void RegisterDataTableScripts()
     {
         string script = @"
-        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/datatable/js/jquery.dataTables.min.js'></script>
-        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/datatable/js/dataTables.bootstrap5.min.js'></script>
-        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assets/js/jquery-3.6.0.min.js'></script>
+        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/datatable/js/jquery.dataTables.min.js'></script>
+        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/datatable/js/dataTables.bootstrap5.min.js'></script>
+        <script src='https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/js/jquery-3.6.0.min.js'></script>
         <script>
             $(document).ready(function () {
                 $('.data-table').each(function () {
@@ -714,7 +780,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                 });
             });
         </script>
-        <link href='https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/datatable/css/dataTables.bootstrap5.min.css' rel='stylesheet' />
+        <link href='https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/datatable/css/dataTables.bootstrap5.min.css' rel='stylesheet' />
     ";
 
         ClientScript.RegisterStartupScript(this.GetType(), "DataTableScript", script, false);
@@ -1095,7 +1161,8 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         stepper1trigger2.Enabled = true;
         pnlReqType.Visible = false;
-        ViewState["CurrentStep"] = CurrentStep;
+        CurrentStep = 1;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         getOrg();
         cleardata();
@@ -1104,7 +1171,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         cleardata();
         CurrentStep = 3;
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         pnlReqType.Visible = false;
         pnlAddStage.Visible = true;
@@ -1345,7 +1412,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     con.Open();
                     cmd.ExecuteNonQuery();
                     string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
-                    if (res > 0)
+                    if (ErrorChk=="")
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}');", true);
                         cleardata();
@@ -1693,7 +1760,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void lnkbtnPrevAddReq_Click(object sender, EventArgs e)
     {
         CurrentStep = 2;
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         cleardata();
         pnlReqType.Visible = true;
@@ -1705,6 +1772,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         if (Session["UserScope"] != null)
         {
             CurrentStep = 4;
+            Session["CurrentStep"] = CurrentStep;
             ViewState["CurrentStep"] = CurrentStep;
             DataBind();
             cleardata();
@@ -1919,7 +1987,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
                     con.Open();
                     cmd.ExecuteNonQuery();
                     string ErrorChk = cmd.Parameters["@Error"].Value.ToString();
-                    if (res > 0)
+                    if (ErrorChk=="")
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"if (window.location.pathname.endsWith('/DeskConfiguration.aspx')) {{ success_noti('{HttpUtility.JavaScriptStringEncode("Saved Successfully!")}'); setTimeout(function() {{ window.location.reload(); }}, 2000); }}", true);
                         cleardata();
@@ -2288,7 +2356,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddStage.Visible = true;
         pnlStatus.Visible = false;
         CurrentStep = 3;
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         cleardata();
         DataBind();
         lnkNextStage_Click(null, null);
@@ -2298,7 +2366,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         cleardata();
         CurrentStep = 5;
         DataBind();
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         FillOrganizationSeverity();
         if (Session["UserScope"].ToString().ToLower() == "admin")
         {
@@ -2314,6 +2382,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddSeverity.Visible = true;
         pnlStatus.Visible = false;
     }
+    
     #endregion Add Status End 
 
     #region Add Severity Start
@@ -2885,7 +2954,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         CurrentStep = 6;
         DataBind();
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         cleardata();
         if (Session["UserScope"].ToString().ToLower() == "admin")
         {
@@ -3395,6 +3464,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         cleardata();
         CurrentStep = 5;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         lnkNextSeverity_Click(null, null);
         pnlAddPriority.Visible = false;
@@ -3402,7 +3472,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void lnkNextCategory_Click(object sender, EventArgs e)
     {
         CurrentStep = 7;
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         cleardata();
         pnlCategory.Visible = true;
         pnlAddPriority.Visible = false;
@@ -5250,7 +5320,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     {
         CurrentStep = 6;
         DataBind();
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         cleardata();
         lnkNextPriority_Click(null, null);
         pnlAddPriority.Visible = true;
@@ -5262,6 +5332,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddResolution.Visible = true;
         pnlCategory.Visible = false;
         CurrentStep = 8;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         cleardata();
         ViewState["CurrentStep"] = CurrentStep;
@@ -5848,7 +5919,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
     protected void lnkNextSLA_Click(object sender, EventArgs e)
     {
         CurrentStep = 9;
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         cleardata();
         pnlAddSLA.Visible = true;
@@ -6286,6 +6357,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAdddeskConfig.Visible = true;
         pnlAddSLA.Visible = false;
         CurrentStep = 10;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         cleardata();
         pnlAddEmailConfig.Visible = false;
@@ -7864,6 +7936,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddEmailConfig.Visible = true;
         pnlAdddeskConfig.Visible = false;
         CurrentStep = 11;
+        Session["CurrentStep"] = CurrentStep;
         cleardata();
         DataBind();
         ViewState["CurrentStep"] = CurrentStep;
@@ -8858,7 +8931,7 @@ public partial class DeskConfiguration : System.Web.UI.Page
         pnlAddEmailConfig.Visible = false;
         cleardata();
         CurrentStep = 12;
-        ViewState["CurrentStep"] = CurrentStep;
+        Session["CurrentStep"] = CurrentStep;
         DataBind();
         if (Session["UserScope"] != null)
         {

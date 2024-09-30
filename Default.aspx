@@ -8,25 +8,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/images/Hitachi/Hitachi_logo.png" type="image/png">
+    <link rel="icon" href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/images/Hitachi/Hitachi_logo.png" type="image/png">
     <!-- loader-->
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/css/pace.min.css" rel="stylesheet">
-    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assets/js/pace.min.js"></script>
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/css/pace.min.css" rel="stylesheet">
+    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/js/pace.min.js"></script>
 
     <!--plugins-->
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/metismenu/metisMenu.min.css">
-    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/plugins/metismenu/mm-vertical.css">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/metismenu/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/metismenu/mm-vertical.css">
     <!--bootstrap css-->
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     <!--main css-->
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assets/css/bootstrap-extended.css" rel="stylesheet">
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/sass/main.css" rel="stylesheet">
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723//dark-theme.css" rel="stylesheet">
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/sass/blue-theme.css" rel="stylesheet">
-    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/sass/responsive.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/sassdata/main.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:2020//dark-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/sassdata/blue-theme.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/sassdata/responsive.css" rel="stylesheet">
     <style>
         #lnkFrgtPass:hover {
             text-decoration: underline;
@@ -47,7 +47,7 @@
 
                     <div class="card rounded-0 mb-0 border-0 shadow-none bg-transparent bg-none">
                         <div class="card-body">
-                            <img src="assets/images/auth/login1.png" class="img-fluid auth-img-cover-login" width="600" alt="">
+                            <img src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/images/auth/login1.png" class="img-fluid auth-img-cover-login" width="600" alt="">
                         </div>
                     </div>
 
@@ -240,7 +240,7 @@
 
     <!--authentication-->
 
-    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assets/js/jquery.min.js"></script>
+    <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/js/jquery.min.js"></script>
 
     <script>
         $(document).ready(function () {
