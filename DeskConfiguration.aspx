@@ -2,6 +2,21 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
+           [data-bs-theme=semi-dark]  .btn-grd-primary {
+    background-image: linear-gradient(310deg, #6c757d, #6c757d) !important;
+}
+        /* Custom Tooltip Styles */
+  [data-bs-theme=blue-theme] .tooltip-inner {
+    background-color: white !important; /* Background color */
+    color: black !important;           /* Text color */
+    border: 1px solid black;           /* Optional: Add a border to make the tooltip more visible */
+}
+ 
+
+  [data-bs-theme=blue-theme] .tooltip-arrow::before {
+    border-top-color: white !important; /* Change arrow color */
+}
+
         .dataTables_filter {
             margin-top: -29px !important;
         }

@@ -12,7 +12,7 @@
     <!--favicon-->
     <link rel="icon" href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/images/Hitachi/Hitachi_logo.png" type="image/png">
     <!-- loader-->
-    <link href="assets/css/pace.min.css" rel="stylesheet">
+    <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata//css/pace.min.css" rel="stylesheet">
     <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/js/pace.min.js"></script>
     <!--plugins-->
     <link href="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -52,13 +52,28 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/js/jquery-3.6.0.min.js"></script>
     <script src="https://pcv-demo.hitachi-systems-mc.com:5723/assetsdata/js/bootstrap.bundle.min.js"></script>
+
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-        .table-container > table{
-overflow-x:scroll !important
-
+        body .page-breadcrumb .breadcrumb-title {
+    color: var(--bs-heading-color);
+    font-size: 20px;
+    border-right: 1.5px solid;
+    border-color: var(--bs-border-color);
+}
+        .active > .page-link, .page-link.active {
+            z-index: 0;
         }
+        .page-link:hover , .page-link:focus{
+            z-index: 0;
+        }
+        .table-container > table {
+            overflow-x: scroll !important
+        }
+
         .top-header .navbar {
             height: 58px !important;
         }
@@ -163,7 +178,7 @@ overflow-x:scroll !important
 
         .table {
             border-color: var(--bs-table-border-color);
-              border-collapse: separate !important;
+            border-collapse: separate !important;
         }
 
         table td {
@@ -185,8 +200,7 @@ overflow-x:scroll !important
             z-index: 1; /* Ensure header stays on top of other content */
             padding: 10px;
             font-size: 11px;
-          
-          /*  --bs-table-border-color: var(--bs-border-color);*/
+            /*  --bs-table-border-color: var(--bs-border-color);*/
         }
 
         .fa-edit {
@@ -198,6 +212,53 @@ overflow-x:scroll !important
             width: 20px;
             height: 20px;
         }
+
+        [data-bs-theme=semi-dark] .btn-grd-info , .btn-primary{
+            background-color: #6c757d !important;
+            background-image: none !important;
+            border-color:#6c757d;
+        }
+          [data-bs-theme=semi-dark] .btn-primary{
+            border-color: #6c757d !important;
+          
+        }
+
+        [data-bs-theme=semi-dark] .btn-grd-danger {
+            background-color: #fc185a !important;
+            background-image: none !important;
+        } 
+        [data-bs-theme=semi-dark] .active>.page-link, .page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+        [data-bs-theme=semi-dark] .page-link {
+            color: #6c757d
+        }
+                [data-bs-theme=semi-dark]  .active > .page-link, .page-link.active {
+            z-index: 0;
+        }
+        [data-bs-theme=semi-dark]  .page-link:hover , .page-link:focus{
+            z-index: 0;
+        }
+        [data-bs-theme=dark]  body .select2-selection__rendered {
+    color: var(--bs-body-color) !important;
+   
+}
+         [data-bs-theme=dark] .select2-container--bootstrap-5 .select2-selection {
+background-color: #ffffff00;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius-sm);
+        }
+        [data-bs-theme=semi-dark]  .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--selected, .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true]:not(.select2-results__option--highlighted) {
+    color: #fff;
+    background-color: #6c757d ;
+}        [data-bs-theme=dark]  .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--selected, .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true]:not(.select2-results__option--highlighted) {
+    color: #fff;
+    background-color: #6c757d ;
+}
+     
     </style>
 </head>
 <body>
@@ -770,9 +831,9 @@ overflow-x:scroll !important
                                 class="material-icons-outlined">local_bar</i>Change Password</a>
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href='<%= ResolveUrl("~/frmDashboard.aspx")%>'><i
                                 class="material-icons-outlined">dashboard</i>Dashboard</a>
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"  Visible="false" runat="server"><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;" visible="false" runat="server"><i
                                 class="material-icons-outlined">account_balance</i>Earning</a>
-                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;" Visible="false" runat="server" ><i
+                            <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;" visible="false" runat="server"><i
                                 class="material-icons-outlined">cloud_download</i>Downloads</a>
                             <hr class="dropdown-divider">
                             <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="<%= ResolveUrl("~/Logout.aspx") %>"><i
@@ -845,8 +906,8 @@ overflow-x:scroll !important
         <!--end overlay-->
 
         <!--start footer-->
-        <footer class="page-footer d-none">
-            <p class="mb-0">Copyright © 2024. All right reserved.</p>
+        <footer class="page-footer" style="bottom: 0; left: 0; position: fixed; right: 0; backdrop-filter: blur(2.625rem); height: 25px;">
+            <p class="mb-0 small">Copyright © 2024. All right reserved.</p>
         </footer>
         <!--top footer-->
 
@@ -1430,6 +1491,7 @@ overflow-x:scroll !important
             updateRecentSearches();
         });
     </script>
+
 
 </body>
 </html>

@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="frmEmailTemplate.aspx.cs" Inherits="frmEmailTemplate" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="assets/plugins/summernote/jquery.js"></script>
-    <link href="assets/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
+    <script src="assetsdata/plugins/summernote/jquery.js"></script>
+    <link href="assetsdata/plugins/summernote/summernote-bs4.css" rel="stylesheet" />
     <script src="
 https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="
@@ -130,7 +130,7 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"><
             console.log("fire1234567");
         }
     </script>
-    <script src="assets/plugins/summernote/summernote-bs4.js"></script>
+    <script src="assetsdata/plugins/summernote/summernote-bs4.js"></script>
     <script>
         $(document).ready(function () {
 
