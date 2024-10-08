@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="table-responsive table-container">
-                                            <asp:GridView GridLines="None" ID="gvResolution" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table table-striped table-bordered table-sm text-nowrap"
+                                            <asp:GridView GridLines="None" ID="gvResolution" runat="server" DataKeyNames="ID" AutoGenerateColumns="false" CssClass="data-table table border table-sm text-nowrap "
                                                 Width="100%" OnRowCommand="gvResolution_RowCommand" OnRowDataBound="gvResolution_RowDataBound">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr.No." ItemStyle-Width="20">

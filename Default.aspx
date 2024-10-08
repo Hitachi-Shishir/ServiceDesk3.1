@@ -169,9 +169,11 @@
                                                 <label class="form-label">Enter Registered Email</label>
                                                 <asp:TextBox ID="txtRegisEmail" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-6">
                                                 <asp:Button ID="btnVerifyUser" runat="server" Text="Set Password" class="btn btn-grd-primary w-100" OnClick="btnVerifyUser_Click" ValidationGroup="ResetPass" />
-
+                                            </div>
+                                            <div class="col-6">
+<asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn btn-grd-danger w-100" OnClientClick="history.back(); return false;" />
                                             </div>
                                         </div>
 
